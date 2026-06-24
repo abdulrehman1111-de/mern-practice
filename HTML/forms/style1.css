@@ -1,0 +1,41 @@
+table{
+    width: 63vw;
+    height: 67vh;
+}
+td{
+    padding-left: 4px;
+}
+.parentContainer{
+    width: 63vw;
+    height: 67vh;
+}
+th, td{
+    padding: 5px;
+}
+table, th, td{
+    /* border: 1px solid rgb(45, 51, 54); */
+    border-collapse: collapse;
+}
+.gray{
+    color: white;
+    background-color: rgb(45, 51, 54);
+}
+.gray2{
+    color: white;
+    background-color: gray;
+}
+/* ::placeholder{
+    color: white;
+    background-color: gray;
+} */
+
+
+
+
+
+
+
+
+
+
+

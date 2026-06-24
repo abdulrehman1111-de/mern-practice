@@ -1,0 +1,36 @@
+.mainContainer{
+    width: 83vw;
+    height: 190vh;
+}
+.lastDiv{
+    padding-left: 2vw;
+    margin-bottom: 1vh;
+}
+body{
+    height: 185vh;
+}
+h2{
+    text-align: left;
+    /* padding-right: 40vw; */
+}
+p{
+    text-align: left;
+}
+li{
+    text-align: left;
+}
+ol{
+    padding-left: 4.5vw;
+}
+
+
+
+
+
+
+
+
+
+
+
+
