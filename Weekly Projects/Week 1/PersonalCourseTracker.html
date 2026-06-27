@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="PersonalCourseTracker.css">
+    <title>My Mern Tracker</title>
+</head>
+<body>
+    
+    <center><h1>My MERN Tracker</h1></center>
+    <!-- hr is technically colored because the default is black but here white is being used here -->
+    <center><hr></center>
+
+    <center><p>My name is <b>Abdul Rehman</b> and I am currently doing <i>MERN STACK</i> and enrolled in the <u>Web Designing</u> course</p></center>
+
+    <center><section>
+        <h1>Progress  Table</h1>
+        <table>
+        <thead>
+            <tr>
+                <th>Week</th>
+                <th>Topic Covered</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody class="center">
+            <tr>
+                <td rowspan="9" id="week1"><b>Week 1</b></td>
+            </tr>
+
+            <tr><td>Internal CSS</td><td rowspan="7">Done</td></tr>
+            <tr><td>CSS box sizing</td></tr>
+            <tr><td>HTML tables</td></tr>
+            <tr><td>Lists</td></tr>
+            <tr><td>Text formatting tags</td></tr>
+            <tr><td>Media embeds</td></tr>
+            <tr><td>Anchor links</td></tr>
+            <tr><td colspan="3" style="text-align: left; padding-left: 1vw;">Notes</td></tr>
+
+        </tbody>
+    </table>
+    </section></center>
+
+        <section class="habitsContainer">
+            <div>
+                <h1>Habits Checklist</h1>
+            <ul>
+                <li>Hypothesis before you touch code</li>
+                <li>AI is a concept pointer, never a fixed generator, while you are learning</li>
+                <li>Re-derive today's lesson alone before doing homework</li>
+                <li>One GitHub commit, every single day</li>
+                <li>Keep a bug journal <ul>
+                    <li>Learnt to border collapse</li>
+                    <li>Understanding table structure</li>
+                    <li>Understanding input forms</li>
+                </ul></li>
+                <li>Read other people's code on purpose</li>
+                <li>Retrofit new patterns into old projects</li>
+                <li>Teach it within a day, even to nobody</li>
+                <li>Deploy everything you build</li>
+                <li>One project deep beats five projects shallow</li>
+                <li>Talk to humans slowly and rarely, exhaust yourself first</li>
+            </ul>
+            </div>
+            <div>
+                <h3 id="h3">This weeks priority order</h3>
+                <ol>
+                <li>MERN STACK course classes</li>
+                <li>Assignments</li>
+                <li>Self Learning</li>
+                <li>German Self Learning</li>
+                <li>Gym</li>
+            </ol>
+            </div>
+        </section>
+
+            <center>
+                <div >
+                <fieldset class="formContainer">
+                    <legend>
+                        <h1>Log a New Bug</h1>
+                    </legend>
+                    
+                    <form action="" method="post">
+                        <table class="inputTable">
+                            <tr>
+                                <td><label for="bugtitle">Bug Title</label>
+                        <input type="text" name="" id="bugtitle" placeholder="Enter here"></td>
+                        <td><textarea name="" id="" placeholder="Enter description here"></textarea></td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="language"></label>
+                                        <select name="" id="language">
+                                            <option value="default" selected>Select dropdown</option>
+                                            <option value="html">HTML</option>
+                                            <option value="css">CSS</option>
+                                            <option value="javascript">Javascript</option>
+                                        </select>
+                                </td>
+                                <td>
+                                    <center><fieldset>
+                                        <legend>Select severity</legend>
+                                    <label for="low">Low</label>
+                                    <input type="radio" name="severity" id="low">
+                                    <label for="medium">Medium</label>
+                                    <input type="radio" name="severity" id="medium">
+                                    <label for="high">High</label>
+                                    <input type="radio" name="severity" id="high">
+                                    </fieldset></center>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <label for="yesStatus">Yes</label>
+                                    <input type="radio" name="validation" id="yesStatus">
+                                    <label for="noStatus">No</label>
+                                    <input type="radio" name="validation" id="noStatus">
+                                </td>
+                                <td>
+                                    <button>Submit</button>
+                                </td>
+                            </tr>
+                        </table>
+                        
+                    </form>
+                </fieldset>
+            </div>
+            </center>
+
+            <div>
+                <center>
+                    <table class="cssTable">
+                    <tbody>
+                        <tr>
+                            <td class="pic"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShhKuO2DA8mwU3_UrF6NScFyXuN8U85XgAHB-v8DmZFijCsJhFbzehY-QW5856Nhs5&s=10&ec=121801502" alt="image"></td>
+                            <td>
+                                <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBVizdQeh3udy11xDc5Ao2YStR2gLc-rfc&amp;q=islamia%20university%20bahawalpur&amp;maptype=roadmap&amp;zoom=14" frameborder="0"></iframe>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <center><a href="https://codelab.pk/"><h3>Go to Codelab</h3></a></center>
+                </center>
+            </div>
+    
+</body>
+</html>

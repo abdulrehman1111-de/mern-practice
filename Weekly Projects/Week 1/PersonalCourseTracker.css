@@ -1,0 +1,67 @@
+body{
+    background-color: #0b1220;
+    color: white;
+    font-family: 'Montserrat', 'Segoe UI', Arial, sans-serif;
+}
+#h3{
+    text-align: left;
+}
+#week1{
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+}
+hr{
+    background-color: #C90606;
+    width: 75%;
+}
+th, td{
+    border: 1px solid white;
+}
+table{
+    border-collapse: collapse;
+    width: 55vw;
+    height: 50vh;
+    background-color: #C90606;
+}
+.center{
+    text-align: center;
+}
+.habitsContainer{
+    padding-left: 2vw;
+    padding-top: 2vh;
+}
+fieldset{
+    width: 20vw;
+}
+.inputTable{
+    background-color: rgb(75, 67, 67);
+    
+}
+.formContainer{
+    width: 20vw;
+}
+th, td{
+    text-align: center;
+}
+.cssTable{
+    width: 55vw;
+    height: 40vh;
+    background-color: cornflowerblue;
+    margin-top: 5vh;
+}
+img{
+    width: 30vw;  
+}
+iframe{
+    width: 15vw;
+}
+
+
+
+
+
+
+
+
+
+
