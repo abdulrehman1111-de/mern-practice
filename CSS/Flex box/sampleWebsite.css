@@ -1,0 +1,191 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+nav{
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 4.5vw;
+    padding-right: 4.5vw;
+}
+.navImage{
+    width: 3.5%;
+    height: 6vh;
+}
+.section1{
+    display: flex;
+    flex-direction: column;
+}
+.section1Image{
+    width: 100%;
+    height: 65vh;
+   background-image: url(https://images.unsplash.com/photo-1523281855495-b46cf55b1e7e?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   display: flex;
+   justify-content: center;
+   align-items: first baseline;
+}
+.section1Block{
+    background-color: #1A1A2E;
+    height: 45vh;
+    width: 20%;
+    margin-top: 1rem;
+    margin-left: 58rem;
+    margin-bottom: 20rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-left: 2rem;
+    padding-right: 2rem; 
+}
+.section1Button{
+    margin-right: 6.5rem;
+}
+.section1Bottom{
+    background-color: #1A1A2E;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: space-between;
+    padding-right: 3rem;
+    padding-left: 3rem;
+    
+}
+.card1{
+    height: 35vh;
+    width: 20vw;
+    background-color: white;
+    position: relative;
+    bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1rem;
+}
+.card1 h2{
+    padding-right: 3.7rem;
+}
+.card1Img{
+    height: 10vh;
+    width: 7vw;
+}
+.card2{
+    height: 35vh;
+    width: 20vw;
+    background-color: white;
+    position: relative;
+    bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1rem;
+}
+.card2 h2{
+    padding-right: 0.7rem;
+}
+.card2Img{
+    height: 10vh;
+    width: 7vw;
+}
+.card3{
+    height: 35vh;
+    width: 20vw;
+    background-color: white;
+    position: relative;
+    bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    gap: 1rem;
+}
+.card3 h2{
+    padding-right: 2.8rem;
+}
+.card3Img{
+    height: 10vh;
+    width: 7vw;
+}
+.section2topDiv{
+    border: 1px solid black;
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.firstBlock{
+    border: 1px solid black;
+    width: 40%;
+    height: 55vh;
+}
+.firstblockDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+.secondBlock{
+    border: 1px solid black;
+    width: 20%;
+    height: 55vh;
+}
+.secondBlock{
+    background-image: url(https://thumbs.dreamstime.com/b/happy-diverse-team-business-people-office-meeting-vertical-portrait-professional-room-international-company-workers-group-289191198.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.thirdBlock{
+    border: 1px solid black;
+    width: 20%;
+    height: 55vh;
+    margin-right: 5rem;
+}
+.thirdBlock{
+    background-image: url(https://thumbs.dreamstime.com/b/professional-businessman-signing-contract-silver-pen-wearing-tailored-suit-business-documents-close-up-businessman-s-459764680.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
