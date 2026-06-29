@@ -1,0 +1,133 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.oswald-<uniquifier> {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+.section1{
+    /* border: 2px solid black; */
+    margin-top: 7rem;
+    width: 100%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 0.3rem;
+}
+.container1{
+    /* border: 1px solid black; */
+    background-color: lightgray;
+    width: 25%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.img1{
+    background-image: url(https://helloartsy.com/wp-content/uploads/kids/marine_life/octopus_cartoon_drawing/octopus-cartoon-drawing_step-6.jpg);
+    height: 22vh;
+    width: 53%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container1text{
+    color: red;
+    padding-right: 5.4rem;
+    margin-bottom: 2px;
+}
+.container1para{
+    letter-spacing: 0.5px;
+}
+.container2{
+    /* border: 1px solid black; */
+    background-color: rgb(190, 190, 190);
+    width: 25%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-bottom: 3rem;
+}
+.container2nav{
+    background-color: red;
+    width: 100%;
+    height: 8vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.img2{
+    background-image: url(https://p.turbosquid.com/ts-thumb/to/xQ8IGb/ow/crabw/jpg/1621444164/1920x1080/turn_fit_q99/1d3d34df72e3c62e830be80ecafc1dd9b8adad2a/crabw-1.jpg);
+    height: 25vh;
+    width: 80%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.container2text{
+    color: red;
+    margin-bottom: 2px;
+    padding-left: 2rem;
+    padding-right: 10.2rem;
+}
+.container2para{
+    letter-spacing: 0.5px;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.container3{
+    /* border: 1px solid black; */
+    background-color: lightgray;
+    width: 25%;
+    height: 75vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+.img3{
+    background-image: url(https://thumbs.dreamstime.com/b/stylized-friendly-blue-cartoon-whale-floats-gently-against-soft-light-gray-background-above-to-left-white-empty-418213194.jpg);
+    height: 22vh;
+    width: 53%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+.container3text{
+    color: red;
+    padding-right: 7.2rem;
+    margin-bottom: 2px;
+}
+.container3para{
+    letter-spacing: 0.5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
