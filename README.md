@@ -3,7 +3,6 @@
 This is where I'm logging my way into becoming a real MERN stack developer. Not a tutorial follower, not someone who pastes errors into AI and moves on. Every file here is something I actually struggled through, debugged myself, and understood before committing.
 
 I'm a BSCS student running this alongside my degree so depth matters more here than speed. One real bug fixed and understood beats five tutorials copied.
-HTML/ (and whatever stack specific folders come later, CSS/, JS/, etc) is raw practice. Small, isolated reps on one concept at a time, organized by topic.
 
 Weekly Projects/ is where it actually gets tested. Every week I take whatever's new plus a few older topics due for a refresh, and scope one project that has a genuine reason to use all of them. No filler features, nothing bolted on just to hit a checklist. A new Week N/ folder gets added as the weeks go on. The structure doesn't change, only the count.
 
