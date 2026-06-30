@@ -169,7 +169,6 @@ nav{
     padding-right: 2rem;
 }
 .card4{
-    border: 1px solid black;
     height: 40vh;
     width: 20%;
     display: flex;
@@ -204,77 +203,436 @@ nav{
     align-items: center;
     flex-direction: column;
 }
-.section3Cards{
+.cardsSpace{
+    width: 100%;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+.cards{
+    width: 20%;
+    height: 35vh;
+    border-radius: 17px 17px 0px 0px;
+}
+.card5{
+    background-image: url(./media/destination1.png.png);
+    background-position: center;
+    background-size: cover;
+}
+.card6{
+    background-image: url(./media/destination2.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.card7{
+    background-image: url(./media/destination3.png);
+    background-position: center;
+    background-size: cover;
+}
+.cardParts{
+    width: 100%;
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+}
+.parts{
+    width: 20%;
+    height: 12vh;
+}
+.cardBottom{
+    height: 5vh;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding-top: 0.7rem;
+    padding: 0.5rem 0.5rem;
+    background-color: antiquewhite;
+}
+.cardBottom2{
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    padding-left: 0.5rem;
+    background-color: antiquewhite;
+    border-radius: 0px 0px 17px 17px;
+}
+.arrow{
+    height: 5vh;
+    padding-left: 5.3rem;
+    padding-bottom: 10rem;
+    position: absolute;
+    transform: translateY(-0.01rem);
+}
+.section4{
     border: 1px solid black;
     width: 100%;
-    height: 55vh;
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 4rem;
+}
+.bigData{
+    border: 1px solid black;
+    height: 60vh;
+    width: 40%;
+}
+.bigdataTop{
+    border: 1px solid black;
+    height: 20vh;
+    width: 100%;
+}
+.bigdataTop h1{
+    font-size: 3rem;
+}
+.bigdataBottom{
+    border: 1px solid black;
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+
+}
+.choose{
+    border: 1px solid black;
+    height: 40vh;
+    width: 12%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.4rem;
+    padding-bottom: 0.2rem;
+}
+.choosePara{
+    border: 1px solid black;
+    height: 40vh;
+    width: 88%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.8rem;
+}
+.bros{
+    display: flex;
+    gap: 0.2rem;
+    flex-direction: column;
+}
+.bros h4{
+    color: #5E6282;
+}
+.bros p{
+    color: #5E6282;
+}
+.bigCard{
+    border: 1px solid black;
+    background-color: antiquewhite;
+    height: 52vh;
+    width: 30%;
+    border-radius: 1rem;
+    padding-left: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1rem;
+    gap: 1rem;
+}
+.bigcardPic{
+    border: 1px solid black;
+    height: 25vh;
+    width: 80%;
+    border-radius: 0.7rem;
+    background-image: url(./media/bigCard.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.bigcardMid{
+    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+}
+.bigcardIcon{
+    border: 1px solid black;
+    height: 5vh;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 1rem;
+    
+}
+.bigcardLow{
+    display: flex;
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
-    display: flex;
-    padding: 2.5rem 2.5rem;
+    gap: 9.8rem;
+    padding-right: 2rem;
 }
-.card4{
+.right{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding-left: 1.5rem;
+}
+.section5{
     border: 1px solid black;
-    height: 50vh;
-    width: 23%;
+    width: 100%;
+    height: 55vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background-color: rgb(251, 251, 241);
+}
+.testText{
+    border: 1px solid black;
+    width: 35%;
+    height: 55vh;
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+.headings h1{
+    font-size: 3.5rem;
+}
+.dots{
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+.test{
+    border: 1px solid black;
+    width: 45%;
+    height: 55vh;
+    display: flex;
+    flex-direction: row;
+}
+.testHeadshot{
+    border: 1px solid black;
+    height: 55vh;
+    width: 20%;
+}
+.testHeadshot img{
+    height: 17vh;
+    width: 17vh;
+    border-radius: 4rem;
+}
+.testtextBox{
+    border: 1px solid black;
+    height: 55vh;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.testChild{
+    border: 1px solid black;
+    height: 40vh;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-left: 1rem;
-    padding-right: 1dvh;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    gap: 1.5rem;
-    background-color: rgb(222, 247, 255);
-    border-radius: 1rem;
 }
-.pic1{
-    /* background-image: url(./media/destination1.png.png);
-    background-position: center;
-    background-size: cover; */
+.testPara{
     border: 1px solid black;
-    height: 35vh;
-    width: 110%;
+    height: 12vh;
+    width: 100%;
 }
-.card4Part{
-    border: 1px solid red;
-    height: 15vh;
-    width: 110%;
-}
-.card5{
+.testHeadings{
     border: 1px solid black;
-    height: 50vh;
-    width: 23%;
+    height: 20vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.section6{
+    border: 1px solid black;
+    height: 40vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.section77{
+    display: flex;
+    flex-direction: row;
+}
+.section7{
+    border: 1px solid black;
+    width: 80%;
+    height: 70vh;
+    background-color: #f3f0ff;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-left: 1rem;
-    padding-right: 1dvh;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    gap: 1.5rem;
-    background-color: rgb(222, 247, 255);
-    border-radius: 1rem;
 }
-.card6{
+.section7Text{
+    width: 70%;
     border: 1px solid black;
-    height: 50vh;
-    width: 23%;
+    height: 20vh;
+    font-size: 1.2rem;
+}
+.section7Buttons{
+    border: 1px solid black;
+    width: 70%;
+    height: 25vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
-    padding-left: 1rem;
-    padding-right: 1dvh;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
+    flex-direction: row;
     gap: 1.5rem;
-    background-color: rgb(222, 247, 255);
+}
+.section7White{
+    border: 1px solid black;
+    background-color: white;
+    height: 8vh;
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+.section7White img{
+    height: 3vh;
+    width: 6.5%;
+    padding-left: .3rem;
+    margin-top: 0.9rem;
+}
+.input{
+    width: 93.5%;
+}
+.section7Button{
+    height: 8vh;
+    width: 25%;
     border-radius: 1rem;
 }
+.section7Side{
+    border: 1px solid black;
+    height: 70vh;
+    width: 20%;
+}
+.footer{
+    border: 1px solid black;
+    height: 65vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+}
+.footerCards{
+    border: 1px solid black;
+    height: 40vh;
+    width: 15%;
+}
+.footer1 h1{
+    padding-right: 5rem,
+}
+.footer1{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+.footer2{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+.footer2 ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: #5E6282;
+}
+.footer3{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+.footer3 ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: #5E6282;
+}
+.footer4{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-direction: column;
+}
+.footer4 ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    color: #5E6282;
+}
+.footer5{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 2rem;
+    gap: 1.5rem;
+}
+.front{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+.footerIcons{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 1rem;
+}
+.lastFooter{
+    height: 10vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.lastSection{
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
