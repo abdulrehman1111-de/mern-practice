@@ -1,0 +1,246 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+nav{
+    height: 12vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding-left: 3rem;
+    padding-right: 3rem;
+}
+.headerImg{
+    height: 6vh;
+    width: 5%;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcGRmZfNOU2bsD5XXCIUNpb_aBlQFEK5QItOvN8vM7GA&s=10);
+    background-position: center;
+    background-size: cover;
+}
+.section1{
+    height: 90vh;
+    width: 100%;
+    background-color: rgb(255, 235, 254);
+}
+.blob1{
+    width: 100%;
+    height: 85vh;
+}
+.circle1{
+    height: 20rem;
+    width: 20rem;
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 15rem;
+    left: 40rem;
+    background-image: url(https://static.vecteezy.com/system/resources/thumbnails/065/953/675/small/a-girl-and-her-dog-share-a-warm-hug-while-wrapped-in-a-cozy-blanket-under-bright-lighting-in-a-comfortable-setting-photo.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+.circle1Desc{
+    height: 30vh;
+    width: 30%;
+    position: absolute;
+    bottom: 13rem;
+    left: 17rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.firstButton{
+    padding: 0.3rem;
+    width: 30%;
+}
+.section2{
+    height: 90vh;
+    width: 100%;
+    background-color: rgb(255, 247, 255);
+    display: flex;
+    flex-direction: row;
+}
+.leftDiv{
+    height: 90vh;
+    width: 50%;
+}
+.upperBar{
+    width: 100%;
+    height: 20vh;
+}
+.lowerBar{
+    background-color: pink;
+    width: 100%;
+    height: 20vh;
+}
+.circle2{
+    height: 13rem;
+    width: 13rem;
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
+    left: 10rem;
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0DcNcblgSs0_xotyX9j3mdHC0xtTCEtTkpSA-AyZnAU7nT0bqcdnsbzk&s=10);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    bottom: 3rem;
+}
+.lowestBar{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.lowestText{
+    height: 20vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.lowestText ul{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-left: 1rem;
+}
+.rightDiv{
+    height: 90vh;
+    width: 50%;
+}
+.rightUpper{
+    height: 45vh;
+    width: 50%;
+    position: relative;
+    right: 7rem;
+    top: 10.5rem;
+    background-color: rgb(255, 155, 167);
+    color: white;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+.rightLower{
+    height: 45vh;
+    width: 100%;
+    background-image: url(https://thumbs.dreamstime.com/b/four-dogs-different-breeds-sit-closely-together-smooth-floor-stylish-living-room-their-expressions-radiate-joy-four-353214605.jpg);
+    background-position: center;
+    background-size: cover;
+}
+.secondButton{
+    padding: 3px;
+    width: 40%;
+    background-color: white;
+    color: pink;
+
+}
+.section3{
+    width: 100%;
+    height: 115vh;
+    background-color: rgb(234, 233, 233);
+}
+.section3Upper{
+    width: 100%;
+    height: 45vh;
+}
+.threeupCard{
+    width: 30%;
+    height: 35vh;
+    background-color: white;
+    margin-left: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.7rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    color: rgb(255, 86, 86);
+    position: relative;
+    top: 7rem;
+}
+.threelowCard{
+    width: 100%;
+    height: 68vh;
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    
+}
+.threelowFirst{
+    width: 45%;
+    height: 68vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 3rem;
+    
+
+}
+.cards{
+    background-color: white;
+    width: 40vh;
+    height: 23vh;
+    position: relative;
+    left: 21rem;
+    top: 3rem;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    flex-direction: column;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+.circle11{
+    background-color: red;
+    width: 7vw;
+    height: 20vh;
+    border-radius: 50%;
+}
+.threelowSecond{
+    width: 70%;
+    height: 68vh;
+    display: flex;
+    flex-direction: column;
+} 
+.dogDiv{
+    width: 60%;
+    height: 30vh;
+    background-image: url(https://img.magnific.com/free-photo/basenji-dog-walking-park-summer-sunny-day_346278-354.jpg?semt=ais_hybrid&w=740&q=80);
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    top: 8rem;
+}
+.lowerDog{
+    width: 60%;
+    height: 30vh;
+    background-color: rgb(255, 164, 164);
+    margin-left: 3rem;
+}
+
+
+
+
+
+
+
+
+
+
