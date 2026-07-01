@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 nav{
-    border: 1px solid black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,10 +23,8 @@ nav{
     width: 100%;
     padding: 0.5rem;
     border-radius: 3px;
-    border: 1px solid black;
 }
 .parent1{
-    border: 1px solid black;
     width: 100%;
     height: 75vh;
     display: flex;
@@ -35,7 +32,6 @@ nav{
     align-items: center;
 }
 .parent1Text{
-    border: 1px solid black;
     width: 35%;
     height: 70vh;
     padding-top: 3rem;
@@ -56,13 +52,8 @@ nav{
     color: #5E6282;
 }
 .parent1Img{
-    border: 1px solid black;
     width: 35%;
     height: 70vh;
-}
-.buttonsParent{
-    border: 1px solid black;
-    /* padding-bottom: 3rem; */
 }
 .firstButton{
     margin-top: 1rem;
@@ -188,14 +179,12 @@ nav{
     padding-right: 2rem;
 }
 .section3{
-    border: 1px solid black;
     width: 100%;
     height: 75vh;
     display: flex;
     flex-direction: column;
 }
 .section3Headings{
-    border: 1px solid black;
     width: 100%;
     height: 20vh;
     display: flex;
@@ -270,7 +259,6 @@ nav{
     transform: translateY(-0.01rem);
 }
 .section4{
-    border: 1px solid black;
     width: 100%;
     height: 85vh;
     display: flex;
@@ -280,12 +268,10 @@ nav{
     gap: 4rem;
 }
 .bigData{
-    border: 1px solid black;
     height: 60vh;
     width: 40%;
 }
 .bigdataTop{
-    border: 1px solid black;
     height: 20vh;
     width: 100%;
 }
@@ -293,7 +279,6 @@ nav{
     font-size: 3rem;
 }
 .bigdataBottom{
-    border: 1px solid black;
     height: 40vh;
     width: 100%;
     display: flex;
@@ -302,7 +287,6 @@ nav{
 
 }
 .choose{
-    border: 1px solid black;
     height: 40vh;
     width: 12%;
     display: flex;
@@ -313,7 +297,6 @@ nav{
     padding-bottom: 0.2rem;
 }
 .choosePara{
-    border: 1px solid black;
     height: 40vh;
     width: 88%;
     display: flex;
@@ -334,7 +317,6 @@ nav{
     color: #5E6282;
 }
 .bigCard{
-    border: 1px solid black;
     background-color: antiquewhite;
     height: 52vh;
     width: 30%;
@@ -346,7 +328,6 @@ nav{
     gap: 1rem;
 }
 .bigcardPic{
-    border: 1px solid black;
     height: 25vh;
     width: 80%;
     border-radius: 0.7rem;
@@ -362,7 +343,6 @@ nav{
 
 }
 .bigcardIcon{
-    border: 1px solid black;
     height: 5vh;
     width: 80%;
     display: flex;
@@ -386,7 +366,6 @@ nav{
     padding-left: 1.5rem;
 }
 .section5{
-    border: 1px solid black;
     width: 100%;
     height: 55vh;
     display: flex;
@@ -394,9 +373,9 @@ nav{
     align-items: center;
     flex-direction: row;
     background-color: rgb(251, 251, 241);
+    padding-top: 9.5rem;
 }
 .testText{
-    border: 1px solid black;
     width: 35%;
     height: 55vh;
     display: flex;
@@ -412,14 +391,12 @@ nav{
     gap: 1.5rem;
 }
 .test{
-    border: 1px solid black;
     width: 45%;
     height: 55vh;
     display: flex;
     flex-direction: row;
 }
 .testHeadshot{
-    border: 1px solid black;
     height: 55vh;
     width: 20%;
 }
@@ -429,7 +406,6 @@ nav{
     border-radius: 4rem;
 }
 .testtextBox{
-    border: 1px solid black;
     height: 55vh;
     width: 80%;
     display: flex;
@@ -437,7 +413,6 @@ nav{
     align-items: center;
 }
 .testChild{
-    border: 1px solid black;
     height: 40vh;
     width: 100%;
     display: flex;
@@ -446,12 +421,10 @@ nav{
     flex-direction: column;
 }
 .testPara{
-    border: 1px solid black;
     height: 12vh;
     width: 100%;
 }
 .testHeadings{
-    border: 1px solid black;
     height: 20vh;
     width: 100%;
     display: flex;
@@ -459,8 +432,7 @@ nav{
     gap: 0.5rem;
 }
 .section6{
-    border: 1px solid black;
-    height: 40vh;
+    height: 50vh;
     width: 100%;
     display: flex;
     justify-content: space-around;
@@ -469,14 +441,26 @@ nav{
     padding-left: 3rem;
     padding-right: 3rem;
 }
+.img1{
+    margin-right: 0.01rem;
+}
+.img2{
+    margin-left: 1.5rem;
+}
+.img3{
+    padding-top: 8.3rem;
+}
+.img5{
+    padding-right: 0.01rem;
+}
+
 .section77{
     display: flex;
     flex-direction: row;
 }
 .section7{
-    border: 1px solid black;
     width: 80%;
-    height: 70vh;
+    height: 60vh;
     background-color: #f3f0ff;
     display: flex;
     justify-content: center;
@@ -485,12 +469,10 @@ nav{
 }
 .section7Text{
     width: 70%;
-    border: 1px solid black;
     height: 20vh;
     font-size: 1.2rem;
 }
 .section7Buttons{
-    border: 1px solid black;
     width: 70%;
     height: 25vh;
     display: flex;
@@ -500,7 +482,6 @@ nav{
     gap: 1.5rem;
 }
 .section7White{
-    border: 1px solid black;
     background-color: white;
     height: 8vh;
     width: 60%;
@@ -523,12 +504,10 @@ nav{
     border-radius: 1rem;
 }
 .section7Side{
-    border: 1px solid black;
     height: 70vh;
     width: 20%;
 }
 .footer{
-    border: 1px solid black;
     height: 65vh;
     width: 100%;
     display: flex;
@@ -538,7 +517,6 @@ nav{
 
 }
 .footerCards{
-    border: 1px solid black;
     height: 40vh;
     width: 15%;
 }
@@ -619,7 +597,9 @@ nav{
     flex-direction: column;
 }
 
-
+.div{
+    background-color: lightye;
+}
 
 
 
