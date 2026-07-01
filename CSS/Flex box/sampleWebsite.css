@@ -385,6 +385,12 @@ nav{
 .textSection4 h2{
     padding-right: 13rem;
 }
+.startBtn{
+    margin-right: 21.95rem;
+    padding: 0.5rem;
+    background-color: white;
+    border: 0.5px solid black;
+}
 .section4Img{
     border: 1px solid black;
     width: 43%;
@@ -394,14 +400,136 @@ nav{
     background-size: cover;
     background-position: center;
 }
+.section5{
+    border: 1px solid black;
+    width: 100%;
+    height: 35vh;
+    background-image: url(https://lens.usercontent.google.com/banana?agsi=CmdnbG9iYWw6OjAwMDA1NWNmZWM3MDAyNmQ6MDAwMDAwZWI6MTpjNDAxYThlMTRlZGU0Yzg1OjAwMDA1NWNmZWM3MDAyNmQ6MDAwMDAzMmM1MDIwMzM2ODowMDA2NTU4N2ZkNmJkYjRmEAIYAQ==);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+}
+.section5Heading{
+    height: 20vh;
+    width: 40%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-direction: column;
+}
 
-
-
-
-
-
-
-
+.section5Btn{
+    padding: 0.8rem;
+    width: 10%;
+    border: 2px solid white;
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+}
+.section6{
+    border: 1px solid black;
+    width: 100%;
+    height: 135vh;
+}
+.section6Heading{
+    display: flex;
+    flex-direction: column;
+}
+.headings{
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 2.5rem;
+}
+.imgContainer{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 2rem;
+}
+.images{
+    height: 35vh;
+    width: 80%;
+    margin-left: 8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+.smallImg{
+    height: 35vh;
+    width: 35%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+.img1{
+    background-image: url(https://media.istockphoto.com/id/1491196684/photo/business-people-celebrating-success-in-an-office.jpg?s=612x612&w=0&k=20&c=zQ5Ps5nQWi3S2futnwyOoqLMFxPzE8B04WltyPB6RyI=);
+}
+.img2{
+    background-image: url(https://thumbs.dreamstime.com/b/tailor-choosing-fabric-swatch-his-customer-shop-client-catalog-store-suit-sales-bespoke-person-garment-small-business-163100898.jpg);
+}
+.img3{
+    background-image: url(https://thumbs.dreamstime.com/b/hands-typing-laptop-keyboard-focusing-financial-growth-chart-displayed-screen-chart-featuring-blue-bar-393506621.jpg);
+}
+.img4{
+    background-image: url(https://media.istockphoto.com/id/1070699566/photo/businesspeople-brainstorming-together-with-sticky-notes-in-an-office.jpg?s=612x612&w=0&k=20&c=w6DAXGsQL7LmtT9L7KKPqYWJoONJGZdQbELfVSxdUP8=);
+}
+.img5{
+    background-image: url(https://media.istockphoto.com/id/2199133053/photo/businesswoman-smiling-while-working-at-her-laptop.jpg?s=612x612&w=0&k=20&c=gTnDZL4qvzJz5xHs1gZMJKgIswuFs69qv5fRsrJ-vtI=);
+}
+.img6{
+    background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhYmfYE0940Abnr4q50tdoIn9yg0pSuos9bXePU4YG4wqw3Wt-ugpGDxzP&s=10);
+}
+.img7{
+    background-image: url(https://thumbs.dreamstime.com/b/using-tablet-global-network-map-data-analysis-person-displaying-world-radial-showing-connectivity-ideal-tech-384359656.jpg);
+}
+.img8{
+    background-image: url(https://thumbs.dreamstime.com/b/close-up-view-hands-working-laptop-digital-stock-market-data-financial-charts-displayed-emphasizing-419879057.jpg);
+}
+.img9{
+    background-image: url(https://images.pexels.com/photos/17682883/pexels-photo-17682883/free-photo-of-two-shaking-hands.jpeg);
+}
+.section7{
+    width: 100%;
+    height: 50vh;
+    background-color: darkred;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.lastsectionTxt{
+    border: 1px solid black;
+    height: 20vh;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+.lastsectionLogos{
+    border: 1px solid black;
+    width: 80%;
+    height: 30vh;
+}
+.lastsectionUl{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 5rem;
+}
 
 
 
