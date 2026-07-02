@@ -1,0 +1,547 @@
+*{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+}
+.mainSection{
+    width: 100%;
+    height: 1000vh;
+    background-image: url(https://media.istockphoto.com/id/533553723/photo/new-york-city-midtown-with-empire-state-building-at-sunset.jpg?s=612x612&w=0&k=20&c=O42f3soK1EkZKdJ6Wvh47yLSbz5muvEILjiwVgImNk4=);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    animation: opacity 0.7s alternate;
+}
+@keyframes opacity {
+    from{
+        opacity: 0.4;
+    }
+    to{
+        opacity: 1;
+    }
+}
+.wrapper{
+    width: 100%;
+    height: 1000vh;
+    background-color: rgba(255, 0, 0, 0.4);
+}
+.heading1{
+    border: 1px solid black;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+.heading1 h1{
+    font-size: 4.5rem;
+    animation: fontsize 0.7s ease-out alternate;
+}
+@keyframes fontsize {
+    from{
+        font-size: 3rem;
+    }
+    to{
+        font-size: 4.5rem;
+    }
+}
+.heading1 h2{
+    opacity: 0;
+    animation: headH2 0.7s ease-out 1s ;
+    animation-fill-mode: forwards;
+}
+@keyframes headH2 {
+    from{
+        opacity: 0;
+        transform: translateY(7rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.midSection1{
+    border: 1px solid black;
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    animation: midSection 1s ease-out 1.5s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+.midSection1 p{
+    font-size: 2.5rem;
+}
+@keyframes midSection {
+    from{
+        opacity: 0;
+        transform: translateY(7rem);
+    }
+    to{
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.chevron{
+    color: blue;
+    animation: downArrow 1.5s ease-in-out 1.5s infinite alternate;
+}
+@keyframes downArrow {
+    from{
+        transform: translateY(0);
+    }
+    to{
+        transform: translateY(1rem);
+    }
+}
+.lowSection1{
+    border: 1px solid black;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+hr{
+    border: 1px solid white;
+    width: 80%;
+}
+.lowSection1 p{
+    font-size: 3.5rem;
+}
+.section2{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.childs{
+    border: 1px solid black;
+    height: 100vh;
+    width: 50%;
+}
+.singleCard{
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.parent1Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-left: 6rem;
+    margin-top: 10rem;
+    opacity: 0;
+}
+.parent1Child.aos-animate{
+    animation: Fade1 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade1 {
+    0%{
+        transform: translateY(7rem);
+        opacity: 0;
+    }
+    50%{
+        opacity: 1;
+        transform: translateY(-1rem);
+    }
+    100%{
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+.parent2Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-left: 6rem;
+    margin-top: 20rem;
+    opacity: 0;
+}
+.parent2Child.aos-animate{
+    animation: Fade2 1.5s ease-in-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade2 {
+    0%{
+        transform: translateY(0);
+        opacity: 0;
+    }
+    50%{
+        transform: translateY(8rem);
+        opacity: 1;
+    }
+    100%{
+        transform: translateY(7rem);
+        opacity: 1;
+    }
+}
+.section3{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent3Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 5rem;
+    margin-left: 6rem;
+    opacity: 0;
+}
+.parent3Child.aos-animate{
+    animation: Fade3 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade3 {
+    0%{
+        transform: translateX(-5rem);
+        opacity: 0;
+    }
+    50%{
+        opacity: 0.7;
+        transform: translateX(1rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+}
+.parent4Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-left: 6rem;
+    margin-top: 25rem;
+    opacity: 0;
+}
+.parent4Child.aos-animate{
+    animation: Fade4 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade4 {
+    0%{
+        transform: translateX(20rem);
+        opacity: 0;
+    }
+    80%{
+        opacity: 0.7;
+        transform: translateX(-1rem);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0rem);
+    }
+}
+.section4{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent5Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 15rem;
+    margin-left: 0rem;
+    opacity: 0;
+}
+.parent5Child.aos-animate{
+    animation: Fade5 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade5 {
+    0%{
+        transform: translate(0rem, 0rem);
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.7;
+        transform: translate(6.5rem, -10rem);
+        opacity: 1;
+    }
+}
+.parent6Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 35rem;
+    margin-left: 11.5rem;
+}
+.parent6Child.aos-animate{
+    animation: Fade6 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade6 {
+    0%{
+        transform: translate(0rem, 0rem);
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.7;
+        transform: translate(-6.5rem, -10rem);
+        opacity: 1;
+    }
+}
+.section5{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent7Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 0rem;
+    margin-left: 0rem;
+    opacity: 0;
+}
+.parent7Child.aos-animate{
+    animation: Fade7 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade7 {
+    0%{
+        transform: translate(0rem, 0rem);
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.7;
+        transform: translate(6.5rem, 6.5rem);
+        opacity: 1;
+    }
+}
+.parent8Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 22rem;
+    margin-left: 11.8rem;
+    opacity: 0;
+}
+.parent8Child.aos-animate{
+    animation: Fade8 1.5s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade8 {
+    0%{
+        transform: translate(0rem, 0rem);
+        opacity: 0;
+    }
+    100%{
+        opacity: 0.7;
+        transform: translate(-6.5rem, 6.5rem);
+        opacity: 1;
+    }
+}
+.lowSection2{
+    border: 1px solid black;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.lowSection2 p{
+    font-size: 3.5rem;
+}
+.section6{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent9Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 8rem;
+    margin-left: 6rem;
+}
+.parent9Child.aos-animate{
+    animation: Flip1 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Flip1 {
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(180deg) 
+    }
+}
+.parent2{
+    perspective: 800px;
+}
+.parent10Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 28rem;
+    margin-left: 6rem;
+}
+.parent10Child.aos-animate{
+    animation: Flip2 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Flip2 {
+    0%{
+        transform: rotateY(0deg);
+    }
+    100%{
+        transform: rotateY(-180deg);
+    }
+}
+.section7{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent11Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 8rem;
+    margin-left: 6rem;
+}
+.parent11Child.aos-animate{
+    animation: Flip3 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Flip3 {
+    0%{
+        transform: rotateX(90deg);
+    }
+    100%{
+        transform: rotateX(0deg) 
+    }
+}
+.parent12Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 28rem;
+    margin-left: 6rem;
+}
+.parent12Child.aos-animate{
+    animation: Flip4 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Flip4 {
+    0%{
+        transform: rotateX(-90deg);
+    }
+    100%{
+        transform: rotateX(0deg) 
+    }
+}
+.lowSection3{
+    border: 1px solid black;
+    width: 100%;
+    height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+.lowSection3 p{
+    font-size: 3.5rem;
+}
+.section8{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent13Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 30vh;
+    margin-top: 5rem;
+    margin-left: 6rem;
+}
+.parent13Child.aos-animate{
+    animation: Zoom1 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom1 {
+    0%{
+        transform: scale(1, 1);
+    }
+    90%{
+        
+        transform: scale(1.1, 1.1);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+.parent14Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 28rem;
+    margin-left: 6rem;
+}
+.parent14Child.aos-animate{
+    animation: Zoom2 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom2 {
+    0%{
+        transform: scale(1, 1) translateY(0rem);
+    }
+    90%{  
+        transform: scale(1.1, 1.1) translateY(-6rem);
+    }
+    100%{
+        transform: scale(1, 1) translateY(-5rem);
+    }
+}
+
+
+
+
+
+
+
+
+
