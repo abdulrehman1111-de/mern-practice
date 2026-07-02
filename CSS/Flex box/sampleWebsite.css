@@ -39,8 +39,8 @@ nav{
     background-color: #1A1A2E;
     height: 45vh;
     width: 20%;
-    margin-top: 1rem;
-    margin-left: 58rem;
+    margin-top: 1.7rem;
+    margin-left: 52.75rem;
     margin-bottom: 20rem;
     color: white;
     display: flex;
@@ -63,8 +63,8 @@ nav{
     height: 25vh;
     display: flex;
     justify-content: space-between;
-    padding-right: 3rem;
-    padding-left: 3rem;
+    padding-right: 5rem;
+    padding-left: 5rem;
     
 }
 .card1{
@@ -134,8 +134,9 @@ nav{
     width: 7vw;
 }
 .section2topDiv{
+    border: 1px solid black;
     width: 100%;
-    height: 60vh;
+    height: 90vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -144,11 +145,13 @@ nav{
     padding-top: 3rem;
 }
 .firstBlock{
-    width: 35%;
+    border: 1px solid black;
+    width: 40%;
     height: 55vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    padding-left: 3rem;
 }
 .secondblockDiv{
     height: 25vh;
@@ -237,7 +240,7 @@ nav{
 }
 .section2lastDiv{
     width: 60%;
-    height: 45vh;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -259,7 +262,8 @@ nav{
 .section3First{
     width: 100%;
     background-color: rgb(205, 236, 255);
-    height: 78vh;
+    height: 85vh;
+    padding-top: 1.5rem;
     
 }
 .topHeading{
@@ -280,11 +284,13 @@ nav{
     padding-left: 8rem;
     padding-right: 8rem;
 }
+.cards{
+    height: 48vh;
+    width: 25%;
+}
 .card4{
-    height: 45vh;
-    width: 22%;
     background-color: white;
-    padding: 1rem 1.3rem 1rem 1rem;
+    padding: 1rem 2rem 1rem 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -303,12 +309,11 @@ nav{
     font-size: 0.9rem;
 }
 .card5{
-    height: 45vh;
-    width: 22%;
     background-color: white;
     padding-top: 1rem;
-    padding-right: 1.1rem;
+    padding-right: 1.3rem;
     padding-bottom: 1rem;
+    padding-left: 0.5rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -323,33 +328,35 @@ nav{
     width: 80%;
     height: 20vh;
 }
+.card5 h4{
+    padding-right: 1.2rem;
+}
 .card5Para{
     font-size: 0.9rem;
     padding-left: 1rem;
 }
 .card6{
-    height: 45vh;
-    width: 22%;
     background-color: white;
     padding-top: 1rem;
-    padding-right: 1.1rem;
+    padding-right: 1.5rem;
     padding-bottom: 1rem;
+    padding-left: 1rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
 }
 .card6Img{
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSI6J_G4VwGeOzeherAB5ch4HT701yB5diDy0Zz_WTIWeTrFrisBj-DGKn&s=10);
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    width: 80%;
+    width: 90%;
     height: 20vh;
 }
 .card6 h4{
-    padding-left: 1.1rem;
+    padding-left: 1rem;
 }
 .card6Para{
     font-size: 0.9rem;
@@ -358,14 +365,14 @@ nav{
 .section4Container{
     border: 1px solid black;
     width: 100%;
-    height: 75vh;
+    height: 90vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     padding-left: 2rem;
     padding-right: 2rem;
-    gap: 3rem;
+    gap: 2rem;
 }
 .textSection4{
     border: 1px solid black;
@@ -433,7 +440,8 @@ nav{
 .section6{
     border: 1px solid black;
     width: 100%;
-    height: 135vh;
+    height: 155vh;
+    padding-top: 5rem;
 }
 .section6Heading{
     display: flex;
@@ -529,6 +537,26 @@ nav{
     justify-content: space-between;
     align-items: center;
     padding-top: 5rem;
+}
+.section8{
+    border: 1px solid black;
+    width: 100%;
+    background-color: rgb(3, 0, 60);
+    color: white;
+    height: 35vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+    gap: 20rem;
+}
+.lastBtn{
+    border: 0.5px solid red;
+    color: white;
+    background-color: transparent;
+    padding: 0.3rem;
 }
 
 

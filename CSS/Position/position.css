@@ -15,7 +15,7 @@ nav{
 }
 .headerImg{
     height: 6vh;
-    width: 5%;
+    width: 3.5%;
     background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQcGRmZfNOU2bsD5XXCIUNpb_aBlQFEK5QItOvN8vM7GA&s=10);
     background-position: center;
     background-size: cover;
@@ -43,25 +43,31 @@ nav{
 }
 .circle1Desc{
     height: 30vh;
-    width: 30%;
+    width: 25%;
     position: absolute;
     bottom: 13rem;
-    left: 17rem;
+    left: 21.5rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
     gap: 1rem;
+    color: red;
 }
 .firstButton{
     padding: 0.3rem;
     width: 30%;
+    background-color: white;
+    color: red;
+    border: none;
 }
 .section2{
-    height: 90vh;
+    height: 100vh;
     width: 100%;
     background-color: rgb(255, 247, 255);
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 .leftDiv{
     height: 90vh;
