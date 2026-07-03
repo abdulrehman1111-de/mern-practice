@@ -5,7 +5,7 @@
 }
 .mainSection{
     width: 100%;
-    height: 1000vh;
+    height: 1300vh;
     background-image: url(https://media.istockphoto.com/id/533553723/photo/new-york-city-midtown-with-empire-state-building-at-sunset.jpg?s=612x612&w=0&k=20&c=O42f3soK1EkZKdJ6Wvh47yLSbz5muvEILjiwVgImNk4=);
     background-position: center;
     background-size: cover;
@@ -22,8 +22,8 @@
 }
 .wrapper{
     width: 100%;
-    height: 1000vh;
-    background-color: rgba(255, 0, 0, 0.4);
+    height: 1300vh;
+    background-color: rgba(255, 0, 0, 0.5);
 }
 .heading1{
     border: 1px solid black;
@@ -530,15 +530,235 @@ hr{
         transform: scale(1, 1) translateY(0rem);
     }
     90%{  
-        transform: scale(1.1, 1.1) translateY(-6rem);
+        transform: scale(1.1, 1.1) translateY(-4rem);
     }
     100%{
-        transform: scale(1, 1) translateY(-5rem);
+        transform: scale(1, 1) translateY(-3rem);
     }
 }
-
-
-
+.section9{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent15Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 3rem;
+    margin-left: 6rem;
+}
+.parent15Child.aos-animate{
+    animation: Zoom3 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom3 {
+    0%{
+        transform: scale(1, 1) translateY(0rem);
+    }
+    90%{  
+        transform: scale(1.1, 1.1) translateY(4rem);
+    }
+    100%{
+        transform: scale(1, 1) translateY(3rem);
+    }
+}
+.parent16Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 25rem;
+    margin-left: 11.5rem;
+}
+.parent16Child.aos-animate{
+    animation: Zoom4 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom4 {
+    0%{
+        transform: scale(1, 1) translateX(0rem);
+    }
+    90%{  
+        transform: scale(1.1, 1.1) translateX(-4rem);
+    }
+    100%{
+        transform: scale(1, 1) translateX(-3.5rem);
+    }
+}
+.section10{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent17Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 3rem;
+    margin-left: 5rem;
+}
+.parent17Child.aos-animate{
+    animation: Zoom5 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom5 {
+    0%{
+        transform: scale(1, 1) translateX(0rem);
+    }
+    90%{  
+        transform: scale(1.1, 1.1) translateX(4rem);
+    }
+    100%{
+        transform: scale(1, 1) translateX(3.5rem);
+    }
+}
+.parent18Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 25rem;
+    margin-left: 5rem;
+}
+.parent18Child.aos-animate{
+    animation: Zoom6 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom6 {
+    0%{
+        transform: scale(1.1, 1.1);
+    }
+    90%{  
+        transform: scale(0.9, 0.9);
+    }
+    100%{
+        transform: scale(1, 1);
+    }
+}
+.section11{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent19Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 5rem;
+    margin-left: 5rem;
+}
+.parent19Child.aos-animate{
+    animation: Zoom7 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom7 {
+    0%{
+        transform: scale(1.1, 1.1) translateY(0rem);
+    }
+    90%{  
+        transform: scale(0.9, 0.9) translateY(-3rem);
+    }
+    100%{
+        transform: scale(1, 1) translateY(0rem);
+    }
+}
+.parent20Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 25rem;
+    margin-left: 5rem;
+}
+.parent20Child.aos-animate{
+    animation: Zoom8 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom8 {
+    0%{
+        transform: scale(1.1, 1.1) translateY(0rem);
+    }
+    90%{  
+        transform: scale(0.9, 0.9) translateY(3rem);
+    }
+    100%{
+        transform: scale(1, 1) translateY(0rem);
+    }
+}
+.section12{
+    border: 1px solid black;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+}
+.parent21Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 5rem;
+    margin-left: 5rem;
+}
+.parent21Child.aos-animate{
+    animation: Zoom9 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom9 {
+    0%{
+        transform: scale(1.1, 1.1) translateX(0rem);
+    }
+    90%{  
+        transform: scale(0.9, 0.9) translateX(3rem);
+    }
+    100%{
+        transform: scale(1, 1) translateX(0rem);
+    }
+}
+.parent22Child{
+    border: 2px solid black;
+    background-color: black;
+    width: 70%;
+    height: 32vh;
+    margin-top: 25rem;
+    margin-left: 5rem;
+    transition: all 1s ease-out;
+    transform: scale(1.1, 1.1) translateX(0rem);
+}
+.parent22Child.aos-animate{
+    animation: Zoom10 1s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Zoom10 {
+    0%{
+        transform: scale(1.1, 1.1) translateX(0rem);
+    }
+    90%{  
+        transform: scale(0.9, 0.9) translateX(-3rem);
+    }
+    100%{
+        transform: scale(1, 1) translateX(0rem);
+    }
+}
+.end{
+    width: 100%;
+    height: 30vh;
+    background-color: rgb(0, 0, 57);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 
 
