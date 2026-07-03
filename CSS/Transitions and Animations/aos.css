@@ -6,34 +6,44 @@
 .mainSection{
     width: 100%;
     height: 1300vh;
-    background-image: url(https://media.istockphoto.com/id/533553723/photo/new-york-city-midtown-with-empire-state-building-at-sunset.jpg?s=612x612&w=0&k=20&c=O42f3soK1EkZKdJ6Wvh47yLSbz5muvEILjiwVgImNk4=);
+    background-image: url(https://michalsnik.github.io/aos/img/bg.jpg);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
-    animation: opacity 0.7s alternate;
-}
-@keyframes opacity {
-    from{
-        opacity: 0.4;
-    }
-    to{
-        opacity: 1;
-    }
 }
 .wrapper{
     width: 100%;
     height: 1300vh;
-    background-color: rgba(255, 0, 0, 0.5);
+    background-color: rgba(56, 34, 145, 0.7);
 }
 .heading1{
-    border: 1px solid black;
     width: 100%;
-    height: 50vh;
+    height: 42vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 2rem;
+    padding-top: 6rem;
+}
+.heading1 img{
+    position: absolute;
+    width: 7%;
+    bottom: 36rem;
+    left: 72.5rem;
+    opacity: 0;
+    animation: emoji 0.8s ease-in-out 2s;
+    animation-fill-mode: forwards;
+}
+@keyframes emoji {
+    0%{
+        opacity: 0;
+        transform: scale(1.1, 1.1);
+    }
+    100%{
+        opacity: 1;
+        transform: scale(1, 1);
+    }
 }
 .heading1 h1{
     font-size: 4.5rem;
@@ -63,20 +73,18 @@
     }
 }
 .midSection1{
-    border: 1px solid black;
     width: 100%;
-    height: 50vh;
+    height: 55vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 0.5rem;
     animation: midSection 1s ease-out 1.5s;
     opacity: 0;
     animation-fill-mode: forwards;
 }
 .midSection1 p{
-    font-size: 2.5rem;
+    font-size: 1.8rem;
 }
 @keyframes midSection {
     from{
@@ -90,6 +98,7 @@
 }
 .chevron{
     color: blue;
+    transform: rotateY(90deg);
     animation: downArrow 1.5s ease-in-out 1.5s infinite alternate;
 }
 @keyframes downArrow {
@@ -101,7 +110,6 @@
     }
 }
 .lowSection1{
-    border: 1px solid black;
     width: 100%;
     height: 25vh;
     display: flex;
@@ -118,14 +126,12 @@ hr{
     font-size: 3.5rem;
 }
 .section2{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .childs{
-    border: 1px solid black;
     height: 100vh;
     width: 50%;
 }
@@ -136,7 +142,6 @@ hr{
     align-items: center;
 }
 .parent1Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -163,7 +168,6 @@ hr{
     }
 }
 .parent2Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -190,14 +194,12 @@ hr{
     }
 }
 .section3{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent3Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -224,7 +226,6 @@ hr{
     }
 }
 .parent4Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -251,14 +252,12 @@ hr{
     }
 }
 .section4{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent5Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -282,7 +281,6 @@ hr{
     }
 }
 .parent6Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -305,14 +303,12 @@ hr{
     }
 }
 .section5{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent7Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -336,7 +332,6 @@ hr{
     }
 }
 .parent8Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -360,7 +355,6 @@ hr{
     }
 }
 .lowSection2{
-    border: 1px solid black;
     width: 100%;
     height: 25vh;
     display: flex;
@@ -373,14 +367,12 @@ hr{
     font-size: 3.5rem;
 }
 .section6{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent9Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -403,7 +395,6 @@ hr{
     perspective: 800px;
 }
 .parent10Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -423,14 +414,12 @@ hr{
     }
 }
 .section7{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent11Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -450,7 +439,6 @@ hr{
     }
 }
 .parent12Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -470,7 +458,6 @@ hr{
     }
 }
 .lowSection3{
-    border: 1px solid black;
     width: 100%;
     height: 25vh;
     display: flex;
@@ -483,14 +470,12 @@ hr{
     font-size: 3.5rem;
 }
 .section8{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent13Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 30vh;
@@ -514,7 +499,6 @@ hr{
     }
 }
 .parent14Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -537,14 +521,12 @@ hr{
     }
 }
 .section9{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent15Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -567,7 +549,6 @@ hr{
     }
 }
 .parent16Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -590,14 +571,12 @@ hr{
     }
 }
 .section10{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent17Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -620,7 +599,6 @@ hr{
     }
 }
 .parent18Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -643,14 +621,12 @@ hr{
     }
 }
 .section11{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent19Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -673,7 +649,6 @@ hr{
     }
 }
 .parent20Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -696,14 +671,12 @@ hr{
     }
 }
 .section12{
-    border: 1px solid black;
     width: 100%;
     height: 100vh;
     display: flex;
     flex-direction: row;
 }
 .parent21Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
@@ -726,7 +699,6 @@ hr{
     }
 }
 .parent22Child{
-    border: 2px solid black;
     background-color: black;
     width: 70%;
     height: 32vh;
