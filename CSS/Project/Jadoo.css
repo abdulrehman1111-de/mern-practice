@@ -349,7 +349,6 @@ nav{
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
-
 }
 .bigcardIcon{
     height: 5vh;
@@ -443,7 +442,6 @@ nav{
     gap: 0.5rem;
 }
 .section6{
-
     height: 50vh;
     width: 80%;
     display: flex;
@@ -617,7 +615,238 @@ nav{
     background-color: lightye;
 }
 
-
+@media (max-width: 768px) {
+    
+    nav{
+        height: auto;
+        flex-direction: column;
+        gap: 2.5rem;
+    }
+    .navUl{
+        gap: 2.5rem;
+    }
+    .parent1{
+        flex-direction: column;
+        height: auto;
+    }
+    .parent1Text{
+    width: 80%;
+    height: 50vh;
+    }
+    .firstButton{
+        width: 18%;
+    }
+    .fa-solid{
+    padding-left: 1.2rem;
+    transform: translateY(1rem);
+    }
+    .parent1Img{
+        width: 45%;
+    }
+    .section2{
+        height: 90vh;
+        margin-top: 22rem;
+    }
+    .section2Headings{
+        height: 30vh;
+        gap: 1rem;
+    }
+    .section2Cards{
+        height: 100vh;
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .firstCards{
+        width: 80%;
+        height: 40vh;
+        gap: 0.8rem;
+    }
+    .firstCards p{
+        font-size: 1.1rem;
+    }
+    .card1{
+        gap: 0.5rem;
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+        
+    }
+    .card2{
+        gap: 0.3rem;
+    }
+    .card3{
+        gap: 1rem;
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+        
+    }
+    .section3{
+        height: auto;
+        margin-top: 42rem;
+    }
+    .section3Headings{
+        gap: 1rem;
+    }
+    .cardsSpace{
+        gap: 3rem;
+        margin-top: 2rem;
+    }
+    .cardParts{
+        gap: 3rem;
+    }
+    .cards{
+        width: 23%;
+    }
+    .parts{
+        width: 23%;
+    }
+    .arrow{
+        transform: translate(3.8rem, 0rem);
+    }
+    .section4{
+        margin-top: 3rem;
+        height: 100vh;
+    }
+    .bigdataTop h1{
+        font-size: 2rem;
+        padding-top: 0.3rem;
+    }
+    .bigdataBottom{
+        height: 50vh;
+        padding-top: 1.8rem;
+        gap: 1.5rem;
+    }
+    .choose{
+        gap: 3.3rem;
+        height: 50vh;
+        padding-bottom: 4.4rem;
+    }
+    .choosePara{
+        gap: 1.5rem;
+    }
+    .bigCard{
+        height: 65vh;
+        margin-top: 3.2rem;
+        gap: 1.5rem;
+        padding-top: 2rem;
+        padding-right: 0.5rem;
+    }
+    .bigcardPic{
+        width: 90%;
+    }
+    .bigcardMid{
+        padding-left: 0.6rem;
+    }
+    .bigcardIcon{
+        gap: 0.7rem;
+        height: 5.5vh;
+    }
+    .bigcardLow{
+        gap: 2.5rem;
+        position: relative;
+        bottom: 0.5rem;
+    }
+    .right img{
+        height: 2.7vh;
+    }
+    .right{
+        width: 80%;
+        
+    }
+    .right p{
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+    .left{
+        width: 20%;
+        height: 1.7vh;
+    }
+    .left img{
+        height: 2.5vh;
+    }
+    .section5{
+        height: 75vh;
+        padding-top: 5rem;
+    }
+    .headings h1{
+        font-size: 3rem;
+        padding-top: 0.5rem;
+    }
+    .dots{
+        height: 0.5rem;
+        gap: 1rem;
+        position: relative;
+        bottom: 1rem;
+    }
+    .test{
+        width: 50%;
+    }
+    .testtextBox{
+        margin-left: 1.3rem;
+        width: 100%;
+    }
+    .testPara{
+        margin-top: 2rem;
+        margin-bottom: 1.5rem;
+    }
+    .section6{
+        position: relative;
+        width: 90%;
+    }
+    .img1{
+        position: absolute;
+        right: 41rem;
+    }
+    .img2{
+        position: absolute;
+        right: 30rem;
+    }
+    .img3{
+        position: relative;
+        height: 67vh;
+        left: 4rem;
+        top: 0.5rem;
+    }
+    .img4{
+        height: 30vh;
+        position: relative;
+        right: 4rem;
+        top: 1rem;
+    }
+    .section7{
+        width: 85%;
+        padding-top: 2.5rem;
+    }
+    .section7Text{
+        font-size: 1rem;
+    }
+    .section7White{
+        width: 70%;
+    }
+    .section7White img{
+        width: 7.5%;
+    }
+    .footer{
+        width: 83%;
+        margin-left: 3rem;
+        gap: 1.5rem;
+    }
+    .footerIcons{
+        gap: 0.3rem;
+        padding-left: 2rem;
+    }
+    .footerImg1{
+        height: 11vh;
+    }
+    .footerImg2{
+        height: 9vh;
+    }
+    .footerImg3{
+        height: 11vh;
+    }
+    .footerIcons img{
+        height: 5vh;
+    }
+}
 
 
 
