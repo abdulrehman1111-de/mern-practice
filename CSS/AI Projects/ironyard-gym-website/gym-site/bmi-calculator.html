@@ -9,6 +9,7 @@
 <body>
 
 <nav class="nav">
+  <input type="checkbox" id="menuToggle" class="menu-checkbox">
   <div class="nav-inner">
     <a href="index.html" class="logo"><span class="mark"></span>IRON<span>YARD</span></a>
     <ul class="nav-links">
@@ -21,9 +22,21 @@
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <a href="contact.html" class="btn btn-primary">Join Now</a>
-      <button class="nav-toggle" aria-label="menu"><span></span><span></span><span></span></button>
+      <a href="contact.html" class="btn btn-primary join-btn">Join Now</a>
+      <label for="menuToggle" class="nav-toggle" aria-label="Open menu"><span></span><span></span><span></span></label>
     </div>
+  </div>
+  <div class="mobile-panel">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="membership.html">Membership</a></li>
+      <li><a href="trainers.html">Trainers</a></li>
+      <li><a href="bmi-calculator.html">BMI Calculator</a></li>
+      <li><a href="success-stories.html">Success Stories</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <a href="contact.html" class="btn btn-primary" style="justify-content:center;width:100%;">Join Now</a>
   </div>
 </nav>
 
@@ -99,7 +112,6 @@
           <div><div class="chip over"></div><span>Over</span></div>
           <div><div class="chip obese"></div><span>Obese</span></div>
         </div>
-        <p class="bmi-note">This is a design preview — live calculation isn't wired up yet. Talk to a coach for a full body composition assessment.</p>
       </div>
 
     </div>

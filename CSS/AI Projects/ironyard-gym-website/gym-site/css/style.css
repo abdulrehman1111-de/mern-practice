@@ -175,8 +175,11 @@ section{ position:relative; }
 }
 .nav-links a:hover, .nav-links a.active{ color:var(--text); }
 .nav-links a.active::after, .nav-links a:hover::after{ width:100%; }
-.nav-cta{ display:flex; align-items:center; gap:18px; }
-.nav-toggle{ display:none; }
+.nav-cta{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
+.nav-toggle{ display:none; cursor:pointer; }
+.menu-checkbox{ display:none; }
+.mobile-panel{ display:none; }
+.logo{ min-width:0; flex-shrink:1; }
 
 /* ---------- Hero ---------- */
 .hero{
@@ -736,19 +739,67 @@ section{ position:relative; }
 .page-hero p{ color:var(--text-dim); max-width:560px; font-size:1.05rem; }
 
 /* ---------- Responsive ---------- */
-@media (max-width:980px){
+
+/* Switch to the hamburger + slide-down menu well before links get squeezed.
+   Threshold raised from the old 980px so tablets (iPad Pro 1024, Surface Pro 7,
+   Nest Hub, Asus Zenbook Fold, etc.) get the mobile menu instead of a nav bar
+   that wraps onto two lines and pushes / clips the page. */
+@media (max-width:1140px){
   .nav-links{ display:none; }
   .nav-toggle{
-    display:flex; flex-direction:column; gap:5px; cursor:pointer;
-    background:none; border:none;
+    display:flex; flex-direction:column; gap:5px; justify-content:center;
+    width:24px; height:20px; flex-shrink:0;
   }
   .nav-toggle span{ width:24px; height:2px; background:var(--text); display:block; }
+
+  /* Checkbox-driven slide-down panel — no JS required */
+  .mobile-panel{
+    display:none;
+    flex-direction:column;
+    gap:4px;
+    background:var(--bg-alt);
+    border-top:1px solid var(--border);
+    padding:14px 28px 26px;
+  }
+  .mobile-panel ul{ display:flex; flex-direction:column; }
+  .mobile-panel li{ border-bottom:1px solid var(--border); }
+  .mobile-panel a{
+    display:block; padding:14px 4px; font-weight:600; color:var(--text-dim);
+  }
+  .mobile-panel a:hover{ color:var(--accent); }
+  .mobile-panel .btn{ margin-top:16px; }
+  .menu-checkbox:checked ~ .mobile-panel{ display:flex; }
+
   .hero{ padding:60px 0 70px; }
   .floating-card{ display:none; }
   .bmi-result{ border-left:none; border-top:1px solid var(--border-solid); }
   .cta-band{ padding:40px; flex-direction:column; text-align:center; }
   .cta-band::before{ display:none; }
+
+  /* keep pricing / trainer / value grids predictable instead of relying on
+     wrap-math, which broke at in-between widths */
+  .grid.cols-3 > *{ flex-basis:45%; }
+  .grid.cols-4 > *{ flex-basis:45%; }
 }
+
+@media (max-width:900px){
+  .nav-inner{ padding:16px 20px; }
+  .footer{
+    height: 88vh;
+  }
+}
+
+/* Below this, "Join Now" in the header bar collides with the logo — drop it
+   and rely on the Join Now button inside the mobile menu instead. */
+@media (max-width:460px){
+  .join-btn{ display:none; }
+  .logo{ font-size:1.35rem; }
+  .logo .mark{ width:28px; height:28px; }
+  .footer{
+    height: 50vh;
+  }
+}
+
 @media (max-width:640px){
   .container{ padding:0 18px; }
   .hero-actions .btn{ width:100%; }
@@ -758,4 +809,7 @@ section{ position:relative; }
   .bmi-form{ padding:32px 24px; }
   .bmi-result{ padding:36px 24px; }
   .footer-bottom{ flex-direction:column; }
+  .grid.cols-3 > *, .grid.cols-4 > *{ flex-basis:100%; }
+  .footer-grid{ gap:34px; }
+  .footer-col, .footer-brand{ flex-basis:100%; }
 }
