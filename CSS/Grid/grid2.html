@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid2</title>
+</head>
+<style>
+    .parent{
+        display: grid;
+        height: 70vh;
+        background-color: bisque;
+        width: 30%;
+        margin: 5rem;
+        margin-left: 30rem;
+        gap: 0.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-areas: 
+        
+        "first first first first"
+        "second third four five"
+        "six seven eight five"
+        "nine ten eleven five"
+        "twelwe thirteen fourteen five"
+        ;
+    }
+
+    .box:nth-child(1){
+        grid-area: first;
+    }
+    .box:nth-child(2){
+        grid-area: second;
+    }
+    .box:nth-child(3){
+        grid-area: third;
+    }
+    .box:nth-child(4){
+        grid-area: four;
+    }
+    .box:nth-child(5){
+        grid-area: five;
+    }
+    .box:nth-child(6){
+        grid-area: six;
+    }
+    .box:nth-child(7){
+        grid-area: seven;
+    }
+    .box:nth-child(8){
+        grid-area: eight;
+    }
+    .box:nth-child(9){
+        grid-area: nine;
+    }
+    .box:nth-child(10){
+        grid-area: ten;
+    }
+    .box:nth-child(11){
+        grid-area: eleven;
+    }
+    .box:nth-child(12){
+        grid-area: twelve;
+    }
+    .box:nth-child(13){
+        grid-area: thirteen;
+    }
+    .box:nth-child(14){
+        grid-area: fourteen;
+    }
+</style>
+<body>
+        <div style="background-color: bisque;" class="parent">
+            <div style="background-color: red;" class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: blue;"  class="box"></div>
+    <div style="background-color: black;"  class="box"></div>
+    <div style="background-color: red;"  class="box"></div>
+    <div style="background-color: black;"  class="box"></div>
+    </div>
+
+
+
+    
+</body>
+</html>
