@@ -1,1 +1,27 @@
 @import "tailwindcss";
+
+@layer base {
+  * {
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+  }
+  nav {
+    font-family: "Fraunces", serif;
+  }
+  .ham {
+    background-color: black;
+    width: 23px;
+    height: 2px;
+    margin: 5px 0;
+  }
+  .section1 h1 {
+    font-family: "Fraunces", serif;
+  }
+  .text-moss\/80 {
+    color: rgb(74 93 69 / 0.8);
+  }
+  .button1 {
+    font-family: "Work Sans", sans-serif;
+  }
+}

@@ -19,7 +19,7 @@ for (let i = 1; i <= 5; i++){
     
     let fine;
     console.log(`--- Hour ${i} ---`)
-    let hourPower = parseInt(prompt(`Enter the power consumed during hour ${i}: `));
+    let hourPower = parseInt(prompt(`Enter the power consumed in kWh during hour ${i}: `));
     totalPowerConsumed += hourPower;
 
     if (hourPower > peakPowerDraw){

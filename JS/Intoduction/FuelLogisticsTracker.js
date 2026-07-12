@@ -2,7 +2,7 @@
 const prompt = require('readline-sync').question;
 
 // Problem Statement:
-// The Digital Fuel Efficiency Calculator
+// The Digital Fuel Efficiency Calculator:
 // A logistics driver wants to track their fuel efficiency and driving performance over a 4-day road trip. They do not have software to store lists of data, so the program must calculate everything on the fly as the days progress.
 
 // Solution:
@@ -23,7 +23,7 @@ for(let i = 1; i <= 4; i++){
     let dayKilometers = parseInt(prompt(`Enter your kms for the Day ${i}: `));
     totalKilometers += dayKilometers
 
-    let dayFuel = parseInt(prompt(`Enter your fuel for the Day ${i}: `));
+    let dayFuel = parseInt(prompt(`Enter your fuel in liters for the Day ${i}: `));
     totalFuelConsumed += dayFuel
 
     // Fuel efficiency for the current day
