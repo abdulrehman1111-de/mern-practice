@@ -9,6 +9,12 @@
   nav {
     font-family: "Fraunces", serif;
   }
+  .fraunces{
+    font-family: "Fraunces", serif;
+  }
+  .urdu{
+    font-family: "Noto Nastaliq Urdu", serif;
+  }
   .ham {
     background-color: black;
     width: 23px;
@@ -39,8 +45,11 @@
     }
 }
     .firstPic{
+        opacity: 0;
+    }
+    .firstPic.aos-animate{
         animation: FadeUp 0.8s ease-out;
-    animation-fill-mode: forwards;
+        animation-fill-mode: forwards;
     }
 @keyframes FadeUp {
     0%{
