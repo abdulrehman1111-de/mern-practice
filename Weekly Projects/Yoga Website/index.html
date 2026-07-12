@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link href="
+https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
+" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
@@ -25,14 +28,29 @@
     </header>
     <main>
         <section>
-            <div class="section1 w-full h-175 bg-[#F2EBDC] p-10">
-                <h3 class="text-[#A8692A] uppercase tracking-wider">Every morning · In the park · With people who show up</h3>
-                <h1 class="text-4xl text-deepmoss">A quiet hour to <span class="text-[#C9873B] italic tracking-wider">exhale</span>, together.</h1>
-                <p class="text-[#4A5D45] opacity-[0.8] tracking-wider text-lg">Shafiq Yoga Club is a community circle that meets under open sky — real stretches, real breathing, real neighbours. No mats to buy, no pressure, just show up.</p>
-                <p class="text-moss/80 opacity-[0.9] text-lg font-[500]">ہر صبح، پارک میں، اپنے لوگوں کے ساتھ سکون کا ایک گھنٹہ</p>
-                <div class="button1 bg-[#C9873B] w-[40%] h-12 flex justify-center items-center text-white tracking-wider"><button>Join a session</button></div>
+            <div class="section1 bg-linear-to-b from-[#f1e9d8] to-[#F7F1E4]w-full h-270 ">
+                <div class="firstTransition p-6.5 pt-15 flex flex-col gap-5.5 ">
+                <h3 class="text-[#A8692A] uppercase text-xs font-medium tracking-[0.19rem]">Every morning · In the park · With people who show up</h3>
+                <h1 class="text-[2.1rem] leading-10">A quiet hour to <span class="text-[#C9873B] italic tracking-wider">exhale</span>, together.</h1>
+                <p class="text-[#4A5D45] opacity-[0.9] tracking-[0.05rem] text-lg">Shafiq Yoga Club is a community circle that meets under open sky — real stretches, real breathing, real neighbours. No mats to buy, no pressure, just show up.</p>
+                <p class="text-moss/80 opacity-[0.9] text-lg font-[500] relative left-5">ہر صبح، پارک میں، اپنے لوگوں کے ساتھ سکون کا ایک گھنٹہ</p>
+                <div class="button1 bg-linear-to-r from-[#C9873B] to-[#4A5D45] w-[70%] h-13 flex justify-center items-center text-white rounded-4xl shadow-2xl tracking-wider"><button>Join a session →</button></div>
+                <p class="text-[#394835] text-lg font-[500]">See the practice <span class="text-2xl relative top-0.5 left-0.5">↓</span></p>
+                </div>
+                <div data-aos-offset="100px" class="firstPic m-6 pt-15 h-87 bg-[url(https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80)] bg-cover bg-center rounded-4xl mt-10"></div>
             </div>
         </section>
     </main>
+
+
+    <script src="
+https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js
+"></script>
+<script>
+    AOS.init({
+        // once:false,
+        mirror:true,
+    });
+  </script>
 </body>
 </html>

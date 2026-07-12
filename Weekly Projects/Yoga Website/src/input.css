@@ -24,4 +24,32 @@
   .button1 {
     font-family: "Work Sans", sans-serif;
   }
+  .firstTransition{
+    animation: FadeUp 0.8s ease-out;
+    animation-fill-mode: forwards;
+  }
+  @keyframes FadeUp {
+    0%{
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+    .firstPic{
+        animation: FadeUp 0.8s ease-out;
+    animation-fill-mode: forwards;
+    }
+@keyframes FadeUp {
+    0%{
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
 }
