@@ -77,9 +77,25 @@
 // var a = 100
 // console.log(a)
 
-let a = 5;
-let b = '8'
-let c = a + b
-console.log(c)
+// let a = 5;
+// let b = '8'
+// let c = a + b
+// console.log(c)
+
+for(let i = 0; i < 10; i++){
+    console.log(i);
+}
+
+let num = 0;
+while(num < 10){
+    console.log(num);
+    num++;
+}
+
+do{
+    console.log(num)
+    num++;
+} while(num < 10);
+
 
 
