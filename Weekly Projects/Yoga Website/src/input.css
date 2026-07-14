@@ -102,7 +102,21 @@
         opacity: 1;
     }
 }
-
-
-
+.section3Transition{
+    opacity: 0;
+}
+.section3Transition.aos-animate{
+        animation: FadeUp 0.8s ease-out 0.1s;
+        animation-fill-mode: forwards;
+    }
+    @keyframes FadeUp {
+    0%{
+        transform: translateY(2rem);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
 }

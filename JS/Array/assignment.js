@@ -76,7 +76,7 @@
 
 // Question no 6:
 // Sort array of ages in ascending order:
-let unMutatedArr = [18, 22, 35, 42, 50, 29, 65, 14];
+// let unMutatedArr = [18, 22, 35, 42, 50, 29, 65, 14];
 // let ages = [18, 22, 35, 42, 50, 29, 65, 14];
 // let sortedAges = ages.sort((a, b)=>{
 //     return (a - b);
@@ -101,7 +101,6 @@ let unMutatedArr = [18, 22, 35, 42, 50, 29, 65, 14];
 
 // Question no 1:
 // Remove the first element, then add two new items to the end.
-// let unMutatedQueue = ["User1", "User2", "User3"];
 // let queue = ["User1", "User2", "User3"];
 // queue.shift();
 // queue.push("User4")
@@ -256,9 +255,7 @@ let unMutatedArr = [18, 22, 35, 42, 50, 29, 65, 14];
 // }
 // console.log(unMutatedRatings);
 
-
-
-
+console.log(typeof undefined);
 
 
 
