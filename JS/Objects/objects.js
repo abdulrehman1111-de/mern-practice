@@ -71,9 +71,57 @@ const obj4 = {
 
 // const obj3 = Object.assign({}, obj1, obj2, obj4);
 
-const obj3 = {...obj1, ...obj2};
-console.log(obj3);
+// const obj3 = {...obj1, ...obj2};
+// console.log(obj3);
+
+const users = [
+    {
+        id: 1,
+        email: "a@gmail.com"
+    },
+    {
+        id: 2,
+        email: "b@gmail.com"
+    },
+    {
+        id: 3,
+        email: "c@gmail.com"
+    }
+]
+// users[1].email;
+
+// console.log(tinderUser);
+// console.log(Object.keys(tinderUser));
+// console.log(Object.entries(tinderUser));
+// console.log(Object.values(tinderUser));
+// console.log(Object.hasOwnProperty("isLoggedIN"));
 
 
 
-  
+const item = {
+    id: 101,
+    details: {
+        brand: "Nike",
+        specifications: { size: "M", color: "black" }
+    }
+};
+
+// Challenge:
+// 1. Create a shallow copy of 'item' using the spread operator.
+// 2. Change the 'color' value in your new copied object to "red".
+// 3. Log both the original 'item' and your new copy. 
+// What happened to the original 'item's color, and why?
+
+const newItem = {...item};
+// console.log(newItem);
+
+newItem.details.specifications.color = "red";
+
+console.log(item);
+console.log(newItem);
+
+// the original color also changed I think so because there is only one object here 
+
+
+
+
