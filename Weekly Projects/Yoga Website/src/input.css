@@ -8,6 +8,9 @@
   }
   nav {
     font-family: "Fraunces", serif;
+    position: fixed;
+    top: 0;
+    z-index: 1;
   }
   .fraunces{
     font-family: "Fraunces", serif;

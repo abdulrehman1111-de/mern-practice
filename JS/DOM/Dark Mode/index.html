@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Landing Section</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  .hero {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+    background-color: #ffffff;
+    color: #1a1a1a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .heroDark{
+    background-color: #121212;
+    color: #f0f0f0;
+}
+
+  .navbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+  }
+
+  .logo {
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #1a1a1a;
+  }
+
+  .logoDark{
+    color: #f0f0f0;
+  }
+
+  .toggle-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    border: 2px solid #1a1a1a;
+    border-radius: 6px;
+    background: transparent;
+    color: #1a1a1a;
+    cursor: pointer;
+  }
+
+  .btnDark{
+    border: 2px solid #f0f0f0;
+    color: #f0f0f0;
+  }
+
+  .badge {
+    background-color: #eeeeee;
+    color: #555555;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    margin-bottom: 20px;
+  }
+
+  .badgeDark{
+    background-color: #2a2a2a;
+    color: #b3b3b3;
+  }
+
+  h1 {
+    font-size: 3rem;
+    max-width: 700px;
+    margin-bottom: 20px;
+  }
+
+  p.subtitle {
+    font-size: 1.1rem;
+    max-width: 550px;
+    color: #4d4d4d;
+    margin-bottom: 30px;
+  }
+
+  .subtitleDark{
+    color: #b3b3b3;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 16px;
+  }
+
+  .btn-primary {
+    padding: 14px 28px;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .btnprimaryDark{
+    background-color: #f0f0f0;
+    color: #121212;
+  }
+
+  .btn-secondary {
+    padding: 14px 28px;
+    background-color: transparent;
+    color: #1a1a1a;
+    border: 2px solid #1a1a1a;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+
+  .btnsecondaryDark{
+    border: 2px solid #f0f0f0;
+    color: #f0f0f0;
+  }
+
+  .features {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #fafafa;
+  color: #1a1a1a;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.featuresDark{
+    background-color: #0d0d0d;
+    color: #f0f0f0;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin-bottom: 50px;
+}
+
+.tag {
+  display: inline-block;
+  background-color: #eeeeee;
+  color: #555555;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+}
+
+.tagDark{
+    background-color: #2a2a2a;
+    color: #b3b3b3;
+}
+
+.section-header h2 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.section-subtitle {
+  font-size: 1rem;
+  color: #4d4d4d;
+}
+
+.sectionsubtitleDark{
+    color: #b3b3b3;
+}
+
+.cards {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 30px;
+  width: 260px;
+  text-align: left;
+}
+
+.cardDark{
+    background-color: #1a1a1a;
+    border: 2px solid #2e2e2e;
+}
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.iconboxDark{
+    background-color: #f0f0f0;
+    color: #121212;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.card p {
+  font-size: 0.95rem;
+  color: #4d4d4d;
+}
+
+.pDark{
+    color: #b3b3b3;
+}
+
+.stats {
+  display: flex;
+  gap: 60px;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat h3 {
+  font-size: 2rem;
+  margin-bottom: 6px;
+}
+
+.stathDark{
+    color: #f0f0f0;
+}
+
+.stat span {
+  font-size: 0.9rem;
+  color: #4d4d4d;
+}
+
+.spanDark{
+    color: #b3b3b3;
+}
+</style>
+</head>
+<body>
+
+  <section id="hero" class="hero">
+    <div class="navbar">
+      <div id="logo" class="logo">Brandly</div>
+      <button class="toggle-btn" id="toggleBtn">Toggle Theme</button>
+    </div>
+
+    <div id="badge" class="badge">New — v2.0 Released</div>
+    <h1>Build faster, ship smarter</h1>
+    <p id="subtitle" class="subtitle">
+      A clean starting point for your next idea. No clutter, no bloat, just the essentials to get you moving.
+    </p>
+
+    <div class="cta-group">
+      <button id="btnprimary" class="btn-primary">Get Started</button>
+      <button id="btnsecondary" class="btn-secondary">Learn More</button>
+    </div>
+  </section>
+  <section id="features" class="features">
+  <div class="section-header">
+    <div id="tag" class="tag">Why Choose Us</div>
+    <h2>Everything you need, nothing you don't</h2>
+    <p id="sectionSubtitle" class="section-subtitle">
+      Simple tools, built with care, made to help you move faster without getting in your way.
+    </p>
+  </div>
+
+  <div class="cards">
+    <div class="card">
+      <div class="icon-box">01</div>
+      <h3>Fast Setup</h3>
+      <p class="p">Get up and running in minutes, not hours. No complicated config needed.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-box">02</div>
+      <h3>Reliable</h3>
+      <p class="p">Built to handle real workloads without breaking a sweat.</p>
+    </div>
+
+    <div class="card">
+      <div class="icon-box">03</div>
+      <h3>Scalable</h3>
+      <p class="p">Grows with you, from a side project to a full product.</p>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat">
+      <h3 class="statH">10K+</h3>
+      <span class="span">Active Users</span>
+    </div>
+    <div class="stat">
+      <h3 class="statH">99.9%</h3>
+      <span class="span">Uptime</span>
+    </div>
+    <div class="stat">
+      <h3 class="statH">24/7</h3>
+      <span class="span">Support</span>
+    </div>
+  </div>
+</section>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

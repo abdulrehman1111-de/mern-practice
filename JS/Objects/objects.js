@@ -115,13 +115,34 @@ const item = {
 const newItem = {...item};
 // console.log(newItem);
 
-newItem.details.specifications.color = "red";
+// newItem.details.specifications.color = "red";
 
-console.log(item);
-console.log(newItem);
+// console.log(item);
+// console.log(newItem);
 
 // the original color also changed I think so because there is only one object here 
 
+let user = {
+     name: "Amit", 
+    address: { 
+        city: "Delhi", 
+        pincode: 110001 
+    } 
+};
+
+// for(let item in user){
+//     console.log(item, user[item]);
+// }
+// console.log(Object.entries(user));
+// console.log(Object.keys(user));
+// console.log(Object.values(user));
 
 
+// let newUser = {...user};
+// console.log(newUser);
 
+// console.log(user?.address?.city);
+
+(function hello(){
+    console.log("Hello");
+})();

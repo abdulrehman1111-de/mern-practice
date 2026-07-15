@@ -24,18 +24,25 @@ function addTask(title, priority){
 }
 
 function toggleTaskStatus(id){
-    if (id === task.id){
-        if(task.isCompleted === false){
-            task.isCompleted = true;
-            console.log("Toggled successfully\n");
+
+    let foundStatus = false;
+    for (let item of arr){
+        if (item.id === id){
+            foundStatus = true;
+            if(item.isCompleted === false){
+                item.isCompleted = true;
+                console.log("Task toggled successfully!");
+            }
+            else{
+                item.isCompleted = false;
+                console.log("Task toggled successfully!");
+            }
         }
         else{
-            task.isCompleted = false;
-            console.log("Toggled successfully\n");
+            if(foundStatus === false){
+                console.log("Either id wrong or id doesnt exist!");
+            }
         }
-    }
-    else{
-        console.log("Either id didnt match or invalid id!\n")
     }
 }
 
