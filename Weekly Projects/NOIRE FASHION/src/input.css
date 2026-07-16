@@ -1,0 +1,10 @@
+@layer theme, base, components, custom, utilities;
+
+@import "tailwindcss";
+
+@layer custom {
+  @import "./index.css";
+  @import "./collection.css";
+  @import "./login.css";
+  @import "./shop.css";
+}

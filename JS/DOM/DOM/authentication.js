@@ -25,6 +25,7 @@ button.addEventListener("click", ()=>{
         trimmedUsername.value = "";
         trimmedPassword.value = "";
     }
+    window.location.href='./task.html'
 })
 
 
