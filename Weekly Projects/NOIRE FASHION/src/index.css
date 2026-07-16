@@ -1,3 +1,31 @@
 #page-index {
-
+    .blackDiv{
+        background-color: var(--text);
+        font-family: "JetBrains Mono", monospace;
+    }
+    nav{
+        background-color: var(--bg);
+    }
+    .jetBrains{
+        font-family: "JetBrains Mono", monospace;
+    }
+    .section2{
+        background-color: var(--bg-alt);
+    }
+    .accent{
+        font-family: "JetBrains Mono", monospace;
+        color: var(--accent);
+    }
+    .firstHeading{
+        color: var(--text);
+        font-family: "Fraunces", serif;
+    }
+    .firstButtons{
+        font-family: "JetBrains Mono", monospace;
+    }
+    .firstImg{
+        background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
+        font-family: "JetBrains Mono", monospace;
+    }
+    
 }

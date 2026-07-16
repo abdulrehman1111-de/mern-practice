@@ -2,6 +2,32 @@
 
 @import "tailwindcss";
 
+:root {
+    --bg: #F1EDE7;            /* Page background */
+    --bg-alt: #E7E0D3; /* Section alt background (hero, card image placeholder bg) */
+    --surface: #FFFFFF;       /* Cards, login form panel */
+    --text: #131114;          /* Main text, nav bg (topbar/logo color), buttons */
+    --text-soft: #5B5A61;     /* Secondary text, subtitles, captions */
+    --accent: #C1121F;        /* Crimson — CTAs, hover states, prices highlight, logo "i" */
+    --accent-ink: #FFFFFF;    /* Text color placed on top of accent */
+    --gold: #A9812E;          /* Reserved accent (not heavily used in light mode) */
+    --border: rgba(19,17,20,0.14);    /* Hairline dividers */
+    --border-strong: rgba(19,17,20,0.5);    /* Input borders, button outlines */
+}
+
+.dark{
+    --bg: #0B0B0D;
+    --bg-alt: #17161A;
+    --surface: #18171B;
+    --text: #F3EFE9;
+    --text-soft: #A8A6AC;
+    --accent: #FF4D5E;
+    --accent-ink: #0B0B0D;
+    --gold: #E4C468;
+    --border: rgba(243,239,233,0.14);
+    --border-strong: rgba(243,239,233,0.4);
+}
+
 @layer custom {
   @import "./index.css";
   @import "./collection.css";
