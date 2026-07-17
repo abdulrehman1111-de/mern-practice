@@ -15,13 +15,17 @@
             <div class="blackDiv h-13 w-full text-white text-xs p-3 pl-6.5">
                 <span>FREE SHIPPING OVER RS. 6000</span><span class="pl-3 pr-5">.</span><span>SS26 EDIT NOW LIVE</span><span class="pl-3 pr-5">.</span><span>MADE IN SMALL RUNS</span>
             </div>
-            <nav class="w-full h-27 flex flex-row gap-10 pt-8 pl-3">
-                <div class="logo font-serif text-4xl">
+        </div>
+    </section>
+
+    <nav class="w-full h-27 flex flex-row gap-10 pt-5.5 pl-3 sticky z-50 top-0 border-2 border-[rgba(19,17,20,0.14)]">
+                <div class="logo font-serif text-4xl flex flex-col gap-3">
                     <p>NO<span class="text-[#C1121F]"><i>i</i></span>RE</p>
+                    <div class="border-1 border-black w-12 h-5 rounded-3xl"></div>
                 </div>
                 <div class="sideNav flex flex-row gap-6">
                     <div class="cartBtn w-20 h-15 border-1 border-black flex flex-col justify-center items-center relative bottom-2">
-                        <p>Card</p>
+                        <p>Cart</p>
                         <p>(0)</p>
                     </div>
                     <div class="ham flex flex-col gap-2 relative top-2">
@@ -31,8 +35,6 @@
                     </div>
                 </div>
             </nav>
-        </div>
-    </section>
 
     <section>
         <div class="section2 w-full h-260 pt-15 pl-5 pr-5 flex flex-col gap-6">
@@ -58,10 +60,111 @@
                 <p class="tracking-widest text-xs">Scroll</p>
             </div>
         </div>
-        <div class="w-full bg-[#131114] h-12">
-
-            </div>
     </section>
 
+    <div class="w-full bg-[#131114] text-[#F1EDE7] jetBrains h-12 flex flex-row flex-nowrap overflow-hidden justify-center items-center gap-15 text-sm">
+            <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
+            <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
+            <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
+        </div>
+
+    <section>
+        <div class="section3 border-1 border-black w-full h-100 bg-[#F1EDE7]">
+
+            <div class="w-full h-50 flex flex-row flex-wrap">
+                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] flex flex-col justify-center items-center gap-3">
+                    <p class="fraunces text-[#C1121F] text-5xl">07</p>
+                    <p class="text-[#5B5A61] jetBrains w-30 relative left-2 text-sm">CAPSULE DROPS / YEAR</p>
+                </div>
+                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] flex flex-col justify-center items-center gap-3">
+                    <p class="fraunces text-[#C1121F] text-5xl">120</p>
+                    <p class="text-[#5B5A61] jetBrains w-25 relative left-3 text-sm">UNITS PER STYLE</p>
+                </div>
+                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] flex flex-col justify-center items-center gap-3">
+                    <p class="fraunces text-[#C1121F] text-5xl">04</p>
+                    <p class="text-[#5B5A61] jetBrains w-30 relative left-4 text-sm">RAW MATERIAL MILLS</p>
+                </div>
+                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] flex flex-col justify-center items-center gap-3">
+                    <p class="fraunces text-[#C1121F] text-5xl">2019</p>
+                    <p class="text-[#5B5A61] jetBrains w-20 relative left-2 text-sm">FOUNDED</p>
+                </div>
+            </div>
+
+        </div>
+    </section>    
+
+    <section>
+        <div class="section4 w-full h-350 bg-[#F1EDE7] pt-20 pl-5 pr-5">
+
+            <div><p class="text-[#131114] fraunces text-4xl font-semibold">This season's signal pieces.</p>
+            <p class="inter text-[#5B5A61] pt-10">Four garments that define the SS26 edit — chosen for cut, cloth, and how they hold up after the tenth wear.</p></div>
+
+            <div class="pt-15 cardContainer">
+                
+            </div>
+
+        </div>
+    </section>
+
+
+    <script>
+        const products = [
+            {
+                image: "https://images.unsplash.com/flagged/photo-1556637640-2c80d3201be8?q=80&w=800&auto=format&fit=crop",
+                badge: "New",
+                number: "01",
+                category: 'FOOTWEAR',
+                name: "Field Runner",
+                price: "Rs. 12,900"
+            }
+            {
+                image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?q=80&w=800&auto=format&fit=crop",
+                badge: "New",
+                number: "01",
+                category: 'OUTWEAR',
+                name: "Coated Overshirt",
+                price: "Rs. 18,500"
+            }
+            {
+                image: "https://images.unsplash.com/photo-1616406432452-07bc5938759d?q=80&w=800&auto=format&fit=crop",
+                badge: "New",
+                number: "01",
+                category: 'FOOTWEAR',
+                name: "Bound Lofer",
+                price: "Rs. 14,200"
+            }
+            {
+                image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?q=80&w=800&auto=format&fit=crop",
+                badge: "New",
+                number: "01",
+                category: 'ACCESSORY',
+                name: "Ledger Watch",
+                price: "Rs. 9,800"
+            }
+        ];
+
+        const createProductCard(product){
+            return `
+                <div>
+                    <div class="border-1 border-black h-90 bg-[url(https://images.unsplash.com/photo-1558121556-2a39fc528338?q=80&w=800&auto=format&fit=crop)] bg-cover bg-center flex flex-row gap-45 pt-4 pl-4">
+                        <div class="bg-[#C1121F] text-[#FFFFFF] jetBrains h-8 w-12 z-1 flex justify-center items-center text-sm">${product.badge}</div>
+                        <div class="jetBrains text-[#ffffff]">${product.number}</div>
+                    </div>
+                    <div class="h-35 pt-5 pl-5 flex flex-col gap-2.5 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)]">
+                        <p class="jetBrains text-[#5B5A61] text-sm">${product.category}</p>
+                        <p class="text-[#131114] fraunces text-xl">${product.name}</p>
+                        <p class="text-[#131114] jetBrains">${product.price}</p>
+                    </div>
+                    <div class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm">
+                        <div class="w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center"><button>View</button></div>
+                        <div class="w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center"><button>Add</button></div>
+                    </div>
+                </div>
+            `
+        };
+
+        let cardContainer = document.getElementById("cardContainer");
+        cardContainer.map(createProductCard).join("");
+    </script>
 </body>
 </html>

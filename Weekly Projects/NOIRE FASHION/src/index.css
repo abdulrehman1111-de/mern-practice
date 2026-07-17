@@ -9,6 +9,12 @@
     .jetBrains{
         font-family: "JetBrains Mono", monospace;
     }
+    .fraunces{
+        font-family: "Fraunces", serif;
+    }
+    .inter{
+        font-family: "Inter", sans-serif;
+    }
     .section2{
         background-color: var(--bg-alt);
     }
