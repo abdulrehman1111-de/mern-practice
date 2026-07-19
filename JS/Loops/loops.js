@@ -1,3 +1,5 @@
+// const prompt = require("prompt-sync")();
+
 // For Loop:
 
 // 1. Print numbers from 1 to 10
@@ -144,15 +146,45 @@
 // }
 
 // 10. Print Fibonacci numbers up to 50.
-let limit = 50;
-let a = 0;
-let b = 1;
-while(a < limit){
-    console.log(a, " ");
-    let next = a + b;
-    a = b;
-    b = next;
-}
+// let limit = 50;
+// let a = 0;
+// let b = 1;
+// while(a < limit){
+//     console.log(a, " ");
+//     let next = a + b;
+//     a = b;
+//     b = next;
+// }
+
+// Do...While Loop 
+// 1. Print numbers from 1 to 10.
+// let i = 1;
+// do{
+//     console.log(i);
+//     i += 1;
+// }while(i <= 10);
+
+// 2. Print numbers from 10 down to 1
+// let i = 10;
+// do{
+//     console.log(i);
+//     i -= 1;
+// }while(i >= 1);
+
+// 3. Print even numbers less than 20. 
+// let i = 19;
+// do{
+//     if (i % 2 === 0){
+//         console.log(i);
+//     }
+//     i -= 1;
+// }while(i >= 0);
+
+let user;
+do{
+    user = 2
+    console.log(user);
+}while(user !== 0);
 
 
 
