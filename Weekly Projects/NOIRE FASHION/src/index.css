@@ -1,5 +1,9 @@
 @layer custom{
     #page-index {
+
+   *{
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+   }     
     nav{
         background-color: var(--bg);
     }
@@ -30,9 +34,36 @@
         background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
         font-family: "JetBrains Mono", monospace;
     }
+    .redDot{
+        animation: redGiant 1s infinite ease-in-out alternate;
+    }
+    .firstReel{
+        animation: reel 5s linear infinite;
+    }
 }
+}
+
+    @keyframes redGiant {
+        from{
+            transform: scale(1);
+            opacity: 1;
+        }
+        to{
+            opacity: 0.7;
+            transform: scale(1.5);
+        }
+    }
+    @keyframes reel {
+        from{
+            transform: translateX(0);
+        }
+        to{
+            transform: translateX(-50%);
+        }
+    }
+
     .dark .superDark{
-        background-color: #0B0B0D;
+        background-color: #0B0B0D !important;
     }
     .dark .lightText{
         color: #F3EFE9;
@@ -53,13 +84,40 @@
     .dark .neonRedText{
         color: #FF4D5E;
     }
+    .dark .invertPlaceholderText{
+        &::placeholder{
+            color: #0B0B0D;
+        }
+    }
     .dark .softText{
         color: #cac5cd;
     }
     .dark .darkSurface{
-        background-color: #18171B;
+        background-color: #18171B !important;
     }
     .dark .darkSurfaceText{
         color: #F3EFE9;
     }
-}
+    .dark .darkInvert {
+        background-color: #F3EFE9;
+    }
+    .dark .darkInvertText {
+        color: #0B0B0D;
+    }
+    .dark .darkBorder{
+        border-color: rgba(243, 239, 233, 0.14);
+    }
+    .dark .footerDark{
+        color: #F1EDE7;
+    }
+    
+
+
+
+
+
+
+
+
+
+

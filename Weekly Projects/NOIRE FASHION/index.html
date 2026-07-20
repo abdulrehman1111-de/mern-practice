@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" id="dark">
+<html lang="en" id="dark" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,9 +41,9 @@
                         <p>(0)</p>
                     </div>
                     <div class="ham flex flex-col gap-2 relative top-2 lg:hidden">
-                        <div class="w-8 bg-black h-0.5"></div>
-                        <div class="w-8 bg-black h-0.5"></div>
-                        <div class="w-8 bg-black h-0.5"></div>
+                        <div class="w-8 bg-black h-0.5 darkInvert"></div>
+                        <div class="w-8 bg-black h-0.5 darkInvert"></div>
+                        <div class="w-8 bg-black h-0.5 darkInvert"></div>
                     </div>
                 </div>
             </nav>
@@ -56,7 +56,7 @@
             <p class="text-[#5B5A61] softText text-lg sm:pr-20 md:pr-50">NOIRE cuts clean silhouettes from honest cloth — engineered for the street, finished like tailoring. No noise, no logos shouting. Just the edit.</p>
 
             <div class="firstButtons md:flex md:flex-row md:gap-8">
-                <div class="w-70 sm:w-[100%] md:w-60 h-15 mt-6 md:mt-4 bg-[#131114] text-[#F1EDE7] flex justify-center items-center text-md"><button>VIEW COLLECTION →</button></div>
+                <div class="w-70 sm:w-[100%] md:w-60 h-15 mt-6 md:mt-4 bg-[#131114] text-[#F1EDE7] flex justify-center items-center text-md darkInvert darkInvertText"><button>VIEW COLLECTION →</button></div>
                 <div class="w-70 sm:w-[100%] md:w-40 h-15 mt-5 md:mt-4 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md lightText lightTextBorder"><button>SHOP NOW</button></div>
                 </div>
 
@@ -67,9 +67,18 @@
             </div>
 
                 <div class="firstImg w-70 sm:w-[100%] lg:w-[75%] h-45 sm:h-90 md:h-100 lg:h-140 bg-center bg-cover mt-9">
-                    <div class="bg-[#FFFFFF] w-65 h-14 sm:h-10 relative top-25 sm:top-70 md:top-83 lg:top-125 left-5 text-sm sm:text-xs pt-2 sm:pt-3 pl-10 sm:flex sm:flex-row sm:gap-2 darkSurface darkSurfaceText">
-                        <p class="sm:text-nowrap">004 — Coated Wool</p>
-                        <p>Overshirt</p>
+                    <div class="bg-[#FFFFFF] w-65 h-14 sm:h-12 relative top-25 sm:top-70 md:top-83 lg:top-125 left-5 text-sm sm:text-xs pt-2 sm:pt-3 pl-10 flex sm:flex sm:flex-row sm:gap-2 darkSurface darkSurfaceText">
+                        
+                    <div class="sm:relative sm:bottom-1 sm:flex">
+                            <span class="redDot bg-[#C1121F] w-2.5 h-2.5 rounded-full inline-block relative right-5 top-3">
+
+                            </span>
+                        <div class="absolute bottom-2 left-12 sm:static">
+                            <p class="sm:text-nowrap">004 — Coated Wool</p>
+                            <p>Overshirt</p>
+                        </div>
+                    </div>
+                        
                     </div>
                 </div>
             <div>
@@ -83,28 +92,41 @@
     </section>
 
     <div class="w-full neonRed bg-[#131114] text-[#F1EDE7] jetBrains h-12 sm:h-15 flex flex-row flex-nowrap overflow-hidden justify-center items-center gap-15 text-sm">
-            <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
-            <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
-            <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
+            <div class="firstReel w-max lg:flex pr-30 shrink-0">
+                
+                <div class="border-1 border-black text-nowrap flex gap-30">
+                    <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
+                    <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
+                    <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
+                </div>
+
+                <div class="border-1 border-black text-nowrap flex gap-30">
+                    <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
+                    <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
+                    <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
+                </div>
+
+                
+            </div>
         </div>
 
     <section>
         <div class="section3 superDark w-full h-100 bg-[#F1EDE7]">
 
             <div class="softText w-full h-50 flex flex-row flex-wrap">
-                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
+                <div class="border-1 border-[rgba(19,17,20,0.14)] darkBorder h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
                     <p class="fraunces neonRedText text-[#C1121F] text-5xl">07</p>
                     <p class="text-[#5B5A61] jetBrains w-30 sm:w-45 relative left-2 text-sm lightText">CAPSULE DROPS / YEAR</p>
                 </div>
-                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
+                <div class="border-1 border-[rgba(19,17,20,0.14)] darkBorder h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
                     <p class="fraunces neonRedText text-[#C1121F] text-5xl">120</p>
                     <p class="text-[#5B5A61] jetBrains w-25 sm:w-35 relative left-3 text-sm lightText">UNITS PER STYLE</p>
                 </div>
-                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
+                <div class="border-1 border-[rgba(19,17,20,0.14)] darkBorder h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
                     <p class="fraunces neonRedText text-[#C1121F] text-5xl">04</p>
                     <p class="text-[#5B5A61] jetBrains w-30 sm:w-40 relative left-4 text-sm lightText">RAW MATERIAL MILLS</p>
                 </div>
-                <div class="border-1 border-[rgba(19,17,20,0.14)] h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
+                <div class="border-1 border-[rgba(19,17,20,0.14)] darkBorder h-50 w-[50%] lg:w-[25%] flex flex-col justify-center items-center gap-3">
                     <p class="fraunces neonRedText text-[#C1121F] text-5xl">2019</p>
                     <p class="text-[#5B5A61] jetBrains w-20 relative left-2 text-sm lightText">FOUNDED</p>
                 </div>
@@ -114,10 +136,10 @@
     </section>    
 
     <section>
-        <div class="section4 w-full h-685 lg:h-230 sm:h-760 md:h-400 bg-[#F1EDE7] pt-20 lg:pt-0 lg:relative bottom-20 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pl-15 lg:pr-15">
+        <div class="section4 w-full h-685 lg:h-230 sm:h-760 md:h-400 bg-[#F1EDE7] pt-20 lg:pt-0 lg:relative bottom-20 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pl-15 lg:pr-15 superDark">
 
-            <div class="md:flex md:gap-15"><p class="text-[#131114] fraunces text-4xl lg:text-6xl font-semibold sm:pr-65 md:pr-0 lg:pr-30">This season's signal pieces.</p>
-            <p class="inter text-[#5B5A61] pt-10 sm:pr-40 md:pr-0 md:relative md:bottom-6 lg:bottom-0">Four garments that define the SS26 edit — chosen for cut, cloth, and how they hold up after the tenth wear.</p></div>
+            <div class="md:flex md:gap-15"><p class="text-[#131114] fraunces text-4xl lg:text-6xl font-semibold sm:pr-65 md:pr-0 lg:pr-30 lightText">This season's signal pieces.</p>
+            <p class="inter text-[#5B5A61] pt-10 sm:pr-40 md:pr-0 md:relative md:bottom-6 lg:bottom-0 softText">Four garments that define the SS26 edit — chosen for cut, cloth, and how they hold up after the tenth wear.</p></div>
 
             <div id="cardContainer" class="pt-15 md:grid md:grid-rows-2 lg:grid-cols-4 md:grid-cols-2 md:gap-2">
                 
@@ -129,26 +151,26 @@
     <div class="w-full h-50 sm:h-90 md:h-110 lg:hidden bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop);"></div>
 
     <section>
-        <div class="section5 w-full h-135 sm:h-110 lg:h-170 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pr-0 lg:pl-0 sm:pt-8 md:pt-11 lg:pt-0 lg:flex">
+        <div class="section5 w-full h-135 sm:h-110 lg:h-170 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pr-0 lg:pl-0 sm:pt-8 md:pt-11 lg:pt-0 lg:flex darkSurface">
 
             <div class="w-[50%] lg:h-190 hidden lg:relative lg:bottom-20 lg:flex bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop);"></div>
 
-            <div class="lg:flex lg:w-[50%] lg:justify-center lg:flex-col pl-0 lg:pl-20 lg:pr-20 pr-5 pb-25 gap-0 lg:gap-1">
+            <div class="lg:flex lg:w-[50%] lg:justify-center lg:flex-col pl-0 lg:pl-20 lg:pr-20 pr-5 pb-25 gap-0 lg:gap-1 darkSurface lg:relative bottom-20 lg:h-190">
             <p class="jetBrains text-[#C1121F] text-sm tracking-widest pt-10 pb-10 sm:pb-6">――― OUR PROCESS</p>    
-            <p class="text-[#131114] fraunces text-3xl lg:text-5xl font-semibold">We start with the cloth, not the moodboard.</p>
-            <p class="inter text-[#5B5A61] pt-10 sm:pt-7 flex justify-center items-center">Every NOIRE style begins at the mill. We choose weight, hand-feel, and drape before a single sketch is drawn — because a garment that photographs well and wears badly isn't finished. It's just decorated.</p>
-            <div class="w-70 sm:w-85 md:w-77 h-20 sm:h-13 mt-6 sm:mt-8 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md sm:text-sm jetBrains"><button>READ THE COLLECTION NOTES →</button></div>
+            <p class="text-[#131114] fraunces text-3xl lg:text-5xl font-semibold lightText">We start with the cloth, not the moodboard.</p>
+            <p class="inter text-[#5B5A61] pt-10 sm:pt-7 flex justify-center items-center softText">Every NOIRE style begins at the mill. We choose weight, hand-feel, and drape before a single sketch is drawn — because a garment that photographs well and wears badly isn't finished. It's just decorated.</p>
+            <div class="w-70 sm:w-85 md:w-77 h-20 sm:h-13 mt-6 sm:mt-8 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md sm:text-sm jetBrains lightText lightTextBorder"><button>READ THE COLLECTION NOTES →</button></div>
         </div> 
 
         </div>
     </section>
 
     <section>
-        <div class="section6 w-full h-800 sm:h-312 sm:overflow-x-hidden bg-[#F1EDE7] pt-20 pr-5 pl-5 sm:pr-9 sm:pl-9">
+        <div class="section6 w-full h-800 sm:h-312 sm:overflow-x-hidden bg-[#F1EDE7] pt-20 pr-5 pl-5 sm:pr-9 sm:pl-9 superDark">
             
             <div class="lg:flex lg:gap-95 lg:pl-8">
-                <p class="text-[#131114] text-4xl lg:text-6xl fraunces font-semibold pb-10">Runway strip.</p>
-                <p class="text-[#5B5A61] inter lg:relative top-5">Drag to explore looks from the SS26 presentation.</p>
+                <p class="text-[#131114] text-4xl lg:text-6xl fraunces font-semibold pb-10 lightText">Runway strip.</p>
+                <p class="text-[#5B5A61] inter lg:relative top-5 softText">Drag to explore looks from the SS26 presentation.</p>
             </div>
 
             <div class="pb-10 pt-10 flex flex-col sm:flex-row gap-10 sm:gap-5">
@@ -156,9 +178,9 @@
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=700&auto=format&fit=crop)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.01</div>
                     </div>
-                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)]">
-                        <p class="jetBrains text-[#5B5A61] text-sm">Look 01</p>
-                        <p class="text-[#131114] fraunces text-xl">Ink Tailoring</p>
+                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
+                        <p class="jetBrains text-[#5B5A61] text-sm softText">Look 01</p>
+                        <p class="text-[#131114] fraunces text-xl lightText">Ink Tailoring</p>
                         </div>
                     </div>
 
@@ -166,9 +188,9 @@
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://i.pinimg.com/originals/f5/d1/68/f5d168c56aec03bf5ee1e63b429e84a9.jpg)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
-                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)]">
-                        <p class="jetBrains text-[#5B5A61] text-sm">Look 02</p>
-                        <p class="text-[#131114] fraunces text-xl">Layered Utility</p>
+                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
+                        <p class="jetBrains text-[#5B5A61] text-sm softText">Look 02</p>
+                        <p class="text-[#131114] fraunces text-xl lightText">Layered Utility</p>
                         </div>
                     </div>
 
@@ -176,9 +198,9 @@
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://i.pinimg.com/736x/ac/b0/87/acb0874269359238681f135af98b4ff5.jpg)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
-                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)]">
-                        <p class="jetBrains text-[#5B5A61] text-sm">Look 02</p>
-                        <p class="text-[#131114] fraunces text-xl">Layered Utility</p>
+                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
+                        <p class="jetBrains text-[#5B5A61] text-sm softText">Look 02</p>
+                        <p class="text-[#131114] fraunces text-xl lightText">Layered Utility</p>
                         </div>
                     </div>
 
@@ -186,9 +208,9 @@
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgCl72ViSAuQT5w1RnCCpa1zciuD3YUO-Ez0OBW5iqjtTCnCb8VQuVnu96&s=10)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
-                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)]">
-                        <p class="jetBrains text-[#5B5A61] text-sm">Look 02</p>
-                        <p class="text-[#131114] fraunces text-xl">Layered Utility</p>
+                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
+                        <p class="jetBrains text-[#5B5A61] text-sm softText">Look 02</p>
+                        <p class="text-[#131114] fraunces text-xl lightText">Layered Utility</p>
                         </div>
                     </div>
 
@@ -196,18 +218,18 @@
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNX6G2_9hy2VmYJ5iI7mj8qZKqnhsLqnCK3NwSnbXiCJtRRP84LpnKecj&s=10)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
-                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)]">
-                        <p class="jetBrains text-[#5B5A61] text-sm">Look 02</p>
-                        <p class="text-[#131114] fraunces text-xl">Layered Utility</p>
+                    <div class="h-25 pt-5 pl-5 flex flex-col gap-2 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
+                        <p class="jetBrains text-[#5B5A61] text-sm softText">Look 02</p>
+                        <p class="text-[#131114] fraunces text-xl lightText">Layered Utility</p>
                         </div>
                     </div>
 
                 </div>
 
                 <div class="pl-3 pr-3 flex flex-col justify-center items-center gap-7 pt-10 sm:pt-23 lg:pr-[25%] lg:pl-[20%]">
-                    <p class="text-7xl text-[#C1121F]">❝</p>
-                    <p class="fraunces text-2xl lg:text-4xl text-[#131114] font-semibold lg:leading-14 lg:relative lg:left-7"><i>NOIRE understood that restraint is a language. Nothing in this collection needed a logo to be recognized</i>.</p>
-                    <p class="text-[#5B5A61] tracking-wide jetBrains text-sm">— Studio Line Magazine</p>
+                    <p class="text-7xl text-[#C1121F] neonRedText">❝</p>
+                    <p class="fraunces text-2xl lg:text-4xl text-[#131114] font-semibold lg:leading-14 lg:relative lg:left-7 lightText"><i>NOIRE understood that restraint is a language. Nothing in this collection needed a logo to be recognized</i>.</p>
+                    <p class="text-[#5B5A61] tracking-wide jetBrains text-sm softText">— Studio Line Magazine</p>
                 </div>
         </div>
 
@@ -215,43 +237,43 @@
     </section>
 
     <section>
-        <div class="section7 w-full h-75 sm:h-62 md:h-75 pr-5 pl-5 sm:pl-9 sm:pr-9 pt-15 bg-[#131114] md:flex md:flex-col lg:flex-row md:gap-7 lg:gap-5">
-            <p class="fraunces text-[#F1EDE7] font-semibold text-2xl md:text-3xl lg:text-5xl md:pl-5 lg:pr-15 lg:relative lg:top-7">Get first access to restocks and capsule drops.</p>
+        <div class="section7 w-full h-75 sm:h-62 md:h-75 pr-5 pl-5 sm:pl-9 sm:pr-9 pt-15 bg-[#131114] md:flex md:flex-col lg:flex-row md:gap-7 lg:gap-5 neonRed">
+            <p class="fraunces text-[#F1EDE7] font-semibold text-2xl md:text-3xl lg:text-5xl md:pl-5 lg:pr-15 lg:relative lg:top-7 darkInvertText">Get first access to restocks and capsule drops.</p>
 
             <div class="flex flex-col sm:flex-row sm:gap-3 md:gap-8 sm:pt-8 justify-center items-center lg:relative lg:bottom-15">
-                <input type="email" name="" id="" placeholder="your@email.com" class="jetBrains mt-5 ml-6 text-[#bcbbc3]">
-                <div class="w-50 h-8 mt-4 text-[#131114] bg-[#F1EDE7] flex justify-center items-center text-md jetBrains"><button>SUBSCRIBE →</button></div>
+                <input type="email" name="" id="" placeholder="your@email.com" class="jetBrains mt-5 ml-6 text-[#bcbbc3] invertPlaceholderText">
+                <div class="w-50 h-8 mt-4 text-[#131114] bg-[#F1EDE7] flex justify-center items-center text-md jetBrains darkInvertText neonRed"><button>SUBSCRIBE →</button></div>
             </div>
         </div>
     </section>
 
     <section>
-        <div class="section8 w-full h-225 sm:h-222 md:h-135 lg:h-110 bg-[#F1EDE7] pl-10 pr-10 sm:pl-23 sm:pr-18 pt-20">
+        <div class="section8 w-full h-225 sm:h-222 md:h-135 lg:h-110 bg-[#F1EDE7] pl-10 pr-10 sm:pl-23 sm:pr-18 pt-20 superDark">
 
             <div class="lg:flex">
                 
                 <div class="lg:flex lg:flex-col lg:w-130 lg:justify-center lg:items-center lg:relative lg:mt-10">
-                    <p class="logo fraunces text-2xl font-medium pb-5 md:flex md:justify-center md:items-center lg:w-[15%] lg:relative lg:right-28">NO<span class="text-[#C1121F]"><i>i</i></span>RE</p>
-                    <p class="inter text-[#5B5A61] tracking-wider text-md sm:text-sm pt-3 sm:pr-25 md:pr-0 md:w-full lg:w-[65%]">An editorial streetwear label cutting small-batch garments from honest cloth. Bahawalpur-founded, worn everywhere.</p>
+                    <p class="logo fraunces text-2xl font-medium pb-5 md:flex md:justify-center md:items-center lg:w-[15%] lg:relative lg:right-28 lightText">NO<span class="text-[#C1121F] neonRedText"><i>i</i></span>RE</p>
+                    <p class="inter text-[#5B5A61] tracking-wider text-md sm:text-sm pt-3 sm:pr-25 md:pr-0 md:w-full lg:w-[65%] softText">An editorial streetwear label cutting small-batch garments from honest cloth. Bahawalpur-founded, worn everywhere.</p>
                 </div>
 
             <div class="gap-10 lg:gap-5 pt-10 flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-42 lg:gap-40 lg:w-[65%]">
-                <ul class="flex flex-col gap-3">
-                    <li class="jetBrains text-[#5B5A61] font-semibold">Shop</li>
+                <ul class="flex flex-col gap-3 lightText">
+                    <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Shop</li>
                     <li class="inter tracking-wide text-sm">All Products</li>
                     <li class="inter tracking-wide text-sm">Collections</li>
                     <li class="inter tracking-wide text-sm">New Arrivals</li>
                 </ul>
 
-                <ul class="flex flex-col gap-3">
-                    <li class="jetBrains text-[#5B5A61] font-semibold">Studio</li>
+                <ul class="flex flex-col gap-3 lightText">
+                    <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Studio</li>
                     <li class="inter tracking-wide text-sm">About</li>
                     <li class="inter tracking-wide text-sm">Process</li>
                     <li class="inter tracking-wide text-sm">Careers</li>
                 </ul>
 
-                <ul class="flex flex-col gap-3">
-                    <li class="jetBrains text-[#5B5A61] font-semibold">Support</li>
+                <ul class="flex flex-col gap-3 lightText">
+                    <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Support</li>
                     <li class="inter tracking-wide text-sm">Shipping</li>
                     <li class="inter tracking-wide text-sm">Returns</li>
                     <li class="inter tracking-wide text-sm">Contact</li>
@@ -262,8 +284,8 @@
             <div class="w-[90%] md:w-[95%] lg:w-[85%] h-0.5 bg-[rgba(19,17,20,0.14)] mt-10 sm:mt-20 lg:relative lg:left-20"></div>
 
             <footer class="jetBrains lg:w-full text-[#5B5A61] text-xs mt-10 flex flex-col md:flex-row gap-2 md:gap-40 md:pr-20 md:relative md:right-25 lg:ml-20">
-                <p class="sm:relative sm:left-23 lg:left-25 md:text-nowrap">© 2026 NOIRE Studio. All rights reserved.</p>
-                <div class="flex flex-row gap-8 justify-center items-center relative right-2 lg:relative lg:left-87">
+                <p class="sm:relative sm:left-23 lg:left-25 md:text-nowrap softText">© 2026 NOIRE Studio. All rights reserved.</p>
+                <div class="flex flex-row gap-8 justify-center items-center relative right-2 lg:relative lg:left-87 softText">
                     <p>Instagram</p>
                     <p>Tiktok</p>
                     <p>Pintrest</p>
