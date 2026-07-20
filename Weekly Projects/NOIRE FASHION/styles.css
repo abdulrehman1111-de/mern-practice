@@ -1,6 +1,6 @@
 /*! tailwindcss v4.3.2 | MIT License | https://tailwindcss.com */
 @layer properties;
-@layer theme, base, components, custom, utilities;
+@layer theme, base, components, utilities, custom;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -34,8 +34,6 @@
     --text-7xl--line-height: 1;
     --text-8xl: 6rem;
     --text-8xl--line-height: 1;
-    --text-9xl: 8rem;
-    --text-9xl--line-height: 1;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
     --tracking-wide: 0.025em;
@@ -387,8 +385,8 @@
   .justify-center {
     justify-content: center;
   }
-  .gap-1 {
-    gap: var(--spacing);
+  .gap-0 {
+    gap: 0;
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
@@ -506,9 +504,6 @@
   .pr-10 {
     padding-right: calc(var(--spacing) * 10);
   }
-  .pr-25 {
-    padding-right: calc(var(--spacing) * 25);
-  }
   .pb-5 {
     padding-bottom: calc(var(--spacing) * 5);
   }
@@ -517,6 +512,9 @@
   }
   .pb-25 {
     padding-bottom: calc(var(--spacing) * 25);
+  }
+  .pl-0 {
+    padding-left: 0;
   }
   .pl-3 {
     padding-left: calc(var(--spacing) * 3);
@@ -533,15 +531,16 @@
   .pl-10 {
     padding-left: calc(var(--spacing) * 10);
   }
-  .pl-25 {
-    padding-left: calc(var(--spacing) * 25);
-  }
   .font-serif {
     font-family: var(--font-serif);
   }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
   }
   .text-4xl {
     font-size: var(--text-4xl);
@@ -865,9 +864,9 @@
       padding-left: calc(var(--spacing) * 10);
     }
   }
-  .sm\:pl-18 {
+  .sm\:pl-23 {
     @media (width >= 40rem) {
-      padding-left: calc(var(--spacing) * 18);
+      padding-left: calc(var(--spacing) * 23);
     }
   }
   .sm\:text-3xl {
@@ -907,6 +906,11 @@
   .md\:top-83 {
     @media (width >= 48rem) {
       top: calc(var(--spacing) * 83);
+    }
+  }
+  .md\:right-25 {
+    @media (width >= 48rem) {
+      right: calc(var(--spacing) * 25);
     }
   }
   .md\:bottom-6 {
@@ -1059,9 +1063,9 @@
       gap: calc(var(--spacing) * 40);
     }
   }
-  .md\:gap-52 {
+  .md\:gap-42 {
     @media (width >= 48rem) {
-      gap: calc(var(--spacing) * 52);
+      gap: calc(var(--spacing) * 42);
     }
   }
   .md\:gap-53 {
@@ -1140,6 +1144,11 @@
       line-height: var(--tw-leading, var(--text-3xl--line-height));
     }
   }
+  .md\:text-nowrap {
+    @media (width >= 48rem) {
+      text-wrap: nowrap;
+    }
+  }
   .lg\:relative {
     @media (width >= 64rem) {
       position: relative;
@@ -1153,6 +1162,11 @@
   .lg\:top-125 {
     @media (width >= 64rem) {
       top: calc(var(--spacing) * 125);
+    }
+  }
+  .lg\:right-28 {
+    @media (width >= 64rem) {
+      right: calc(var(--spacing) * 28);
     }
   }
   .lg\:bottom-0 {
@@ -1180,6 +1194,11 @@
       left: calc(var(--spacing) * 20);
     }
   }
+  .lg\:left-25 {
+    @media (width >= 64rem) {
+      left: calc(var(--spacing) * 25);
+    }
+  }
   .lg\:left-87 {
     @media (width >= 64rem) {
       left: calc(var(--spacing) * 87);
@@ -1190,9 +1209,19 @@
       margin-top: var(--spacing);
     }
   }
+  .lg\:mt-10 {
+    @media (width >= 64rem) {
+      margin-top: calc(var(--spacing) * 10);
+    }
+  }
   .lg\:mt-15 {
     @media (width >= 64rem) {
       margin-top: calc(var(--spacing) * 15);
+    }
+  }
+  .lg\:ml-20 {
+    @media (width >= 64rem) {
+      margin-left: calc(var(--spacing) * 20);
     }
   }
   .lg\:flex {
@@ -1213,6 +1242,16 @@
   .lg\:h-11 {
     @media (width >= 64rem) {
       height: calc(var(--spacing) * 11);
+    }
+  }
+  .lg\:h-21 {
+    @media (width >= 64rem) {
+      height: calc(var(--spacing) * 21);
+    }
+  }
+  .lg\:h-110 {
+    @media (width >= 64rem) {
+      height: calc(var(--spacing) * 110);
     }
   }
   .lg\:h-140 {
@@ -1250,6 +1289,11 @@
       width: calc(var(--spacing) * 23);
     }
   }
+  .lg\:w-130 {
+    @media (width >= 64rem) {
+      width: calc(var(--spacing) * 130);
+    }
+  }
   .lg\:w-\[15\%\] {
     @media (width >= 64rem) {
       width: 15%;
@@ -1258,6 +1302,11 @@
   .lg\:w-\[25\%\] {
     @media (width >= 64rem) {
       width: 25%;
+    }
+  }
+  .lg\:w-\[50\%\] {
+    @media (width >= 64rem) {
+      width: 50%;
     }
   }
   .lg\:w-\[65\%\] {
@@ -1295,9 +1344,19 @@
       flex-direction: row;
     }
   }
+  .lg\:items-center {
+    @media (width >= 64rem) {
+      align-items: center;
+    }
+  }
   .lg\:justify-center {
     @media (width >= 64rem) {
       justify-content: center;
+    }
+  }
+  .lg\:gap-1 {
+    @media (width >= 64rem) {
+      gap: var(--spacing);
     }
   }
   .lg\:gap-2 {
@@ -1310,14 +1369,19 @@
       gap: calc(var(--spacing) * 5);
     }
   }
+  .lg\:gap-6 {
+    @media (width >= 64rem) {
+      gap: calc(var(--spacing) * 6);
+    }
+  }
   .lg\:gap-8 {
     @media (width >= 64rem) {
       gap: calc(var(--spacing) * 8);
     }
   }
-  .lg\:gap-25 {
+  .lg\:gap-40 {
     @media (width >= 64rem) {
-      gap: calc(var(--spacing) * 25);
+      gap: calc(var(--spacing) * 40);
     }
   }
   .lg\:gap-47 {
@@ -1350,9 +1414,9 @@
       padding-top: calc(var(--spacing) * 8);
     }
   }
-  .lg\:pt-20 {
+  .lg\:pt-28 {
     @media (width >= 64rem) {
-      padding-top: calc(var(--spacing) * 20);
+      padding-top: calc(var(--spacing) * 28);
     }
   }
   .lg\:pr-0 {
@@ -1490,10 +1554,6 @@
 @layer custom {
   @layer custom {
     #page-index {
-      .blackDiv {
-        background-color: var(--text);
-        font-family: "JetBrains Mono", monospace;
-      }
       nav {
         background-color: var(--bg);
       }
@@ -1524,6 +1584,37 @@
         background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
         font-family: "JetBrains Mono", monospace;
       }
+    }
+    .dark .superDark {
+      background-color: #0B0B0D;
+    }
+    .dark .lightText {
+      color: #F3EFE9;
+    }
+    .lightTextBorder {
+      border: 1px solid black;
+    }
+    .dark .lightTextBorder {
+      border: 1px solid #F3EFE9;
+    }
+    .blackDiv {
+      background-color: var(--text);
+      font-family: "JetBrains Mono", monospace;
+    }
+    .dark .neonRed {
+      background-color: #FF4D5E;
+    }
+    .dark .neonRedText {
+      color: #FF4D5E;
+    }
+    .dark .softText {
+      color: #cac5cd;
+    }
+    .dark .darkSurface {
+      background-color: #18171B;
+    }
+    .dark .darkSurfaceText {
+      color: #F3EFE9;
     }
   }
 }

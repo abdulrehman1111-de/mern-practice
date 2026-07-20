@@ -1,9 +1,5 @@
 @layer custom{
     #page-index {
-    .blackDiv{
-        background-color: var(--text);
-        font-family: "JetBrains Mono", monospace;
-    }
     nav{
         background-color: var(--bg);
     }
@@ -34,6 +30,36 @@
         background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
         font-family: "JetBrains Mono", monospace;
     }
-    
 }
+    .dark .superDark{
+        background-color: #0B0B0D;
+    }
+    .dark .lightText{
+        color: #F3EFE9;
+    }
+    .lightTextBorder{
+        border: 1px solid black;
+    }
+    .dark .lightTextBorder{
+        border: 1px solid #F3EFE9;
+    }
+    .blackDiv{
+        background-color: var(--text);
+        font-family: "JetBrains Mono", monospace;
+    }
+    .dark .neonRed{
+        background-color: #FF4D5E;
+    }
+    .dark .neonRedText{
+        color: #FF4D5E;
+    }
+    .dark .softText{
+        color: #cac5cd;
+    }
+    .dark .darkSurface{
+        background-color: #18171B;
+    }
+    .dark .darkSurfaceText{
+        color: #F3EFE9;
+    }
 }

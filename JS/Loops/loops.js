@@ -180,11 +180,6 @@
 //     i -= 1;
 // }while(i >= 0);
 
-let user;
-do{
-    user = 2
-    console.log(user);
-}while(user !== 0);
 
 
 
