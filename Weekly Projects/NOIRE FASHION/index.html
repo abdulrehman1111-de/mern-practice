@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="
+https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
+" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Nastaliq+Urdu:wght@400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>NOIRE FASHION</title>
@@ -50,14 +53,15 @@
 
     <section>
         <div class="section2 w-full h-260 sm:h-290 lg:h-210 pt-15 sm:pt-28 md:pt-35 lg:pt-28 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pl-17 lg:pr-11 flex flex-col lg:flex-row gap-6">
-            <div class="flex flex-col gap-8 md:gap-11 lg:gap-6 lg:pt-8">
+            
+            <div data-aos="custom" class="bigHeading flex flex-col gap-8 md:gap-11 lg:gap-6 lg:pt-8">
                 <p class="accent sm:text-sm">— SS26 — THE EDIT</p>
             <p class="lightText firstHeading text-6xl lg:text-8xl font-semibold sm:pr-35 md:pr-75 lg:pr-20">Dress like the city <span class="text-[#C1121F]"><i class="neonRedText">argues</i></span> back.</p>
             <p class="text-[#5B5A61] softText text-lg sm:pr-20 md:pr-50">NOIRE cuts clean silhouettes from honest cloth — engineered for the street, finished like tailoring. No noise, no logos shouting. Just the edit.</p>
 
             <div class="firstButtons md:flex md:flex-row md:gap-8">
-                <div class="w-70 sm:w-[100%] md:w-60 h-15 mt-6 md:mt-4 bg-[#131114] text-[#F1EDE7] flex justify-center items-center text-md darkInvert darkInvertText"><button>VIEW COLLECTION →</button></div>
-                <div class="w-70 sm:w-[100%] md:w-40 h-15 mt-5 md:mt-4 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md lightText lightTextBorder"><button>SHOP NOW</button></div>
+                <div class="viewCollection w-70 sm:w-[100%] md:w-60 h-15 mt-6 md:mt-4 bg-[#131114] text-[#F1EDE7] flex justify-center items-center text-md darkInvert darkInvertText"><button>VIEW COLLECTION →</button></div>
+                <div class="shopNow w-70 sm:w-[100%] md:w-40 h-15 mt-5 md:mt-4 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md lightText lightTextBorder"><button>SHOP NOW</button></div>
                 </div>
 
                 <div class="jetBrains hidden lg:flex lg:flex-row lg:gap-2 text-[#5B5A61] lg:mt-15">
@@ -66,7 +70,7 @@
             </div>
             </div>
 
-                <div class="firstImg w-70 sm:w-[100%] lg:w-[75%] h-45 sm:h-90 md:h-100 lg:h-140 bg-center bg-cover mt-9">
+                <div data-aos="custom" class="firstImg w-70 sm:w-[100%] lg:w-[75%] h-45 sm:h-90 md:h-100 lg:h-140 bg-center bg-cover mt-9">
                     <div class="bg-[#FFFFFF] w-65 h-14 sm:h-12 relative top-25 sm:top-70 md:top-83 lg:top-125 left-5 text-sm sm:text-xs pt-2 sm:pt-3 pl-10 flex sm:flex sm:flex-row sm:gap-2 darkSurface darkSurfaceText">
                         
                     <div class="sm:relative sm:bottom-1 sm:flex">
@@ -91,16 +95,22 @@
         </div>
     </section>
 
-    <div class="w-full neonRed bg-[#131114] text-[#F1EDE7] jetBrains h-12 sm:h-15 flex flex-row flex-nowrap overflow-hidden justify-center items-center gap-15 text-sm">
-            <div class="firstReel w-max lg:flex pr-30 shrink-0">
+    <div class="w-full neonRed bg-[#131114] text-[#F1EDE7] jetBrains h-12 sm:h-15 flex flex-row flex-nowrap overflow-hidden justify-start items-center gap-15 text-sm">
+            <div class="firstReel w-max flex gap-30 shrink-0">
                 
-                <div class="border-1 border-black text-nowrap flex gap-30">
+                <div class="text-nowrap flex gap-30 shrink-0">
                     <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
                     <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
                     <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
                 </div>
 
-                <div class="border-1 border-black text-nowrap flex gap-30">
+                <div class="text-nowrap flex gap-30 shrink-0">
+                    <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
+                    <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
+                    <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
+                </div>
+
+                <div class="text-nowrap flex gap-30 shrink-0">
                     <span class="whitespace-nowrap tracking-wider">FREE RETURNS, 30 DAYS</span>
                     <span class="whitespace-nowrap tracking-wider">SS26 EDIT — LIVE NOW</span>
                     <span class="whitespace-nowrap tracking-wider">SMALL BATCH RUNS</span>
@@ -138,10 +148,10 @@
     <section>
         <div class="section4 w-full h-685 lg:h-230 sm:h-760 md:h-400 bg-[#F1EDE7] pt-20 lg:pt-0 lg:relative bottom-20 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pl-15 lg:pr-15 superDark">
 
-            <div class="md:flex md:gap-15"><p class="text-[#131114] fraunces text-4xl lg:text-6xl font-semibold sm:pr-65 md:pr-0 lg:pr-30 lightText">This season's signal pieces.</p>
+            <div data-aos-offset="100px" data-aos="custom" class="section4Ani md:flex md:gap-15"><p class="text-[#131114] fraunces text-4xl lg:text-6xl font-semibold sm:pr-65 md:pr-0 lg:pr-30 lightText">This season's signal pieces.</p>
             <p class="inter text-[#5B5A61] pt-10 sm:pr-40 md:pr-0 md:relative md:bottom-6 lg:bottom-0 softText">Four garments that define the SS26 edit — chosen for cut, cloth, and how they hold up after the tenth wear.</p></div>
 
-            <div id="cardContainer" class="pt-15 md:grid md:grid-rows-2 lg:grid-cols-4 md:grid-cols-2 md:gap-2">
+            <div data-aos-offset="130px" data-aos="custom" id="cardContainer" class="cardContainer pt-15 md:grid md:grid-rows-2 lg:grid-cols-4 md:grid-cols-2 md:gap-2">
                 
             </div>
 
@@ -153,13 +163,13 @@
     <section>
         <div class="section5 w-full h-135 sm:h-110 lg:h-170 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pr-0 lg:pl-0 sm:pt-8 md:pt-11 lg:pt-0 lg:flex darkSurface">
 
-            <div class="w-[50%] lg:h-190 hidden lg:relative lg:bottom-20 lg:flex bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop);"></div>
+            <div data-aos-offset="100px" data-aos="custom" class="secondImg w-[50%] lg:h-190 hidden lg:relative lg:bottom-20 lg:flex bg-center bg-cover" style="background-image: url(https://images.unsplash.com/photo-1495385794356-15371f348c31?q=80&w=1200&auto=format&fit=crop);"></div>
 
-            <div class="lg:flex lg:w-[50%] lg:justify-center lg:flex-col pl-0 lg:pl-20 lg:pr-20 pr-5 pb-25 gap-0 lg:gap-1 darkSurface lg:relative bottom-20 lg:h-190">
+            <div data-aos-offset="100px" data-aos="custom" class="secondImgPara lg:flex lg:w-[50%] lg:justify-center lg:flex-col pl-0 lg:pl-20 lg:pr-20 pr-5 pb-25 gap-0 lg:gap-1 darkSurface lg:relative bottom-20 lg:h-190">
             <p class="jetBrains text-[#C1121F] text-sm tracking-widest pt-10 pb-10 sm:pb-6">――― OUR PROCESS</p>    
             <p class="text-[#131114] fraunces text-3xl lg:text-5xl font-semibold lightText">We start with the cloth, not the moodboard.</p>
             <p class="inter text-[#5B5A61] pt-10 sm:pt-7 flex justify-center items-center softText">Every NOIRE style begins at the mill. We choose weight, hand-feel, and drape before a single sketch is drawn — because a garment that photographs well and wears badly isn't finished. It's just decorated.</p>
-            <div class="w-70 sm:w-85 md:w-77 h-20 sm:h-13 mt-6 sm:mt-8 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md sm:text-sm jetBrains lightText lightTextBorder"><button>READ THE COLLECTION NOTES →</button></div>
+            <div class="shopNow w-70 sm:w-85 md:w-77 h-20 sm:h-13 mt-6 sm:mt-8 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md sm:text-sm jetBrains lightText lightTextBorder"><button>READ THE COLLECTION NOTES →</button></div>
         </div> 
 
         </div>
@@ -168,13 +178,13 @@
     <section>
         <div class="section6 w-full h-800 sm:h-312 sm:overflow-x-hidden bg-[#F1EDE7] pt-20 pr-5 pl-5 sm:pr-9 sm:pl-9 superDark">
             
-            <div class="lg:flex lg:gap-95 lg:pl-8">
+            <div data-aos-offset="100px" data-aos="custom" class="thirdImgPara lg:flex lg:gap-95 lg:pl-8">
                 <p class="text-[#131114] text-4xl lg:text-6xl fraunces font-semibold pb-10 lightText">Runway strip.</p>
                 <p class="text-[#5B5A61] inter lg:relative top-5 softText">Drag to explore looks from the SS26 presentation.</p>
             </div>
 
-            <div class="pb-10 pt-10 flex flex-col sm:flex-row gap-10 sm:gap-5">
-                    <div>
+            <div data-aos-offset="100px" data-aos="custom" class="thirdImg pb-10 pt-10 flex flex-col sm:flex-row gap-10 sm:gap-5">
+                    <div class="secondCards">
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=700&auto=format&fit=crop)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.01</div>
                     </div>
@@ -184,7 +194,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="secondCards">
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://i.pinimg.com/originals/f5/d1/68/f5d168c56aec03bf5ee1e63b429e84a9.jpg)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
@@ -194,7 +204,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="secondCards">
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://i.pinimg.com/736x/ac/b0/87/acb0874269359238681f135af98b4ff5.jpg)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
@@ -204,7 +214,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="secondCards">
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgCl72ViSAuQT5w1RnCCpa1zciuD3YUO-Ez0OBW5iqjtTCnCb8VQuVnu96&s=10)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
@@ -214,7 +224,7 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="secondCards">
                         <div class="h-90 sm:w-68 bg-cover bg-center flex flex-row gap-45 pt-4 pl-4" style = "background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTNX6G2_9hy2VmYJ5iI7mj8qZKqnhsLqnCK3NwSnbXiCJtRRP84LpnKecj&s=10)">
                         <div class="jetBrains text-[#C1121F] relative left-55 sm:left-52 text-sm">L.02</div>
                     </div>
@@ -226,7 +236,7 @@
 
                 </div>
 
-                <div class="pl-3 pr-3 flex flex-col justify-center items-center gap-7 pt-10 sm:pt-23 lg:pr-[25%] lg:pl-[20%]">
+                <div data-aos-offset="100px" data-aos="custom" class="quote pl-3 pr-3 flex flex-col justify-center items-center gap-7 pt-10 sm:pt-23 lg:pr-[25%] lg:pl-[20%]">
                     <p class="text-7xl text-[#C1121F] neonRedText">❝</p>
                     <p class="fraunces text-2xl lg:text-4xl text-[#131114] font-semibold lg:leading-14 lg:relative lg:left-7 lightText"><i>NOIRE understood that restraint is a language. Nothing in this collection needed a logo to be recognized</i>.</p>
                     <p class="text-[#5B5A61] tracking-wide jetBrains text-sm softText">— Studio Line Magazine</p>
@@ -237,7 +247,7 @@
     </section>
 
     <section>
-        <div class="section7 w-full h-75 sm:h-62 md:h-75 pr-5 pl-5 sm:pl-9 sm:pr-9 pt-15 bg-[#131114] md:flex md:flex-col lg:flex-row md:gap-7 lg:gap-5 neonRed">
+        <div data-aos-offset="120px" data-aos="custom" class="section7 w-full h-75 sm:h-62 md:h-75 pr-5 pl-5 sm:pl-9 sm:pr-9 pt-15 bg-[#131114] md:flex md:flex-col lg:flex-row md:gap-7 lg:gap-5 neonRed">
             <p class="fraunces text-[#F1EDE7] font-semibold text-2xl md:text-3xl lg:text-5xl md:pl-5 lg:pr-15 lg:relative lg:top-7 darkInvertText">Get first access to restocks and capsule drops.</p>
 
             <div class="flex flex-col sm:flex-row sm:gap-3 md:gap-8 sm:pt-8 justify-center items-center lg:relative lg:bottom-15">
@@ -260,23 +270,23 @@
             <div class="gap-10 lg:gap-5 pt-10 flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-42 lg:gap-40 lg:w-[65%]">
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Shop</li>
-                    <li class="inter tracking-wide text-sm">All Products</li>
-                    <li class="inter tracking-wide text-sm">Collections</li>
-                    <li class="inter tracking-wide text-sm">New Arrivals</li>
+                    <li class="inter red tracking-wide text-sm">All Products</li>
+                    <li class="inter red tracking-wide text-sm">Collections</li>
+                    <li class="inter red tracking-wide text-sm">New Arrivals</li>
                 </ul>
 
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Studio</li>
-                    <li class="inter tracking-wide text-sm">About</li>
-                    <li class="inter tracking-wide text-sm">Process</li>
-                    <li class="inter tracking-wide text-sm">Careers</li>
+                    <li class="inter red tracking-wide text-sm">About</li>
+                    <li class="inter red tracking-wide text-sm">Process</li>
+                    <li class="inter red tracking-wide text-sm">Careers</li>
                 </ul>
 
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Support</li>
-                    <li class="inter tracking-wide text-sm">Shipping</li>
-                    <li class="inter tracking-wide text-sm">Returns</li>
-                    <li class="inter tracking-wide text-sm">Contact</li>
+                    <li class="inter red tracking-wide text-sm">Shipping</li>
+                    <li class="inter red tracking-wide text-sm">Returns</li>
+                    <li class="inter red tracking-wide text-sm">Contact</li>
                 </ul>
                 </div>
             </div>
@@ -286,15 +296,21 @@
             <footer class="jetBrains lg:w-full text-[#5B5A61] text-xs mt-10 flex flex-col md:flex-row gap-2 md:gap-40 md:pr-20 md:relative md:right-25 lg:ml-20">
                 <p class="sm:relative sm:left-23 lg:left-25 md:text-nowrap softText">© 2026 NOIRE Studio. All rights reserved.</p>
                 <div class="flex flex-row gap-8 justify-center items-center relative right-2 lg:relative lg:left-87 softText">
-                    <p>Instagram</p>
-                    <p>Tiktok</p>
-                    <p>Pintrest</p>
+                    <p class="red">Instagram</p>
+                    <p class="red">Tiktok</p>
+                    <p class="red">Pintrest</p>
                 </div>
             </footer>
         </div>
     </section>
 
 
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="index.js"></script>
+    <script>
+    AOS.init({
+        mirror:false,
+    });
+  </script>
 </body>
 </html>

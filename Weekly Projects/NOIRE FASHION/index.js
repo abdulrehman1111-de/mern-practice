@@ -35,7 +35,7 @@ const products = [
 
         function createProductCard(product){
             return `
-                <div class="pb-10">
+                <div class="mainCards pb-10">
                     <div class="h-90 sm:h-110 md:h-103 bg-cover bg-center flex flex-row gap-45 sm:gap-110 md:gap-53 lg:gap-47 pt-4 pl-4 sm:pl-7 lg:pl-2" style = "background-image: url('${product.image}')">
                         <div class="bg-[#C1121F] text-[#FFFFFF] jetBrains h-8 w-12 z-1 flex justify-center items-center text-sm">${product.badge}</div>
                         <div class="jetBrains text-[#ffffff]">${product.number}</div>
@@ -47,7 +47,7 @@ const products = [
                     </div>
                     <div class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm">
                         <div class="w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center darkSurface lightText"><button>View</button></div>
-                        <div class="w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div>
+                        <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div>
                     </div>
                 </div>
             `
