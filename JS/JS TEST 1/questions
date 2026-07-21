@@ -1,0 +1,36 @@
+Short Questions:
+
+1. Explain the difference between hoisting and the Temporal Dead Zone with examples. 
+Ans. Hoisting is the process done during the compilation by the JS compiler and what it does is that it moves the declarations to the top 
+for example:
+console.log(x);
+let x;
+console.log(y);
+var y;
+All of these declarations are moved to the top during compilation and assigned a value
+
+let and const are not given any values initially like they arent initialized so on console.log they will give refernce error and so they are in a dead state basically which is called Temporal dead Zone. it exists between entering the scope and variable initialization.
+
+2. Why does strict equality (===) return false when comparing two reference types with the same values? 
+Ans. As the name suggest reference types work on the memory addresses for example array and not refer to the values inside unlike the primitive types so during the comparison of two reference types their memory addresses are compared thats why it gives false because they will be different.
+
+3. Why is const not considered fully immutable? 
+Ans. using const doesnot mean that the value is now constant. It just ensures that you cannot redeclare or reassign to the variable on which the const keyword is applied. Whereas in the case of primitive types you cannot change the values once assigned the values inside the reference types like the array or object their inner values can be added, updated or deleted even with const. This is why const is not considered fully immutable.
+
+4. How do control flow statements affect program execution and readability? 
+Ans. Control statements actually give multiple conditions to the program flow and tells that it needs to move to a specific direction depending upon the condition whether it evaluates to true or false. Control statements include if else if and else which are arranged together with their condition and block which provides readability and their operation affects program execution.
+
+5. Explain how && and || operators perform short-circuit evaluation. 
+Ans. && evaluates an expression from left to right but it will break once it finds the first false value because whole result will become false and it will return the left operand.
+Whereas the || also evaluates an expression from left to right but it will break once it find the first true value because it will simply reach get its purpose i.e whole expression being evaluated to true and returns the left operand.
+
+
+
+
+
+
+
+
+
+
+
