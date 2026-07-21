@@ -33,6 +33,36 @@ const products = [
             }
         ];
 
+        function initCarousel() {
+    const container = document.getElementById('cardContainer');
+    
+    // Apply scroll-snap behavior via inline styles — doesn't touch your Tailwind classes
+    container.style.display = 'flex';
+    container.style.overflowX = 'auto';
+    container.style.scrollSnapType = 'x mandatory';
+    container.style.scrollBehavior = 'smooth';
+
+    Array.from(container.children).forEach(card => {
+        card.style.scrollSnapAlign = 'center';
+        card.style.flexShrink = '0';
+    });
+}
+
+        function initCarousel2() {
+    const container = document.querySelector(".thirdImg");
+    
+    // Apply scroll-snap behavior via inline styles — doesn't touch your Tailwind classes
+    container.style.display = 'flex';
+    container.style.overflowX = 'auto';
+    container.style.scrollSnapType = 'x mandatory';
+    container.style.scrollBehavior = 'smooth';
+
+    Array.from(container.children).forEach(card => {
+        card.style.scrollSnapAlign = 'center';
+        card.style.flexShrink = '0';
+    });
+}
+
         function createProductCard(product){
             return `
                 <div class="mainCards pb-10">
@@ -46,12 +76,14 @@ const products = [
                         <p class="text-[#131114] jetBrains lightText">${product.price}</p>
                     </div>
                     <div class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm">
-                        <div class="w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center darkSurface lightText"><button>View</button></div>
+                        <div class="w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
                         <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div>
                     </div>
                 </div>
             `
         };
+
+        initCarousel2();
 
         let cardContainer = document.getElementById("cardContainer");
         cardContainer.innerHTML = products.map((item)=>{
@@ -64,6 +96,54 @@ const products = [
         darkActivator.addEventListener("click", ()=>{
         html.classList.toggle("dark");
 })
+
+        const heroSection = document.querySelector('.section2');
+        const glow = document.querySelector('.cursorGlow');
+
+        heroSection.addEventListener('mousemove', (e) => {
+            const rect = heroSection.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+    
+            glow.style.transform = `translate(${x - glow.offsetWidth / 2}px, ${y - glow.offsetHeight / 2}px)`;
+}); 
+
+        let menu = document.getElementById("ham");
+        menu.addEventListener("click", ()=>{
+
+            let existingMenu = document.querySelector(".menu");
+            if (existingMenu){
+                existingMenu.classList.add("closing");
+                setTimeout(()=>{
+                    existingMenu.remove();
+                }, 500);
+            }
+            else{
+                document.body.insertAdjacentHTML("beforeend", 
+                `
+            <div class="menu w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
+                <div id="closeMenu" class="ham flex flex-col gap-2 relative top-2 lg:hidden">
+                        <div class="w-8 bg-black h-0.5 darkInvert"></div>
+                        <div class="w-8 bg-black h-0.5 darkInvert"></div>
+                        <div class="w-8 bg-black h-0.5 darkInvert"></div>
+                    </div>
+                <ul class="text-white flex flex-col pt-20 gap-7 justify-center items-center">
+                    <li class= "text-3xl">HOME</li>
+                    <li class= "text-3xl">COLLECTION</li>
+                    <li class= "text-3xl">LOGIN</li>
+                </ul>
+            </div>
+            `
+            )
+            };
+        });
+
+        document.addEventListener("click", (e) => {
+            if (e.target.closest("#closeMenu")) {
+                document.querySelector(".menu")?.remove();
+            }
+        });
+
 
 
 

@@ -253,6 +253,27 @@
   .z-50 {
     z-index: 50;
   }
+  .z-100 {
+    z-index: 100;
+  }
+  .container {
+    width: 100%;
+    @media (width >= 40rem) {
+      max-width: 40rem;
+    }
+    @media (width >= 48rem) {
+      max-width: 48rem;
+    }
+    @media (width >= 64rem) {
+      max-width: 64rem;
+    }
+    @media (width >= 80rem) {
+      max-width: 80rem;
+    }
+    @media (width >= 96rem) {
+      max-width: 96rem;
+    }
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -276,6 +297,9 @@
   }
   .hidden {
     display: none;
+  }
+  .inline {
+    display: inline;
   }
   .inline-block {
     display: inline-block;
@@ -337,6 +361,12 @@
   .h-135 {
     height: calc(var(--spacing) * 135);
   }
+  .h-140 {
+    height: calc(var(--spacing) * 140);
+  }
+  .h-150 {
+    height: calc(var(--spacing) * 150);
+  }
   .h-225 {
     height: calc(var(--spacing) * 225);
   }
@@ -376,6 +406,9 @@
   .w-70 {
     width: calc(var(--spacing) * 70);
   }
+  .w-140 {
+    width: calc(var(--spacing) * 140);
+  }
   .w-\[0\.5px\] {
     width: 0.5px;
   }
@@ -393,6 +426,9 @@
   }
   .shrink-0 {
     flex-shrink: 0;
+  }
+  .transform {
+    transform: var(--tw-rotate-x,) var(--tw-rotate-y,) var(--tw-rotate-z,) var(--tw-skew-x,) var(--tw-skew-y,);
   }
   .flex-col {
     flex-direction: column;
@@ -1640,6 +1676,8 @@
       .firstImg {
         background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
         font-family: "JetBrains Mono", monospace;
+        position: relative;
+        z-index: 10;
       }
       .redDot {
         animation: redGiant 1s infinite ease-in-out alternate;
@@ -1705,6 +1743,43 @@
       }
       .secondCards {
         transition: transform 0.2s ease-out;
+      }
+      .underline1 {
+        display: inline-block;
+        position: relative;
+        line-height: 1;
+        align-self: flex-start;
+      }
+      .underline1::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -10px;
+        left: 0;
+        background-color: #FF4D5E;
+        transform-origin: bottom right;
+        transition: transform 0.35s ease-out;
+      }
+      .underline1:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .firstImg::before {
+        content: ' ';
+        position: absolute;
+        inset: 0;
+        background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.4s ease;
+      }
+      .firstImg:hover::before {
+        transform: scale(1.05);
+      }
+      .thirdImg::-webkit-scrollbar {
+        display: none;
       }
     }
   }
@@ -1780,19 +1855,37 @@
   .dark .footerDark {
     color: #F1EDE7;
   }
+  .viewCollection:hover {
+    background-color: #C1121F;
+    color: #F3EFE9;
+    transform: translateY(-3px);
+  }
   .dark .viewCollection:hover {
     background-color: #FF4D5E;
     color: #F3EFE9;
     transform: translateY(-3px);
   }
+  .addBtn:hover {
+    background-color: #da4251;
+    color: #F3EFE9;
+  }
   .dark .addBtn:hover {
     background-color: #FF4D5E;
     color: #F3EFE9;
+  }
+  .shopNow:hover {
+    background-color: #131114;
+    color: #F3EFE9;
+    transform: translateY(-3px);
   }
   .dark .shopNow:hover {
     background-color: #F3EFE9;
     color: #131114;
     transform: translateY(-3px);
+  }
+  .view:hover {
+    background-color: #9c9b9d;
+    color: #F3EFE9;
   }
   .mainCards:hover {
     transform: translateY(-9px);
@@ -1802,6 +1895,40 @@
   }
   .red:hover {
     color: #FF4D5E;
+  }
+  .cursorGlow {
+    pointer-events: none;
+    background: radial-gradient(circle, rgba(255, 77, 94, 0.35) 0%, rgba(255, 77, 94, 0) 70%);
+    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    transition: transform 0.15s ease-out;
+    z-index: 0;
+  }
+  .cross i {
+    color: white;
+  }
+  .menu {
+    animation: opacityAni 1s;
+  }
+  .menu.closing {
+    animation: opacityAni2 0.5s forwards;
+  }
+  @keyframes opacityAni {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes opacityAni2 {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
   @keyframes Fade2 {
     0% {
@@ -1824,6 +1951,26 @@
     }
   }
 }
+@property --tw-rotate-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-y {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-rotate-z {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-x {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-skew-y {
+  syntax: "*";
+  inherits: false;
+}
 @property --tw-border-style {
   syntax: "*";
   inherits: false;
@@ -1844,6 +1991,11 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-rotate-x: initial;
+      --tw-rotate-y: initial;
+      --tw-rotate-z: initial;
+      --tw-skew-x: initial;
+      --tw-skew-y: initial;
       --tw-border-style: solid;
       --tw-font-weight: initial;
       --tw-tracking: initial;
