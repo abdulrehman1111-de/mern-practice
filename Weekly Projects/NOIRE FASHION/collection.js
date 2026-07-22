@@ -30,13 +30,44 @@ const products = [
                 category: 'ACCESSORY',
                 name: "Ledger Watch",
                 price: "Rs. 9,800"
+            },
+            {
+                image: "https://i.pinimg.com/originals/63/8c/4f/638c4fd4a96f61a289ff9d68f7c3688e.png",
+                badge: "New",
+                number: "01",
+                category: 'APPAREL',
+                name: "Raw Selvedge Denim",
+                price: "Rs. 11,400"
+            },
+            {
+                image: "https://i.pinimg.com/736x/16/a7/2d/16a72da16b9b5d8c789a2821d2d94aa7.jpg",
+                badge: "New",
+                number: "02",
+                category: 'APPAREL',
+                name: "Column Dress",
+                price: "Rs. 15,600"
+            },
+            {
+                image: "https://i.pinimg.com/736x/a1/62/b7/a162b7c735e08607d9573e0cffcfb5e6.jpg",
+                badge: "New",
+                number: "03",
+                category: 'APPAREL',
+                name: "Linen Shirt",
+                price: "Rs. 7,200"
+            },
+            {
+                image: "https://i5.walmartimages.com/seo/CaComMARK-PI-Clearance-Denim-Shirt-Dress-Women-Denim-Dress-for-Women-with-Pockets-Jean-Button-Down-Shirt-Dresses-Long-Sleeve-Blue_8fdc1631-5f20-42a1-a586-aadd5aa6fcdd.2a286ad7f8d4ed03ab30a0b130b7b723.jpeg",
+                badge: "New",
+                number: "04",
+                category: 'OUTWEAR',
+                name: "Structured Blazer",
+                price: "Rs. 21,300"
             }
         ];
 
         function initCarousel() {
     const container = document.getElementById('cardContainer');
     
-    // Apply scroll-snap behavior via inline styles — doesn't touch your Tailwind classes
     container.style.display = 'flex';
     container.style.overflowX = 'auto';
     container.style.scrollSnapType = 'x mandatory';
@@ -51,7 +82,6 @@ const products = [
         function initCarousel2() {
     const container = document.querySelector(".thirdImg");
     
-    // Apply scroll-snap behavior via inline styles — doesn't touch your Tailwind classes
     container.style.display = 'flex';
     container.style.overflowX = 'auto';
     container.style.scrollSnapType = 'x mandatory';
@@ -97,17 +127,6 @@ const products = [
         html.classList.toggle("dark");
 })
 
-        const heroSection = document.querySelector('.section2');
-        const glow = document.querySelector('.cursorGlow');
-
-        heroSection.addEventListener('mousemove', (e) => {
-            const rect = heroSection.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-    
-            glow.style.transform = `translate(${x - glow.offsetWidth / 2}px, ${y - glow.offsetHeight / 2}px)`;
-}); 
-
         let menu = document.getElementById("ham");
         menu.addEventListener("click", ()=>{
 
@@ -128,9 +147,9 @@ const products = [
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                     </div>
                 <ul class="text-white flex flex-col pt-20 gap-7 justify-center items-center">
-                    <li class="text-3xl underline1"><a href="./index.html">HOME</a></li>
-                        <li class="text-3xl underline1"><a href="./collection.html">COLLECTION</a></li>
-                        <li class="text-3xl underline1"><a href="">SHOP</a></li>
+                    <li class= "text-3xl">HOME</li>
+                    <li class= "text-3xl">COLLECTION</li>
+                    <li class= "text-3xl">LOGIN</li>
                 </ul>
             </div>
             `
@@ -143,6 +162,18 @@ const products = [
                 document.querySelector(".menu")?.remove();
             }
         });
+
+        let radio = document.querySelectorAll(".radio");
+        radio.forEach((item)=>{
+            item.addEventListener("click", ()=>{
+                radio.forEach((r)=>{
+                    r.style.backgroundColor = "";
+                    r.style.color = "";
+                })
+                item.style.backgroundColor = "#F1EDE7";
+                item.style.color = "#0B0B0D";
+            })
+        })
 
 
 

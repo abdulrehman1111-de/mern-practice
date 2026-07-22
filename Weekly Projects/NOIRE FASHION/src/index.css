@@ -144,7 +144,11 @@
     .thirdImg::-webkit-scrollbar {
     display: none;               
 }
-}
+    }
+    ::selection{
+        background-color: #FF4D5E;
+        color: #0B0B0D;
+    }
 }
 
     @keyframes redGiant {
