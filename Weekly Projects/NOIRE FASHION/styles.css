@@ -9,6 +9,8 @@
     --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-gray-400: oklch(70.7% 0.022 261.325);
+    --color-gray-600: oklch(44.6% 0.03 256.802);
     --color-gray-700: oklch(37.3% 0.034 259.733);
     --color-black: #000;
     --color-white: #fff;
@@ -37,6 +39,7 @@
     --text-8xl--line-height: 1;
     --font-weight-medium: 500;
     --font-weight-semibold: 600;
+    --font-weight-bold: 700;
     --tracking-wide: 0.025em;
     --tracking-wider: 0.05em;
     --tracking-widest: 0.1em;
@@ -221,6 +224,9 @@
   .right-2 {
     right: calc(var(--spacing) * 2);
   }
+  .right-3 {
+    right: calc(var(--spacing) * 3);
+  }
   .right-5 {
     right: calc(var(--spacing) * 5);
   }
@@ -275,6 +281,9 @@
       max-width: 96rem;
     }
   }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
   .mt-4 {
     margin-top: calc(var(--spacing) * 4);
   }
@@ -310,9 +319,6 @@
   }
   .h-0\.5 {
     height: calc(var(--spacing) * 0.5);
-  }
-  .h-1 {
-    height: var(--spacing);
   }
   .h-2\.5 {
     height: calc(var(--spacing) * 2.5);
@@ -374,6 +380,12 @@
   .h-150 {
     height: calc(var(--spacing) * 150);
   }
+  .h-160 {
+    height: calc(var(--spacing) * 160);
+  }
+  .h-180 {
+    height: calc(var(--spacing) * 180);
+  }
   .h-225 {
     height: calc(var(--spacing) * 225);
   }
@@ -413,6 +425,9 @@
   .w-50 {
     width: calc(var(--spacing) * 50);
   }
+  .w-55 {
+    width: calc(var(--spacing) * 55);
+  }
   .w-65 {
     width: calc(var(--spacing) * 65);
   }
@@ -436,6 +451,9 @@
   }
   .w-\[90\%\] {
     width: 90%;
+  }
+  .w-\[95\%\] {
+    width: 95%;
   }
   .w-full {
     width: 100%;
@@ -475,6 +493,9 @@
   }
   .gap-0 {
     gap: 0;
+  }
+  .gap-1 {
+    gap: var(--spacing);
   }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
@@ -539,11 +560,14 @@
   .border-black {
     border-color: var(--color-black);
   }
+  .border-gray-400 {
+    border-color: var(--color-gray-400);
+  }
+  .border-gray-600 {
+    border-color: var(--color-gray-600);
+  }
   .border-gray-700 {
     border-color: var(--color-gray-700);
-  }
-  .border-white {
-    border-color: var(--color-white);
   }
   .bg-\[\#5B5A61\] {
     background-color: #5B5A61;
@@ -569,6 +593,9 @@
   .bg-transparent {
     background-color: transparent;
   }
+  .bg-white {
+    background-color: var(--color-white);
+  }
   .bg-cover {
     background-size: cover;
   }
@@ -580,6 +607,9 @@
   }
   .p-1 {
     padding: var(--spacing);
+  }
+  .p-2 {
+    padding: calc(var(--spacing) * 2);
   }
   .p-3 {
     padding: calc(var(--spacing) * 3);
@@ -607,6 +637,9 @@
   }
   .pt-15 {
     padding-top: calc(var(--spacing) * 15);
+  }
+  .pt-18 {
+    padding-top: calc(var(--spacing) * 18);
   }
   .pt-20 {
     padding-top: calc(var(--spacing) * 20);
@@ -646,6 +679,9 @@
   }
   .pl-10 {
     padding-left: calc(var(--spacing) * 10);
+  }
+  .pl-12 {
+    padding-left: calc(var(--spacing) * 12);
   }
   .font-serif {
     font-family: var(--font-serif);
@@ -731,6 +767,9 @@
   }
   .text-\[\#F1EDE7\] {
     color: #F1EDE7;
+  }
+  .text-\[\#FF4D5E\] {
+    color: #FF4D5E;
   }
   .text-\[\#FFFFFF\] {
     color: #FFFFFF;
@@ -837,6 +876,11 @@
       height: calc(var(--spacing) * 110);
     }
   }
+  .sm\:h-145 {
+    @media (width >= 40rem) {
+      height: calc(var(--spacing) * 145);
+    }
+  }
   .sm\:h-222 {
     @media (width >= 40rem) {
       height: calc(var(--spacing) * 222);
@@ -897,7 +941,17 @@
       width: 30%;
     }
   }
+  .sm\:w-\[70\%\] {
+    @media (width >= 40rem) {
+      width: 70%;
+    }
+  }
   .sm\:w-\[100\%\] {
+    @media (width >= 40rem) {
+      width: 100%;
+    }
+  }
+  .sm\:w-full {
     @media (width >= 40rem) {
       width: 100%;
     }
@@ -992,6 +1046,11 @@
       padding-right: calc(var(--spacing) * 9);
     }
   }
+  .sm\:pr-12 {
+    @media (width >= 40rem) {
+      padding-right: calc(var(--spacing) * 12);
+    }
+  }
   .sm\:pr-18 {
     @media (width >= 40rem) {
       padding-right: calc(var(--spacing) * 18);
@@ -1042,9 +1101,19 @@
       padding-left: calc(var(--spacing) * 10);
     }
   }
+  .sm\:pl-12 {
+    @media (width >= 40rem) {
+      padding-left: calc(var(--spacing) * 12);
+    }
+  }
   .sm\:pl-23 {
     @media (width >= 40rem) {
       padding-left: calc(var(--spacing) * 23);
+    }
+  }
+  .sm\:pl-29 {
+    @media (width >= 40rem) {
+      padding-left: calc(var(--spacing) * 29);
     }
   }
   .sm\:text-3xl {
@@ -1194,6 +1263,11 @@
   .md\:w-\[20\%\] {
     @media (width >= 48rem) {
       width: 20%;
+    }
+  }
+  .md\:w-\[60\%\] {
+    @media (width >= 48rem) {
+      width: 60%;
     }
   }
   .md\:w-\[95\%\] {
@@ -1553,6 +1627,11 @@
       width: 25%;
     }
   }
+  .lg\:w-\[35\%\] {
+    @media (width >= 64rem) {
+      width: 35%;
+    }
+  }
   .lg\:w-\[50\%\] {
     @media (width >= 64rem) {
       width: 50%;
@@ -1799,6 +1878,12 @@
     @media (width >= 64rem) {
       --tw-leading: calc(var(--spacing) * 17);
       line-height: calc(var(--spacing) * 17);
+    }
+  }
+  .lg\:font-bold {
+    @media (width >= 64rem) {
+      --tw-font-weight: var(--font-weight-bold);
+      font-weight: var(--font-weight-bold);
     }
   }
   .lg\:tracking-wider {
@@ -2474,97 +2559,12 @@
       .fraunces {
         font-family: "Fraunces", serif;
       }
-      .inter {
-        font-family: "Inter", sans-serif;
-      }
-      .section2 {
-        background-color: var(--bg-alt);
-      }
-      .section2.aos-animate {
-        animation: Fade2 0.5s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .accent {
-        font-family: "JetBrains Mono", monospace;
-        color: var(--accent);
-      }
-      .firstHeading {
-        color: var(--text);
-        font-family: "Fraunces", serif;
-      }
-      .firstButtons {
-        font-family: "JetBrains Mono", monospace;
-      }
-      .firstImg {
-        background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
-        font-family: "JetBrains Mono", monospace;
-        position: relative;
-        z-index: 10;
-      }
-      .redDot {
-        animation: redGiant 1s infinite ease-in-out alternate;
-      }
-      .firstReel {
-        animation: reel 15s ease-in-out infinite;
-      }
-      .bigHeading.aos-animate {
-        animation: Fade2 0.5s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .firstButtons.aos-animate {
-        animation: Fade2 0.5s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .firstImg.aos-animate {
-        animation: Fade2 0.5s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .section4Ani.aos-animate {
-        animation: Fade2 0.7s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .cardContainer.aos-animate {
-        animation: Fade2 0.7s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .secondImg.aos-animate {
-        animation: Fade3 0.8s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .secondImgPara.aos-animate {
-        animation: Fade3 0.8s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .thirdImg.aos-animate {
-        animation: Fade2 0.8s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .thirdImgPara.aos-animate {
-        animation: Fade2 0.8s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .quote.aos-animate {
-        animation: Fade2 0.8s ease-in-out;
-        animation-fill-mode: forwards;
-      }
-      .section7.aos-animate {
+      .loginDiv.aos-animate {
         animation: Fade2 0.8s ease-in-out;
         animation-fill-mode: forwards;
       }
       .viewCollection {
         transition: background-color 0.5s, transform 0.5s ease-out, color 0.2s;
-      }
-      .shopNow {
-        transition: background-color 0.5s, transform 0.5s ease-out, color 0.2s;
-      }
-      .addBtn {
-        transition: background-color 0.4s, color 0.2s;
-      }
-      .mainCards {
-        transition: transform 0.2s ease-out;
-      }
-      .secondCards {
-        transition: transform 0.2s ease-out;
       }
       .underline1 {
         display: inline-block;
@@ -2588,42 +2588,9 @@
         transform: scaleX(1);
         transform-origin: bottom left;
       }
-      .firstImg::before {
-        content: ' ';
-        position: absolute;
-        inset: 0;
-        background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
-        background-size: cover;
-        background-position: center;
-        transition: transform 0.4s ease;
-      }
-      .firstImg:hover::before {
-        transform: scale(1.05);
-      }
       .thirdImg::-webkit-scrollbar {
         display: none;
       }
-    }
-  }
-  @keyframes redGiant {
-    from {
-      transform: scale(1);
-      opacity: 1;
-    }
-    to {
-      opacity: 0.7;
-      transform: scale(1.5);
-    }
-  }
-  @keyframes reel {
-    0% {
-      transform: translateX(0%);
-    }
-    90% {
-      transform: translateX(-33.33333333%);
-    }
-    100% {
-      transform: translateX(-33.33333333%);
     }
   }
   .dark body {
@@ -2718,18 +2685,6 @@
   .red:hover {
     color: #FF4D5E;
   }
-  .cursorGlow {
-    pointer-events: none;
-    background: radial-gradient(circle, rgba(255, 77, 94, 0.35) 0%, rgba(255, 77, 94, 0) 70%);
-    transform: translate(-50%, -50%);
-    top: 0;
-    left: 0;
-    transition: transform 0.15s ease-out;
-    z-index: 0;
-  }
-  .cross i {
-    color: white;
-  }
   .menu {
     animation: opacityAni 1s;
   }
@@ -2739,35 +2694,18 @@
   input[type="radio"] {
     appearance: none;
   }
-  @keyframes opacityAni {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+  input[type = "text"]:focus, text-box:focus {
+    border-color: blue;
   }
-  @keyframes opacityAni2 {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
+  input[type = "password"]:focus, text-box:focus {
+    border-color: blue;
+  }
+  input:required {
+    border-color: #C1121F;
   }
   @keyframes Fade2 {
     0% {
       transform: translateY(2rem);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0rem);
-      opacity: 1;
-    }
-  }
-  @keyframes Fade3 {
-    0% {
-      transform: translateY(1rem);
       opacity: 0;
     }
     100% {

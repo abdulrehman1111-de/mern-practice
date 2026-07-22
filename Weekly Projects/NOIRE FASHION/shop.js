@@ -183,14 +183,15 @@ const products = [
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                     </div>
                 <ul class="text-white flex flex-col pt-20 gap-7 justify-center items-center">
-                    <li class= "text-3xl">HOME</li>
-                    <li class= "text-3xl">COLLECTION</li>
-                    <li class= "text-3xl">LOGIN</li>
+                    <li class="text-3xl underline1"><a href="./index.html">HOME</a></li>
+                        <li class="text-3xl underline1"><a href="./collection.html">COLLECTION</a></li>
+                        <li class="text-3xl underline1"><a href="./shop.html">SHOP</a></li>
+                        <li class="text-3xl underline1"><a href="./login.html">LOGIN</a></li>
                 </ul>
             </div>
             `
             )
-            };
+            }
         });
 
         document.addEventListener("click", (e) => {
@@ -211,6 +212,78 @@ const products = [
             })
         })
 
+        let add = document.getElementById("all");
+        let outwear = document.getElementById("outwear");
+        let footwear = document.getElementById("footwear");
+        let apparel = document.getElementById("apparel");
+        let accessory = document.getElementById("accessory");
+
+        add.addEventListener("click", ()=>{
+
+            cardContainer.innerHTML = products.map((item)=>{
+            return createProductCard(item);
+            }).join("");
+        })
+
+        outwear.addEventListener("click", ()=>{
+            const category = "OUTWEAR";
+            const updatedProducts = [];
+
+            products.forEach((item)=>{
+                if(item.category === category){
+                    updatedProducts.push(item);
+
+                    cardContainer.innerHTML = updatedProducts.map((item)=>{
+                    return createProductCard(item);
+                    }).join("");
+                }
+            })
+        })
+
+        footwear.addEventListener("click", ()=>{
+            const category = "FOOTWEAR";
+            const updatedProducts = [];
+
+            products.forEach((item)=>{
+                if(item.category === category){
+                    updatedProducts.push(item);
+
+                    cardContainer.innerHTML = updatedProducts.map((item)=>{
+                    return createProductCard(item);
+                    }).join("");
+                }
+            })
+        })
+
+        apparel.addEventListener("click", ()=>{
+            const category = "APPAREL";
+            const updatedProducts = [];
+
+            products.forEach((item)=>{
+                if(item.category === category){
+                    updatedProducts.push(item);
+
+                    cardContainer.innerHTML = updatedProducts.map((item)=>{
+                    return createProductCard(item);
+                    }).join("");
+                }
+            })
+        })
+
+        accessory.addEventListener("click", ()=>{
+            const category = "ACCESSORY";
+            const updatedProducts = [];
+
+            products.forEach((item)=>{
+                if(item.category === category){
+                    updatedProducts.push(item);
+
+                    cardContainer.innerHTML = updatedProducts.map((item)=>{
+                    return createProductCard(item);
+                    }).join("");
+                }
+            })
+        })
 
 
 

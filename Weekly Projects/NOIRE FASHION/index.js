@@ -130,12 +130,13 @@ const products = [
                 <ul class="text-white flex flex-col pt-20 gap-7 justify-center items-center">
                     <li class="text-3xl underline1"><a href="./index.html">HOME</a></li>
                         <li class="text-3xl underline1"><a href="./collection.html">COLLECTION</a></li>
-                        <li class="text-3xl underline1"><a href="">SHOP</a></li>
+                        <li class="text-3xl underline1"><a href="./shop.html">SHOP</a></li>
+                        <li class="text-3xl underline1"><a href="./login.html">LOGIN</a></li>
                 </ul>
             </div>
             `
             )
-            };
+            }
         });
 
         document.addEventListener("click", (e) => {
