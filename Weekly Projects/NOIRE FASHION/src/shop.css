@@ -1,3 +1,330 @@
-#page-login {
+@layer custom{
+    #page-shop {
 
+   *{
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+   }     
+    nav{
+        background-color: var(--bg);
+    }
+    .jetBrains{
+        font-family: "JetBrains Mono", monospace;
+    }
+    .fraunces{
+        font-family: "Fraunces", serif;
+    }
+    .inter{
+        font-family: "Inter", sans-serif;
+    }
+    .section2{
+        background-color: var(--bg-alt);
+    }
+    .section2.aos-animate{
+    animation: Fade2 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .accent{
+        font-family: "JetBrains Mono", monospace;
+        color: var(--accent);
+    }
+    .firstHeading{
+        color: var(--text);
+        font-family: "Fraunces", serif;
+    }
+    .firstButtons{
+        font-family: "JetBrains Mono", monospace;
+    }
+    .firstImg{
+        background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
+        font-family: "JetBrains Mono", monospace;
+        position: relative;
+        z-index: 10;
+    }
+    .redDot{
+        animation: redGiant 1s infinite ease-in-out alternate;
+    }
+    .firstReel{
+        animation: reel 15s ease-in-out infinite;
+    }
+    .bigHeading.aos-animate{
+    animation: Fade2 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .firstButtons.aos-animate{
+    animation: Fade2 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .firstImg.aos-animate{
+    animation: Fade2 0.5s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .section4Ani.aos-animate{
+    animation: Fade2 0.7s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .cardContainer.aos-animate{
+    animation: Fade2 0.7s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .secondImg.aos-animate{
+    animation: Fade3 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .secondImgPara.aos-animate{
+    animation: Fade3 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .thirdImg.aos-animate{
+    animation: Fade2 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .thirdImgPara.aos-animate{
+    animation: Fade2 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .quote.aos-animate{
+    animation: Fade2 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .section7.aos-animate{
+    animation: Fade2 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+
+    .viewCollection{
+        transition: background-color 0.5s,
+                    transform 0.5s ease-out,
+                    color 0.2s;
+    }
+    .shopNow{
+        transition: background-color 0.5s,
+                    transform 0.5s ease-out,
+                    color 0.2s;
+    }
+    .addBtn{
+        transition: background-color 0.4s,
+                    color 0.2s;
+    }
+    .mainCards{
+        transition: transform 0.2s ease-out;
+    }
+    .secondCards{
+        transition: transform 0.2s ease-out;
+    }
+    .underline1{
+        display: inline-block;
+        position: relative;
+        line-height: 1;
+        align-self: flex-start;
 }
+    .underline1::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -10px;
+        left: 0;
+        background-color: #FF4D5E;
+        transform-origin: bottom right;
+        transition: transform 0.35s ease-out;
+}
+    .underline1:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+    .firstImg::before{
+        content: ' ';
+        position: absolute;
+        inset: 0;
+        background-image: url("https://images.unsplash.com/photo-1523398002811-999ca8dec234?q=80&w=1200&auto=format&fit=crop");
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.4s ease;
+    }
+    .firstImg:hover::before{
+        transform: scale(1.05);
+    }
+    .thirdImg::-webkit-scrollbar {
+    display: none;               
+    }
+}
+}
+
+    @keyframes redGiant {
+        from{
+            transform: scale(1);
+            opacity: 1;
+        }
+        to{
+            opacity: 0.7;
+            transform: scale(1.5);
+        }
+    }
+    @keyframes reel {
+        0%{
+            transform: translateX(0%);
+        }
+        90%{
+            transform: translateX(-33.33333333%);
+        }
+        100%{
+            transform: translateX(-33.33333333%);
+        }
+    }
+
+    .dark body{
+        background-color: #0B0B0D;
+    }
+    .dark .superDark{
+        background-color: #0B0B0D !important;
+    }
+    .dark .lightText{
+        color: #F3EFE9;
+    }
+    .lightTextBorder{
+        border: 1px solid black;
+    }
+    .dark .lightTextBorder{
+        border: 1px solid #F3EFE9;
+    }
+    .blackDiv{
+        background-color: var(--text);
+        font-family: "JetBrains Mono", monospace;
+    }
+    .dark .neonRed{
+        background-color: #FF4D5E;
+    }
+    .dark .neonRedText{
+        color: #FF4D5E;
+    }
+    .dark .invertPlaceholderText{
+        &::placeholder{
+            color: #0B0B0D;
+        }
+    }
+    .dark .softText{
+        color: #cac5cd;
+    }
+    .dark .darkSurface{
+        background-color: #18171B !important;
+    }
+    .dark .darkSurfaceText{
+        color: #F3EFE9;
+    }
+    .dark .darkInvert {
+        background-color: #F3EFE9;
+    }
+    .dark .darkInvertText {
+        color: #0B0B0D;
+    }
+    .dark .darkBorder{
+        border-color: rgba(243, 239, 233, 0.14);
+    }
+    .dark .footerDark{
+        color: #F1EDE7;
+    }
+    .viewCollection:hover{
+        background-color: #C1121F;
+        color: #F3EFE9;
+        transform: translateY(-3px);
+    }
+    .dark .viewCollection:hover{
+        background-color: #FF4D5E;
+        color: #F3EFE9;
+        transform: translateY(-3px);
+    }
+    .addBtn:hover{
+        background-color: #da4251;
+        color: #F3EFE9;
+    }
+    .dark .addBtn:hover{
+        background-color: #FF4D5E;
+        color: #F3EFE9;
+    }
+    .shopNow:hover{
+        background-color: #131114;
+        color: #F3EFE9;
+        transform: translateY(-3px);
+    }
+    .dark .shopNow:hover{
+        background-color: #F3EFE9;
+        color: #131114;
+        transform: translateY(-3px);
+    }
+    .view:hover{
+        background-color: #9c9b9d;
+        color: #F3EFE9;
+    }
+    .mainCards:hover{
+        transform: translateY(-9px);
+    }
+    .secondCards:hover{
+        transform: translateY(-9px);
+    }
+    .red:hover{
+        color: #FF4D5E;
+    }
+    .cursorGlow{
+        pointer-events: none;
+        background: radial-gradient(circle, rgba(255, 77, 94, 0.35) 0%, rgba(255, 77, 94, 0) 70%);
+        transform: translate(-50%, -50%);
+        top: 0;
+        left: 0;
+        transition: transform 0.15s ease-out;
+        z-index: 0;
+    }
+    .cross i {
+        color: white;
+    }
+    .menu{
+        animation: opacityAni 1s;
+    }
+    .menu.closing{
+        animation: opacityAni2 0.5s forwards;
+    }
+
+    input[type="radio"]{
+        appearance: none;
+    }
+
+    @keyframes opacityAni{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    @keyframes opacityAni2{
+        from{
+            opacity: 1;
+        }
+        to{
+            opacity: 0;
+        }
+    }
+
+
+    @keyframes Fade2 {
+    0% {
+      transform: translateY(2rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  }
+    @keyframes Fade3 {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  }
+    

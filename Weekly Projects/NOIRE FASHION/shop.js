@@ -62,6 +62,38 @@ const products = [
                 category: 'OUTWEAR',
                 name: "Structured Blazer",
                 price: "Rs. 21,300"
+            },
+            {
+                image: "https://i.pinimg.com/originals/37/29/c0/3729c0a7ead1eff7a6db47a5ed5fe6c8.jpg",
+                badge: "New",
+                number: "09",
+                category: 'ACCESSORY',
+                name: "Grain Belt",
+                price: "Rs. 5,600"
+            },
+            {
+                image: "https://at-wp.logbase.io/wp-content/uploads/2025/04/DALL_E2024-06-0811.04.04-Apairofstylishbrownsneakersmadefromhigh-qualitymaterials.Comfortableandperfectforcasualwear.Displaythesneakersonaplainwhiteback.jpg",
+                badge: "New",
+                number: "10",
+                category: 'FOOTWEAR',
+                name: "Court Sneaker",
+                price: "Rs. 13,750"
+            },
+            {
+                image: "https://images.stockcake.com/public/1/6/d/16d1cb7f-ddd4-4663-bea4-1106016fc68e/nineties-street-style-stockcake.jpg",
+                badge: "New",
+                number: "11",
+                category: 'APPAREL',
+                name: "Tapered Trouser",
+                price: "Rs. 9,400"
+            },
+            {
+                image: "https://d9h5s6u2c7pvc.cloudfront.net/sites/files/merlingoldsmith/closeup-many-elegant-gold-chains-with-heart-shape-pendant-model-white-shirt-metal-necklace.jpg",
+                badge: "New",
+                number: "12",
+                category: 'ACCESSORY',
+                name: "Chain Bracelet Set",
+                price: "Rs. 4,300"
             }
         ];
 
