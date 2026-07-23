@@ -19,6 +19,9 @@
     .section2{
         background-color: var(--bg-alt);
     }
+    .dark .section5{
+    background-color: #0B0B0D !important;
+    }
     .section2.aos-animate{
     animation: Fade2 0.5s ease-in-out;
     animation-fill-mode: forwards;
@@ -101,6 +104,10 @@
                     transform 0.5s ease-out,
                     color 0.2s;
     }
+    .shopNowFilter{
+        transition: background-color 0.5s,
+        color 0.2s;
+    }
     .addBtn{
         transition: background-color 0.4s,
                     color 0.2s;
@@ -176,6 +183,16 @@
     .dark body{
         background-color: #0B0B0D;
     }
+    .superDark{
+        background-color: #F3EFE9; 
+    }
+    .darkSurface{
+        background-color: #F1EDE7; 
+    }
+    .cardSurface{
+        background-color: #FFFFFF;
+        color: #131114;
+    }
     .dark .superDark{
         background-color: #0B0B0D !important;
     }
@@ -184,6 +201,12 @@
     }
     .lightTextBorder{
         border: 1px solid black;
+    }
+    .light{
+        background-color: #F3EFE9;
+    }
+    .dark .light{
+        background-color: #0B0B0D !important;
     }
     .dark .lightTextBorder{
         border: 1px solid #F3EFE9;
@@ -247,6 +270,10 @@
         color: #F3EFE9;
         transform: translateY(-3px);
     }
+    .shopNowFilter:hover{
+        background-color: #131114;
+        color: #F3EFE9;
+    }
     .dark .shopNow:hover{
         background-color: #F3EFE9;
         color: #131114;
@@ -278,10 +305,11 @@
         color: white;
     }
     .menu{
-        animation: opacityAni 1s;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
-    .menu.closing{
-        animation: opacityAni2 0.5s forwards;
+    .menu.hide{
+        opacity: 0;
     }
 
     input[type="radio"]{
@@ -305,7 +333,6 @@
             opacity: 0;
         }
     }
-
 
     @keyframes Fade2 {
     0% {

@@ -206,11 +206,18 @@
     .dark .softText{
         color: #cac5cd;
     }
+    .darkSurface{
+        background-color: #FFFFFF !important; 
+    }
     .dark .darkSurface{
         background-color: #18171B !important;
     }
     .dark .darkSurfaceText{
         color: #F3EFE9;
+    }
+    .cardSurface{
+        background-color: #FFFFFF;
+        color: #131114;
     }
     .dark .darkInvert {
         background-color: #F3EFE9;
@@ -278,10 +285,43 @@
         color: white;
     }
     .menu{
-        animation: opacityAni 1s;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
-    .menu.closing{
-        animation: opacityAni2 0.5s forwards;
+    .menu.hide{
+        opacity: 0;
+    }
+
+    html{
+        scroll-behavior: smooth;
+    }
+    input:required{
+        border-color: #C1121F;
+    }
+
+    .welcome{
+        opacity: 0;
+        transition: opacity 3s ease;
+        animation: opening 5s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+    .welcome.hide{
+        opacity: 0;
+    }
+
+    @keyframes opening {
+        0%{
+            opacity: 0;
+        }
+        30%{
+            opacity: 1;
+        }
+        90%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 0;
+        }
     }
 
     @keyframes opacityAni{

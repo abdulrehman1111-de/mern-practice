@@ -4,7 +4,7 @@
 
 :root {
     --bg: #F1EDE7;            /* Page background */
-    --bg-alt: #E7E0D3; /* Section alt background (hero, card image placeholder bg) */
+    --bg-alt: #F3EFE9; /* Section alt background (hero, card image placeholder bg) */
     --surface: #FFFFFF;       /* Cards, login form panel */
     --text: #131114;          /* Main text, nav bg (topbar/logo color), buttons */
     --text-soft: #5B5A61;     /* Secondary text, subtitles, captions */

@@ -1,6 +1,6 @@
 const products = [
             {
-                image: "https://images.unsplash.com/photo-1558121556-2a39fc528338?q=80&w=800&auto=format&fit=crop",
+                image: "https://i.pinimg.com/vwebp/1200x/1b/78/a8/1b78a8ea2a5e33540cf4538c37736839.webp",
                 badge: "New",
                 number: "01",
                 category: 'FOOTWEAR',
@@ -8,7 +8,7 @@ const products = [
                 price: "Rs. 12,900"
             },
             {
-                image: "https://images.unsplash.com/photo-1773259592395-144b30949978?q=80&w=800&auto=format&fit=crop",
+                image: "https://i.pinimg.com/1200x/f6/39/7c/f6397c23bc6e8356f001491fa26b9ffa.jpg",
                 badge: "New",
                 number: "02",
                 category: 'OUTWEAR',
@@ -16,7 +16,7 @@ const products = [
                 price: "Rs. 18,500"
             },
             {
-                image: "https://images.unsplash.com/photo-1576792741377-eb0f4f6d1a47?q=80&w=800&auto=format&fit=crop",
+                image: "https://i.pinimg.com/1200x/8c/e1/d6/8ce1d6c3ccbc409f5868cde6f4537043.jpg",
                 badge: "New",
                 number: "03",
                 category: 'FOOTWEAR',
@@ -40,7 +40,7 @@ const products = [
                 price: "Rs. 11,400"
             },
             {
-                image: "https://i.pinimg.com/736x/16/a7/2d/16a72da16b9b5d8c789a2821d2d94aa7.jpg",
+                image: "https://i.pinimg.com/736x/79/a2/38/79a2384e340bc0da116d7e1392d67241.jpg",
                 badge: "New",
                 number: "06",
                 category: 'APPAREL',
@@ -48,7 +48,7 @@ const products = [
                 price: "Rs. 15,600"
             },
             {
-                image: "https://i.pinimg.com/736x/a1/62/b7/a162b7c735e08607d9573e0cffcfb5e6.jpg",
+                image: "https://i.pinimg.com/736x/e4/76/13/e476131112afcd3d20940d7465f2d775.jpg",
                 badge: "New",
                 number: "07",
                 category: 'APPAREL',
@@ -56,7 +56,7 @@ const products = [
                 price: "Rs. 7,200"
             },
             {
-                image: "https://i5.walmartimages.com/seo/CaComMARK-PI-Clearance-Denim-Shirt-Dress-Women-Denim-Dress-for-Women-with-Pockets-Jean-Button-Down-Shirt-Dresses-Long-Sleeve-Blue_8fdc1631-5f20-42a1-a586-aadd5aa6fcdd.2a286ad7f8d4ed03ab30a0b130b7b723.jpeg",
+                image: "https://i.pinimg.com/736x/ed/de/71/edde714fcffaa25d9f738584d6814494.jpg",
                 badge: "New",
                 number: "08",
                 category: 'OUTWEAR',
@@ -104,13 +104,13 @@ const products = [
                         <div class="bg-[#C1121F] text-[#FFFFFF] jetBrains h-8 w-12 z-1 flex justify-center items-center text-sm">${product.badge}</div>
                         <div class="jetBrains text-[#ffffff]">${product.number}</div>
                     </div>
-                    <div class="h-35 md:h-35 pt-5 pl-5 flex flex-col gap-2.5 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
+                    <div class="cardSurface h-35 md:h-35 pt-5 pl-5 flex flex-col gap-2.5 bg-[#FFFFFF] border-1 border-[rgba(19,17,20,0.14)] darkSurface">
                         <p class="jetBrains text-[#5B5A61] text-sm softText">${product.category}</p>
                         <p class="text-[#131114] fraunces text-xl lightText">${product.name}</p>
                         <p class="text-[#131114] jetBrains lightText">${product.price}</p>
                     </div>
                     <div class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm">
-                        <div class="w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
+                        <div class="cardSurface w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
                         <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div>
                     </div>
                 </div>
@@ -137,20 +137,17 @@ const products = [
             let existingMenu = document.querySelector(".menu");
             if (existingMenu){
                 existingMenu.classList.add("closing");
-                setTimeout(()=>{
-                    existingMenu.remove();
-                }, 500);
             }
             else{
                 document.body.insertAdjacentHTML("beforeend", 
                 `
-            <div class="menu w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
-                <div id="closeMenu" class="ham flex flex-col gap-2 relative top-2 lg:hidden">
+            <div class="menu hide fixed w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
+                <div id="closeMenu" class="ham flex flex-col gap-2 relative top-5 left-5 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                     </div>
-                <ul class="text-white flex flex-col pt-20 gap-7 justify-center items-center">
+                <ul class="text-white flex flex-col pt-20 gap-10 justify-center items-center relative left-25 sm:left-60 md:left-75">
                     <li class="text-3xl underline1"><a href="./index.html">HOME</a></li>
                         <li class="text-3xl underline1"><a href="./collection.html">COLLECTION</a></li>
                         <li class="text-3xl underline1"><a href="./shop.html">SHOP</a></li>
@@ -159,12 +156,25 @@ const products = [
             </div>
             `
             )
+            document.body.style.overflow = "hidden";
+            setTimeout(()=>{
+                document.querySelector(".menu")?.classList.remove("hide");
+            }, 300);                
             }
+
+
         });
 
         document.addEventListener("click", (e) => {
             if (e.target.closest("#closeMenu")) {
-                document.querySelector(".menu")?.remove();
+
+                const menu = document.querySelector(".menu");
+                menu.classList.add("hide");
+
+                setTimeout(()=>{
+                    document.querySelector(".menu")?.remove();
+                    document.body.style.overflow = "";
+                }, 300);
             }
         });
 

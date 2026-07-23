@@ -11,20 +11,17 @@
             let existingMenu = document.querySelector(".menu");
             if (existingMenu){
                 existingMenu.classList.add("closing");
-                setTimeout(()=>{
-                    existingMenu.remove();
-                }, 500);
             }
             else{
                 document.body.insertAdjacentHTML("beforeend", 
                 `
-            <div class="menu w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
-                <div id="closeMenu" class="ham flex flex-col gap-2 relative top-2 lg:hidden">
+            <div class="menu hide fixed w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
+                <div id="closeMenu" class="ham flex flex-col gap-2 relative top-5 left-5 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                     </div>
-                <ul class="text-white flex flex-col pt-20 gap-7 justify-center items-center">
+                <ul class="text-white flex flex-col pt-20 gap-10 justify-center items-center relative left-25 sm:left-60 md:left-75">
                     <li class="text-3xl underline1"><a href="./index.html">HOME</a></li>
                         <li class="text-3xl underline1"><a href="./collection.html">COLLECTION</a></li>
                         <li class="text-3xl underline1"><a href="./shop.html">SHOP</a></li>
@@ -33,12 +30,26 @@
             </div>
             `
             )
+            document.body.style.overflow = "hidden";
+            document.body.style.overflow = "hidden";
+            setTimeout(()=>{
+                document.querySelector(".menu")?.classList.remove("hide");
+            }, 300);
             }
+
+
         });
         
         document.addEventListener("click", (e) => {
             if (e.target.closest("#closeMenu")) {
-                document.querySelector(".menu")?.remove();
+
+                const menu = document.querySelector(".menu");
+                menu.classList.add("hide");
+
+                setTimeout(()=>{
+                    document.querySelector(".menu")?.remove();
+                    document.body.style.overflow = "";
+                }, 300);
             }
         });
 

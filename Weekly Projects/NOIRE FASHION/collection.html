@@ -14,16 +14,16 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Nastaliq+Urdu:wght@400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>NOIRE FASHION</title>
 </head>
-<body id="page-collection">
+<body id="page-collection" class="superDark">
     <section>
-    <div class="section1">
+    <div id="section1Id" class="section1">
         <div class="blackDiv neonRed lightText h-13 sm:h-10 md:h-8 w-full text-white text-xs p-3 pl-6.5 sm:pl-7 md:pl-0 md:flex md:items-center md:justify-center lg:tracking-wider">
             <span>FREE SHIPPING OVER RS. 6000</span><span class="pl-3 pr-5 sm:pl-7 sm:pr-7 md:pr-4 md:pl-4">.</span><span>SS26 EDIT NOW LIVE</span><span class="pl-3 pr-5 sm:pl-7 sm:pr-7 md:pr-4 md:pl-4">.</span><span>MADE IN SMALL RUNS</span>
         </div>
     </div>
 </section>
 
-    <nav class="w-full h-27 lg:h-21 flex flex-row gap-10 pt-5.5 pl-3 sticky z-50 top-0 border-2 border-[rgba(19,17,20,0.14)] sm:gap-70 md:gap-102 lg:gap-55 sm:pl-10 lg:pl-20">
+    <nav class="w-full h-27 lg:h-21 flex flex-row gap-10 pt-5.5 pl-3 sticky z-50 top-0 sm:gap-70 md:gap-102 lg:gap-55 sm:pl-10 lg:pl-20">
                 <div class="logo font-serif text-4xl sm:text-3xl sm:font-semibold flex flex-col lg:flex-row gap-3 lg:gap-5">
                     <p class="lightText">NO<span class="text-[#C1121F]"><i class="neonRedText">i</i></span>RE</p>
                     <div id="darkActivator" class="w-12 lg:w-14 h-5 lg:h-7 lg:mt-1 rounded-3xl lightTextBorder"></div>
@@ -43,10 +43,12 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                         <p>Login</p>
                     </div>
                     </a>
-                    <div class="lightText lightTextBorder cartBtn w-20 lg:w-23 h-15 lg:h-11 flex flex-col lg:flex-row lg:gap-2 justify-center items-center relative bottom-2 shopNow">
+                    <a href="./shop.html">
+                        <div class="lightText lightTextBorder cartBtn w-20 lg:w-23 h-15 lg:h-11 flex flex-col lg:flex-row lg:gap-2 justify-center items-center relative bottom-2 shopNow">
                         <p>Cart</p>
                         <p>(0)</p>
-                    </div>
+                        </div>
+                    </a>
                     <div id="ham" class="ham flex flex-col gap-2 relative top-2 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
@@ -63,13 +65,13 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <p class="lightText lg:w-30 text-4xl md:text-5xl lg:text-7xl fraunces font-semibold leading-12 lg:leading-17">The SS26 Collection.</p>
             
             <div class="w-full h-auto jetBrains softText flex flex-wrap gap-3 sm:gap-4">
-                <div id="all" class="radio radio1 w-[25%] sm:w-[13%] md:w-[10%] lg:w-[7%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
+                <div id="all" class="shopNowFilter radio radio1 w-[25%] sm:w-[13%] md:w-[10%] lg:w-[7%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
                     <label for="radio1">
                         <input type="radio" name="radio" id="radio1">All
                     </label>
                 </div>
 
-                <div id="outwear" class="radio radio2 w-[40%] sm:w-[20%] md:w-[15%] lg:w-[12%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
+                <div id="outwear" class="shopNowFilter radio radio2 w-[40%] sm:w-[20%] md:w-[15%] lg:w-[12%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
                     
                     <label for="radio2">
                         <input type="radio" name="radio" id="radio2">OUTWEAR
@@ -77,19 +79,19 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                 
                 </div>
 
-                <div id="footwear" class="radio radio3 w-[40%] sm:w-[20%] md:w-[15%] lg:w-[12%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
+                <div id="footwear" class="shopNowFilter radio radio3 w-[40%] sm:w-[20%] md:w-[15%] lg:w-[12%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
                     <label for="radio3">
                         <input type="radio" name="radio" id="radio3">FOOTWEAR
                     </label>
                 </div>
 
-                <div id="apparel" class="radio radio4 w-[40%] sm:w-[20%] md:w-[15%] lg:w-[12%]  border-1 border-[#5B5A61] flex justify-center items-center p-1">
+                <div id="apparel" class="shopNowFilter radio radio4 w-[40%] sm:w-[20%] md:w-[15%] lg:w-[12%]  border-1 border-[#5B5A61] flex justify-center items-center p-1">
                     <label for="radio4">
                         <input type="radio" name="radio" id="radio4">APPAREL
                     </label>
                 </div>
 
-                <div id="accessory" class="radio radio5 w-[50%] sm:w-[30%] md:w-[20%] lg:w-[15%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
+                <div id="accessory" class="shopNowFilter radio radio5 w-[50%] sm:w-[30%] md:w-[20%] lg:w-[15%] border-1 border-[#5B5A61] flex justify-center items-center p-1">
                     <label for="radio5">
                         <input type="radio" name="radio" id="radio5">ACCESSORIES
                     </label>
@@ -153,23 +155,29 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <div class="gap-10 lg:gap-5 pt-10 flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-42 lg:gap-40 lg:w-[65%]">
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Shop</li>
-                    <li class="inter red tracking-wide text-sm">All Products</li>
-                    <li class="inter red tracking-wide text-sm">Collections</li>
-                    <li class="inter red tracking-wide text-sm">New Arrivals</li>
+                    <a href="./shop.html">
+                        <li class="inter red tracking-wide text-sm">All Products</li>
+                    </a>
+                    <a href="./collection.html">
+                        <li class="inter red tracking-wide text-sm">Collections</li>
+                    </a>
+                    <a href="./shop.html">
+                        <li class="inter red tracking-wide text-sm">New Arrivals</li>
+                    </a>
                 </ul>
 
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Studio</li>
-                    <li class="inter red tracking-wide text-sm">About</li>
-                    <li class="inter red tracking-wide text-sm">Process</li>
-                    <li class="inter red tracking-wide text-sm">Careers</li>
+                    <li class="inter red tracking-wide text-sm"><a href="#section1Id">About</a></li>
+                    <li class="inter red tracking-wide text-sm"><a href="#section1Id">Process</a></li>
+                    <li class="inter red tracking-wide text-sm"><a href="#section1Id">Careers</a></li>
                 </ul>
 
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Support</li>
-                    <li class="inter red tracking-wide text-sm">Shipping</li>
-                    <li class="inter red tracking-wide text-sm">Returns</li>
-                    <li class="inter red tracking-wide text-sm">Contact</li>
+                    <a href="#section1Id"><li class="inter red tracking-wide text-sm">Shipping</li></a>
+                    <a href="#section1Id"><li class="inter red tracking-wide text-sm">Returns</li></a>
+                    <a href="#section1Id"><li class="inter red tracking-wide text-sm">Contact</li></a>
                 </ul>
                 </div>
             </div>
@@ -179,9 +187,9 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <footer class="jetBrains lg:w-full text-[#5B5A61] text-xs mt-10 flex flex-col md:flex-row gap-2 md:gap-40 md:pr-20 md:relative md:right-25 lg:ml-20">
                 <p class="sm:relative sm:left-23 lg:left-25 md:text-nowrap softText">© 2026 NOIRE Studio. All rights reserved.</p>
                 <div class="flex flex-row gap-8 justify-center items-center relative right-2 lg:relative lg:left-87 softText">
-                    <p class="red">Instagram</p>
-                    <p class="red">Tiktok</p>
-                    <p class="red">Pintrest</p>
+                    <a href="#section1Id"><p class="red">Instagram</p></a>
+                    <a href="#section1Id"><p class="red">Tiktok</p></a>
+                    <a href="#section1Id"><p class="red">Pintrest</p></a>
                 </div>
             </footer>
         </div>

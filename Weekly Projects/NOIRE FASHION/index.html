@@ -14,9 +14,9 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Noto+Nastaliq+Urdu:wght@400..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <title>NOIRE FASHION</title>
 </head>
-<body id="page-index">
+<body id="page-index" class="superDark">
     <section>
-    <div class="section1">
+    <div id="section1Id" class="section1">
         <div class="blackDiv neonRed lightText h-13 sm:h-10 md:h-8 w-full text-white text-xs p-3 pl-6.5 sm:pl-7 md:pl-0 md:flex md:items-center md:justify-center lg:tracking-wider">
             <span>FREE SHIPPING OVER RS. 6000</span><span class="pl-3 pr-5 sm:pl-7 sm:pr-7 md:pr-4 md:pl-4">.</span><span>SS26 EDIT NOW LIVE</span><span class="pl-3 pr-5 sm:pl-7 sm:pr-7 md:pr-4 md:pl-4">.</span><span>MADE IN SMALL RUNS</span>
         </div>
@@ -33,7 +33,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                     <ul class="lightText hidden lg:flex lg:flex-row lg:gap-8 lg:tracking-wider lg:text-sm lg:pt-2">
                         <li class="underline1 home text-[#C1121F]"><a href="./index.html">HOME</a></li>
                         <li class="underline1"><a href="./collection.html">COLLECTION</a></li>
-                        <li class="underline1"><a href="">SHOP</a></li>
+                        <li class="underline1"><a href="./shop.html">SHOP</a></li>
                     </ul>
                 </div>
 
@@ -43,10 +43,12 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                         <p>Login</p>
                     </div>
                     </a>
-                    <div class="lightText lightTextBorder cartBtn w-20 lg:w-23 h-15 lg:h-11 flex flex-col lg:flex-row lg:gap-2 justify-center items-center relative bottom-2 shopNow">
+                    <a href="./shop.html">
+                        <div class="lightText lightTextBorder cartBtn w-20 lg:w-23 h-15 lg:h-11 flex flex-col lg:flex-row lg:gap-2 justify-center items-center relative bottom-2 shopNow">
                         <p>Cart</p>
                         <p>(0)</p>
                     </div>
+                    </a>
                     <div id="ham" class="ham flex flex-col gap-2 relative top-2 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
@@ -59,7 +61,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             
 
     <section>
-        <div class="section2 overflow-hidden relative w-full h-260 sm:h-290 lg:h-210 pt-15 sm:pt-28 md:pt-35 lg:pt-28 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pl-17 lg:pr-11 flex flex-col lg:flex-row gap-6">
+        <div id="welcomeSection" class="section2 overflow-hidden relative w-full h-260 sm:h-290 lg:h-210 pt-15 sm:pt-28 md:pt-35 lg:pt-28 pl-5 pr-5 sm:pl-9 sm:pr-9 md:pl-11 md:pr-11 lg:pl-17 lg:pr-11 flex flex-col lg:flex-row gap-6">
 
             <div class="cursorGlow absolute w-140 h-140 bg-[#C1121F] rounded-full">
 
@@ -71,9 +73,11 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <p class="text-[#5B5A61] softText text-lg sm:pr-20 md:pr-50">NOIRE cuts clean silhouettes from honest cloth — engineered for the street, finished like tailoring. No noise, no logos shouting. Just the edit.</p>
 
             <div class="firstButtons md:flex md:flex-row md:gap-8">
-                <div class="viewCollection w-70 sm:w-[100%] md:w-60 h-15 mt-6 md:mt-4 bg-[#131114] text-[#F1EDE7] flex justify-center items-center text-md darkInvert darkInvertText"><button>VIEW COLLECTION →</button></div>
-                <div class="shopNow w-70 sm:w-[100%] md:w-40 h-15 mt-5 md:mt-4 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md lightText lightTextBorder"><button>SHOP NOW</button></div>
-                </div>
+                <a href="./collection.html">
+                    <div class="viewCollection w-70 sm:w-[100%] md:w-60 h-15 mt-6 md:mt-4 bg-[#131114] text-[#F1EDE7] flex justify-center items-center text-md darkInvert darkInvertText"><button>VIEW COLLECTION →</button></div>
+                </a>
+                <a href="./shop.html"><div class="shopNow w-70 sm:w-[100%] md:w-40 h-15 mt-5 md:mt-4 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md lightText lightTextBorder"><button>SHOP NOW</button></div>
+                </div></a>
 
                 <div class="jetBrains hidden lg:flex lg:flex-row lg:gap-2 text-[#5B5A61] lg:mt-15">
                 <div class="bg-[#5B5A61] h-9 w-[0.5px] relative bottom-2 "></div>
@@ -182,7 +186,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <p class="jetBrains text-[#C1121F] text-sm tracking-widest pt-10 pb-10 sm:pb-6">――― OUR PROCESS</p>    
             <p class="text-[#131114] fraunces text-3xl lg:text-5xl font-semibold lightText">We start with the cloth, not the moodboard.</p>
             <p class="inter text-[#5B5A61] pt-10 sm:pt-7 flex justify-center items-center softText">Every NOIRE style begins at the mill. We choose weight, hand-feel, and drape before a single sketch is drawn — because a garment that photographs well and wears badly isn't finished. It's just decorated.</p>
-            <div class="shopNow w-70 sm:w-85 md:w-77 h-20 sm:h-13 mt-6 sm:mt-8 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md sm:text-sm jetBrains lightText lightTextBorder"><button>READ THE COLLECTION NOTES →</button></div>
+            <a href="./collection.html"><div class="shopNow w-70 sm:w-85 md:w-77 h-20 sm:h-13 mt-6 sm:mt-8 border-1 border-black text-[#131114] bg-transparent flex justify-center items-center text-md sm:text-sm jetBrains lightText lightTextBorder"><button>READ THE COLLECTION NOTES →</button></div></a>
         </div> 
 
         </div>
@@ -264,7 +268,9 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <p class="fraunces text-[#F1EDE7] font-semibold text-2xl md:text-3xl lg:text-5xl md:pl-5 lg:pr-15 lg:relative lg:top-7 darkInvertText">Get first access to restocks and capsule drops.</p>
 
             <div class="flex flex-col sm:flex-row sm:gap-3 md:gap-8 sm:pt-8 justify-center items-center lg:relative lg:bottom-15">
-                <input type="email" name="" id="" placeholder="your@email.com" class="jetBrains mt-5 ml-6 text-[#bcbbc3] invertPlaceholderText">
+                <label for="subscribe">
+                    <input required type="email" name="" id="subscribe" placeholder="your@email.com" class="jetBrains mt-5 ml-6 text-[#bcbbc3] invertPlaceholderText">
+                </label>
                 <div class="w-50 h-8 mt-4 text-[#131114] bg-[#F1EDE7] flex justify-center items-center text-md jetBrains darkInvertText neonRed"><button>SUBSCRIBE →</button></div>
             </div>
         </div>
@@ -283,23 +289,29 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <div class="gap-10 lg:gap-5 pt-10 flex flex-col md:flex-row md:flex-wrap gap-5 md:gap-42 lg:gap-40 lg:w-[65%]">
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Shop</li>
-                    <li class="inter red tracking-wide text-sm">All Products</li>
-                    <li class="inter red tracking-wide text-sm">Collections</li>
-                    <li class="inter red tracking-wide text-sm">New Arrivals</li>
+                    <a href="./shop.html">
+                        <li class="inter red tracking-wide text-sm">All Products</li>
+                    </a>
+                    <a href="./collection.html">
+                        <li class="inter red tracking-wide text-sm">Collections</li>
+                    </a>
+                    <a href="./shop.html">
+                        <li class="inter red tracking-wide text-sm">New Arrivals</li>
+                    </a>
                 </ul>
 
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Studio</li>
-                    <li class="inter red tracking-wide text-sm">About</li>
-                    <li class="inter red tracking-wide text-sm">Process</li>
-                    <li class="inter red tracking-wide text-sm">Careers</li>
+                    <li class="inter red tracking-wide text-sm"><a href="#section1Id">About</a></li>
+                    <li class="inter red tracking-wide text-sm"><a href="#section1Id">Process</a></li>
+                    <li class="inter red tracking-wide text-sm"><a href="#section1Id">Careers</a></li>
                 </ul>
 
                 <ul class="flex flex-col gap-3 lightText">
                     <li class="jetBrains text-[#5B5A61] font-semibold footerDark">Support</li>
-                    <li class="inter red tracking-wide text-sm">Shipping</li>
-                    <li class="inter red tracking-wide text-sm">Returns</li>
-                    <li class="inter red tracking-wide text-sm">Contact</li>
+                    <a href="#section1Id"><li class="inter red tracking-wide text-sm">Shipping</li></a>
+                    <a href="#section1Id"><li class="inter red tracking-wide text-sm">Returns</li></a>
+                    <a href="#section1Id"><li class="inter red tracking-wide text-sm">Contact</li></a>
                 </ul>
                 </div>
             </div>
@@ -309,9 +321,9 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <footer class="jetBrains lg:w-full text-[#5B5A61] text-xs mt-10 flex flex-col md:flex-row gap-2 md:gap-40 md:pr-20 md:relative md:right-25 lg:ml-20">
                 <p class="sm:relative sm:left-23 lg:left-25 md:text-nowrap softText">© 2026 NOIRE Studio. All rights reserved.</p>
                 <div class="flex flex-row gap-8 justify-center items-center relative right-2 lg:relative lg:left-87 softText">
-                    <p class="red">Instagram</p>
-                    <p class="red">Tiktok</p>
-                    <p class="red">Pintrest</p>
+                    <a href="#section1Id"><p class="red">Instagram</p></a>
+                    <a href="#section1Id"><p class="red">Tiktok</p></a>
+                    <a href="#section1Id"><p class="red">Pintrest</p></a>
                 </div>
             </footer>
         </div>

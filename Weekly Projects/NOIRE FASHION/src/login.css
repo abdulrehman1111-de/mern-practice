@@ -142,23 +142,42 @@
         color: #FF4D5E;
     }
     .menu{
-        animation: opacityAni 1s;
+        opacity: 1;
+        transition: opacity 0.3s ease;
     }
-    .menu.closing{
-        animation: opacityAni2 0.5s forwards;
+    .menu.hide{
+        opacity: 0;
     }
 
     input[type="radio"]{
         appearance: none;
     }
     input[type = "text"]:focus, text-box:focus{
-        border-color: blue;
+        border-color: white;
     }
     input[type = "password"]:focus, text-box:focus{
-        border-color: blue;
+        border-color: white;
     }
     input:required{
         border-color: #C1121F;
+    }
+
+    @keyframes opacityAni{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    @keyframes opacityAni2{
+        from{
+            opacity: 1;
+        }
+        to{
+            opacity: 0;
+        }
     }
 
     @keyframes Fade2 {
