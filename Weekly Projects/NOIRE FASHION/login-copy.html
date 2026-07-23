@@ -54,31 +54,38 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             </nav>
 
     <section>
-        <div id="section10Id" class="section10 bg-[#F1EDE7] superDark w-full h-180 flex items-center justify-center">
-            <div data-aos="custom" class="loginDiv border-1 border-gray-600 h-160 sm:h-145 w-[95%] sm:w-[70%] md:w-[60%] lg:w-[35%] bg-white darkSurface flex flex-col gap-6 pt-18 pl-10 pr-10 sm:pl-12 sm:pr-12">
-                <p class="jetBrains neonRedText text-sm">— WELCOME BACK</p>
-                <p class="fraunces lightText text-3xl sm:font-semibold">LOGIN.</p>
-                <p class="jetBrains softText text-sm">Access your orders, saved items and the SS26 early-access list</p>
+        <div id="section10Id" class="section10 bg-[#F1EDE7] superDark w-full h-200 flex items-center justify-center">
+            <div data-aos="custom" class="loginDiv border-1 border-gray-600 h-180 sm:h-165 lg:h-170 w-[95%] sm:w-[70%] md:w-[60%] lg:w-[35%] bg-white darkSurface flex flex-col gap-6 pt-18 pl-10 pr-10 sm:pl-12 sm:pr-12">
+                <p class="jetBrains neonRedText text-sm">— WELCOME TO NOIRE FASHION</p>
+                <p class="fraunces lightText text-3xl sm:font-semibold">SIGN UP</p>
+                <p class="jetBrains softText text-sm">Create an account. We respect your privacy</p>
 
                 <div class="flex flex-col gap-3 softText">
                     <div class="flex flex-col gap-1 sm:gap-3">
-                        <label for="email"><p class="textSoft jetBrains text-sm">Email</p>
+                        <label for="email"><p class="textSoft jetBrains text-sm">Your Best Email</p>
                         <input class="superDark border-1 border-gray-400 w-55 sm:w-full h-13 p-2 pl-4 mt-3" type="email" name="" id="email" required placeholder="you@example.com">
                         </label>
                     </div>
+
                     <div class="flex flex-col gap-1">
-                        <label for="password"><p class="textSoft jetBrains text-sm">Password</p>
+                        <label for="password"><p class="textSoft jetBrains text-sm">Type Password</p>
                         <input class="superDark border-1 border-gray-400 w-55 h-13 mt-3 p-2 pl-4 sm:w-full" type="password" name="" id="password" required placeholder="●●●●●●●●●●">
+                        </label>
+                    </div>
+
+                    <div class="flex flex-col gap-1">
+                        <label for="confirmPassword"><p class="textSoft jetBrains text-sm">Confirm password</p>
+                        <input class="superDark border-1 border-gray-400 w-55 h-13 mt-3 p-2 pl-4 sm:w-full" type="password" name="" id="confirmPassword" required placeholder="●●●●●●●●●●">
                         </label>
                     </div>
                 </div>
 
-                <div id="logBtn" class="darkInvert darkInvertText w-55 sm:w-full h-13 flex justify-center items-center viewCollection bg-black text-white">
-                    Log In →</div>
+                <div id="signBtn" class="darkInvert darkInvertText w-55 sm:w-full h-13 flex justify-center items-center viewCollection bg-black text-white">
+                    Sign Up →</div>
 
-                <div class="text-sm pl-12 sm:pl-29">
-                    <p class="jetBrains lightText">New to NOIRE?</p>
-                    <a href="./login-copy.html"><p class="jetBrains text-[#FF4D5E] neonRedText relative right-3 lg:font-bold">Create an account</p></a>
+                <div class="text-sm pl-2 sm:pl-19">
+                    <p class="jetBrains lightText text-nowrap">Already have an account?</p>
+                    <a href="./login.html"><p class="jetBrains text-[#FF4D5E] neonRedText relative left-11 lg:font-bold">Login instead</p></a>
                 </div>
             </div>
         </div>
@@ -102,7 +109,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
 
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@14.0.1/swiper-bundle.min.js"></script>
-    <script src="login.js"></script>
+    <script src="login-copy.js"></script>
     <script>
     AOS.init({
         mirror:false,

@@ -1,0 +1,204 @@
+@layer custom{
+    #page-login {
+
+   *{
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+   }     
+    nav{
+        background-color: var(--bg);
+    }
+    .jetBrains{
+        font-family: "JetBrains Mono", monospace;
+    }
+    .fraunces{
+        font-family: "Fraunces", serif;
+    }
+    .loginDiv.aos-animate{
+    animation: Fade2 0.8s ease-in-out;
+    animation-fill-mode: forwards;
+    }
+    .viewCollection{
+        transition: background-color 0.5s,
+                    transform 0.5s ease-out,
+                    color 0.2s;
+    }
+    .underline1{
+        display: inline-block;
+        position: relative;
+        line-height: 1;
+        align-self: flex-start;
+}
+    .underline1::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: -10px;
+        left: 0;
+        background-color: #FF4D5E;
+        transform-origin: bottom right;
+        transition: transform 0.35s ease-out;
+}
+    .underline1:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+    .thirdImg::-webkit-scrollbar {
+    display: none;               
+    }
+}
+}
+    .dark body{
+        background-color: #0B0B0D;
+    }
+    .dark .superDark{
+        background-color: #0B0B0D !important;
+    }
+    .dark .lightText{
+        color: #F3EFE9;
+    }
+    .lightTextBorder{
+        border: 1px solid black;
+    }
+    .dark .lightTextBorder{
+        border: 1px solid #F3EFE9;
+    }
+    .blackDiv{
+        background-color: var(--text);
+        font-family: "JetBrains Mono", monospace;
+    }
+    .dark .neonRed{
+        background-color: #FF4D5E;
+    }
+    .dark .neonRedText{
+        color: #FF4D5E;
+    }
+    .dark .invertPlaceholderText{
+        &::placeholder{
+            color: #0B0B0D;
+        }
+    }
+    .dark .softText{
+        color: #cac5cd;
+    }
+    .dark .darkSurface{
+        background-color: #18171B !important;
+    }
+    .dark .darkSurfaceText{
+        color: #F3EFE9;
+    }
+    .dark .darkInvert {
+        background-color: #F3EFE9;
+    }
+    .dark .darkInvertText {
+        color: #0B0B0D;
+    }
+    .dark .darkBorder{
+        border-color: rgba(243, 239, 233, 0.14);
+    }
+    .dark .footerDark{
+        color: #F1EDE7;
+    }
+    .viewCollection:hover{
+        background-color: #C1121F;
+        color: #F3EFE9;
+        transform: translateY(-3px);
+    }
+    .dark .viewCollection:hover{
+        background-color: #FF4D5E;
+        color: #F3EFE9;
+        transform: translateY(-3px);
+    }
+    .addBtn:hover{
+        background-color: #da4251;
+        color: #F3EFE9;
+    }
+    .dark .addBtn:hover{
+        background-color: #FF4D5E;
+        color: #F3EFE9;
+    }
+    .shopNow:hover{
+        background-color: #131114;
+        color: #F3EFE9;
+        transform: translateY(-3px);
+    }
+    .dark .shopNow:hover{
+        background-color: #F3EFE9;
+        color: #131114;
+        transform: translateY(-3px);
+    }
+    .view:hover{
+        background-color: #9c9b9d;
+        color: #F3EFE9;
+    }
+    .mainCards:hover{
+        transform: translateY(-9px);
+    }
+    .secondCards:hover{
+        transform: translateY(-9px);
+    }
+    .red:hover{
+        color: #FF4D5E;
+    }
+    .menu{
+        opacity: 1;
+        transition: opacity 0.3s ease;
+    }
+    .menu.hide{
+        opacity: 0;
+    }
+    .welcome{
+        opacity: 0;
+        transition: opacity 3s ease;
+        animation: opening 5s ease-in-out;
+        animation-fill-mode: forwards;
+    }
+    .welcome.hide{
+        opacity: 0;
+    }
+
+    input[type="radio"]{
+        appearance: none;
+    }
+    input[type = "text"]:focus, text-box:focus{
+        border-color: white;
+    }
+    input[type = "password"]:focus, text-box:focus{
+        border-color: white;
+    }
+    input:required{
+        border-color: #C1121F;
+    }
+
+    @keyframes opacityAni{
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
+
+    @keyframes opacityAni2{
+        from{
+            opacity: 1;
+        }
+        to{
+            opacity: 0;
+        }
+    }
+
+    @keyframes Fade2 {
+    0% {
+      transform: translateY(2rem);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  }
+
+  
+    
