@@ -109,10 +109,8 @@ const products = [
                         <p class="text-[#131114] fraunces text-xl lightText">${product.name}</p>
                         <p class="text-[#131114] jetBrains lightText">${product.price}</p>
                     </div>
-                    <div class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm">
-                        <div class="cardSurface w-[50%] bg-[#FFFFFF] text-[131114] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
-                        <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div>
-                    </div>
+                    <a href = "./shop.html" class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm"><div class="cardSurface w-[50%] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
+                    <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div></a>
                 </div>
             `
         };

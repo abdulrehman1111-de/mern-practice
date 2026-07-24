@@ -72,20 +72,30 @@
         console.log(existingUsers);
 
         const signBtn = document.getElementById("signBtn");
+
         signBtn.addEventListener("click", ()=>{
 
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
-        const confirmPassword = document.getElementById("confirmPassword");
+        const welcome = document.querySelector("#welcome");
+        if(welcome) {
+            welcome.remove();
+        } 
+
+        const emailInput = document.getElementById("email");
+        const passwordInput = document.getElementById("password");
+        const confirmPasswordInput = document.getElementById("confirmPassword");
         const section10 = document.getElementById("section10Id");
+
+        let email = emailInput.value.trim();
+        let password = passwordInput.value.trim();
+        let confirmPassword = confirmPasswordInput.value.trim();
 
         let newUserObj;
 
-        if ((email.value === "") || (password.value === "") || (confirmPassword.value === "")){
+        if ((email === "") || (password === "") || (confirmPassword === "")){
             section10.insertAdjacentHTML("beforeend", 
                         `
                         <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
-                         <p class="text-xl lg:text-2xl fraunces">Please fill out the credentials!</p>
+                         <p class="text-xl lg:text-2xl fraunces">Please fill out the required information!</p>
                         </div>
                         `
                     )
@@ -93,9 +103,9 @@
         }
         else{
 
-            const existingEmail = false;
-            for (user of existingUsers){
-                if (user.email === email.value){
+            let existingEmail = false;
+            for (let user of existingUsers){
+                if (user.newEmail === email){
                     section10.insertAdjacentHTML("beforeend", 
                         `
                         <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
@@ -103,12 +113,12 @@
                         </div>
                         `
                     )
-                    existingEmail = false;
-                    break;
+                    existingEmail = true;
+                    return;
                 }
             }
 
-            if((password.value) !== (confirmPassword.value)){
+            if((password) !== (confirmPassword)){
                 section10.insertAdjacentHTML("beforeend", 
                         `
                         <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
@@ -120,8 +130,8 @@
             }
 
             newUserObj = {
-                email: email.value,
-                password: password.value
+                newEmail: email,
+                newPassword: password
             }
             existingUsers.push(newUserObj);
             localStorage.setItem("users", JSON.stringify(existingUsers));

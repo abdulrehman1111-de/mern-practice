@@ -65,16 +65,29 @@
             })
         });
 
-        const email = document.getElementById("email");
-        const password = document.getElementById("password");
         const section10 = document.getElementById("section10Id");
 
         let existingData = JSON.parse(localStorage.getItem("users"));
 
+        if(existingData === null){
+            existingData = [];
+        }
+
         let logBtn = document.getElementById("logBtn");
         logBtn.addEventListener("click", ()=>{
 
-            if((email.value === "") || (password.value === "")){
+            const welcome = document.querySelector("#welcome");
+            if(welcome) {
+                welcome.remove();
+            } 
+
+            const emailInput = document.getElementById("email");
+            const passwordInput = document.getElementById("password");
+            
+            let email = emailInput.value.trim();
+            let password = passwordInput.value.trim();
+
+            if((email === "") || (password === "")){
                 section10.insertAdjacentHTML("beforeend", `
                         <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
                          <p class="text-xl lg:text-2xl fraunces">Please fill out the credentials!</p>
@@ -82,25 +95,36 @@
                     `)
                 return;
             }
-            if(!existingData.some((user)=> user.email === email.value)){
+            
+            const matchedUser = existingData.find((user)=> user.newEmail === email);
+
+            if(!matchedUser){
                 section10.insertAdjacentHTML("beforeend", `
                         <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
                          <p class="text-xl lg:text-2xl fraunces">Email doesnot exist signup instead!</p>
                         </div>
                     `)
-                setTimeout(()=>{
-                    window.location.reload();
-                }, 4000);         
                 return;
             }
-            section10.insertAdjacentHTML("beforeend", `
+            
+            if(matchedUser.newPassword === password){
+                section10.insertAdjacentHTML("beforeend", `
                         <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
                          <p class="text-xl lg:text-2xl fraunces">User logged in successfully!</p>
                         </div>
                     `)
-            setTimeout(()=>{
-                window.location.reload();
-            }, 4000);        
+                setTimeout(()=>{
+                    window.location.reload();
+                }, 5000);
+                return;
+            }
+            else{
+                section10.insertAdjacentHTML("beforeend", `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+                         <p class="text-xl lg:text-2xl fraunces">Wrong password!</p>
+                        </div>
+                    `)
+            }
 
         });
         
