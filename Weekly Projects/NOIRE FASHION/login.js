@@ -115,7 +115,8 @@
                     `)
                 setTimeout(()=>{
                     window.location.reload();
-                }, 5000);
+                    window.location.href = "./index.html";
+                }, 4000);
                 return;
             }
             else{
@@ -127,6 +128,7 @@
             }
 
         });
+
         
 
 

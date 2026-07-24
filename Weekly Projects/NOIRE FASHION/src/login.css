@@ -191,3 +191,24 @@
     }
   }
     
+  /* ============================================================
+   RESPONSIVE PATCH — appended only. Nothing above is changed.
+   ============================================================ */
+@media (max-width: 1080px) {
+  #page-login nav {
+    justify-content: space-between !important;
+    gap: 1rem !important;
+    padding-right: 1rem;
+    flex-wrap: nowrap;
+  }
+
+  #page-login .section10,
+  #page-login .loginDiv,
+  #page-login .section8 {
+    height: auto !important;
+  }
+}
+
+#page-login {
+  overflow-x: hidden;
+}

@@ -145,11 +145,13 @@
         }
         setTimeout(()=>{
             window.location.reload();
-        }, 4000);
+            window.location.href = "./login.html"
+        }, 3000);
     })
 
     let data = JSON.parse(localStorage.getItem("users"));
     console.log(data);
+
 
     
 
