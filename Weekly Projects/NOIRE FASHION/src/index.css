@@ -377,26 +377,14 @@
     padding-right: 1rem;
     flex-wrap: nowrap;
   }
-
-  #page-index .section2,
-  #page-index .section4,
-  #page-index .section5,
-  #page-index .section6,
-  #page-index .section7,
   #page-index .section8 {
     height: auto !important;
-  }
-
-  #page-index .cardContainer,
-  #page-index .thirdImg {
-    height: auto !important;
+    min-height: 0;
   }
 }
-
 #page-index {
   overflow-x: hidden;
 }
-
 
 
 

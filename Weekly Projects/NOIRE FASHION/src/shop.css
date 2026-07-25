@@ -365,16 +365,11 @@
     padding-right: 1rem;
     flex-wrap: nowrap;
   }
-
-  #page-shop .section2,
-  #page-shop .section4,
-  #page-shop .section5,
-  #page-shop .section7,
   #page-shop .section8 {
     height: auto !important;
+    min-height: 0;
   }
 }
-
 #page-shop {
   overflow-x: hidden;
 }

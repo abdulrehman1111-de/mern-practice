@@ -31,10 +31,10 @@ function renderList(){
         targetUl.insertAdjacentHTML("beforeend", 
         
         `
-        <li id = todo-${listArr[i].id} class="flex items-center justify-between gap-3 bg-[#1C1A17] border border-[#3A362F] rounded-lg px-4 py-3 text-[#EDE7DC]">${listArr[i].value}
+        <li id = todo-${listArr[i].id} class="flex items-center justify-between gap-3 bg-[#1B1524] border border-[#332A42] rounded-lg px-4 py-3 text-[#EAE6F0]">${listArr[i].value}
         <span class="flex gap-2">
-        <button class = "del text-xs font-mono px-3 py-1 rounded-md border border-[#3A362F] text-[#D98C7E] hover:bg-[#2E1F1C] transition-colors">Delete</button>
-        <button class = "edit text-xs font-mono px-3 py-1 rounded-md border border-[#3A362F] text-[#D4A15F] hover:bg-[#28251F] transition-colors">Edit</button>
+        <button class = "del text-xs font-mono px-3 py-1 rounded-md border border-[#332A42] text-[#FF6E8C] hover:bg-[#2A1A22] transition-colors">Delete</button>
+        <button class = "edit text-xs font-mono px-3 py-1 rounded-md border border-[#332A42] text-[#C6FF3D] hover:bg-[#212B14] transition-colors">Edit</button>
         </span>
         </li>
         `

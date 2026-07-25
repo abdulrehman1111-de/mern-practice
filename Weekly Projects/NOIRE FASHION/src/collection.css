@@ -374,16 +374,11 @@
     padding-right: 1rem;
     flex-wrap: nowrap;
   }
-
-  #page-collection .section2,
-  #page-collection .section4,
-  #page-collection .section5,
-  #page-collection .section7,
   #page-collection .section8 {
     height: auto !important;
+    min-height: 0;
   }
 }
-
 #page-collection {
   overflow-x: hidden;
 }
