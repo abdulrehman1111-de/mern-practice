@@ -364,27 +364,7 @@
     }
   }
     
-  /* ============================================================
-   RESPONSIVE PATCH — appended only. Nothing above is changed.
-   Fixes clipping/footer-disappearing at in-between widths
-   between 375px and 1080px by letting fixed-height sections
-   grow to fit their real content, and fixing nav overflow.
-   ============================================================ */
-@media (max-width: 1080px) {
-  #page-index nav {
-    justify-content: space-between !important;
-    gap: 1rem !important;
-    padding-right: 1rem;
-    flex-wrap: nowrap;
-  }
-  #page-index .section8 {
-    height: auto !important;
-    min-height: 0;
-  }
-}
-#page-index {
-  overflow-x: hidden;
-}
+ 
 
 
 
