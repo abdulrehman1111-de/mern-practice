@@ -22,7 +22,7 @@ function checkAccountBalance(amount, callback){
     const requiredAmount = Number.parseInt(prompt("Enter the amount you want to deduct: "));
     console.log("Deducting the required amount...");
     setTimeout(() => {
-        if (requiredAmount > 100){
+        if (requiredAmount > amount){
             console.log("Amount greater than current amount!");
             return;
         }
@@ -52,14 +52,14 @@ function printReceipt(status){
 getPin(function(result){
     authenticatePin(result, function(step1Result){
 
-    checkAccountBalance(step1Result, function(step2Result){
+        checkAccountBalance(step1Result, function(step2Result){
 
-        withdrawCash(step2Result, function(step3Result){
+            withdrawCash(step2Result, function(step3Result){
 
-            printReceipt(step3Result);
+                printReceipt(step3Result);
+            });
         });
     });
-});
 });
 
 

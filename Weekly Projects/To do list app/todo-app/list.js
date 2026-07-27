@@ -10,6 +10,11 @@ addBtn.addEventListener("click", ()=>{
     const inputTxt = document.getElementById("inputTxt");
     const text = inputTxt.value.trim();
 
+    if (text.length === 0){
+        alert("Input field cannot be empty!");
+        return;
+    }
+
     const listObj = {
         id: crypto.randomUUID(),
         value: text

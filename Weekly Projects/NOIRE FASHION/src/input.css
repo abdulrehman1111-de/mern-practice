@@ -2,6 +2,10 @@
 
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-lg: 75rem; /* 1200px — was default 1024px */
+}
+
 :root {
     --bg: #F1EDE7;            /* Page background */
     --bg-alt: #F3EFE9; /* Section alt background (hero, card image placeholder bg) */
