@@ -1,0 +1,14 @@
+import TestimonialsCard from "./TestimonialsCard";
+
+function Testimonials(){
+    return(
+        <div className="border-1 border-neutral-800 min-h-75 py-5">
+            <div className="w-full flex justify-center items-center min-h-25">
+                <p className="text-2xl font-semibold">Testimonials</p>
+            </div>
+            <TestimonialsCard/>
+        </div>
+    )
+}
+
+export default Testimonials;
