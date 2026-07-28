@@ -6,10 +6,78 @@
 .inter{
   font-family: "Inter", sans-serif;;
 }
+.firstReel{
+        animation: reel 30s linear infinite;
+        /* mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); */
 
-
-
-
+}
+@keyframes reel {
+        0%{
+            transform: translateX(0%);
+        }
+        25%{
+            transform: translateX(-50%);
+        }
+        50%{
+            transform: translateX(0%);
+        }
+        75%{
+            transform: translateX(50%);
+        }
+        100%{
+            transform: translateX(0%);
+        }
+    }
+    
+.heroCard{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-redmond.jpg');
+    filter: grayscale(20%);
+} 
+.heroCard1{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-roadtrippers.jpg');
+    filter: grayscale(20%);
+}  
+.heroCard2{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-pivotbio.jpg');
+    filter: grayscale(20%);
+} 
+.heroCard3{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-aviv.jpg');
+    filter: grayscale(20%);
+}    
+.heroCard4{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-amesto.jpg');
+    filter: grayscale(20%);
+}  
+.heroCard5{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-aprio.jpg');
+    filter: grayscale(20%);
+} 
+.heroCard6{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-buffer.jpg');
+    filter: grayscale(20%);
+} 
+.heroCard7{
+  background-image: 
+    linear-gradient(rgba(10, 30, 20, 0.75), rgba(10, 30, 20, 0.85)),
+    url('https://d2k5nsl2zxldvw.cloudfront.net/images/homepage/case-studies/image-precon.jpg');
+    filter: grayscale(20%);
+}
 
 
 
