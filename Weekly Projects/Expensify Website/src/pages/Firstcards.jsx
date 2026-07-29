@@ -22,11 +22,11 @@ const Firstcards = () => {
         { icon: iconGlobalReimbursements, title: "Global reimbursements", desc: "Reimburse employees or independent contractors anywhere in the world, in their local currency." },
         { icon: iconVirtualCards, title: "Virtual cards", desc: "Instantly issue unlimited virtual cards for employees, vendors, or projects. Free with every Expensify Card." },
         { icon: iconExpenseReports, title: "Expense reports", desc: "Submit, review, and approve expenses in seconds. Expensify handles the matching and policy checks." },
-        { icon: iconAiExpenses, title: "AI-powered expenses", desc: "Automate expense categorization, flag policy violations, enforce rules, and reduce manual errors with Expensify's Concierge AI." },
+        { icon: iconAiExpenses, title: "AI-powered expenses", desc: "Automate expense categorization, flag policy violations, enforce rules, and reduce manual errors." },
     ]
 
     return (
-        <div className='w-full h-[300vh] bg-[#0A1F15] text-white flex flex-col'>
+        <div className='w-full h-[230vh] bg-[#0A1F15] text-white flex flex-col'>
 
             <div className='w-full h-[25vh] flex justify-center items-center'>
                 <p className='text-4xl fraunces font-semibold'>Features</p>
@@ -39,7 +39,7 @@ const Firstcards = () => {
             </div>
 
             <div className='w-full h-[25vh] flex justify-center items-center'>
-                <div className='bg-[#173B2C] w-[14%] h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>See All Features</p></div>
+                <div className='bg-[#173B2C] w-[14%] hover:bg-gray-700  transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>See All Features</p></div>
             </div>
 
             <div className='pl-15 pr-15'>

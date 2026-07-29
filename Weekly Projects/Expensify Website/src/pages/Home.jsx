@@ -11,6 +11,17 @@ import {
     SiZoom,
 } from "react-icons/si"
 import Firstcards from './Firstcards';
+import Transparentbtn from '../components/Transparentbtn';
+import Darkcards from '../components/Darkcards';
+import iconReceiptScanning from '../assets/icon-receipt-scanning.svg'
+import iconExpenseReports from '../assets/icon-expense-reports.svg'
+import iconAiExpenses from '../assets/icon-ai-expenses.svg'
+import Testcards from '../components/Testcards';
+import badgeLeader from '../assets/badge-leader.png'
+import badgeTopRated from '../assets/badge-top-rated.png'
+import badgeShortlist from '../assets/badge-shortlist.png'
+import screenshot122404 from '../assets/screenshot-122404.png'
+import Footer from './Footer';
 
 const Home = () => {
     return (
@@ -50,8 +61,8 @@ const Home = () => {
                         </div>
 
                         <div className='bg-white w-[90%] h-15 flex justify-center items-center rounded-4xl'>
-                            <p className='text-gray-600 ml-5'>Enter your Email or Phone number</p>
-                            <div className='bg-[#2FE38A] ml-auto mr-1 w-[40%] h-13 rounded-4xl flex justify-center items-center text-center'>
+                            <input className='w-full h-full rounded-full pl-5 text-gray-600' type="text" name="" id="" placeholder='Enter your email or phone number'/>
+                            <div className='bg-[#2FE38A] hover:bg-green-400 z-100 ml-auto mr-1 w-[40%] h-13 rounded-4xl flex justify-center items-center text-center'>
                                 <p className='font-semibold'>Get started for free</p>
                             </div>
                         </div>
@@ -85,7 +96,7 @@ const Home = () => {
                     <p className='text-2xl text-white'>Join 15 million+ members who trust Expensify</p>
                 </div>
                 <div className='firstReel w-full h-23 text-nowrap flex gap-30 shrink-0 justify-center items-center'>
-                    
+
                     <div className='flex gap-1'><p className='text-white text-2xl'>Github</p><SiGithub size={32} color="white" /></div>
                     <div className='flex gap-1'><p className='text-white text-2xl'>Pintrest</p><SiPinterest size={32} color="white" /></div>
                     <div className='flex gap-1'><p className='text-white text-2xl'>Xero</p><SiXero size={32} color="white" /></div>
@@ -107,7 +118,83 @@ const Home = () => {
                 </div>
             </div>
 
-            <Firstcards/>
+            <Firstcards />
+
+            <div className='w-full h-[113vh] bg-[#07271F] text-white pl-15 pr-15 flex flex-col justify-center items-center'>
+                <div className='w-full h-[25vh] flex justify-center items-center'>
+                    <p className='text-4xl fraunces font-semibold'>Try Expensify free for 30 days</p>
+                </div>
+                <div className='w-full h-[15vh] flex justify-center items-center gap-5 pr-8 pl-8'>
+                    <Transparentbtn text="Employees" />
+                    <Transparentbtn text="Business Owners" />
+                    <Transparentbtn text="Finance/Accounting" />
+                </div>
+                <div className='w-full h-[50vh] flex justify-center items-center gap-7'>
+                    <Darkcards icon={iconReceiptScanning} title="1. Scan receipts" desc="Scan receipts via the mobile app, drag-and-drop, forwarding to receipts@expensify.com, or texting 47777." />
+                    <Darkcards icon={iconExpenseReports} title="2. Submit reports" desc="Concierge AI automatically categorizes and submits your expenses for reimbursement." />
+                    <Darkcards icon={iconAiExpenses} title="3. Get reimbursed" desc="Get paid back directly to your bank account in as little as one business day." />
+                </div>
+                <div className='bg-[#2FE38A] hover:bg-green-400 mr-1 w-auto p-5 h-13 rounded-4xl flex justify-center items-center text-center'>
+                    <p className='font-semibold'>Get started for free</p>
+                </div>
+            </div>
+
+            <div className='w-full h-[100vh] bg-[#1A3D32] pr-30 pl-30'>
+                <div className='w-full h-[25vh] flex justify-center items-center text-white'>
+                    <p className='text-4xl fraunces font-semibold'>Highly rated, easy to use</p>
+                </div>
+
+                <div className='w-full h-[55vh] flex justify-center items-center gap-7'>
+                    <Testcards title="“The easiest expense tool I've ever used.”" desc="“It is very very easy, as soon as you get a receipt you can scan it, the AI will capture all relevant information and it is very little interaction to get to the final sumbmission.”" name="Luis F." icon="https://i.pinimg.com/originals/e3/7e/0e/e37e0e25686c2139b281a57a5b4906f2.jpg" />
+                    <Testcards title="“Great Program!”" desc="“Expensify has a great UI interface and is very intuitive to use. I particularly like the funcitonality of taking a picture of a receipt and having it uploaded to my account. I also like that I can send an email.”" name="Kirsten H." icon="https://i.pinimg.com/originals/f4/9d/58/f49d58b8c6a678be1e4ff288b98cc75b.jpg" />
+                    <Testcards title="“Simple, Straight-forward Expenses!”" desc="“I've never met someone that enjoys doing their expenses. Following business trips or in the office, take time out of their day/week to sort through, and enter receipts yes normally Wow." name="Weston M." icon="https://i.pinimg.com/originals/e2/40/74/e240745f1087b13729a267c91ca62760.png" />
+                </div>
+
+                <div className='w-full h-20 flex justify-around items-center pl-15 pr-15 text-white pt-15'>
+                    <div className='flex gap-2 w-auto pr-10 mr-auto'>
+                        <img src={g2Logo} alt="G2" className="w-8 h-8 relative bottom-1 ml-auto" />
+                        <div className="flex text-yellow-400 relative top-1 text-xl">
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                        </div>
+                        <p className='translate-y-0.5'>4,200+ <b>5-star</b> reviews</p>
+                    </div>
+                    <div className='flex gap-8 ml-auto'>
+                        <img src={badgeShortlist} alt="Leader award 2025" className="w-18 h-auto" />
+                        <img src={badgeLeader} alt="Leader award 2025" className="w-18 h-auto" />
+                        <img src={badgeTopRated} alt="Leader award 2025" className="w-18 h-auto" />
+                    </div>
+                </div>
+            </div>
+
+            <div className='w-full h-[80vh]'>
+                <img className='w-full' src={screenshot122404} alt="" />
+            </div>
+
+            <div className='w-full h-[55vh] bg-[#1A3D32] flex justify-center items-center'>
+                <div className='w-[50%] h-[50vh] pl-15 pr-15 text-white flex flex-col gap-5 justify-center items-center'>
+                    <p className='fraunces text-4xl'>Ready to simplify your receipt and expense management process?</p>
+                    <p className='fraunces'>Enter your email or phone number to make your company's money go further with Expensify's time-saving spend management tools.</p>
+                </div>
+                <div className='w-[50%] h-[50vh] flex justify-center items-center gap-13 flex-col pl-10 pr-10'>
+                    <div className='bg-white w-[90%] h-15 flex justify-center items-center rounded-4xl'>
+                        <input className='w-[95%] h-full rounded-full pl-5 text-gray-600' type="text" name="" id="" placeholder='Enter your email or phone number'/>
+                        <div className='bg-[#2FE38A] text-white hover:bg-green-400 z-100 ml-auto mr-1 w-[45%] h-13 rounded-4xl flex justify-center items-center text-center'>
+                                <p className='font-semibold'>Get started for free</p>
+                            </div>
+                    </div>
+
+                    <div className='flex gap-3 items-center relative bottom-3 mr-auto relative left-8'>
+                        <span className='text-white'>Or get started with</span>
+                        <Googlebtn />
+                    </div>
+                </div>
+            </div>
+
+            <Footer/>
         </>
     )
 }
