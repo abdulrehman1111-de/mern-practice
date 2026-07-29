@@ -100,7 +100,7 @@ const products = [
         function createProductCard(product){
             return `
                 <div class="mainCards pb-10">
-                    <div class="h-90 sm:h-110 md:h-103 bg-cover bg-center flex flex-row gap-45 sm:gap-110 md:gap-53 lg:gap-47 pt-4 pl-4 sm:pl-7 lg:pl-2" style = "background-image: url('${product.image}')">
+                    <div class="h-90 sm:h-110 md:h-103 bg-cover bg-center flex flex-row gap-60 sm:gap-110 md:gap-53 lg:gap-47 pt-4 pl-4 sm:pl-7 lg:pl-2" style = "background-image: url('${product.image}')">
                         <div class="bg-[#C1121F] text-[#FFFFFF] jetBrains h-8 w-12 z-1 flex justify-center items-center text-sm">${product.badge}</div>
                         <div class="jetBrains text-[#ffffff]">${product.number}</div>
                     </div>
@@ -139,7 +139,7 @@ const products = [
             else{
                 document.body.insertAdjacentHTML("beforeend", 
                 `
-            <div class="menu hide fixed w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
+            <div class="menu hide fixed w-full h-200 z-400 top-0 bg-black absolute flex flex-col gap-3">
                 <div id="closeMenu" class="ham flex flex-col gap-2 relative top-5 left-5 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>

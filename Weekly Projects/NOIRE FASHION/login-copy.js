@@ -1,21 +1,21 @@
-        const darkActivator = document.getElementById("darkActivator");
-        const html = document.getElementById("dark");
-        
-        darkActivator.addEventListener("click", ()=>{
-        html.classList.toggle("dark");
-        });
+const darkActivator = document.getElementById("darkActivator");
+const html = document.getElementById("dark");
 
-        let menu = document.getElementById("ham");
-        menu.addEventListener("click", ()=>{
+darkActivator.addEventListener("click", () => {
+    html.classList.toggle("dark");
+});
 
-            let existingMenu = document.querySelector(".menu");
-            if (existingMenu){
-                existingMenu.classList.add("closing");
-            }
-            else{
-                document.body.insertAdjacentHTML("beforeend", 
-                `
-            <div class="menu hide fixed w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
+let menu = document.getElementById("ham");
+menu.addEventListener("click", () => {
+
+    let existingMenu = document.querySelector(".menu");
+    if (existingMenu) {
+        existingMenu.classList.add("closing");
+    }
+    else {
+        document.body.insertAdjacentHTML("beforeend",
+            `
+            <div class="menu hide fixed w-full h-200 z-400 top-0 bg-black absolute flex flex-col gap-3">
                 <div id="closeMenu" class="ham flex flex-col gap-2 relative top-5 left-5 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
@@ -29,133 +29,158 @@
                 </ul>
             </div>
             `
-            )
-            document.body.style.overflow = "hidden";
-            document.body.style.overflow = "hidden";
-            setTimeout(()=>{
-                document.querySelector(".menu")?.classList.remove("hide");
-            }, 300);
-            }
+        )
+        document.body.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
+            document.querySelector(".menu")?.classList.remove("hide");
+        }, 300);
+    }
 
 
-        });
-        
-        document.addEventListener("click", (e) => {
-            if (e.target.closest("#closeMenu")) {
+});
 
-                const menu = document.querySelector(".menu");
-                menu.classList.add("hide");
+document.addEventListener("click", (e) => {
+    if (e.target.closest("#closeMenu")) {
 
-                setTimeout(()=>{
-                    document.querySelector(".menu")?.remove();
-                    document.body.style.overflow = "";
-                }, 300);
-            }
-        });
+        const menu = document.querySelector(".menu");
+        menu.classList.add("hide");
 
-        let radio = document.querySelectorAll(".radio");
-        radio.forEach((item)=>{
-            item.addEventListener("click", ()=>{
-                radio.forEach((r)=>{
-                    r.style.backgroundColor = "";
-                    r.style.color = "";
-                })
-                item.style.backgroundColor = "#F1EDE7";
-                item.style.color = "#0B0B0D";
-            })
+        setTimeout(() => {
+            document.querySelector(".menu")?.remove();
+            document.body.style.overflow = "";
+        }, 300);
+    }
+});
+
+let radio = document.querySelectorAll(".radio");
+radio.forEach((item) => {
+    item.addEventListener("click", () => {
+        radio.forEach((r) => {
+            r.style.backgroundColor = "";
+            r.style.color = "";
         })
+        item.style.backgroundColor = "#F1EDE7";
+        item.style.color = "#0B0B0D";
+    })
+})
 
-        let existingUsers = JSON.parse(localStorage.getItem("users"));
-        if(existingUsers === null){
-            existingUsers = [];
-        }
-        console.log(existingUsers);
+let existingUsers = JSON.parse(localStorage.getItem("users"));
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-        const signBtn = document.getElementById("signBtn");
+if (existingUsers === null) {
+    existingUsers = [];
+}
+console.log(existingUsers);
 
-        signBtn.addEventListener("click", ()=>{
+const signBtn = document.getElementById("signBtn");
 
-        const welcome = document.querySelector("#welcome");
-        if(welcome) {
-            welcome.remove();
-        } 
+signBtn.addEventListener("click", () => {
 
-        const emailInput = document.getElementById("email");
-        const passwordInput = document.getElementById("password");
-        const confirmPasswordInput = document.getElementById("confirmPassword");
-        const section10 = document.getElementById("section10Id");
+    const welcome = document.querySelector("#welcome");
+    if (welcome) {
+        welcome.remove();
+    }
 
-        let email = emailInput.value.trim();
-        let password = passwordInput.value.trim();
-        let confirmPassword = confirmPasswordInput.value.trim();
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    const section10 = document.getElementById("section10Id");
+    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
-        let newUserObj;
+    let email = emailInput.value.trim();
+    let password = passwordInput.value.trim();
+    let confirmPassword = confirmPasswordInput.value.trim();
 
-        if ((email === "") || (password === "") || (confirmPassword === "")){
-            section10.insertAdjacentHTML("beforeend", 
-                        `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+    let newUserObj;
+
+    if (!emailPattern.test(email)) {
+        section10.insertAdjacentHTML("beforeend", `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
+                         <p class="text-xl lg:text-2xl fraunces">Please enter a valid email!</p>
+                        </div>
+                    `)
+        return;
+    }
+
+    if ((email === "") || (password === "") || (confirmPassword === "")) {
+        section10.insertAdjacentHTML("beforeend",
+            `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">Please fill out the required information!</p>
                         </div>
                         `
-                    )
-            return;
-        }
-        else{
+        )
+        return;
+    }
 
-            let existingEmail = false;
-            for (let user of existingUsers){
-                if (user.newEmail === email){
-                    section10.insertAdjacentHTML("beforeend", 
-                        `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+    else {
+
+        let existingEmail = false;
+        for (let user of existingUsers) {
+            if (user.newEmail === email) {
+                section10.insertAdjacentHTML("beforeend",
+                    `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">Email already exists!</p>
                         </div>
                         `
-                    )
-                    existingEmail = true;
-                    return;
-                }
+                )
+                existingEmail = true;
+                return;
             }
+        }
 
-            if((password) !== (confirmPassword)){
-                section10.insertAdjacentHTML("beforeend", 
-                        `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+
+        if ((password) !== (confirmPassword)) {
+            section10.insertAdjacentHTML("beforeend",
+                `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">Passwords dont match!</p>
                         </div>
                         `
-                    )
-                return;
-            }
+            )
+            return;
+        }
 
-            newUserObj = {
-                newEmail: email,
-                newPassword: password
-            }
-            existingUsers.push(newUserObj);
-            localStorage.setItem("users", JSON.stringify(existingUsers));
-            section10.insertAdjacentHTML("beforeend", 
+        if ((!passwordPattern.test(password)) || (!passwordPattern.test(confirmPassword))) {
+            section10.insertAdjacentHTML("beforeend",
+                `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
+                         <p class="text-xl lg:text-2xl fraunces">Password must be 8+ chars with upper, lower, number & symbol!</p>
+                        </div>
                         `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+            )
+            return;
+        }
+
+        newUserObj = {
+            newEmail: email,
+            newPassword: password
+        }
+        existingUsers.push(newUserObj);
+        localStorage.setItem("users", JSON.stringify(existingUsers));
+        section10.insertAdjacentHTML("beforeend",
+            `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">SignUp successfull!</p>
                         </div>
                         `
-                    )
-        }
-        setTimeout(()=>{
-            window.location.reload();
-            window.location.href = "./login.html"
-        }, 3000);
-    })
+        )
+    }
+    setTimeout(() => {
+        window.location.reload();
+        window.location.href = "./login.html"
+    }, 3000);
+})
 
-    let data = JSON.parse(localStorage.getItem("users"));
-    console.log(data);
+let data = JSON.parse(localStorage.getItem("users"));
+console.log(data);
 
 
-    
 
-        
+
+
 
 
 

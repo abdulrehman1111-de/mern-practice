@@ -15,7 +15,7 @@
             else{
                 document.body.insertAdjacentHTML("beforeend", 
                 `
-            <div class="menu hide fixed w-full h-150 z-100 top-0 bg-black absolute flex flex-col gap-3">
+            <div class="menu hide fixed w-full h-200 z-400 top-0 bg-black absolute flex flex-col gap-3">
                 <div id="closeMenu" class="ham flex flex-col gap-2 relative top-5 left-5 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
@@ -66,6 +66,7 @@
         });
 
         const section10 = document.getElementById("section10Id");
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         let existingData = JSON.parse(localStorage.getItem("users"));
 
@@ -89,8 +90,17 @@
 
             if((email === "") || (password === "")){
                 section10.insertAdjacentHTML("beforeend", `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">Please fill out the credentials!</p>
+                        </div>
+                    `)
+                return;
+            }
+
+            if(!emailPattern.test(email)){
+                section10.insertAdjacentHTML("beforeend", `
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
+                         <p class="text-xl lg:text-2xl fraunces">Please enter a valid email!</p>
                         </div>
                     `)
                 return;
@@ -100,7 +110,7 @@
 
             if(!matchedUser){
                 section10.insertAdjacentHTML("beforeend", `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">Email doesnot exist signup instead!</p>
                         </div>
                     `)
@@ -109,7 +119,7 @@
             
             if(matchedUser.newPassword === password){
                 section10.insertAdjacentHTML("beforeend", `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">User logged in successfully!</p>
                         </div>
                     `)
@@ -121,7 +131,7 @@
             }
             else{
                 section10.insertAdjacentHTML("beforeend", `
-                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-100 top-10 translate-x-2 flex justify-center items-center">
+                        <div id= "welcome" class="welcome w-[80%] h-15 bg-linear-to-r from-[#C1121F] to-[#131114] text-[#F1EDE7] fixed z-500 top-10 translate-x-2 flex justify-center items-center text-center">
                          <p class="text-xl lg:text-2xl fraunces">Wrong password!</p>
                         </div>
                     `)
