@@ -11,7 +11,7 @@ const Swipercards = ({ logo, para, span }) => {
                     <div className='flex justify-center font-semibold fraunces'>
                         <p className='text-white text-4xl'>{para} <span className='text-green-600'>{span}</span></p>
                     </div>
-                    <div className='bg-[#1A3D32] w-[35%] h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold text-white'>Read more</p></div>
+                    <div className='bg-[#1A3D32] hover:bg-green-900 w-[35%] h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold text-white'>Read more</p></div>
                 </div>
             </div>
         </>

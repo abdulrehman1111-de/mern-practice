@@ -147,7 +147,7 @@ const Home = () => {
                 <div className='w-full h-[55vh] flex justify-center items-center gap-7'>
                     <Testcards title="“The easiest expense tool I've ever used.”" desc="“It is very very easy, as soon as you get a receipt you can scan it, the AI will capture all relevant information and it is very little interaction to get to the final sumbmission.”" name="Luis F." icon="https://i.pinimg.com/originals/e3/7e/0e/e37e0e25686c2139b281a57a5b4906f2.jpg" />
                     <Testcards title="“Great Program!”" desc="“Expensify has a great UI interface and is very intuitive to use. I particularly like the funcitonality of taking a picture of a receipt and having it uploaded to my account. I also like that I can send an email.”" name="Kirsten H." icon="https://i.pinimg.com/originals/f4/9d/58/f49d58b8c6a678be1e4ff288b98cc75b.jpg" />
-                    <Testcards title="“Simple, Straight-forward Expenses!”" desc="“I've never met someone that enjoys doing their expenses. Following business trips or in the office, take time out of their day/week to sort through, and enter receipts yes normally Wow." name="Weston M." icon="https://i.pinimg.com/originals/e2/40/74/e240745f1087b13729a267c91ca62760.png" />
+                    <Testcards title="“Simple, Straight-forward Expenses!”" desc="“I've never met someone that enjoys doing their expenses. Following business trips or in the office, take time out of their day/week to sort through, and enter receipts." name="Weston M." icon="https://img.magnific.com/free-photo/portrait-white-man-isolated_53876-40306.jpg" />
                 </div>
 
                 <div className='w-full h-20 flex justify-around items-center pl-15 pr-15 text-white pt-15'>
