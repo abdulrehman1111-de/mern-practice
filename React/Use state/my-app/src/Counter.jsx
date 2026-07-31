@@ -39,7 +39,6 @@ const Counter = () => {
                 }} className='px-3 py-1.5 text-sm font-medium rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:bg-slate-700 active:scale-95 transition-all'>Step 10</button>
             </div>
 
-            {/* Action Buttons (+ / - / Reset) - 100% Static Classes */}
             <div className='flex items-center justify-between gap-3 w-full pt-2'>
                 <button onClick={() => {
                     if (count - step < 0) {
