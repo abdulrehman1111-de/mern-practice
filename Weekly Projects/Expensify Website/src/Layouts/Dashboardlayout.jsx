@@ -6,7 +6,7 @@ import { CircleUserRound } from 'lucide-react'
 
 const Dashboardlayout = () => {
   return (
-    <div className='h-[100vh] w-full flex fraunces'>
+    <div className='h-screen w-full flex fraunces'>
       <div className='bg-[#061B09] h-screen w-20 flex flex-col gap-3 text-white items-center text-white border-r border-r-gray-700'>
 
         <div className='bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtEE1AQ0rbwqrTVQKkhoFZXXxnR6TI32bADoXmwtdSwA&s)] bg-center bg-cover w-11 h-11 rounded-full mt-5 p-3 mb-2'>
