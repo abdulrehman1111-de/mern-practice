@@ -16,12 +16,17 @@ function App() {
 
   return (
     <>
-      {/* <Nav />
-      <Home /> */}
 
       <Routes>
 
-        <Route path="/" element={<Dashboardlayout />}>
+        <Route path="/" element={
+          <>
+          <Nav/>
+          <Home/>
+          </>
+        }/>
+
+        <Route path="/dashboard" element={<Dashboardlayout />}>
           <Route index element={<Dashboardhome />} />
           <Route path="inbox" element={<Inbox />} />
           <Route path="spend" element={<Spend />} />

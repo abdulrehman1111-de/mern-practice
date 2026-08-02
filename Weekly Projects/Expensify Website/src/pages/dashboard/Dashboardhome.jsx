@@ -7,7 +7,7 @@ import Dashboardhomepic from '../../assets/Dashboardhomepic.png'
 
 const Dashboardhome = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-full overflow-y-auto'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
       <Accountnav heading="Home" />
 
       <div className='w-[25%] h-15 flex gap-0'>

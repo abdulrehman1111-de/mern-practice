@@ -16,18 +16,28 @@ const Dashboardlayout = () => {
     const sidePage = document.getElementById("sidePage");
 
     sideBtn.addEventListener("click", () => {
+
+      const grayPages = document.querySelectorAll(".graySelect");
+      
       if (sidePage.classList.contains("sidebar")) {
         sidePage.classList.remove("sidebar")
+        grayPages.forEach((item)=>{
+          item.classList.remove("grayscale");
+        })
+        
       }
       else {
         sidePage.classList.add("sidebar");
+        grayPages.forEach((item)=>{
+          item.classList.add("grayscale");
+        })
       }
     })
   }, [])
 
   return (
     <div className='h-screen w-full flex fraunces relative overflow-x-hidden'>
-      <div className='bg-[#061B09] h-screen w-20 flex flex-col gap-3 text-white items-center text-white border-r border-r-gray-700'>
+      <div className='bg-[#061B09] graySelect h-screen w-20 flex flex-col gap-3 text-white items-center text-white border-r border-r-gray-700'>
 
         <div className='bg-[url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtEE1AQ0rbwqrTVQKkhoFZXXxnR6TI32bADoXmwtdSwA&s)] bg-center bg-cover w-11 h-11 rounded-full mt-5 p-3 mb-2'>
         </div>

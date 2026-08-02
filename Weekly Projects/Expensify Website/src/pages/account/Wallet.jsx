@@ -5,7 +5,7 @@ import Walletpic from '../../assets/Walletpic.png'
 
 const Wallet = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-full overflow-y-auto'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
       <Accountnav icon={Mail} heading="Wallet" />
 
       <div className='h-[65vh] m-5 w-[75%] bg-[#072419] rounded-2xl'>

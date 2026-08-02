@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Card from '../components/Card'
 import Greenbtn from '../components/Greenbtn'
 import { FaStar } from "react-icons/fa";
@@ -22,12 +22,42 @@ import badgeTopRated from '../assets/badge-top-rated.png'
 import badgeShortlist from '../assets/badge-shortlist.png'
 import screenshot122404 from '../assets/screenshot-122404.png'
 import Footer from './Footer';
+import { Link } from 'react-router-dom';
+import Signin from '../components/Signin';
 
 const Home = () => {
+
+    useEffect(() => {
+        const signInBtn = document.getElementById("signInBtn");
+        const crossBtn = document.getElementById("crossBtn");
+        const signInDiv = document.getElementById("signInDiv");
+        const homeDiv = document.querySelectorAll(".homeDiv");
+
+        signInBtn.addEventListener("click", () => {
+            signInDiv.classList.remove("none");
+            homeDiv.forEach((item)=>{
+                item.classList.add("grayscale");
+            })
+            document.body.classList.add("overflow");
+        })
+
+        crossBtn.addEventListener("click", () => {
+            signInDiv.classList.add("none");
+            homeDiv.forEach((item)=>{
+                item.classList.remove("grayscale");
+            })
+            document.body.classList.remove("overflow");
+        })
+    }, [])
+
+
+
     return (
         <>
             <div className='bg-[#0B2E1F] text-white h-[130vh] relative pl-10 pt-5'>
-                <svg className="absolute inset-0 w-full h-full" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice">
+
+                <div><Signin /></div>
+                <svg className="homeDiv absolute homeDiv inset-0 w-full h-full" viewBox="0 0 680 400" preserveAspectRatio="xMidYMid slice">
                     <g fill="none" stroke="#15402C" strokeWidth="1.5">
                         <path d="M -20 60 C 100 20, 200 100, 320 60 S 560 20, 700 70" />
                         <path d="M -20 90 C 100 50, 200 130, 320 90 S 560 50, 700 100" />
@@ -40,8 +70,8 @@ const Home = () => {
                     </g>
                 </svg>
 
-                <div className='relative h-[127vh] flex'>
-                    <div className='h-[127vh] w-[60%] flex flex-col gap-10'>
+                <div className='homeDiv relative h-[127vh] flex'>
+                    <div className='homeDiv h-[127vh] w-[60%] flex flex-col gap-10'>
                         <p className='text-3xl font-bold inter'>Expensify</p>
                         <p className='text-6xl fraunces w-[83%]'>The <span className='text-[#2FE38A]'><i>easiest</i></span> way to do your expenses</p>
 
@@ -61,7 +91,7 @@ const Home = () => {
                         </div>
 
                         <div className='bg-white w-[90%] h-15 flex justify-center items-center rounded-4xl'>
-                            <input className='w-full h-full rounded-full pl-5 text-gray-600' type="text" name="" id="" placeholder='Enter your email or phone number'/>
+                            <input className='w-full h-full rounded-full pl-5 text-gray-600' type="text" name="" id="" placeholder='Enter your email or phone number' />
                             <div className='bg-[#2FE38A] hover:bg-green-400 z-100 ml-auto mr-1 w-[40%] h-13 rounded-4xl flex justify-center items-center text-center'>
                                 <p className='font-semibold'>Get started for free</p>
                             </div>
@@ -72,8 +102,11 @@ const Home = () => {
                             <Googlebtn />
                         </div>
                     </div>
-                    <div className='h-[130vh] w-[50%] flex flex-col space-y-18'>
-                        <Greenbtn />
+                    <div className='homeDiv h-[130vh] w-[50%] flex flex-col space-y-18'>
+
+                        <div id='signInBtn'>
+                            <Greenbtn />
+                        </div>
 
                         <div className='flex gap-2 w-auto pr-10'>
                             <img src={g2Logo} alt="G2" className="w-8 h-8 relative bottom-1 ml-auto" />
@@ -91,7 +124,7 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <div className='w-full h-40 bg-green-900 flex-nowrap overflow-hidden justify-start'>
+            <div className='homeDiv w-full h-40 bg-green-900 flex-nowrap overflow-hidden justify-start'>
                 <div className='w-full h-17 flex justify-center items-end text-center fraunces'>
                     <p className='text-2xl text-white'>Join 15 million+ members who trust Expensify</p>
                 </div>
@@ -120,7 +153,7 @@ const Home = () => {
 
             <Firstcards />
 
-            <div className='w-full h-[113vh] bg-[#07271F] text-white pl-15 pr-15 flex flex-col justify-center items-center'>
+            <div className='homeDiv w-full h-[113vh] bg-[#07271F] text-white pl-15 pr-15 flex flex-col justify-center items-center'>
                 <div className='w-full h-[25vh] flex justify-center items-center'>
                     <p className='text-4xl fraunces font-semibold'>Try Expensify free for 30 days</p>
                 </div>
@@ -181,10 +214,10 @@ const Home = () => {
                 </div>
                 <div className='w-[50%] h-[50vh] flex justify-center items-center gap-13 flex-col pl-10 pr-10'>
                     <div className='bg-white w-[90%] h-15 flex justify-center items-center rounded-4xl'>
-                        <input className='w-[95%] h-full rounded-full pl-5 text-gray-600' type="text" name="" id="" placeholder='Enter your email or phone number'/>
+                        <input className='w-[95%] h-full rounded-full pl-5 text-gray-600' type="text" name="" id="" placeholder='Enter your email or phone number' />
                         <div className='bg-[#2FE38A] text-white hover:bg-green-400 z-100 ml-auto mr-1 w-[45%] h-13 rounded-4xl flex justify-center items-center text-center'>
-                                <p className='font-semibold'>Get started for free</p>
-                            </div>
+                            <p className='font-semibold'>Get started for free</p>
+                        </div>
                     </div>
 
                     <div className='flex gap-3 items-center relative bottom-3 mr-auto relative left-8'>
@@ -194,7 +227,7 @@ const Home = () => {
                 </div>
             </div>
 
-            <Footer/>
+            <Footer />
         </>
     )
 }

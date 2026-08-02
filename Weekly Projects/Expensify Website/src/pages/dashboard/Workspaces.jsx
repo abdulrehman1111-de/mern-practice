@@ -10,7 +10,7 @@ import Workspacespic from '../../assets/Workspacespic.png'
 
 const Workspaces = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-full overflow-y-auto'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
       <Accountnav heading="Workspaces" />
 
       <div className='w-[25%] h-15 flex gap-0'>

@@ -5,7 +5,7 @@ import Agentspic from '../../assets/Agentspic.png'
 
 const Agents = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-full overflow-y-auto'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
       <Accountnav icon={Wand2} heading="Agents" />
 
       <div className='w-full h-[85vh] flex flex-col gap-2 justify-center items-center'>

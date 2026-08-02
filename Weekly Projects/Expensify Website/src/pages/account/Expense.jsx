@@ -5,7 +5,7 @@ import Expensepic from '../../assets/Expensepic.png'
 
 const Expense = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-full overflow-y-auto'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
       <Accountnav icon={Zap} heading="Expense Rules" />
 
       <div className='text-lg text-white/80 p-5'>

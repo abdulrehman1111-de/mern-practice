@@ -8,7 +8,7 @@ import Transparentbtn from '../../components/Transparentbtn'
 
 const Spend = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-full overflow-y-auto'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
       <Accountnav heading="Spend" />
 
       <div className='w-[25%] h-15 flex gap-0'>

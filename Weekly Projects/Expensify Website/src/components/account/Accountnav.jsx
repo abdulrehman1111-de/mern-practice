@@ -3,7 +3,7 @@ import { Search, Bot } from 'lucide-react'
 
 const Accountnav = ({ icon: Icon, heading }) => {
     return (
-        <div className='w-full sticky top-0 h-auto flex justify-between p-5  bg-[#061B09]'>
+        <div className='w-full graySelect sticky top-0 h-auto flex justify-between p-5  bg-[#061B09]'>
 
             <div className='flex gap-3 items-center'>
                 {Icon && <Icon size={35} className='text-green-500' />}

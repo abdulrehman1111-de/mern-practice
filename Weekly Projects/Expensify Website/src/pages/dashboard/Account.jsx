@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 
 const Account = () => {
   return (
-    <div className='bg-[#061B09] text-white w-full h-[100vh] flex'>
+    <div className='bg-[#061B09] graySelect text-white w-full h-[100vh] flex'>
       <div className='w-[35%] h-full border-1 border-gray-700 p-5 flex flex-col items-center'>
 
         <p className='text-2xl'>Account</p>

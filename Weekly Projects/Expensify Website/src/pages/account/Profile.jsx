@@ -6,7 +6,7 @@ import { CircleUserRound } from 'lucide-react'
 const Profile = () => {
   return (
     <>
-      <div className='bg-[#061B09] text-white w-full h-auto overflow-y-auto'>
+      <div className='bg-[#061B09] graySelect text-white w-full h-auto overflow-y-auto'>
         <Accountnav icon={UserCircle2} heading="Profile" />
 
         <div className='bg-[#072419] w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9'>
