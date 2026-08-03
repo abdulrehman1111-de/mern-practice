@@ -11,6 +11,7 @@ import Profile from "./pages/account/Profile"
 import Wallet from "./pages/account/Wallet"
 import Expense from "./pages/account/Expense"
 import Agents from "./pages/account/Agents"
+import InboxPage from "./pages/inbox/InboxPage"
 
 function App() {
 
@@ -28,7 +29,9 @@ function App() {
 
         <Route path="/dashboard" element={<Dashboardlayout />}>
           <Route index element={<Dashboardhome />} />
-          <Route path="inbox" element={<Inbox />} />
+          <Route path="inbox" element={<Inbox />}>
+            <Route index element={<InboxPage/>}/>
+          </Route>
           <Route path="spend" element={<Spend />} />
           <Route path="workspaces" element={<Workspaces />} />
           <Route path="account" element={<Account />}>

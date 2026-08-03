@@ -10,6 +10,7 @@ import iconExpenseReports from '../assets/icon-expense-reports.svg'
 import iconAiExpenses from '../assets/icon-ai-expenses.svg'
 import Firstcard from '../components/Firstcard'
 import MySwiper from '../components/MySwiper'
+import { useState } from 'react'
 
 const Firstcards = () => {
 
@@ -25,28 +26,39 @@ const Firstcards = () => {
         { icon: iconAiExpenses, title: "AI-powered expenses", desc: "Automate expense categorization, flag policy violations, enforce rules, and reduce manual errors." },
     ]
 
+    const [open, setOpen] = useState(false);
+
+
+
     return (
-        <div className='w-full h-[230vh] bg-[#0A1F15] text-white flex flex-col'>
+        <div className='w-full h-auto pb-7 bg-[#0A1F15] text-white flex flex-col'>
 
             <div className='w-full h-[25vh] flex justify-center items-center'>
                 <p className='text-4xl fraunces font-semibold'>Features</p>
             </div>
 
             <div className='pl-15 pr-15 grid grid-cols-3 grid-rows-3 gap-6'>
-                {card.map((item)=>(
-                <Firstcard icon = {item.icon} title = {item.title} desc = {item.desc}/>
-            ))}
+                {card.map((item) => (
+                    <Firstcard icon={item.icon} title={item.title} desc={item.desc} />
+                ))}
+
+                
             </div>
 
-            <div className='w-full h-[25vh] flex justify-center items-center'>
-                <div className='bg-[#173B2C] w-[14%] hover:bg-gray-700  transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>See All Features</p></div>
+            <div className='w-full h-auto p-10 flex justify-center items-center'>
+                
+
+                <div onClick={() => setOpen(!open)} className='bg-[#173B2C] w-[14%] hover:bg-gray-700  transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>See All Features</p></div>
+
+                
             </div>
+            
 
             <div className='pl-15 pr-15'>
-                <MySwiper/>
+                <MySwiper />
             </div>
 
-            
+
         </div>
 
 
