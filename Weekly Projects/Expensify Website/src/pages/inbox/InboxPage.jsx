@@ -4,6 +4,7 @@ import { Search, Bot } from 'lucide-react'
 import { Plus } from 'lucide-react'
 import { Send } from 'lucide-react'
 import { useState } from 'react'
+import Todo from '../../components/inbox/Todo'
 
 
 const InboxPage = () => {
@@ -19,8 +20,14 @@ const InboxPage = () => {
             fileInput.click();
         })
 
+    }, [])
+
+    useEffect(() => {
         const chatInput = document.getElementById("chatInput");
         const chatInputBtn = document.getElementById("chatInputBtn");
+
+        const now = new Date();
+        const currentTime = now.toLocaleTimeString();
 
         chatInputBtn.addEventListener("click", () => {
 
@@ -30,19 +37,19 @@ const InboxPage = () => {
                 alert("Input field is empty!");
             }
 
-            else{
+            else {
                 setInter(chatInputValue);
-                setMessages([...messages, chatInputValue]);
+                setMessages([...messages, { text: chatInputValue, time: currentTime }]);
             }
-        })
-    }, [])
+        }, [])
+    })
 
 
 
     return (
-        <div className='bg-[#061B09] text-white w-full h-auto border-1 border-gray-800 flex flex-col justify-between'>
-            <div>
-                <div className='w-full text-white graySelect sticky top-0 h-auto flex justify-between p-5  bg-[#061B09] border-1 border-gray-800'>
+        <div className='bg-[#061B09] text-white w-full h-screen border-1 border-gray-800 flex flex-col'>
+            <div className=''>
+                <div className='w-full text-white graySelect sticky top-0 h-auto flex justify-between p-5  bg-[#061B09] border-1 border-gray-800 overflow-y-auto'>
 
                     <div className='flex gap-3 items-center'>
                         {Bot && <Bot size={35} className='text-green-500' />}
@@ -120,9 +127,14 @@ const InboxPage = () => {
                 </div>
             </div>
 
-            <div className='border-1 border-white w-full'>
+            <div className='flex-1 min-h-0 overflow-y-auto flex flex-col justify-end mt-8'>
 
+                {messages.map((item) => {
+                    return <Todo text={item.text} time={item.time} />
+                })}
             </div>
+
+
 
             <div className='w-full h-20 p-5 flex justify-center items-center'>
                 <div className='h-12 w-full flex rounded-4xl border-1 border-white'>
