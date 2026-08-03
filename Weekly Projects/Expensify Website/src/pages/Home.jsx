@@ -24,6 +24,7 @@ import screenshot122404 from '../assets/screenshot-122404.png'
 import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import Signin from '../components/Signin';
+import Faq from '../components/Faq';
 
 const Home = () => {
 
@@ -206,6 +207,8 @@ const Home = () => {
             <div className='w-full h-[80vh]'>
                 <img className='w-full' src={screenshot122404} alt="" />
             </div>
+
+            <Faq/>
 
             <div className='w-full h-[55vh] bg-[#1A3D32] flex justify-center items-center'>
                 <div className='w-[50%] h-[50vh] pl-15 pr-15 text-white flex flex-col gap-5 justify-center items-center'>

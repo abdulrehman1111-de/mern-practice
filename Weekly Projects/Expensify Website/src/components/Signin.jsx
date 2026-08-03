@@ -12,7 +12,7 @@ const Signin = () => {
 
       <div className='flex justify-around items-center pt-5 w-[85%]'>
         <p className='mr-auto text-3xl font-bold inter text-[#03D47C]'>Expensify</p>
-        <div id='crossBtn'><X size={22} className='text-white/70' /></div>
+        <div id='crossBtn'><X size={22} className='text-white/70 hover:text-white' /></div>
       </div>
 
       <p className='text-white text-2xl fraunces'>Welcome! How would you like to connect?</p>
