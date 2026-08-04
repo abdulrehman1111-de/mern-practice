@@ -12,6 +12,8 @@ const InboxPage = () => {
     const [messages, setMessages] = useState([]);
     const [inter, setInter] = useState("");
 
+    console.log("messages count:", messages.length);
+
     useEffect(() => {
 
         const uploadInput = document.getElementById("uploadInput");
@@ -26,10 +28,10 @@ const InboxPage = () => {
         const chatInput = document.getElementById("chatInput");
         const chatInputBtn = document.getElementById("chatInputBtn");
 
-        const now = new Date();
-        const currentTime = now.toLocaleTimeString();
+        const handleClick = () => {
 
-        chatInputBtn.addEventListener("click", () => {
+            const now = new Date();
+            const currentTime = now.toLocaleTimeString();
 
             let chatInputValue = chatInput.value.trim();
 
@@ -39,10 +41,32 @@ const InboxPage = () => {
 
             else {
                 setInter(chatInputValue);
-                setMessages([...messages, { text: chatInputValue, time: currentTime }]);
+                setMessages(prev => [...prev, { text: chatInputValue, time: currentTime }]);
             }
-        }, [])
-    })
+        }
+
+
+
+        chatInputBtn.addEventListener("click", handleClick);
+
+        return () => {
+            chatInputBtn.removeEventListener("click", handleClick);
+        }
+
+    }, [])
+
+    useEffect(() => {
+
+        const hiddenDiv = document.getElementById("hiddenDiv");
+
+        if (messages.length != 0) {
+            hiddenDiv.classList.add("none");
+        }
+
+        const chatInput = document.getElementById("chatInput");
+        chatInput.value = "";
+
+    }, [messages])
 
 
 
@@ -64,7 +88,7 @@ const InboxPage = () => {
                     </div>
                 </div>
 
-                <div className='w-full relative h-[40%]'>
+                <div id='hiddenDiv' className='w-full relative h-[40%]'>
                     <div className='w-full h-full'>
                         <svg className="obliteratedBottom absolute inset-0 w-full h-full opacity-40" viewBox="0 0 680 260" preserveAspectRatio="xMidYMax slice">
                             <g fill="none" stroke="#15402C" strokeWidth="1.5">
@@ -127,9 +151,9 @@ const InboxPage = () => {
                 </div>
             </div>
 
-            <div className='flex-1 min-h-0 overflow-y-auto flex flex-col justify-end mt-8'>
+            <div className='flex-1 min-h-0 overflow-y-auto flex flex-col-reverse mt-8'>
 
-                {messages.map((item) => {
+                {[...messages].reverse().map((item) => {
                     return <Todo text={item.text} time={item.time} />
                 })}
             </div>
@@ -143,7 +167,7 @@ const InboxPage = () => {
                         <input className='hidden' id="fileInput" type="file" name="" />
                     </div>
                     <div className='w-[86%]'>
-                        <input className='w-full h-full border-none outline-none' type="text" name="" id="chatInput" placeholder='Write something...' />
+                        <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("chatInputBtn").click() }} className='w-full h-full border-none outline-none' type="text" name="" id="chatInput" placeholder='Write something...' />
                     </div>
                     <div className='w-[7%] flex justify-center items-center'>
                         <button id='chatInputBtn'><Send size={22} className='text-white/70' /></button>

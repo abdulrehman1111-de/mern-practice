@@ -7,7 +7,7 @@ const Todo = ({ text, time }) => {
     
 
     return (
-        <div className='w-full h-15 p-5 flex justify-center items-center gap-0.5 inter'>
+        <div className='w-full h-14 p-5 flex shrink-0 justify-center items-center gap-0.5 inter'>
 
             <div
                 style={{ backgroundImage: `url(${pfpImage})` }}
