@@ -12,6 +12,7 @@ import Wallet from "./pages/account/Wallet"
 import Expense from "./pages/account/Expense"
 import Agents from "./pages/account/Agents"
 import InboxPage from "./pages/inbox/InboxPage"
+import Sample from "./pages/Sample"
 
 function App() {
 
@@ -26,6 +27,8 @@ function App() {
           <Home/>
           </>
         }/>
+
+        <Route path="/sample" element={<Sample/>} />
 
         <Route path="/dashboard" element={<Dashboardlayout />}>
           <Route index element={<Dashboardhome />} />

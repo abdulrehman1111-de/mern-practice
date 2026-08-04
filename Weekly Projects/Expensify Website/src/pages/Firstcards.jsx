@@ -42,7 +42,12 @@ const Firstcards = () => {
                     <Firstcard icon={item.icon} title={item.title} desc={item.desc} />
                 ))}
 
-                
+                {open && (
+                    card.map((item) => (
+                    <Firstcard icon={item.icon} title={item.title} desc={item.desc} />
+                ))
+                )}
+
             </div>
 
             <div className='w-full h-auto p-10 flex justify-center items-center'>

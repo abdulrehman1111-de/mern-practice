@@ -11,9 +11,9 @@ const Firstcard = ({icon, title, desc}) => {
         <div>
             {desc}
         </div>
-        <div>
-            <a href=""><p className='text-blue-600 hover:text-blue-400'>Learn more</p></a>
-        </div>
+        <a href="/sample"><div>
+            <p className='text-blue-600 hover:text-blue-400'>Learn more</p>
+        </div></a>
     </div>
   )
 }
