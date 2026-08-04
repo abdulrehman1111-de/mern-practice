@@ -43,7 +43,7 @@ const Firstcards = () => {
                 ))}
 
                 {open && (
-                    card.map((item) => (
+                    card.slice(0, 4).map((item) => (
                     <Firstcard icon={item.icon} title={item.title} desc={item.desc} />
                 ))
                 )}
@@ -59,7 +59,7 @@ const Firstcards = () => {
             </div>
             
 
-            <div className='pl-15 pr-15'>
+            <div className='pl-15 pr-15 mb-5'>
                 <MySwiper />
             </div>
 

@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+body{
+    font-family: "Inter", sans-serif;
+}
+
+.fraunces{
+    font-family: "Fraunces", serif;
+}
+
+thead{
+    background-color: #152238;
+}
+
+td{
+    padding: 13px;
+    hover: transition-colors
+}
+
+tr:hover{
+    background-color: #1E3A52;
+}
+
+
+
+
+
+
+

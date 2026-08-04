@@ -12,8 +12,6 @@ const InboxPage = () => {
     const [messages, setMessages] = useState([]);
     const [inter, setInter] = useState("");
 
-    console.log("messages count:", messages.length);
-
     useEffect(() => {
 
         const uploadInput = document.getElementById("uploadInput");
