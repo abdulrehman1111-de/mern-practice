@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Accountnav from '../../components/account/Accountnav'
 import { UserCircle2, Mail, Zap, Wand2, Wand } from 'lucide-react'
 import { CircleUserRound } from 'lucide-react'
@@ -7,8 +7,58 @@ import { X } from 'lucide-react'
 
 
 const Profile = () => {
-  
+
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+
+    const firstNameVal = document.getElementById("firstName");
+    const lastNameVal = document.getElementById("lastName");
+    const saveBtn = document.getElementById("saveBtn");
+    const cross = document.getElementById("cross");
+
+    const firstNamePara = document.getElementById("firstNamePara");
+    const lastNamePara = document.getElementById("lastNamePara");
+
+    const handleClick = () => {
+
+      const firstName = firstNameVal.value.trim();
+      const lastName = lastNameVal.value.trim();
+
+      if ((firstName.length === 0) || (lastName.length === 0)) {
+        alert("Input field cannot be empty!");
+        return
+      }
+
+      else {
+          firstNamePara.innerHTML = firstName;
+          lastNamePara.innerHTML = lastName;
+          setOpen(false);
+          firstNameVal.value = "";
+          lastNameVal.value = "";
+      }
+
+      const handleClick2 = ()=>{
+          firstNameVal.value = "";
+          lastNameVal.value = "";
+      }
+
+      cross.addEventListener("click", handleClick2);
+
+      return ()=>{
+        cross.removeEventListener("click", handleClick2);
+      }
+    }
+
+    saveBtn.addEventListener("click", handleClick);
+
+    return () => {
+      saveBtn.removeEventListener("click", handleClick);
+    }
+
+
+
+  }, [open]);
 
   return (
     <>
@@ -24,10 +74,12 @@ const Profile = () => {
             <CircleUserRound size={100} className="text-green-500" />
           </div>
 
-          <div onClick={()=> setOpen(true)} className='flex flex-col gap-5'>
+          <div onClick={() => setOpen(true)} className='flex flex-col gap-5'>
             <div id='nameDiv' className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Display Name</p>
-              <p className='text-sm '>Abdul Rehman</p>
+              <div className='flex gap-1'>
+                <p id='firstNamePara'>Abdul</p> <p id='lastNamePara'>Rehman</p>
+              </div>
             </div>
 
             <div className='hover:bg-[#0A2E25] p-3'>
@@ -85,44 +137,32 @@ const Profile = () => {
 
       </div>
 
-      {
-        open && (
-          <div className='absolute bg-[#061B09] h-[100vh] w-90 z-11 right-0 top-0 transition-all duration-1000 ease-out text-white p-2'>
-                      
-                      <div className='flex justify-between items-center pr-8'>
-                        <p className='text-xl inter font-semibold m-8'>Create expense</p>
-                        <div className='border-1 border-white' onClick={()=> setOpen(!open)}>
-                          <X size={20} className='text-white' />
-                        </div>
-                      </div>
-          
-                      <div className='flex justify-center items-center m-5'>
-                          <div className='border-1 border-white/20 hover:bg-green-900 transition delay-100 ease-in-out w-full p-3 h-10 flex justify-center items-center text-center rounded-4xl'><p className='text-sm inter font-bold text-white'>Manual</p></div>
-          
-                          <div className='border-1 border-white/20 hover:bg-green-900 transition delay-100 ease-in-out w-full p-3 h-10 flex justify-center items-center text-center rounded-4xl'><p className='text-sm inter font-bold text-white'>Scan</p></div>
-                      </div>
-          
-                      <div className='w-full h-[74vh] border-2 border-dotted border-green-400/90 rounded-2xl flex justify-center items-center flex-col pt-13 pb-5'>
-                          <div className='flex justify-center items-center flex-col gap-3'>
-                              <div className='flex flex-col justify-center items-center gap-2'>
-                                  <p className='text-2xl'>Upload Receipts</p>
-                                  <p className='text-white/80 text-xs'>Or drag and drop them here</p>
-                              </div>
-                              <div className='w-auto p-3 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold text-nowrap'>
-                                  <p className='text-sm'>Choose files</p>
-                              </div>
-                          </div>
-          
-                          <div className='inter mt-auto'>
-                              <ul><li><p className='text-white/80 text-xs pb-2'>Other ways to add receipts</p></li>
-                              <li className='list-disc'><p className='text-sm'><span className='text-blue-400'>Download the app</span> to scan from your phone</p></li>
-                              <li className='list-disc'><p className='text-sm'>Forward receipts to <span className='text-blue-400'>receipt@expensify.com</span></p></li>
-                              <li className='list-disc'><p className='text-sm'><span className='text-blue-400'>Add your number</span> to text receipts to 47777</p></li></ul>
-                          </div>
-                      </div>
-                  </div>
-        )
-      }
+
+      <div className={`absolute overflow-hidden bg-[#061B09] h-screen w-90 z-11 top-0 transition-all duration-500 ease-out text-white p-2 ${open ? "left-[72%]" : "left-full"}`}>
+
+        <div className='flex justify-between items-center pr-8'>
+          <p className='text-xl inter font-semibold m-8'>Display name</p>
+          <div id='cross' onClick={() => setOpen(!open)}>
+            <X size={20} className='text-white' />
+          </div>
+        </div>
+
+        <p className='inter text-sm text-white/90 pl-5 pb-3 font-semibold'>Your display name is shown on your profile</p>
+
+        <div className='flex flex-col gap-5 m-3'>
+
+          <input onKeyDown={(e)=> {if(e.key === "Enter") document.getElementById("saveBtn").click()}} className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="firstName" placeholder='First name' />
+
+
+
+          <input onKeyDown={(e)=> {if(e.key === "Enter") document.getElementById("saveBtn").click()}} className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="lastName" placeholder='Last name' />
+
+        </div>
+
+        <div id='saveBtn' className='w-[90%] relative top-80 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          <p className='text-sm'>Save</p>
+        </div>
+      </div>
 
     </>
 
