@@ -6,6 +6,7 @@ import { useState } from 'react'
 import { X } from 'lucide-react'
 import { ChevronRight } from 'lucide-react'
 import { ChevronLeft } from 'lucide-react'
+import { Smile, ChevronDown } from 'lucide-react'
 
 
 const Profile = () => {
@@ -13,23 +14,34 @@ const Profile = () => {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [open3, setOpen3] = useState(false);
+  const [open4, setOpen4] = useState(false);
+  const [open5, setOpen5] = useState(false);
 
   useEffect(() => {
 
     if (open) {
       setOpen2(false);
       setOpen3(false);
+      setOpen4(false);
     }
 
     if (open2) {
       setOpen(false);
+      setOpen4(false);
     }
 
     if (open3) {
       setOpen(false);
+      setOpen4(false);
     }
 
-  }, [open, open2])
+    if (open4) {
+      setOpen(false);
+      setOpen2(false);
+      setOpen3(false)
+    }
+
+  }, [open, open2, open3, open4])
 
   useEffect(() => {
 
@@ -108,7 +120,7 @@ const Profile = () => {
               <p className='text-sm '>abdulrehmanpro6@gmail.com</p>
             </div>
 
-            <div className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={() => setOpen4(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Status</p>
             </div>
 
@@ -220,12 +232,77 @@ const Profile = () => {
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen3(false)} size={25} className='text-white/80'/>
+          <ChevronLeft onClick={() => setOpen3(false)} size={25} className='text-white/80' />
           <p className='text-lg'>abdulrehmanpro6@gmail.com</p>
-          
+
         </div>
 
         <p className='p-4 text-white/80 text-sm'>This is your current default contact method. Before you can delete it, you'll need to choose another contact method and click “Set as default”.</p>
+
+      </div>
+
+      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white inter p-2 ${open4 ? "left-[72%]" : "left-full"}`}>
+
+        <div className='p-4 flex flex-start items-center gap-2'>
+
+          <ChevronLeft onClick={() => setOpen4(false)} size={25} className='text-white/80' />
+          <p className='text-lg font-semibold'>Status</p>
+
+        </div>
+
+        <p className='p-4 text-white/80 text-sm font-semibold'>Set your status with an emoji and optional message.</p>
+
+        <div className='w-[30%] h-12 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex gap-2 justify-center items-center text-center font-semibold m-3'>
+          <Smile size={25} className='text-white' />
+          <ChevronDown size={25} className='text-white' />
+        </div>
+
+        <input className='border-1 border-gray-700 p-3 w-[95%] m-2 rounded-md' type="text" name="" id="" placeholder='Message' />
+
+        <div onClick={()=> setOpen5(true)} className='hover:bg-[#0A2E1F]'>
+          <div className='p-4 text-sm flex justify-between items-center '>
+            <div className='flex flex-col gap-1'>
+              <p className='text-white/80'>Clear after</p>
+              <p>Today</p>
+            </div>
+            <ChevronRight size={20} className='text-white/80' />
+          </div>
+        </div>
+
+        <div className='flex flex-col gap-2 p-3 text-sm font-semibold'>
+          <p>Vacation delegate</p>
+          <p className='text-white/80'>Set a vacation delegate to approve reports on your behalf while you're out of office.</p>
+        </div>
+
+        <div className='hover:bg-[#0A2E1F]'>
+          <div className='p-4 text-sm flex justify-between items-center '>
+            <p className='text-white/80'>Vacation delegate</p>
+            <ChevronRight size={20} className='text-white/80' />
+          </div>
+        </div>
+
+
+
+        <div id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          <p className='text-sm'>Save</p>
+        </div>
+
+      </div>
+
+
+      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white inter p-2 ${open5 ? "left-[72%]" : "left-full"}`}>
+
+
+        <div className='p-4 flex flex-start items-center gap-2'>
+
+          <ChevronLeft onClick={() => setOpen5(false)} size={25} className='text-white/80' />
+          <p className='text-lg font-semibold'>Clear after</p>
+
+        </div>
+
+        <div id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          <p className='text-sm'>Save</p>
+        </div>
 
       </div>
 
