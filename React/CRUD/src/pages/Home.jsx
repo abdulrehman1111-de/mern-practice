@@ -10,8 +10,8 @@ import { LayoutDashboard } from 'lucide-react'
 const Home = () => {
 
     return (
-        <div className='h-screen w-full flex relative overflow-x-hidden'>
-            <div className='bg-[#0F2A3D] h-screen w-20 flex flex-col gap-3 text-white items-center text-white border-r border-r-gray-700'>
+        <div className='h-auto w-full flex relative overflow-x-hidden'>
+            <div className='bg-[#0F2A3D] h-screen fixed top-0 w-20 flex flex-col gap-3 text-white items-center text-white border-r border-r-gray-700'>
 
                 <div className='w-full h-15 p-3 flex justify-center items-center bg-[#1A3E54]'>
                     <div className='w-11 h-11 rounded-full mt-5 p-3 mb-2 relative bottom-2'>
