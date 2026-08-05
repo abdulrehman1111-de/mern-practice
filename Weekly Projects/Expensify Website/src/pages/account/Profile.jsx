@@ -17,6 +17,8 @@ const Profile = () => {
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
 
+  const [changeMessage, setChangeMessage] = useState("");
+
   useEffect(() => {
 
     if (open) {
@@ -93,6 +95,73 @@ const Profile = () => {
 
   }, [open]);
 
+  const [selectedOption, setSelectedOption] = useState("Today");
+  const [index, setIndex] = useState(3);
+  const statusPara = document.getElementById("statusPara");
+
+  const now = new Date();
+  const midnight = new Date();
+
+  midnight.setHours(24, 0, 0, 0);
+
+  const timeTillMidnight = now - midnight;
+
+  const options = [
+    {
+      radio: "Never",
+      time: 0
+    },
+    {
+      radio: "30 minutes",
+      time: 1800000
+    },
+    {
+      radio: "5 seconds",
+      time: 5000
+    },
+    {
+      radio: "1 hour",
+      time: 3600000
+    },
+    {
+      radio: "Today",
+      time: timeTillMidnight
+    },
+    {
+      radio: "A week",
+      time: 604800000
+    }
+  ]
+
+  const targetIndex = index;
+  let intermediateObj = null;
+  for (let i = 0; i < options.length; i++){
+    if(i === index){
+      intermediateObj = options[i];
+    }
+
+    else{
+      console.log("No time currently selected!")
+    }
+  }
+  const targetSetTimeout = intermediateObj.time;
+
+
+  const setTimeoutCleanerFunction = ()=>{
+
+    const highestId = setTimeout(()=>{
+
+    }, 0)
+
+    for (let i = 0; i <= highestId; i++){
+      clearTimeout(i);
+    }
+
+    console.log("All set timeouts cleaned up!")
+  }
+
+
+
   return (
     <>
       <div className='bg-[#061B09] graySelect text-white w-full h-auto overflow-y-auto'>
@@ -122,6 +191,7 @@ const Profile = () => {
 
             <div onClick={() => setOpen4(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Status</p>
+              <p id='statusPara'></p>
             </div>
 
             <div className='hover:bg-[#0A2E25] p-3'>
@@ -257,9 +327,9 @@ const Profile = () => {
           <ChevronDown size={25} className='text-white' />
         </div>
 
-        <input className='border-1 border-gray-700 p-3 w-[95%] m-2 rounded-md' type="text" name="" id="" placeholder='Message' />
+        <input onChange={(e)=> setChangeMessage(e.target.value)} className='border-1 border-gray-700 p-3 w-[95%] m-2 rounded-md' type="text" name="" id="" placeholder='Message' />
 
-        <div onClick={()=> setOpen5(true)} className='hover:bg-[#0A2E1F]'>
+        <div onClick={() => setOpen5(true)} className='hover:bg-[#0A2E1F]'>
           <div className='p-4 text-sm flex justify-between items-center '>
             <div className='flex flex-col gap-1'>
               <p className='text-white/80'>Clear after</p>
@@ -283,7 +353,12 @@ const Profile = () => {
 
 
 
-        <div id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+        <div onClick={()=> {
+          setOpen4(false);
+          const statusPara = document.getElementById("statusPara");
+          statusPara.innerHTML = changeMessage;
+        }} 
+         id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
           <p className='text-sm'>Save</p>
         </div>
 
@@ -300,7 +375,36 @@ const Profile = () => {
 
         </div>
 
-        <div id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+        <p className='text-sm p-4'>When should we clear your status?</p>
+
+        <div className='m-3 h-auto w-[90%] flex flex-col justify-center gap-10 font-semibold pt-5'>
+          {
+            options.map((item, index) => {
+              return <>
+                <div className='flex justify-between'>
+                  <label htmlFor={index}>{item.radio}</label>
+                  <input value={item.radio} onChange={(e)=> {
+                    setSelectedOption(e.target.value)
+                    setIndex(index);
+                  }} checked= {selectedOption === item.radio} type="radio" name="selection" id={index} className='w-5 h-5 appearance-none rounded-full border-1 border-white checked:bg-green-400' />
+                </div>
+              </>
+            })
+          }
+        </div>
+
+        <div onClick={()=> {
+
+          setTimeoutCleanerFunction();
+
+          const statusPara = document.getElementById("statusPara");
+          statusPara.innerHTML = changeMessage;
+          
+          setTimeout(()=>{
+            statusPara.innerHTML = "";
+          }, targetSetTimeout)
+          setOpen5(false)
+        }} className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
           <p className='text-sm'>Save</p>
         </div>
 
