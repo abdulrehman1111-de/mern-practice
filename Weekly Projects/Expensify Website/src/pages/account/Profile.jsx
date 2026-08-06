@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react'
 import Accountnav from '../../components/account/Accountnav'
-import { UserCircle2, Mail, Zap, Wand2, Wand } from 'lucide-react'
+import { UserCircle2, Mail, Zap, Wand2, Wand, Cross } from 'lucide-react'
 import { CircleUserRound } from 'lucide-react'
 import { useState } from 'react'
 import { X } from 'lucide-react'
 import { ChevronRight } from 'lucide-react'
 import { ChevronLeft } from 'lucide-react'
 import { Smile, ChevronDown } from 'lucide-react'
+import EmojiPicker from 'emoji-picker-react'
+import { renderToString } from 'react-dom/server'
 
 
 const Profile = () => {
@@ -97,7 +99,7 @@ const Profile = () => {
 
   const [selectedOption, setSelectedOption] = useState("Today");
   const [index, setIndex] = useState(3);
-  const statusPara = document.getElementById("statusPara");
+  // const statusPara = document.getElementById("statusPara");
 
   const now = new Date();
   const midnight = new Date();
@@ -135,30 +137,55 @@ const Profile = () => {
 
   const targetIndex = index;
   let intermediateObj = null;
-  for (let i = 0; i < options.length; i++){
-    if(i === index){
+  for (let i = 0; i < options.length; i++) {
+    if (i === index) {
       intermediateObj = options[i];
     }
 
-    else{
+    else {
       console.log("No time currently selected!")
     }
   }
   const targetSetTimeout = intermediateObj.time;
 
 
-  const setTimeoutCleanerFunction = ()=>{
+  const setTimeoutCleanerFunction = () => {
 
-    const highestId = setTimeout(()=>{
+    const highestId = setTimeout(() => {
 
     }, 0)
 
-    for (let i = 0; i <= highestId; i++){
+    for (let i = 0; i <= highestId; i++) {
       clearTimeout(i);
     }
 
     console.log("All set timeouts cleaned up!")
   }
+
+  const [emojiPicker, setEmojiPicker] = useState(false);
+  const [selectedEmoji, setSelectedEmoji] = useState("");
+
+  const emojiFunction = (emojiData) => {
+    setSelectedEmoji(emojiData.emoji);
+    setEmojiPicker(false);
+  }
+
+  const emojiDiv = document.getElementById("emojiDiv");
+  if (selectedEmoji !== "") {
+    emojiDiv.innerHTML = selectedEmoji;
+  }
+
+  useEffect(() => {
+    const statusInput = document.getElementById("statusInput");
+    const emojiPara = document.getElementById("emojiPara")
+    const emojiDiv = document.getElementById("emojiDiv");
+    if (((statusPara.innerHTML === "") || (emojiPara.innerHTML === "")) && (!open4)) {
+      statusInput.value = "";
+      emojiDiv.innerHTML = renderToString(<Smile size={25} className='text-white' />);
+      setSelectedEmoji("");
+    }
+  }, [open4])
+
 
 
 
@@ -191,7 +218,10 @@ const Profile = () => {
 
             <div onClick={() => setOpen4(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Status</p>
-              <p id='statusPara'></p>
+              <div className='flex gap-1'>
+                <p id='emojiPara'></p>
+                <p id='statusPara'></p>
+              </div>
             </div>
 
             <div className='hover:bg-[#0A2E25] p-3'>
@@ -323,11 +353,20 @@ const Profile = () => {
         <p className='p-4 text-white/80 text-sm font-semibold'>Set your status with an emoji and optional message.</p>
 
         <div className='w-[30%] h-12 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex gap-2 justify-center items-center text-center font-semibold m-3'>
-          <Smile size={25} className='text-white' />
-          <ChevronDown size={25} className='text-white' />
+          <div id='emojiDiv'><Smile size={25} className='text-white' /></div>
+          <ChevronDown onClick={() => setEmojiPicker(true)} size={25} className='text-white' />
+
+          {
+            emojiPicker && (
+              <div className='absolute top-50 left-5 w-30 rounded-lg bg-[#061B09]'>
+                <X onClick={() => setEmojiPicker(false)} size={20} className='text-white' />
+                <EmojiPicker onEmojiClick={emojiFunction} theme="dark" width={300} height={370} />
+              </div>
+            )
+          }
         </div>
 
-        <input onChange={(e)=> setChangeMessage(e.target.value)} className='border-1 border-gray-700 p-3 w-[95%] m-2 rounded-md' type="text" name="" id="" placeholder='Message' />
+        <input onChange={(e) => setChangeMessage(e.target.value)} className='border-1 border-gray-700 p-3 w-[95%] m-2 rounded-md' type="text" name="" id="statusInput" placeholder='Message' />
 
         <div onClick={() => setOpen5(true)} className='hover:bg-[#0A2E1F]'>
           <div className='p-4 text-sm flex justify-between items-center '>
@@ -353,12 +392,14 @@ const Profile = () => {
 
 
 
-        <div onClick={()=> {
+        <div onClick={() => {
           setOpen4(false);
           const statusPara = document.getElementById("statusPara");
+          const emojiPara = document.getElementById("emojiPara");
           statusPara.innerHTML = changeMessage;
-        }} 
-         id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          emojiPara.innerHTML = selectedEmoji;
+        }}
+          id='saveBtn' className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
           <p className='text-sm'>Save</p>
         </div>
 
@@ -383,27 +424,34 @@ const Profile = () => {
               return <>
                 <div className='flex justify-between'>
                   <label htmlFor={index}>{item.radio}</label>
-                  <input value={item.radio} onChange={(e)=> {
+                  <input value={item.radio} onChange={(e) => {
                     setSelectedOption(e.target.value)
                     setIndex(index);
-                  }} checked= {selectedOption === item.radio} type="radio" name="selection" id={index} className='w-5 h-5 appearance-none rounded-full border-1 border-white checked:bg-green-400' />
+                  }} checked={selectedOption === item.radio} type="radio" name="selection" id={index} className='w-5 h-5 appearance-none rounded-full border-1 border-white checked:bg-green-400' />
                 </div>
               </>
             })
           }
         </div>
 
-        <div onClick={()=> {
+        <div onClick={() => {
 
           setTimeoutCleanerFunction();
 
           const statusPara = document.getElementById("statusPara");
+          const emojiPara = document.getElementById("emojiPara");
+          const statusInput = document.getElementById("statusInput");
           statusPara.innerHTML = changeMessage;
-          
-          setTimeout(()=>{
+
+          setTimeout(() => {
             statusPara.innerHTML = "";
+            emojiPara.innerHTML = "";
+            statusInput.value = "";
+            emojiDiv.innerHTML = renderToString(<Smile size={25} className='text-white' />);
+            setSelectedEmoji("");
           }, targetSetTimeout)
           setOpen5(false)
+          setOpen4(false);
         }} className='w-[90%] relative top-25 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
           <p className='text-sm'>Save</p>
         </div>

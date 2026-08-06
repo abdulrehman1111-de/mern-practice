@@ -11,9 +11,6 @@
 
 .firstReel {
   animation: reel 30s linear infinite;
-  /* mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
-        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%); */
-
 }
 
 @keyframes reel {
@@ -120,4 +117,10 @@ li:hover {
 .obliteratedBottom {
   -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
   mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+}
+
+.EmojiPickerReact{
+  --epr-bg-color: #061B09;
+  --epr-category-label-bg-color: #061B09;
+  --epr-search-input-bg-color: #0A2E1F;
 }
