@@ -10,21 +10,26 @@ import { LayoutDashboard } from 'lucide-react'
 const Home = () => {
 
     return (
-        <div className='h-auto w-full flex relative overflow-x-hidden'>
-            <div className='bg-[#0F2A3D] h-screen fixed top-0 w-20 flex flex-col gap-3 text-white items-center text-white border-r border-r-gray-700'>
+        <div className='h-auto w-full flex relative overflow-x-hidden bg-[#0A0E14]'>
+            <div className='bg-[#0D131B] h-screen fixed top-0 w-20 flex flex-col gap-3 items-center text-[#EDEFF2] border-r border-white/[0.06]'>
 
-                <div className='w-full h-15 p-3 flex justify-center items-center bg-[#1A3E54]'>
-                    <div className='w-11 h-11 rounded-full mt-5 p-3 mb-2 relative bottom-2'>
-                        <Grip size={25} className='text-white' />
+                <div className='w-full h-16 flex justify-center items-center border-b border-white/[0.06]'>
+                    <div className='w-9 h-9 rounded-full border border-[#E8A94C]/30 flex justify-center items-center'>
+                        <Grip size={16} className='text-[#E8A94C]' />
                     </div>
                 </div>
 
                 <div className='h-full w-full flex justify-center items-center'>
-                    <p className='fraunces text-4xl [writing-mode:vertical-rl] [text-orientation:upright]'>Dashboard</p>
+                    <p
+                        className='text-[13px] tracking-[0.35em] uppercase text-[#EDEFF2]/80 [writing-mode:vertical-rl] [text-orientation:upright]'
+                        style={{ fontFamily: "'Fraunces', serif" }}
+                    >
+                        Dashboard
+                    </p>
                 </div>
 
-                <div className='w-10 p-3 h-10 rounded-4xl bg-[#1A3E54] flex justify-center items-center rounded-full mb-5 mt-auto'>
-                    <LayoutDashboard size={20} className='text-white' />
+                <div className='w-9 h-9 rounded-full bg-[#E8A94C]/15 border border-[#E8A94C]/30 flex justify-center items-center mb-6'>
+                    <LayoutDashboard size={16} className='text-[#E8A94C]' />
                 </div>
 
             </div>

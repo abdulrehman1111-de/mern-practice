@@ -11,17 +11,65 @@ const Dashboard = () => {
     const content = [
         {   
             id: 1,
-            para: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            image: "https://picsum.photos/seed/blogdesk1/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
             author: "John"
         },
         {   
             id: 2,
-            para: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            image: "https://picsum.photos/seed/blogcoffee2/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
             author: "ALi"
         },
         {   
             id: 3,
-            para: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            image: "https://picsum.photos/seed/blogtype3/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            author: "Ahmad"
+        },
+        {   
+            id: 4,
+            image: "https://picsum.photos/seed/blognotebook4/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            author: "John"
+        },
+        {   
+            id: 5,
+            image: "https://picsum.photos/seed/blogshelf5/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            author: "ALi"
+        },
+        {   
+            id: 6,
+            image: "https://picsum.photos/seed/blogpen6/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            author: "Ahmad"
+        },
+        {   
+            id: 7,
+            image: "https://picsum.photos/seed/blogpaper7/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            author: "John"
+        },
+        {   
+            id: 8,
+            image: "https://picsum.photos/seed/blogstudy8/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            author: "ALi"
+        },
+        {   
+            id: 9,
+            image: "https://picsum.photos/seed/blogink9/800/600",
+            heading: "heading",
+            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
             author: "Ahmad"
         }
     ]
@@ -30,8 +78,17 @@ const Dashboard = () => {
     const [edit, setEdit] = useState(false);
 
     const [blogs, setBlogs] = useState([]);
+    const [heading, setHeading] = useState("");
     const [image, setImage] = useState("");
     const [body, setBody] = useState("");
+    const [author, setAuthor] = useState("");
+
+    if (open) {
+        document.body.style.overflow = "hidden";
+    }
+    else {
+    document.body.style.overflow = "";
+    }
 
     useEffect(() => {
         if (!open) {
@@ -43,6 +100,54 @@ const Dashboard = () => {
 
     setBlogs(content);
 }
+
+useEffect(() => {
+
+    const headingVal = document.getElementById("inputHeading");
+    const imageVal = document.getElementById("inputImage");
+    const bodyVal = document.getElementById("inputBody");
+    const authorVal = document.getElementById("authorVal");
+
+    const cross = document.getElementById("cross");
+    const addBtn = document.getElementById("addBtn");
+
+    const handleClick = () => {
+
+        const image = imageVal.value.trim();
+        const heading = headingVal.value.trim();
+        const body = bodyVal.value.trim();
+        const author = authorVal.value.trim();
+
+        if ((image.length === 0) || (heading.length === 0) || (body.length === 0) || (author.length === 0)){
+            alert("Input field cannot be empty!");
+            return;
+        }
+
+        addBtn.addEventListener("click", handleClick);
+
+        return () => {
+            addBtn.removeEventListener("click", handleClick);
+        }
+    }
+
+    const handleClick2 = () => {
+        imageVal.value = "";
+        setImage("");
+        setHeading("");
+        setBody("");
+        setAuthor("");
+
+        console.log("Clearing");
+        console.log(imageVal);
+    }
+
+    cross.addEventListener("click", handleClick2);
+
+    return () => {
+        cross.removeEventListener("click", handleClick2);
+    }
+
+}, [open]);
 
     useEffect(() => {
 
@@ -60,76 +165,288 @@ const Dashboard = () => {
     setBlogs(newBlogs);
 }
 
+const handleSubmit = (e) => {
+
+    e.preventDefault();
+
+    let newBlogs = {
+        id: blogs.length + 1,
+        heading,
+        image,
+        body, 
+        author   
+    }
+
+    setBlogs([...blogs, newBlogs]);
+}  
+
+const handleSubmtiOnEdit = (e, obj)=>{
+    e.preventDefault();
+    setBlogs(blogs.map((b)=> b.id === obj.id ? obj:b));
+}
+
+const [initialObj, setInitialObj] = useState({});
+
+const handleEdit = (item)=>{
+    console.log(item);
+
+    setHeading(item.heading)
+    setImage(item.image);
+    setBody(item.body);
+    setAuthor(item.author)
+
+    let obj = item;
+    return obj;
+}
+
+const checkForEdits = (submittedObj)=>{
+    if (_.isEqual(initialObj, submittedObj)){
+        return initialObj;
+    }
+    else{
+        return submittedObj;
+    }
+}
+
+const imageConverter = (fileObject)=>{
+    const url = URL.createObjectURL(fileObject);
+    setImage(url);
+}
     return (
         <>
-            <div className='inter text-white min-h-screen w-full bg-linear-to-r from-[#0B1120] to-[#0D1526] flex justify-center items-center'>
+            {/* PAGE BACKGROUND */}
+            <div className='min-h-screen w-full bg-[#0A0E14] text-[#EDEFF2]' style={{ fontFamily: "'Inter', sans-serif" }}>
 
-                <div className='w-[95%] h-auto bg-linear-to-r from-[#111C2E] to-[#131F35] flex flex-col justify-center items-center p-15'>
+                <div className='flex w-full min-h-screen'>
 
-                    <div className='w-full p-3'>
-                        <button className='border-1 border-gray-400 p-2 ml-2  hover:bg-yellow-50 hover:text-black rounded-md mr-auto' onClick={() => setOpen(true)}>
-                            Add
-                        </button>
+                    {/* SIDEBAR */}
+                    <aside className='hidden md:flex flex-col justify-between w-20 shrink-0 border-r border-white/[0.06] py-8'>
+                        <div className='flex flex-col items-center gap-1'>
+                            <span
+                                className='text-[13px] tracking-[0.35em] uppercase text-[#EDEFF2]/90 [writing-mode:vertical-rl]'
+                                style={{ fontFamily: "'Fraunces', serif" }}
+                            >
+                                Dashboard
+                            </span>
+                        </div>
+                        <div className='flex flex-col items-center gap-6 text-[#8B93A1]'>
+                            <div className='w-8 h-8 rounded-full border border-white/10 flex items-center justify-center'>
+                                <User size={14} />
+                            </div>
+                        </div>
+                    </aside>
 
-                        <div className='w-full h-auto p-5 grid grid-cols-3 items-center relative left-5 border-1 border-white min-h-[50vh] gap-7'>
+                    {/* MAIN */}
+                    <main className='flex-1 px-6 sm:px-10 lg:px-16 py-12'>
+
+                        {/* MASTHEAD */}
+                        <div className='flex items-end justify-between border-b border-white/[0.08] pb-6 mb-12 flex-wrap gap-6'>
+                            <div>
+                                <p className='text-[11px] tracking-[0.3em] uppercase text-[#E8A94C] mb-3'>
+                                    The Journal
+                                </p>
+                                <h1
+                                    className='text-4xl sm:text-5xl leading-none text-[#EDEFF2]'
+                                    style={{ fontFamily: "'Fraunces', serif", fontWeight: 600 }}
+                                >
+                                    Dispatches &amp; Drafts
+                                </h1>
+                            </div>
+
+                            <button
+                                className='group inline-flex items-center gap-2 border border-[#E8A94C]/40 text-[#E8A94C] px-5 py-2.5 rounded-full text-sm tracking-wide hover:bg-[#E8A94C] hover:text-[#0A0E14] transition-colors duration-200'
+                                onClick={() => setOpen(true)}
+                            >
+                                <span className='text-lg leading-none'>{edit ? '✎' : '+'}</span>
+                                {edit ? 'Edit entry' : 'New entry'}
+                            </button>
+                        </div>
+
+                        {/* GRID */}
+                        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
 
                             {
                                 blogs.map((item, index) => {
-                                    return <div key= {item.id} className='border-1 border-white w-full min-h-70 rounded-lg'>
+                                    return (
+                                        <article
+                                            key={item.id}
+                                            className='group relative flex flex-col bg-[#12181F] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-[#E8A94C]/30 transition-colors duration-300'
+                                        >
+                                            {/* image */}
+                                            <div className='relative h-48 w-full overflow-hidden'>
+                                                <img
+                                                    className='h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out'
+                                                    src={item.image}
+                                                    alt={item.heading}
+                                                />
+                                                <div className='absolute inset-0 bg-gradient-to-t from-[#0A0E14]/70 via-transparent to-transparent' />
 
-                                        <button onClick={() => deleteBlogs(item.id)}><Trash2 size={20} className='text-white' /></button>
+                                                {/* issue marker (signature element) */}
+                                                <div className='absolute top-3 left-3 flex items-center gap-1.5 bg-[#0A0E14]/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1'>
+                                                    <span className='w-1.5 h-1.5 rounded-full bg-[#E8A94C]' />
+                                                    <span className='text-[11px] tracking-[0.2em] uppercase text-[#EDEFF2]/80'>
+                                                        Issue {String(index + 1).padStart(2, '0')}
+                                                    </span>
+                                                </div>
 
-                                        <div className=''>{index}</div>
+                                                {/* actions */}
+                                                <div className='absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
+                                                    <button
+                                                        onClick={() => deleteBlogs(item.id)}
+                                                        className='w-8 h-8 rounded-full bg-[#0A0E14]/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-[#EDEFF2]/70 hover:text-red-400 hover:border-red-400/40 transition-colors'
+                                                    >
+                                                        <Trash2 size={14} />
+                                                    </button>
+                                                    <button
+                                                        onClick={() => {
+                                                            setOpen(true)
+                                                            setEdit(true);
+                                                            setInitialObj(handleEdit(item));
+                                                        }}
+                                                        className='w-8 h-8 rounded-full bg-[#0A0E14]/80 backdrop-blur-sm border border-white/10 flex items-center justify-center text-[#EDEFF2]/70 hover:text-[#E8A94C] hover:border-[#E8A94C]/40 transition-colors'
+                                                    >
+                                                        <Pencil size={13} />
+                                                    </button>
+                                                </div>
+                                            </div>
 
-                                        <div className='h-[30%] w-full border-1 border-white mt-auto'>
-                                            Hello
-                                        </div>
-                                        <div className='h-[70%] w-full border-1 border-white'>
-                                            <p>{item.para}</p>
-                                            <p>Author: {item.author}</p>
-                                        </div>
-                                    </div>
+                                            {/* body */}
+                                            <div className='flex flex-col flex-1 p-6'>
+                                                <h2
+                                                    className='text-xl mb-3 text-[#EDEFF2] leading-snug'
+                                                    style={{ fontFamily: "'Fraunces', serif", fontWeight: 600 }}
+                                                >
+                                                    {item.heading}
+                                                </h2>
+                                                <p className='text-sm text-[#8B93A1] leading-relaxed line-clamp-4 flex-1'>
+                                                    {item.body}
+                                                </p>
+
+                                                <div className='mt-6 pt-4 border-t border-white/[0.06] flex items-center gap-2'>
+                                                    <div className='w-6 h-6 rounded-full bg-[#E8A94C]/15 border border-[#E8A94C]/30 flex items-center justify-center'>
+                                                        <User size={11} className='text-[#E8A94C]' />
+                                                    </div>
+                                                    <span className='text-xs tracking-wide text-[#8B93A1] uppercase'>
+                                                        {item.author}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </article>
+                                    )
                                 })
                             }
 
                         </div>
-                    </div>
-
+                    </main>
                 </div>
             </div>
 
 
-            <div className={`fixed top-0 overflow-hidden bg-linear-to-r from-[#0B1120] to-[#0D1526] h-screen w-90 z-11 top-0 transition-all duration-500 ease-out text-white p-2 ${open ? "left-[72%]" : "left-full"}`}>
+            {/* SIDE FORM PANEL */}
+            <div className={`fixed top-0 h-screen w-full sm:w-[420px] bg-[#0D131B] border-l border-white/[0.08] z-50 transition-all duration-500 ease-out text-[#EDEFF2] ${open ? "right-0" : "-right-full sm:right-[-440px]"}`} style={{ fontFamily: "'Inter', sans-serif" }}>
 
-                <div className='flex justify-between items-center pr-8'>
-                    <p className='text-xl inter font-semibold m-8'>Blog form</p>
-                    <div id='cross' onClick={() => setOpen(!open)}>
-                        <X size={20} className='text-white' />
-                    </div>
-                </div>
+                <div className='flex flex-col h-full'>
 
-                <form action="" >
-                    <div className='flex flex-col gap-5'>
-
-                        <input className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="inputHeading" placeholder='Heading' />
-
-                        <div className='border-1 border-white flex flex-col gap-2 p-3'>
-                            <label htmlFor="inputImage">Add Image</label>
-                            <input type="file" name="inputImage" id="" />
+                    <div className='flex justify-between items-center px-8 pt-8 pb-6 border-b border-white/[0.06]'>
+                        <div>
+                            <p className='text-[11px] tracking-[0.3em] uppercase text-[#E8A94C] mb-1'>
+                                {edit ? "Revise" : "Compose"}
+                            </p>
+                            <h2 className='text-2xl' style={{ fontFamily: "'Fraunces', serif", fontWeight: 600 }}>
+                                {edit ? "Edit entry" : "New entry"}
+                            </h2>
                         </div>
-
-                        <input className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="inputBody" placeholder='Blog Body' />
-
-                        <input className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="inputAuthor" placeholder='Author name' />
+                        <button
+                            id='cross'
+                            onClick={() => setOpen(!open)}
+                            className='w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-[#8B93A1] hover:text-[#EDEFF2] hover:border-white/30 transition-colors'
+                        >
+                            <X size={16} />
+                        </button>
                     </div>
 
-                </form>
+                    <form action="" onSubmit={handleSubmit} className='flex-1 overflow-y-auto px-8 py-6'>
+                        <div className='flex flex-col gap-6'>
 
+                            <div>
+                                <label htmlFor="inputHeading" className='block text-[11px] tracking-[0.2em] uppercase text-[#8B93A1] mb-2'>
+                                    Heading
+                                </label>
+                                <input
+                                    className='w-full bg-transparent border-b border-white/15 focus:border-[#E8A94C] outline-none py-2 text-lg placeholder:text-[#8B93A1]/50 transition-colors'
+                                    style={{ fontFamily: "'Fraunces', serif" }}
+                                    type="text" name="" id="inputHeading"
+                                    onChange={(e) => setHeading(e.target.value)} value={heading}
+                                    placeholder='Give it a title'
+                                />
+                            </div>
 
-                <div id='addBtn' className='w-[90%] relative top-50 ml-4 h-10 rounded-4xl bg-linear-to-r from-[#111C2E] to-[#131F35] hover:bg-none hover:bg-[#364e7c] flex justify-center items-center text-center font-semibold'>
-                    <p className='text-sm'>
-                        Add Blog
-                    </p>
+                            <div className='border border-dashed border-white/15 rounded-xl px-4 py-4 hover:border-[#E8A94C]/40 transition-colors'>
+                                <label htmlFor="inputImage" className='block text-[11px] tracking-[0.2em] uppercase text-[#8B93A1] mb-2'>
+                                    Cover image
+                                </label>
+                                <input
+                                    onChange={(e) => imageConverter(e.target.files[0])}
+                                    type="file" name="inputImage" id="inputImage"
+                                    className='w-full text-sm text-[#8B93A1] file:mr-4 file:py-1.5 file:px-3 file:rounded-full file:border file:border-[#E8A94C]/40 file:bg-transparent file:text-[#E8A94C] file:text-xs file:tracking-wide file:cursor-pointer hover:file:bg-[#E8A94C]/10'
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="inputBody" className='block text-[11px] tracking-[0.2em] uppercase text-[#8B93A1] mb-2'>
+                                    Body
+                                </label>
+                                <input
+                                    className='w-full bg-transparent border-b border-white/15 focus:border-[#E8A94C] outline-none py-2 text-sm text-[#EDEFF2]/90 placeholder:text-[#8B93A1]/50 transition-colors'
+                                    type="text" name="body" id="inputBody"
+                                    onChange={(e) => setBody(e.target.value)} value={body}
+                                    placeholder='Write a short excerpt'
+                                />
+                            </div>
+
+                            <div>
+                                <label htmlFor="inputAuthor" className='block text-[11px] tracking-[0.2em] uppercase text-[#8B93A1] mb-2'>
+                                    Author
+                                </label>
+                                <input
+                                    className='w-full bg-transparent border-b border-white/15 focus:border-[#E8A94C] outline-none py-2 text-sm placeholder:text-[#8B93A1]/50 transition-colors'
+                                    type="text" name="author" id="inputAuthor"
+                                    onChange={(e) => setAuthor(e.target.value)} value={author}
+                                    placeholder='Your name'
+                                />
+                            </div>
+                        </div>
+                    </form>
+
+                    <div className='px-8 pb-8 pt-4'>
+                        <button
+                            onClick={(e) => {
+
+                                if (!edit) {
+                                    handleSubmit(e);
+                                    setOpen(false);
+                                }
+                                else {
+                                    const submittedObj = {
+                                        id: initialObj.id,
+                                        image: image,
+                                        heading: heading,
+                                        body: body,
+                                        author: author
+                                    }
+
+                                    const finalObj = checkForEdits(submittedObj);
+                                    handleSubmtiOnEdit(e, finalObj);
+                                    setOpen(false);
+                                }
+
+                            }}
+                            id='addBtn'
+                            className='w-full h-12 rounded-full bg-[#E8A94C] text-[#0A0E14] font-semibold text-sm tracking-wide hover:bg-[#f0bb6a] transition-colors duration-200'
+                        >
+                            {edit ? "Save changes" : "Publish entry"}
+                        </button>
+                    </div>
                 </div>
             </div>
         </>
