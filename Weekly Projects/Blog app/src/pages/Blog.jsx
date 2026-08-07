@@ -13,63 +13,63 @@ const Dashboard = () => {
             id: 1,
             image: "https://picsum.photos/seed/blogdesk1/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "John"
         },
         {   
             id: 2,
             image: "https://picsum.photos/seed/blogcoffee2/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "ALi"
         },
         {   
             id: 3,
             image: "https://picsum.photos/seed/blogtype3/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "Ahmad"
         },
         {   
             id: 4,
             image: "https://picsum.photos/seed/blognotebook4/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "John"
         },
         {   
             id: 5,
             image: "https://picsum.photos/seed/blogshelf5/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "ALi"
         },
         {   
             id: 6,
             image: "https://picsum.photos/seed/blogpen6/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "Ahmad"
         },
         {   
             id: 7,
             image: "https://picsum.photos/seed/blogpaper7/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "John"
         },
         {   
             id: 8,
             image: "https://picsum.photos/seed/blogstudy8/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "ALi"
         },
         {   
             id: 9,
             image: "https://picsum.photos/seed/blogink9/800/600",
             heading: "heading",
-            body: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maxime illo, alias perspiciatis commodi ducimus ullam nesciunt doloremque eligendi eos voluptatem. Iusto, ducimus numquam.",
+            body: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium explicabo, quo provident tempora maiores pariatur incidunt in temporibus, facilis sunt tempore nulla fugiat rerum. Aspernatur perspiciatis ullam sint consequatur dicta deserunt, iusto aliquid dolorem dolor nisi, ea praesentium quod iure porro, reiciendis enim aliquam? Quo, accusantium esse! Ut, magni aliquam.",
             author: "Ahmad"
         }
     ]
@@ -82,6 +82,14 @@ const Dashboard = () => {
     const [image, setImage] = useState("");
     const [body, setBody] = useState("");
     const [author, setAuthor] = useState("");
+    
+    const handleClick = () => {
+    if (image.length === 0 || heading.trim().length === 0 || body.trim().length === 0 || author.trim().length === 0) {
+        alert("Input field cannot be empty!");
+        return false;
+    }
+    return true;
+}
 
     if (open) {
         document.body.style.overflow = "hidden";
@@ -102,33 +110,6 @@ const Dashboard = () => {
 }
 
 useEffect(() => {
-
-    const headingVal = document.getElementById("inputHeading");
-    const imageVal = document.getElementById("inputImage");
-    const bodyVal = document.getElementById("inputBody");
-    const authorVal = document.getElementById("authorVal");
-
-    const cross = document.getElementById("cross");
-    const addBtn = document.getElementById("addBtn");
-
-    const handleClick = () => {
-
-        const image = imageVal.value.trim();
-        const heading = headingVal.value.trim();
-        const body = bodyVal.value.trim();
-        const author = authorVal.value.trim();
-
-        if ((image.length === 0) || (heading.length === 0) || (body.length === 0) || (author.length === 0)){
-            alert("Input field cannot be empty!");
-            return;
-        }
-
-        addBtn.addEventListener("click", handleClick);
-
-        return () => {
-            addBtn.removeEventListener("click", handleClick);
-        }
-    }
 
     const handleClick2 = () => {
         imageVal.value = "";
@@ -210,16 +191,16 @@ const checkForEdits = (submittedObj)=>{
 
 const imageConverter = (fileObject)=>{
     const url = URL.createObjectURL(fileObject);
+    console.log(url);
+    
     setImage(url);
 }
     return (
         <>
-            {/* PAGE BACKGROUND */}
             <div className='min-h-screen w-full bg-[#0A0E14] text-[#EDEFF2]' style={{ fontFamily: "'Inter', sans-serif" }}>
 
                 <div className='flex w-full min-h-screen'>
 
-                    {/* SIDEBAR */}
                     <aside className='hidden md:flex flex-col justify-between w-20 shrink-0 border-r border-white/[0.06] py-8'>
                         <div className='flex flex-col items-center gap-1'>
                             <span
@@ -236,10 +217,8 @@ const imageConverter = (fileObject)=>{
                         </div>
                     </aside>
 
-                    {/* MAIN */}
                     <main className='flex-1 px-6 sm:px-10 lg:px-16 py-12'>
 
-                        {/* MASTHEAD */}
                         <div className='flex items-end justify-between border-b border-white/[0.08] pb-6 mb-12 flex-wrap gap-6'>
                             <div>
                                 <p className='text-[11px] tracking-[0.3em] uppercase text-[#E8A94C] mb-3'>
@@ -262,8 +241,7 @@ const imageConverter = (fileObject)=>{
                             </button>
                         </div>
 
-                        {/* GRID */}
-                        <div className='grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'>
+                        <div className='grid grid-cols-2 gap-8'>
 
                             {
                                 blogs.map((item, index) => {
@@ -272,8 +250,8 @@ const imageConverter = (fileObject)=>{
                                             key={item.id}
                                             className='group relative flex flex-col bg-[#12181F] border border-white/[0.06] rounded-2xl overflow-hidden hover:border-[#E8A94C]/30 transition-colors duration-300'
                                         >
-                                            {/* image */}
-                                            <div className='relative h-48 w-full overflow-hidden'>
+                                         
+                                            <div className='relative h-80 w-full overflow-hidden'>
                                                 <img
                                                     className='h-full w-full object-cover group-hover:scale-[1.04] transition-transform duration-500 ease-out'
                                                     src={item.image}
@@ -281,7 +259,6 @@ const imageConverter = (fileObject)=>{
                                                 />
                                                 <div className='absolute inset-0 bg-gradient-to-t from-[#0A0E14]/70 via-transparent to-transparent' />
 
-                                                {/* issue marker (signature element) */}
                                                 <div className='absolute top-3 left-3 flex items-center gap-1.5 bg-[#0A0E14]/80 backdrop-blur-sm border border-white/10 rounded-full px-3 py-1'>
                                                     <span className='w-1.5 h-1.5 rounded-full bg-[#E8A94C]' />
                                                     <span className='text-[11px] tracking-[0.2em] uppercase text-[#EDEFF2]/80'>
@@ -289,7 +266,6 @@ const imageConverter = (fileObject)=>{
                                                     </span>
                                                 </div>
 
-                                                {/* actions */}
                                                 <div className='absolute top-3 right-3 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-200'>
                                                     <button
                                                         onClick={() => deleteBlogs(item.id)}
@@ -310,7 +286,6 @@ const imageConverter = (fileObject)=>{
                                                 </div>
                                             </div>
 
-                                            {/* body */}
                                             <div className='flex flex-col flex-1 p-6'>
                                                 <h2
                                                     className='text-xl mb-3 text-[#EDEFF2] leading-snug'
@@ -341,8 +316,6 @@ const imageConverter = (fileObject)=>{
                 </div>
             </div>
 
-
-            {/* SIDE FORM PANEL */}
             <div className={`fixed top-0 h-screen w-full sm:w-[420px] bg-[#0D131B] border-l border-white/[0.08] z-50 transition-all duration-500 ease-out text-[#EDEFF2] ${open ? "right-0" : "-right-full sm:right-[-440px]"}`} style={{ fontFamily: "'Inter', sans-serif" }}>
 
                 <div className='flex flex-col h-full'>
@@ -423,10 +396,12 @@ const imageConverter = (fileObject)=>{
                             onClick={(e) => {
 
                                 if (!edit) {
+                                    if(!handleClick()) return;
                                     handleSubmit(e);
                                     setOpen(false);
                                 }
                                 else {
+                                    if(!handleClick()) return;
                                     const submittedObj = {
                                         id: initialObj.id,
                                         image: image,
@@ -441,7 +416,7 @@ const imageConverter = (fileObject)=>{
                                 }
 
                             }}
-                            id='addBtn'
+                            id='addBtn' 
                             className='w-full h-12 rounded-full bg-[#E8A94C] text-[#0A0E14] font-semibold text-sm tracking-wide hover:bg-[#f0bb6a] transition-colors duration-200'
                         >
                             {edit ? "Save changes" : "Publish entry"}

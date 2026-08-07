@@ -53,7 +53,9 @@ const Firstcards = () => {
             <div className='w-full h-auto p-10 flex justify-center items-center'>
                 
 
-                <div onClick={() => setOpen(!open)} className='bg-[#173B2C] w-[14%] hover:bg-gray-700  transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>See All Features</p></div>
+                <div onClick={() => setOpen(!open)} className='bg-[#173B2C] w-[14%] hover:bg-gray-700  transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>
+                {open ? "See Less Features":"See All Features"}
+                    </p></div>
 
                 
             </div>
