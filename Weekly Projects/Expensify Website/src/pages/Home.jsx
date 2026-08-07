@@ -25,6 +25,7 @@ import Footer from './Footer';
 import { Link } from 'react-router-dom';
 import Signin from '../components/Signin';
 import Faq from '../components/Faq';
+import Paginationpage from '../components/Paginationpage';
 
 const Home = () => {
 
@@ -154,24 +155,7 @@ const Home = () => {
 
             <Firstcards />
 
-            <div className='homeDiv w-full h-[113vh] bg-[#07271F] text-white pl-15 pr-15 flex flex-col justify-center items-center'>
-                <div className='w-full h-[25vh] flex justify-center items-center'>
-                    <p className='text-4xl fraunces font-semibold'>Try Expensify free for 30 days</p>
-                </div>
-                <div className='w-full h-[15vh] flex justify-center items-center gap-5 pr-8 pl-8'>
-                    <Transparentbtn text="Employees" />
-                    <Transparentbtn text="Business Owners" />
-                    <Transparentbtn text="Finance/Accounting" />
-                </div>
-                <div className='w-full h-[50vh] flex justify-center items-center gap-7'>
-                    <Darkcards icon={iconReceiptScanning} title="1. Scan receipts" desc="Scan receipts via the mobile app, drag-and-drop, forwarding to receipts@expensify.com, or texting 47777." />
-                    <Darkcards icon={iconExpenseReports} title="2. Submit reports" desc="Concierge AI automatically categorizes and submits your expenses for reimbursement." />
-                    <Darkcards icon={iconAiExpenses} title="3. Get reimbursed" desc="Get paid back directly to your bank account in as little as one business day." />
-                </div>
-                <div className='bg-[#2FE38A] hover:bg-green-400 mr-1 w-auto p-5 h-13 rounded-4xl flex justify-center items-center text-center'>
-                    <p className='font-semibold'>Get started for free</p>
-                </div>
-            </div>
+            <Paginationpage/>
 
             <div className='w-full h-[100vh] bg-[#1A3D32] pr-30 pl-30'>
                 <div className='w-full h-[25vh] flex justify-center items-center text-white'>
