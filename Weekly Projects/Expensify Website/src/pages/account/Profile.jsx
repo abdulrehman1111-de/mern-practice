@@ -9,6 +9,7 @@ import { ChevronLeft } from 'lucide-react'
 import { Smile, ChevronDown } from 'lucide-react'
 import EmojiPicker from 'emoji-picker-react'
 import { renderToString } from 'react-dom/server'
+import PronounsDiv from '../../components/profile/PronounsDiv'
 
 
 const Profile = () => {
@@ -18,6 +19,7 @@ const Profile = () => {
   const [open3, setOpen3] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
+  const [open6, setOpen6] = useState(false);
 
   const [changeMessage, setChangeMessage] = useState("");
 
@@ -27,25 +29,37 @@ const Profile = () => {
       setOpen2(false);
       setOpen3(false);
       setOpen4(false);
+      setOpen6(false);
     }
 
     if (open2) {
       setOpen(false);
       setOpen4(false);
+      setOpen6(false);
     }
 
     if (open3) {
       setOpen(false);
       setOpen4(false);
+      setOpen6(false);
     }
 
     if (open4) {
       setOpen(false);
       setOpen2(false);
-      setOpen3(false)
+      setOpen3(false);
+      setOpen6(false);
     }
 
-  }, [open, open2, open3, open4])
+    if(open6){
+      setOpen(false);
+      setOpen2(false);
+      setOpen3(false);
+      setOpen4(false);
+      setOpen5(false);
+    }
+
+  }, [open, open2, open3, open4, open5, open6])
 
   useEffect(() => {
 
@@ -99,7 +113,6 @@ const Profile = () => {
 
   const [selectedOption, setSelectedOption] = useState("Today");
   const [index, setIndex] = useState(3);
-  // const statusPara = document.getElementById("statusPara");
 
   const now = new Date();
   const midnight = new Date();
@@ -224,7 +237,7 @@ const Profile = () => {
               </div>
             </div>
 
-            <div className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={()=> setOpen6(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Pronouns</p>
               <p className='text-sm '>Select your pronouns</p>
             </div>
@@ -457,6 +470,25 @@ const Profile = () => {
         </div>
 
       </div>
+
+
+      <div className={`absolute inter z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white p-2 ${open6 ? "left-[72%]" : "left-full"}`}>
+
+        <div className='p-4 flex flex-start items-center gap-2'>
+
+          <ChevronLeft onClick={() => setOpen6(false)} size={25} className='text-white/80' />
+          <p className='text-lg font-semibold'>Status</p>
+
+        </div>
+
+        <PronounsDiv/>
+
+        <div className='w-[90%] relative top-4 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          <p className='text-sm'>Save</p>
+        </div>
+      </div>
+
+      
 
     </>
 
