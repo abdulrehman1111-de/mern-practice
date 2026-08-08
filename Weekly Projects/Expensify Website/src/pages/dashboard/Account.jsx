@@ -2,6 +2,7 @@ import React from 'react'
 import { UserCircle2, Mail, Zap, Wand2, Wand } from 'lucide-react'
 import { Link, Outlet } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
+import { LogOut } from 'lucide-react'
 
 const Account = () => {
   return (
@@ -62,6 +63,15 @@ const Account = () => {
             <div className='flex items-center gap-3'>
               <div><Wand2 size={22} className='text-green-500' /></div>
               <div>Agents</div>
+            </div>
+          </NavLink>
+
+          <NavLink to="/" className={({isActive})=>
+            `hover:bg-green-950 pl-3 pt-2 pb-2 rounded-xl ${isActive?'bg-green-950':""}`
+          }>
+            <div className='flex items-center gap-3'>
+              <div><LogOut size={22} className='text-green-500' /></div>
+              <div>Sign out</div>
             </div>
           </NavLink>
 

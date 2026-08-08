@@ -10,6 +10,7 @@ import { Smile, ChevronDown } from 'lucide-react'
 import EmojiPicker from 'emoji-picker-react'
 import { renderToString } from 'react-dom/server'
 import PronounsDiv from '../../components/profile/PronounsDiv'
+import TimezoneDiv from '../../components/profile/TimezoneDiv'
 
 
 const Profile = () => {
@@ -20,6 +21,9 @@ const Profile = () => {
   const [open4, setOpen4] = useState(false);
   const [open5, setOpen5] = useState(false);
   const [open6, setOpen6] = useState(false);
+  const [open7, setOpen7] = useState(false);
+  const [open8, setOpen8] = useState(false);
+  const [open9, setOpen9] = useState(false);
 
   const [changeMessage, setChangeMessage] = useState("");
 
@@ -30,18 +34,24 @@ const Profile = () => {
       setOpen3(false);
       setOpen4(false);
       setOpen6(false);
+      setOpen7(false);
+      setOpen9(false);
     }
 
     if (open2) {
       setOpen(false);
       setOpen4(false);
       setOpen6(false);
+      setOpen7(false);
+      setOpen9(false);
     }
 
     if (open3) {
       setOpen(false);
       setOpen4(false);
       setOpen6(false);
+      setOpen7(false);
+      setOpen9(false);
     }
 
     if (open4) {
@@ -49,17 +59,45 @@ const Profile = () => {
       setOpen2(false);
       setOpen3(false);
       setOpen6(false);
+      setOpen7(false);
+      setOpen9(false);
     }
 
-    if(open6){
+    if (open6) {
       setOpen(false);
       setOpen2(false);
       setOpen3(false);
       setOpen4(false);
       setOpen5(false);
+      setOpen7(false);
+      setOpen9(false);
     }
 
-  }, [open, open2, open3, open4, open5, open6])
+    if (open7) {
+      setOpen(false);
+      setOpen2(false);
+      setOpen3(false);
+      setOpen4(false);
+      setOpen5(false);
+      setOpen6(false);
+      setOpen9(false);
+    }
+
+    if (!open7) {
+      setOpen8(false);
+    }
+
+    if (open9) {
+      setOpen(false);
+      setOpen2(false);
+      setOpen3(false);
+      setOpen4(false);
+      setOpen5(false);
+      setOpen6(false);
+      setOpen7(false);
+    }
+
+  }, [open, open2, open3, open4, open5, open6, open7, open8, open9])
 
   useEffect(() => {
 
@@ -199,8 +237,8 @@ const Profile = () => {
     }
   }, [open4])
 
-
-
+  const [selectedPronoun, setSelectedPronoun] = useState(false);
+  const [selectedTimezone, setSelectedTimezone] = useState(false);
 
   return (
     <>
@@ -237,14 +275,14 @@ const Profile = () => {
               </div>
             </div>
 
-            <div onClick={()=> setOpen6(true)} className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={() => setOpen6(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Pronouns</p>
-              <p className='text-sm '>Select your pronouns</p>
+              <p id='selectPronouns' className='text-sm '>Select your pronouns</p>
             </div>
 
-            <div className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={() => setOpen7(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Timezone</p>
-              <p className='text-sm '>Asia/Karachi</p>
+              <p id='selectTimezones' className='text-sm '>Asia/Karachi</p>
             </div>
 
           </div>
@@ -260,20 +298,20 @@ const Profile = () => {
           <p className='text-2xl'>Private</p>
           <p className='text-md text-white/80'>These details are used for travel and payments. They're never shown on your public profile.</p>
 
-          <div className='flex flex-col gap-5'>
+          <div onClick={() => setOpen9(true)} className='flex flex-col gap-5'>
             <div className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Legal Name</p>
             </div>
 
-            <div className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={() => setOpen9(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Date of birth</p>
             </div>
 
-            <div className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={() => setOpen9(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Phone number</p>
             </div>
 
-            <div className='hover:bg-[#0A2E25] p-3'>
+            <div onClick={() => setOpen9(true)} className='hover:bg-[#0A2E25] p-3'>
               <p className='text-lg text-white/80'>Address</p>
             </div>
 
@@ -481,14 +519,161 @@ const Profile = () => {
 
         </div>
 
-        <PronounsDiv/>
+        <PronounsDiv getter={selectedPronoun} setter={setSelectedPronoun} />
 
-        <div className='w-[90%] relative top-4 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+        <div onClick={() => {
+          const selectPronouns = document.getElementById("selectPronouns");
+          selectPronouns.innerHTML = selectedPronoun;
+          setOpen6(false);
+        }} className='w-[90%] relative top-4 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
           <p className='text-sm'>Save</p>
         </div>
       </div>
 
-      
+      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open7 ? "left-[72%]" : "left-full"}`}>
+
+        <div className='p-4 flex flex-start items-center gap-2'>
+
+          <ChevronLeft onClick={() => setOpen7(false)} size={25} className='text-white/80' />
+          <p className='text-lg'>Timezone</p>
+
+        </div>
+
+        <p className='p-4 text-white/90 text-sm'>Your timezone is shown on your profile.</p>
+
+        <div className='flex items-center'>
+          <p className='p-4 text-white/90 text-sm'>Automatically determine your location</p>
+          <label className='relative bottom-4' htmlFor="ball">
+            <input className='hidden peer' type="checkbox" name="ball" id="ball" />
+            <div className='absolute peer-checked:bg-green-400 duration-150 ease-out w-15 h-8 bg-[#8A9A82] rounded-4xl'>
+            </div>
+            <div className='w-7 h-7 bg-[#061B09] rounded-full absolute top-0.5 left-1 peer-checked:left-7 transition-all duration-250 ease-out'></div>
+          </label>
+        </div>
+
+        <div onClick={() => setOpen8(true)} className='p-4 text-sm flex justify-between items-center'>
+          <div className='flex flex-col gap-1'>
+            <p className='text-white'>Timezone</p>
+            <p></p>
+          </div>
+          <ChevronRight size={20} className='text-white/80' />
+        </div>
+      </div>
+
+      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open8 ? "left-[72%]" : "left-full"}`}>
+
+        <div className='p-4 flex flex-start items-center gap-2'>
+
+          <ChevronLeft onClick={() => setOpen8(false)} size={25} className='text-white/80' />
+          <p className='text-lg'>Timezone</p>
+
+        </div>
+
+        <p className='p-4 text-white/90 text-sm'>Your timezone is shown on your profile.</p>
+
+        <TimezoneDiv getter={selectedTimezone} setter={setSelectedTimezone} />
+
+        <div onClick={() => {
+          const selectTimezones = document.getElementById("selectTimezones");
+          selectTimezones.innerHTML = selectedTimezone;
+          setOpen7(false);
+        }} className='w-[90%] relative top-4 ml-4 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          <p className='text-sm'>Save</p>
+        </div>
+      </div>
+
+      <div className={`absolute z-50 overflow-auto bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open9 ? "left-[72%]" : "left-full"}`}>
+
+        <div className='h-screen overflow-auto'>
+
+          <div className='p-4 flex flex-start items-center gap-2'>
+
+            <ChevronLeft onClick={() => setOpen9(false)} size={25} className='text-white/80' />
+            <p className='text-lg'>Personal details</p>
+
+          </div>
+
+          <p className='inter text-sm text-white/90 pl-5 pt-2 font-semibold'>Basic details</p>
+
+          <div className='flex flex-col gap-3 m-3 font-medium text-sm'>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="f" placeholder='Legal first name' />
+            <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='Legal last name' />
+            <div className='flex gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 [&::-webkit-calendar-picker-indicator]:invert border-gray-700 p-3 filter:invert(1) w-full rounded-md' type='date' name="" id="" placeholder='Legal last name' />
+            <div className='flex gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="number" name="" id="" placeholder='Phone number' />
+            <div className='flex gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+          </div>
+
+          <p className='inter text-sm text-white/90 pl-5 pb-3 font-semibold'>Address</p>
+
+          <div className='flex flex-col gap-3 m-3 font-medium text-sm'>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='Address line 1' />
+            <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input className='clearable peer border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='Address line 2' />
+            <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input className='clearable peer border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='City' />
+            <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='State/Province' />
+            <div className='gap-2 items-center hidden peer-[&:user-invalid]flexk'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="number" name="" id="" placeholder='Zipcode' />
+            <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
+              <span className='w-2 h-2 bg-red-500 rounded-full'></span>
+              <p className='text-red-500'>This input field is required!</p>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div onClick={() => {
+          
+          const inputForms = document.querySelectorAll(".clearable");
+          inputForms.forEach((input) => {
+            input.value = "";
+          })
+          setOpen9(false);
+        }} className='w-[90%] relative top-4 ml-4 mb-8 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold'>
+          <p className='text-sm'>Save</p>
+        </div>
+      </div>
+
+
 
     </>
 
