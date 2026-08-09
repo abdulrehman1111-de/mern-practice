@@ -363,6 +363,11 @@ const imageConverter = (fileObject)=>{
                                     type="file" name="inputImage" id="inputImage"
                                     className='w-full text-sm text-[#8B93A1] file:mr-4 file:py-1.5 file:px-3 file:rounded-full file:border file:border-[#E8A94C]/40 file:bg-transparent file:text-[#E8A94C] file:text-xs file:tracking-wide file:cursor-pointer hover:file:bg-[#E8A94C]/10'
                                 />
+                                {
+                                    image && (
+                                        <img className='h-24 w-full object-cover rounded-lg' src={image} alt="" />
+                                    )
+                                }
                             </div>
 
                             <div>
