@@ -37,6 +37,10 @@
     animation: FadeUp 0.8s ease-out;
     animation-fill-mode: forwards;
   }
+  li::marker{
+    font-size: 0.8rem;
+  }
+
   @keyframes FadeUp {
     0%{
         transform: translateY(2rem);
@@ -65,7 +69,7 @@
     }
 }
 .pic{
-    height: 37vh;
+    min-height: 220px;
     width: 47%;
     border-radius: 1rem;
     background-position: center;
@@ -122,4 +126,30 @@
         opacity: 1;
     }
 }
+}
+
+.firstReel {
+  animation: reel 30s linear infinite;
+}
+
+@keyframes reel {
+  0% {
+    transform: translateX(0%);
+  }
+
+  25% {
+    transform: translateX(-50%);
+  }
+
+  50% {
+    transform: translateX(0%);
+  }
+
+  75% {
+    transform: translateX(50%);
+  }
+
+  100% {
+    transform: translateX(0%);
+  }
 }
