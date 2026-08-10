@@ -7,7 +7,6 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-700: oklch(50.5% 0.213 27.518);
     --color-black: #000;
     --color-white: #fff;
@@ -229,17 +228,8 @@
   .mt-10 {
     margin-top: calc(var(--spacing) * 10);
   }
-  .mt-16 {
-    margin-top: calc(var(--spacing) * 16);
-  }
-  .ml-4 {
-    margin-left: calc(var(--spacing) * 4);
-  }
-  .ml-4\.5 {
-    margin-left: calc(var(--spacing) * 4.5);
-  }
-  .ml-5 {
-    margin-left: calc(var(--spacing) * 5);
+  .mt-20 {
+    margin-top: calc(var(--spacing) * 20);
   }
   .flex {
     display: flex;
@@ -253,11 +243,11 @@
   .h-13 {
     height: calc(var(--spacing) * 13);
   }
-  .h-20 {
-    height: calc(var(--spacing) * 20);
+  .h-84 {
+    height: calc(var(--spacing) * 84);
   }
-  .h-23 {
-    height: calc(var(--spacing) * 23);
+  .h-85 {
+    height: calc(var(--spacing) * 85);
   }
   .h-auto {
     height: auto;
@@ -277,17 +267,14 @@
   .w-12 {
     width: calc(var(--spacing) * 12);
   }
-  .w-20 {
-    width: calc(var(--spacing) * 20);
+  .w-80 {
+    width: calc(var(--spacing) * 80);
   }
   .w-\[40\%\] {
     width: 40%;
   }
   .w-\[70\%\] {
     width: 70%;
-  }
-  .w-\[88vw\] {
-    width: 88vw;
   }
   .w-full {
     width: 100%;
@@ -325,6 +312,9 @@
   .items-center {
     align-items: center;
   }
+  .justify-between {
+    justify-content: space-between;
+  }
   .justify-center {
     justify-content: center;
   }
@@ -352,14 +342,11 @@
   .gap-10 {
     gap: calc(var(--spacing) * 10);
   }
-  .gap-13 {
-    gap: calc(var(--spacing) * 13);
-  }
   .gap-17 {
     gap: calc(var(--spacing) * 17);
   }
-  .gap-30 {
-    gap: calc(var(--spacing) * 30);
+  .overflow-hidden {
+    overflow: hidden;
   }
   .rounded-2xl {
     border-radius: var(--radius-2xl);
@@ -423,11 +410,23 @@
     }
     background-image: linear-gradient(var(--tw-gradient-stops));
   }
+  .bg-\[url\(\"https\:\/\/i\.pinimg\.com\/736x\/ce\/5d\/69\/ce5d69d65796f784fa38d585a5add71b\.jpg\"\)\] {
+    background-image: url("https://i.pinimg.com/736x/ce/5d/69/ce5d69d65796f784fa38d585a5add71b.jpg");
+  }
+  .bg-\[url\(\)\] {
+    background-image: url();
+  }
   .bg-\[url\(https\:\/\/i\.pinimg\.com\/736x\/4c\/bb\/30\/4cbb30877c3d5a127aa2160af635caad\.jpg\)\] {
     background-image: url(https://i.pinimg.com/736x/4c/bb/30/4cbb30877c3d5a127aa2160af635caad.jpg);
   }
   .bg-\[url\(https\:\/\/i\.pinimg\.com\/736x\/ca\/dd\/81\/cadd813cbb6c7f86e3855f0a427f4ca1\.jpg\)\] {
     background-image: url(https://i.pinimg.com/736x/ca/dd/81/cadd813cbb6c7f86e3855f0a427f4ca1.jpg);
+  }
+  .bg-\[url\(https\:\/\/i\.pinimg\.com\/736x\/ce\/5d\/69\/ce5d69d65796f784fa38d585a5add71b\.jpg\)\] {
+    background-image: url(https://i.pinimg.com/736x/ce/5d/69/ce5d69d65796f784fa38d585a5add71b.jpg);
+  }
+  .bg-\[url\(https\:\/\/i\.pinimg\.com\/736x\/d8\/52\/3f\/d8523f446c51b706f40733339a7b749c\.jpg\)\] {
+    background-image: url(https://i.pinimg.com/736x/d8/52/3f/d8523f446c51b706f40733339a7b749c.jpg);
   }
   .bg-\[url\(https\:\/\/images\.unsplash\.com\/photo-1544216717-3bbf52512659\?auto\=format\&fit\=crop\&w\=500\&q\=80\)\] {
     background-image: url(https://images.unsplash.com/photo-1544216717-3bbf52512659?auto=format&fit=crop&w=500&q=80);
@@ -475,9 +474,6 @@
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
-  .p-3 {
-    padding: calc(var(--spacing) * 3);
-  }
   .p-4 {
     padding: calc(var(--spacing) * 4);
   }
@@ -492,6 +488,9 @@
   }
   .p-15 {
     padding: calc(var(--spacing) * 15);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
   }
   .pt-5 {
     padding-top: calc(var(--spacing) * 5);
@@ -513,6 +512,9 @@
   }
   .pt-18 {
     padding-top: calc(var(--spacing) * 18);
+  }
+  .pb-20 {
+    padding-bottom: calc(var(--spacing) * 20);
   }
   .pl-5 {
     padding-left: calc(var(--spacing) * 5);
@@ -812,7 +814,7 @@
   }
 }
 .firstReel {
-  animation: reel 30s linear infinite;
+  animation: reel 10s linear infinite;
 }
 @keyframes reel {
   0% {

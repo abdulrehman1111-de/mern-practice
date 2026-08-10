@@ -129,7 +129,7 @@
 }
 
 .firstReel {
-  animation: reel 30s linear infinite;
+  animation: reel 10s linear infinite;
 }
 
 @keyframes reel {
