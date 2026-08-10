@@ -17,7 +17,7 @@ const TimezoneDiv = ({ getter, setter }) => {
             <input type="text" name="" id="" placeholder='Timezone' onChange={(e) => setTimezoneInput(e.target.value)} value={timezoneInput} className='p-3 text-sm rounded-lg border-1 border-gray-700 w-full h-auto p-2' />
 
 
-            <div className='m-3 h-[60vh] overflow-auto w-[90%] flex flex-col gap-7 font-semibold pt-5'>
+            <div className='invisible-scrollbar m-3 h-[60vh] overflow-auto w-[90%] flex flex-col gap-7 font-semibold pt-5'>
                 {
                     selectedValue.length === 0 ?
                         <p>No results found</p>

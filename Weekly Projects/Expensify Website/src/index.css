@@ -124,3 +124,6 @@ li:hover {
   --epr-category-label-bg-color: #061B09;
   --epr-search-input-bg-color: #0A2E1F;
 }
+.invisible-scrollbar {   
+  scrollbar-width: none;   
+}
