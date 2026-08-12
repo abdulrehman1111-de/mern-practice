@@ -18,16 +18,14 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
 
 <body>
     <header>
-        <nav class="opacity-95 w-full h-auto p-4 gap-4 flex flex-wrap justify-between items-center bg-[#FAF6EE]">
+        <nav class="opacity-95 w-full h-auto p-4 z-20 gap-4 flex flex-wrap justify-between items-center bg-[#FAF6EE]">
             <div class="flex justify-center items-center gap-3">
-                <img class="rounded-3xl h-12 w-12 border-2 border-[#EFE3CB]"
-                    src="https://tinyurl.com/uay7cxup"
-                    alt="">
+                <img class="rounded-3xl h-12 w-12 border-2 border-[#EFE3CB]" src="https://tinyurl.com/uay7cxup" alt="">
                 <div class="flex gap-0.8 font-medium text-lg">
                     <h1>Shafiq Yoga <span class="text-[#C9873B]">Club</span></h1>
                 </div>
             </div>
-            <div>
+            <div id="menu">
                 <div class="ham"></div>
                 <div class="ham"></div>
                 <div class="ham"></div>
@@ -35,6 +33,31 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
         </nav>
     </header>
     <main>
+
+        <section>
+            <div id="sidePanel"
+                class="visibilityHidden hiddenClass p-5 flex flex-col justify-end gap-7 z-10 absolute h-auto pt-20 w-full bg-[#FAF6EE] text-[#4A5D45]">
+
+                <ul class="text-[#4A5D45] list-none fraunces flex flex-col gap-3 text-lg">
+                    <li>About</li>
+                    <li>Pattern</li>
+                    <li>Gallery</li>
+                    <li>Join Us</li>
+                </ul>
+
+                <div
+                    class='w-full p-3 h-auto gap-2 shadow-green-400 shadow-sm rounded-4xl flex justify-center items-center hover:bg-[#2ECC71] bg-green-400 flex justify-center items-center text-center font-semibold'>
+                    <svg class="w-[1em] h-[1em] text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                    </svg>
+                    <p class='text-md text-white text-nowrap'>Message us on WhatsApp</p>
+                </div>
+            </div>
+        </section>
+
         <section>
             <div class="section1 bg-linear-to-b from-[#f1e9d8] to-[#F7F1E4] w-full h-auto mt-20 ">
                 <div class="firstTransition p-6.5 pt-15 flex flex-col gap-5.5 ">
@@ -272,10 +295,12 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
         <section>
             <div class="w-full min-h-[100vh] flex justify-center items-center gap-7 bg-[#FBF7EF]">
 
-                <div data-aos-offset="100px" data-aos="custom" class="section3Transition w-full h-[90vh] p-5 flex gap-5 flex-col justify-center items-center">
+                <div data-aos-offset="100px" data-aos="custom"
+                    class="section3Transition w-full h-[90vh] p-5 flex gap-5 flex-col justify-center items-center">
                     <p class="uppercase tracking-widest text-[#A8692A] font-semibold text-xs">come as you are</p>
                     <p class="fraunces text-3xl text-center">No sign-up forms. Just send a message.</p>
-                    <p class="text-gray-700/70 text-center">Tell us you'd like to join, and we'll share the day, time, and exact spot
+                    <p class="text-gray-700/70 text-center">Tell us you'd like to join, and we'll share the day, time,
+                        and exact spot
                         in
                         the park. That's it.</p>
 
@@ -326,9 +351,11 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             </ul>
             <p class="text-xs text-white/70 text-center">© 2026 Shafiq Yoga Club. Made with breath and patience.</p>
         </footer>
+
     </main>
 
 
+    <script src="index.js"></script>
     <script src="
 https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.js
 "></script>
