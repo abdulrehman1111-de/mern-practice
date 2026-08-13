@@ -1,157 +1,189 @@
 @import "tailwindcss";
 
 @layer base {
-  * {
-    margin: 0%;
-    padding: 0%;
-    box-sizing: border-box;
-  }
-  nav {
-    font-family: "Fraunces", serif;
-    position: fixed;
-    top: 0;
-    z-index: 1;
-  }
-  .fraunces{
-    font-family: "Fraunces", serif;
-  }
-  .urdu{
-    font-family: "Noto Nastaliq Urdu", serif;
-  }
-  .ham {
-    background-color: black;
-    width: 23px;
-    height: 2px;
-    margin: 5px 0;
-  }
-  .section1 h1 {
-    font-family: "Fraunces", serif;
-  }
-  .text-moss\/80 {
-    color: rgb(74 93 69 / 0.8);
-  }
-  .button1 {
-    font-family: "Work Sans", sans-serif;
-  }
-  .firstTransition{
-    animation: FadeUp 0.8s ease-out;
-    animation-fill-mode: forwards;
-  }
-  li::marker{
-    font-size: 0.8rem;
-  }
+    * {
+        margin: 0%;
+        padding: 0%;
+        box-sizing: border-box;
+    }
 
-  @keyframes FadeUp {
-    0%{
-        transform: translateY(2rem);
-        opacity: 0;
+    html {
+        scroll-behavior: smooth;
     }
-    100%{
-        transform: translateY(0rem);
-        opacity: 1;
+
+    nav {
+        font-family: "Fraunces", serif;
+        position: fixed;
+        top: 0;
+        z-index: 1;
     }
-}
-    .firstPic{
-        opacity: 0;
+
+    .fraunces {
+        font-family: "Fraunces", serif;
     }
-    .firstPic.aos-animate{
+
+    .urdu {
+        font-family: "Noto Nastaliq Urdu", serif;
+    }
+
+    .ham {
+        background-color: black;
+        width: 23px;
+        height: 2px;
+        margin: 5px 0;
+    }
+
+    .section1 h1 {
+        font-family: "Fraunces", serif;
+    }
+
+    .text-moss\/80 {
+        color: rgb(74 93 69 / 0.8);
+    }
+
+    .button1 {
+        font-family: "Work Sans", sans-serif;
+    }
+
+    .firstTransition {
         animation: FadeUp 0.8s ease-out;
         animation-fill-mode: forwards;
     }
-@keyframes FadeUp {
-    0%{
-        transform: translateY(2rem);
+
+    li::marker {
+        font-size: 0.8rem;
+    }
+
+    @keyframes FadeUp {
+        0% {
+            transform: translateY(2rem);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    .firstPic {
         opacity: 0;
     }
-    100%{
-        transform: translateY(0rem);
-        opacity: 1;
+
+    .firstPic.aos-animate {
+        animation: FadeUp 0.8s ease-out;
+        animation-fill-mode: forwards;
     }
-}
-.pic{
-    min-height: 220px;
-    width: 47%;
-    border-radius: 1rem;
-    background-position: center;
-    background-size: cover;
-}
-.secondPara{
-    opacity: 0;
-}
-.secondPara.aos-animate{
+
+    @keyframes FadeUp {
+        0% {
+            transform: translateY(2rem);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    .pic {
+        min-height: 220px;
+        width: 47%;
+        border-radius: 1rem;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .secondPara {
+        opacity: 0;
+    }
+
+    .secondPara.aos-animate {
         animation: FadeUp2 0.8s ease-out 0.1s;
         animation-fill-mode: forwards;
     }
-@keyframes FadeUp2 {
-    0%{
-        transform: translateY(3rem);
+
+    @keyframes FadeUp2 {
+        0% {
+            transform: translateY(3rem);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    .picsContainer {
         opacity: 0;
     }
-    100%{
-        transform: translateY(0rem);
-        opacity: 1;
-    }
-}
-.picsContainer{
-        opacity: 0;
-    }
-.picsContainer.aos-animate{
+
+    .picsContainer.aos-animate {
         animation: FadeUp 0.8s ease-out 0.1s;
         animation-fill-mode: forwards;
     }
-@keyframes FadeUp {
-    0%{
-        transform: translateY(2rem);
-        opacity: 0;
-    }
-    100%{
-        transform: translateY(0rem);
-        opacity: 1;
-    }
-}
-.section3Transition{
-    opacity: 0;
-}
-.section3Transition.aos-animate{
-        animation: FadeUp 0.8s ease-out 0.1s;
-        animation-fill-mode: forwards;
-    }
+
     @keyframes FadeUp {
-    0%{
-        transform: translateY(2rem);
+        0% {
+            transform: translateY(2rem);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
+
+    .section3Transition {
         opacity: 0;
     }
-    100%{
-        transform: translateY(0rem);
-        opacity: 1;
+
+    .section3Transition.aos-animate {
+        animation: FadeUp 0.8s ease-out 0.1s;
+        animation-fill-mode: forwards;
     }
-}
+
+    @keyframes FadeUp {
+        0% {
+            transform: translateY(2rem);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translateY(0rem);
+            opacity: 1;
+        }
+    }
 }
 
 .firstReel {
-  animation: reel 20s linear infinite;
+    animation: reel 20s linear infinite;
 }
 
 @keyframes reel {
-  0% {
-    transform: translateX(0%);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+    0% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
 }
 
-.visibilityHidden{
+.visibilityHidden {
     visibility: hidden;
 }
 
-.hiddenClass{
+.hiddenClass {
     opacity: 0;
     animation: fadeEnd 0.3s ease-out;
     animation-fill-mode: forwards;
 }
 
-.removeHiddenClass{
+.removeHiddenClass {
     position: fixed;
     top: 0;
     animation: fadeStart 0.3s ease-out;
@@ -160,19 +192,63 @@
 }
 
 @keyframes fadeStart {
-    from{
-        opacity: 0;
+    from {
+        max-height: 0px;
     }
-    to{
-        opacity: 1;
+
+    to {
+        max-height: 500px;
     }
 }
 
 @keyframes fadeEnd {
-    from{
-        opacity: 1;
+    from {
+        max-height: 500px;
     }
-    to{
-        opacity: 0;
+
+    to {
+        max-height: 0px;
     }
+}
+
+.underline1 {
+    display: inline-block;
+    position: relative;
+    line-height: 1;
+    align-self: flex-start;
+}
+
+.underline1::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -10px;
+    left: 0;
+    background-color: #C9873B;
+    transform-origin: bottom right;
+    transition: transform 0.35s ease-out;
+}
+
+.underline1:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+.animationClass{
+    animation: move infinite 3s ease-in-out;
+}
+
+@keyframes move {
+    0%, 100%{
+        transform: translateY(0rem);
+    }
+    50%{
+        transform: translateY(0.5rem);
+    }
+}
+
+.svg{
+    margin-top: -1px;
 }
