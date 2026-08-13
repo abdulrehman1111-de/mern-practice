@@ -18,14 +18,33 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
 
 <body>
     <header>
-        <nav class="opacity-95 w-full h-auto p-4 z-20 flex flex-wrap justify-between items-center bg-[#FAF6EE]">
+        <nav class="opacity-95 w-full h-auto p-4 z-20 flex flex-wrap justify-between items-center bg-[#FAF6EE] md:flex">
             <div class="flex justify-center items-center gap-3">
-                <img class="rounded-3xl h-12 w-12 border-2 border-[#EFE3CB]" src="https://tinyurl.com/uay7cxup" alt="">
+                <img class="rounded-3xl h-12 w-12 shrink-0 border-2 border-[#EFE3CB]" src="https://tinyurl.com/uay7cxup" alt="">
                 <div class="flex gap-0.8 font-medium text-lg">
                     <h1>Shafiq Yoga <span class="text-[#C9873B]">Club</span></h1>
                 </div>
             </div>
-            <div id="menu">
+
+            <ul class="hidden md:flex text-[#4A5D45] justify-between gap-7 lg:gap-9">
+                <li>About</li>
+                <li>Practice</li>
+                <li>Gallery</li>
+                <li>Join Us</li>
+            </ul>
+
+            <div
+                class="hidden md:flex button1 hover:bg-[#2ECC71] bg-green-400 sm:w-[20%] lg:w-[12%] h-13 sm:h-11 flex justify-center items-center text-white rounded-4xl shadow-2xl tracking-wider gap-3">
+                <svg class="w-[1em] h-[1em] text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path
+                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                <button>WhatsApp</button>
+            </div>
+
+            <div id="menu" class="md:hidden">
                 <div class="ham"></div>
                 <div class="ham"></div>
                 <div class="ham"></div>
@@ -36,7 +55,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
 
         <section>
             <div id="sidePanel"
-                class="visibilityHidden hiddenClass p-5 flex flex-col justify-end gap-7 z-10 absolute h-auto pt-20 w-full bg-[#FAF6EE] text-[#4A5D45]">
+                class="visibilityHidden hiddenClass p-5 flex flex-col justify-end gap-7 z-10 absolute h-auto pt-20 sm:pt-23 w-full bg-[#FAF6EE] text-[#4A5D45]">
 
                 <ul class="text-[#4A5D45] list-none fraunces flex flex-col gap-3 text-lg">
                     <li>About</li>
@@ -59,8 +78,9 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
         </section>
 
         <section>
-            <div class="section1 bg-linear-to-b from-[#f1e9d8] to-[#F7F1E4] w-full h-auto mt-20 sm:flex justify-center items-center flex-col">
-                <div class="firstTransition p-6.5 pt-15 flex flex-col gap-5.5 sm:gap-7">
+            <div
+                class="section1 bg-linear-to-b from-[#f1e9d8] to-[#F7F1E4] w-full h-auto mt-20 md:pt-20 lg:pt-15 sm:flex justify-center items-center flex-col md:flex-row md:justify-evenly sm:mb-15">
+                <div class="firstTransition p-6.5 md:p-3 pt-15 flex flex-col gap-5.5 sm:gap-7 md:w-[45%] lg:w-[48%]">
                     <p class="text-[#A8692A] uppercase text-xs sm:text-md font-medium tracking-[0.19rem]">Every morning
                         · In the
                         park · With people who show up</p>
@@ -76,21 +96,26 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                         ہر صبح، پارک
                         میں، اپنے لوگوں کے ساتھ سکون کا ایک گھنٹہ</p>
 
-                    <div class="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7">
+                    <div class="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-7 md:gap-5 md:flex-col lg:flex-row">
                         <div
-                            class="button1 bg-linear-to-r from-[#C9873B] to-[#4A5D45] w-[70%] sm:w-[30%] h-13 sm:h-11 flex justify-center items-center text-white rounded-4xl shadow-2xl tracking-wider">
+                            class="button1 bg-linear-to-r from-[#C9873B] to-[#4A5D45] w-[70%] sm:w-[30%] md:w-full lg:w-[35%] h-auto p-3 md:p-7 sm:h-11 flex justify-center items-center text-white rounded-4xl shadow-2xl tracking-wider text-nowrap">
                             <button>Join a session →</button>
                         </div>
-                        <p class="text-[#394835] text-lg sm:text-md font-[500]">See the practice <span
+                        <p class="text-[#394835] text-lg sm:text-md font-[500] text-nowrap md:mr-auto">See the practice <span
                                 class="text-2xl relative top-0.5 left-0.5">↓</span></p>
                     </div>
                 </div>
                 <div data-aos-offset="100px" data-aos="custom"
-                    class="firstPic m-6 pt-15 min-h-87 sm:h-screen sm:w-[90%] bg-[url(https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80)] bg-cover bg-center rounded-4xl mt-10">
+                    class="firstPic m-6 pt-15 min-h-87 relative sm:h-screen sm:w-[90%] bg-[url(https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80)] bg-cover bg-center rounded-4xl shadow-2xl mt-10 md:w-[40%] lg:w-[44%]">
 
-                    <div class="hidden w-22 h-22 rounded-2xl shadow-2xl ml-auto relative bottom-20 left-6 bg-[#FAF6EE] sm:flex flex-col justify-center items-center">
+                    <div
+                        class="hidden w-22 h-22 rounded-2xl shadow-2xl ml-auto relative bottom-20 left-6 bg-[#FAF6EE] sm:flex flex-col justify-center items-center">
                         <p class="text-[#C9873B] fraunces text-3xl">6:30</p>
                         <p class="text-[#4A5D45] text-xs">AM start</p>
+                    </div>
+
+                    <div
+                        class="hidden sm:flex border-4 border-white w-53 right-[67%] md:left-[40%] lg:-left-10 top-[82%] h-38 md:h-33 absolute bg-[url(https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=500&q=80)] bg-cover bg-center rounded-2xl shadow-2xl">
                     </div>
                 </div>
             </div>
@@ -102,9 +127,9 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             </path>
         </svg>
         <section>
-            <div class="section2 bg-[#EFE3CB] w-full h-auto p-6.5 pt-15">
+            <div class="section2 bg-[#EFE3CB] w-full h-auto p-6.5 pt-15 md:grid md:grid-cols-2 md:gap-10 md:pb-25 lg:pb-20">
                 <div data-aos="custom" data-aos-offset=150px class="secondPara d">
-                    <h3 class="pt-5 text-[#A8692A] tracking-[0.19rem] font-sans">OUR STORY</h3>
+                    <p class="pt-5 text-[#A8692A] tracking-[0.19rem] font-sans md:text-sm md:font-semibold">OUR STORY</p>
                     <h1 class="fraunces text-[#2B3527] text-4xl leading-10 tracking-normal [word-spacing-8px] pt-5.5">
                         Started with a mat, a park bench, and a few curious neighbours.</h1>
                     <p class="text-[#4A5D45] opacity-[0.9] tracking-wide pt-7">Shafiq began practicing yoga alone in the
@@ -114,15 +139,16 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                     <p class="text-[#4A5D45] opacity-[0.9] pt-5.5">There's no studio, no membership desk. Just a patch
                         of grass, an instructor who still practices like a student, and a community that shows up for
                         each other as much as for the poses.</p>
-                    <p class="urdu pt-6 pl-5 text-[#4A5D45] font-bold tracking-wide text-[1.2rem]">شفیق نے اپنے علاقے کے
+                    <p class="urdu pt-6 pl-5 text-[#4A5D45] font-bold tracking-wide text-[1.2rem] sm:text-[1rem]">شفیق
+                        نے اپنے علاقے کے
                         پارک میں تنہا یوگا کی مشق شروع کی، اور آج یہ ایک پورا خاندان بن چکا ہے</p>
-                    <div class="p-2 pt-12">
-                        <ul class="fraunces list-none text-[#C9873B] flex gap-17 text-3xl">
+                    <div class="p-2 pt-12 flex flex-col justify-between items-center">
+                        <ul class="fraunces list-none text-[#C9873B] flex gap-17 text-3xl text-nowrap">
                             <li>3+</li>
                             <li>6</li>
                             <li>ALL</li>
                         </ul>
-                        <ul class="font-sans text-[#4A5D45] opacity-[0.7] flex gap-8 text-md">
+                        <ul class="font-sans text-[#4A5D45] opacity-[0.7] flex gap-5 text-md text-nowrap">
                             <li>years running</li>
                             <li>days a week</li>
                             <li>ages welcome</li>
@@ -151,15 +177,15 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
         <section>
             <div class="section3 bg-[#edede6] w-full h-auto">
                 <div data-aos="custom" data-aos-offset=150px class="section3Transition p-6.5 pt-15">
-                    <h3 class="pt-5 text-[#A8692A] tracking-[0.19rem] font-sans">THE PRACTICE</h3>
+                    <p class="md:text-sm md:font-semibold pt-5 text-[#A8692A] tracking-[0.19rem] font-sans">THE PRACTICE</p>
                     <h1 class="fraunces text-[#2B3527] text-3xl leading-10 tracking-normal [word-spacing-8px] pt-5.5">A
                         few favourites from our morning circle</h1>
-                    <p class="text-[#4A5D45] opacity-[0.9] tracking-wider pt-7">Every session mixes gentle stretches
+                    <p class="text-[#4A5D45] opacity-[0.9] tracking-wider md:tracking-wide pt-7">Every session mixes gentle stretches
                         with a few grounding poses. Here's a small taste — explained the way we teach it, in both
                         languages.</p>
                 </div>
 
-                <div class="mt-10 px-5 flex flex-col gap-5">
+                <div class="mt-10 px-5 flex flex-col gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3">
 
                     <div data-aos="custom" data-aos-offset=150px
                         class="border-1 border-black/10 section3Transition shadow-sm min-h-120 w-full rounded-2xl">
@@ -240,6 +266,87 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
                             </center>
                         </div>
                     </div>
+
+
+                    <div data-aos="custom" data-aos-offset=150px
+                        class="border-1 border-black/10 section3Transition shadow-sm min-h-120 w-full rounded-2xl hidden lg:block">
+                        <div
+                            class="min-h-55 bg-[url(https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80)] bg-cover bg-center rounded-2xl">
+                            <div
+                                class="relative bg-[#F0E6D6] h-auto w-[40%] rounded-4xl text-[#B87D3C] flex justify-center items-center p-1.5 text-xs font-semibold text-nowrap top-2.5 left-2.5 ">
+                                <p>Core & balance</p>
+                            </div>
+                        </div>
+                        <div class="min-h-65 flex flex-col p-5 gap-1 justify-center">
+                            <p class="text-[#2B3527] fraunces text-xl">Boat Pose <span
+                                    class="text-[#4A5D45] opacity-[0.5]">/ NavaSana</span></p>
+                            <p class="text-[#4A5D45] opacity-[0.7] flex justify-end font-semibold"><span>بوٹ پوز</span>
+                            </p>
+                            <ul class="text-[#4A5D45]/70 list-disc flex flex-col gap-1 p-4 text-sm tracking-wider">
+                                <li>Strengthens the core and lower back</li>
+                                <li>Builds balance and coordination</li>
+                                <li>Improves posture over time</li>
+                            </ul>
+                            <center>
+                                <p class="text-red-700/80 text-xs/4 tracking-wide">Caution: skip if you have a recent
+                                    abdominal injury or lower-back strain.</p>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div data-aos="custom" data-aos-offset=150px
+                        class="section3Transition border-1 border-black/10 shadow-sm min-h-120 w-full rounded-2xl">
+                        <div
+                            class="min-h-55 bg-[url(https://i.pinimg.com/736x/ca/dd/81/cadd813cbb6c7f86e3855f0a427f4ca1.jpg)] bg-cover bg-center rounded-2xl hidden lg:block">
+                            <div
+                                class="relative bg-[#F0E6D6] h-auto w-[40%] rounded-4xl text-[#B87D3C] flex justify-center items-center p-1.5 text-xs font-semibold text-nowrap top-2.5 left-2.5">
+                                Relaxation
+                            </div>
+                        </div>
+                        <div class="min-h-65 flex flex-col p-5 gap-1 justify-center">
+                            <p class="text-[#2B3527] fraunces text-xl">Rocking Pose <span
+                                    class="text-[#4A5D45] opacity-[0.5]">/ Rocking Movement</span></p>
+                            <p class="text-[#4A5D45] opacity-[0.7] flex justify-end font-semibold"><span>راکنگ
+                                    پوز</span></p>
+                            <ul class="text-[#4A5D45]/70 list-disc flex flex-col gap-1 p-4 text-sm tracking-wider">
+                                <li>Gently massages the lower back</li>
+                                <li>Loosens hip and lower-back tension</li>
+                                <li>Calms the mind before rest</li>
+                            </ul>
+                            <center>
+                                <p class="text-red-700/80 text-xs/4 tracking-wide">Caution: move slowly, avoid if you
+                                    have acute lower-back pain.</p>
+                            </center>
+                        </div>
+                    </div>
+
+                    <div data-aos="custom" data-aos-offset=150px
+                        class="section3Transition border-1 border-black/10 shadow-sm min-h-120 w-full rounded-2xl hidden lg:block">
+                        <div
+                            class="min-h-55 bg-[url(https://i.pinimg.com/736x/4c/bb/30/4cbb30877c3d5a127aa2160af635caad.jpg)] bg-cover bg-center rounded-2xl">
+                            <div
+                                class="relative bg-[#F0E6D6] h-auto w-[40%] rounded-4xl text-[#B87D3C] flex justify-center items-center p-1.5 text-xs font-semibold text-nowrap top-2.5 left-2.5">
+                                Warm-up
+                            </div>
+                        </div>
+                        <div class="min-h-65 flex flex-col p-5 gap-1 justify-center">
+                            <p class="text-[#2B3527] fraunces text-xl">Dynamic Arm Swings <span
+                                    class="text-[#4A5D45] opacity-[0.5]">/ Warm-up</span></p>
+                            <p class="text-[#4A5D45] opacity-[0.7] flex justify-end font-semibold"><span>بازوؤں کی
+                                    سوئنگ</span>
+                            </p>
+                            <ul class="text-[#4A5D45]/70 list-disc flex flex-col gap-1 p-4 text-sm tracking-wider">
+                                <li>Mobilises shoulders and upper back</li>
+                                <li>Improves blood flow before practice</li>
+                                <li>Prepares the body for deeper stretches
+                                <li>
+                            </ul>
+                            <center>
+                                <p class="text-red-700/80 text-xs/4 tracking-wide">Tip: keep movements controlled, not
+                                    forceful.</p>
+                            </center>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="h-auto p-15 flex justify-center items-center">
@@ -253,7 +360,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
         </section>
 
         <section>
-            <div class="h-auto bg-[#4A5D45]">
+            <div class="h-auto bg-[#4A5D45] lg:pb-10">
                 <svg class="pt-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                     <path fill="#FAF6EE" fill-opacity="1"
                         d="M0,160L24,149.3C48,139,96,117,144,112C192,107,240,117,288,138.7C336,160,384,192,432,181.3C480,171,528,117,576,133.3C624,149,672,235,720,245.3C768,256,816,192,864,154.7C912,117,960,107,1008,122.7C1056,139,1104,181,1152,186.7C1200,192,1248,160,1296,128C1344,96,1392,64,1416,48L1440,32L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z">
@@ -309,7 +416,7 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             <div class="w-full h-auto flex justify-center items-center gap-7 bg-[#FBF7EF]">
 
                 <div data-aos-offset="100px" data-aos="custom"
-                    class="section3Transition w-full h-auto p-5 pt-20 pb-20 flex gap-5 flex-col justify-center items-center">
+                    class="section3Transition w-full h-auto p-5 pt-20 sm:pt-25 pb-20 sm:pb-25 md:pt-30 md:pb-30 flex gap-5 flex-col justify-center items-center">
                     <p class="uppercase tracking-widest text-[#A8692A] font-semibold text-xs">come as you are</p>
                     <p class="fraunces text-3xl text-center">No sign-up forms. Just send a message.</p>
                     <p class="text-gray-700/70 text-center">Tell us you'd like to join, and we'll share the day, time,
@@ -352,12 +459,13 @@ https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.min.css
             </div>
         </section>
 
-        <footer class="w-full h-auto p-6 bg-[#2B3527] text-white flex flex-col justify-center items-center gap-5">
+        <footer
+            class="w-full h-auto p-6 sm:p-12 bg-[#2B3527] text-white flex flex-col justify-center items-center gap-5 md:flex-row md:p-10 md:gap-3 lg:justify-between">
             <div class="flex gap-2 justify-center items-center">
-                <div class="w-8 h-8 bg-cover bg-center rounded-full bg-[url(https://tinyurl.com/uay7cxup)]"></div>
+                <div class="w-8 h-8 shrink-0 bg-cover bg-center rounded-full bg-[url(https://tinyurl.com/uay7cxup)]"></div>
                 <p class="fraunces">Shafiq Yoga Club & Studio</p>
             </div>
-            <ul class=" flex gap-3 list-none">
+            <ul class=" flex gap-3 lg:gap-5 list-none">
                 <li class="text-white/70">Facebook</li>
                 <li class="text-white/70">WhatsApp</li>
                 <li class="text-white/70">Call</li>
