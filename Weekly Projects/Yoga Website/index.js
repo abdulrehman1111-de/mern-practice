@@ -25,6 +25,26 @@ menu.addEventListener("click", () => {
 
 })
 
+const cardsGroup = document.querySelectorAll(".hiddenCards");
+const showCardsBtn = document.getElementById("showCardsBtn");
+const showCardPara = document.getElementById("showCardPara");
+
+showCardsBtn.addEventListener("click", ()=>{
+    if(window.innerWidth >= 1024){
+        const isHidden = cardsGroup[0].classList.contains("hidden");
+        cardsGroup.forEach((card)=>{
+            if (isHidden){
+                card.classList.remove("hidden");
+                card.classList.add("aos-animate");
+            }
+            else{
+                card.classList.add("hidden");
+            }
+            showCardPara.innerHTML = isHidden ? "Show less poses" : "Show more poses";
+        })
+    }
+})
+
 
 
 
