@@ -3,12 +3,12 @@ import Accountnav from '../../components/account/Accountnav'
 import { UserCircle2, Mail, Zap, Wand2, Wand } from 'lucide-react'
 import Expensepic from '../../assets/Expensepic.png'
 
-const Expense = () => {
+const Expense = ({dark}) => {
   return (
-    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
+    <div className={`graySelect text-white w-full h-full overflow-y-auto ${dark ? "bg-[#061B09]" : "bg-white"}`}>
       <Accountnav icon={Zap} heading="Expense Rules" />
 
-      <div className='text-lg text-white/80 p-5'>
+      <div className={`text-lg p-5 ${dark ? "text-white/80" : "text-gray-500"}`}>
         <p>These rules will apply to your expenses.</p>
       </div>
 
@@ -16,8 +16,8 @@ const Expense = () => {
 
         <div className='bg-cover bg-center w-50 h-35' style={{ backgroundImage: `url(${Expensepic})` }}></div>
         <div className='flex flex-col justify-center items-center gap-2'>
-          <p className='text-2xl'>No rules yet</p>
-          <p className='text-white/80'>Add a rule to automate expense reporting.</p>
+          <p className={`text-2xl ${dark ? "" : "text-gray-900"}`}>No rules yet</p>
+          <p className={dark ? "text-white/80" : "text-gray-500"}>Add a rule to automate expense reporting.</p>
         </div>
         <div className='w-[12%] h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-3'>
             <p className='text-sm'>New Rule</p>

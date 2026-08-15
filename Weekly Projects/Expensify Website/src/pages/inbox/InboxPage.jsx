@@ -7,7 +7,7 @@ import { useState } from 'react'
 import Todo from '../../components/inbox/Todo'
 
 
-const InboxPage = () => {
+const InboxPage = ({dark}) => {
 
     const [messages, setMessages] = useState([]);
     const [inter, setInter] = useState("");
@@ -69,19 +69,19 @@ const InboxPage = () => {
 
 
     return (
-        <div className='bg-[#061B09] text-white w-full h-screen border-1 border-gray-800 flex flex-col'>
+        <div className={`text-white w-full h-screen border-1 border-gray-800 flex flex-col ${dark ? "bg-[#061B09]" : "bg-white"}`}>
             <div className=''>
-                <div className='w-full text-white graySelect sticky top-0 h-auto flex justify-between p-5  bg-[#061B09] border-1 border-gray-800 overflow-y-auto'>
+                <div className={`w-full graySelect sticky top-0 h-auto flex justify-between p-5 border-1 overflow-y-auto ${dark ? "bg-[#061B09] border-gray-800 text-white" : "border-b border-gray-200"}`}>
 
                     <div className='flex gap-3 items-center'>
                         {Bot && <Bot size={35} className='text-green-500' />}
                         <div className='flex flex-col inter'>
-                            <span className='text-xl'>Concirege</span>
-                            <p className='text-white/70 text-xs font-semibold'>Your personal Ai agent</p>
+                            <span className={`text-xl ${dark ? "" : "text-gray-900"}`}>Concirege</span>
+                            <p className={`text-xs font-semibold ${dark ? "text-white/70" : "text-gray-500"}`}>Your personal Ai agent</p>
                         </div>
                     </div>
 
-                    <div className='flex gap-4 items-center'>
+                    <div className={`flex gap-4 items-center ${dark ? "" : "text-gray-700"}`}>
                         <Search size={22} />
                     </div>
                 </div>
@@ -89,7 +89,7 @@ const InboxPage = () => {
                 <div id='hiddenDiv' className='w-full relative h-[40%]'>
                     <div className='w-full h-full'>
                         <svg className="obliteratedBottom absolute inset-0 w-full h-full opacity-40" viewBox="0 0 680 260" preserveAspectRatio="xMidYMax slice">
-                            <g fill="none" stroke="#15402C" strokeWidth="1.5">
+                            <g fill="none" stroke={dark ? "#15402C" : "#E5E7EB"} strokeWidth="1.5">
 
                                 <circle cx="20" cy="30" r="14" />
                                 <path d="M0 60 Q0 40 20 40 Q40 40 40 60 L40 90 Q40 100 30 100 L10 100 Q0 100 0 90 Z" />
@@ -139,10 +139,10 @@ const InboxPage = () => {
                         </svg>
                         <div className='flex flex-col gap-5 p-5 relative top-15'>
                             <Bot size={65} className='text-green-500' />
-                            <p className='text-4xl'>Ask me anything!</p>
-                            <p className='text-white/90 text-sm inter'>Concierge can answer questions, update expenses, and more.</p>
+                            <p className={`text-4xl ${dark ? "" : "text-gray-900"}`}>Ask me anything!</p>
+                            <p className={`text-sm inter ${dark ? "text-white/90" : "text-gray-500"}`}>Concierge can answer questions, update expenses, and more.</p>
 
-                            <hr className='opacity-15 bg-green-700' />
+                            <hr className={`opacity-15 ${dark ? "border-green-700" : "border-gray-600"}`} />
                         </div>
                     </div>
 
@@ -159,16 +159,16 @@ const InboxPage = () => {
 
 
             <div className='w-full h-20 p-5 flex justify-center items-center'>
-                <div className='h-12 w-full flex rounded-4xl border-1 border-white'>
+                <div className={`h-12 w-full flex rounded-4xl border-1 ${dark ? "border-white" : "bg-gray-50 border border-gray-300"}`}>
                     <div className='w-[7%] flex justify-center items-center'>
-                        <button id='uploadInput'><Plus size={22} className='text-white/70' /></button>
+                        <button id='uploadInput'><Plus size={22} className={dark ? "text-white/70" : "text-gray-900"} /></button>
                         <input className='hidden' id="fileInput" type="file" name="" />
                     </div>
                     <div className='w-[86%]'>
                         <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("chatInputBtn").click() }} className='w-full h-full border-none outline-none' type="text" name="" id="chatInput" placeholder='Write something...' />
                     </div>
                     <div className='w-[7%] flex justify-center items-center'>
-                        <button id='chatInputBtn'><Send size={22} className='text-white/70' /></button>
+                        <button id='chatInputBtn'><Send size={22} className={dark ? "text-white/70" : "text-gray-600"} /></button>
                     </div>
                 </div>
             </div>

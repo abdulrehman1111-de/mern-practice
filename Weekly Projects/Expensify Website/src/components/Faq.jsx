@@ -2,7 +2,7 @@ import React from 'react'
 import Faqcard from './Faqcard'
 import { useState } from 'react'
 
-const Faq = () => {
+const Faq = ({dark}) => {
 
     const faqsDropdown = [
         {
@@ -11,7 +11,7 @@ const Faq = () => {
         },
         {
             question: "Who is Expensify for?",
-            answer: "dfkdajlkdjlkjdlkjl"
+            answer: "Expensify integrates with QuickBooks, Xero, Oracle Netsuite, Sage Intacct, ADP, and Gusto, and 45+ more apps. Choose from accounting, finance, ERP, travel, tax, and many more software."
         },
         {
             question: "What kind of expenses can I track?",
@@ -60,7 +60,7 @@ const Faq = () => {
 
 
     return (
-        <div className='bg-[#07271F] w-full h-auto p-15 text-white'>
+        <div className={` w-full h-auto p-15 ${dark ? "bg-[#07271F] text-white" : "bg-white text-gray-900"}`}>
 
             <div className='flex justify-center items-center font-semibold fraunces'>
                 <p className='text-4xl'>FAQ</p>
@@ -74,7 +74,7 @@ const Faq = () => {
                         comparison = true;
                     }
 
-                    return <Faqcard key = {index} text={item.question} status = {comparison} answer={item.answer} onToggle = {toggle} index = {index} />
+                    return <Faqcard dark={dark} key = {index} text={item.question} status = {comparison} answer={item.answer} onToggle = {toggle} index = {index} />
 
                     
                 })}

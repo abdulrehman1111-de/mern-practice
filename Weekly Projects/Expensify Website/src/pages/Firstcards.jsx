@@ -12,7 +12,7 @@ import Firstcard from '../components/Firstcard'
 import MySwiper from '../components/MySwiper'
 import { useState } from 'react'
 
-const Firstcards = () => {
+const Firstcards = ({dark}) => {
 
     let card = [
         { icon: iconExpenseManagement, title: "Expense management", desc: "Automatically create, submit, approve, and reimburse expenses. Reports automatically sync with accounting." },
@@ -31,7 +31,7 @@ const Firstcards = () => {
 
 
     return (
-        <div className='w-full h-auto pb-7 bg-[#0A1F15] text-white flex flex-col'>
+        <div className={`w-full h-auto pb-7 flex flex-col ${dark ? "bg-[#0A1F15] text-white" : "bg-white text-emerald-900"}`}>
 
             <div className='w-full h-[25vh] flex justify-center items-center'>
                 <p className='text-4xl fraunces font-semibold'>Features</p>
@@ -39,12 +39,12 @@ const Firstcards = () => {
 
             <div className='pl-15 pr-15 grid grid-cols-3 grid-rows-3 gap-6'>
                 {card.map((item) => (
-                    <Firstcard icon={item.icon} title={item.title} desc={item.desc} />
+                    <Firstcard dark={dark} icon={item.icon} title={item.title} desc={item.desc} />
                 ))}
 
                 {open && (
                     card.slice(0, 4).map((item) => (
-                    <Firstcard icon={item.icon} title={item.title} desc={item.desc} />
+                    <Firstcard dark={dark} icon={item.icon} title={item.title} desc={item.desc} />
                 ))
                 )}
 
@@ -53,7 +53,7 @@ const Firstcards = () => {
             <div className='w-full h-auto p-10 flex justify-center items-center'>
                 
 
-                <div onClick={() => setOpen(!open)} className='bg-[#173B2C] w-[14%] hover:bg-gray-700  transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl'><p className='text-md inter font-bold'>
+                <div onClick={() => setOpen(!open)} className={`w-[14%] transition delay-50 ease-in-out h-12 flex justify-center items-center text-center rounded-4xl ${dark ? "bg-[#173B2C] hover:bg-gray-700" : "bg-white text-emerald-700 border border-gray-300 hover:bg-gray-100"}`}><p className='text-md inter font-bold'>
                 {open ? "See Less Features":"See All Features"}
                     </p></div>
 
@@ -62,7 +62,7 @@ const Firstcards = () => {
             
 
             <div className='pl-15 pr-15 mb-5'>
-                <MySwiper />
+                <MySwiper dark={dark}/>
             </div>
 
 

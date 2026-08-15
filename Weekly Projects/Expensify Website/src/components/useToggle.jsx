@@ -1,11 +1,12 @@
-import { useState } from "react";
+import React from 'react'
+import { useState } from 'react';
 
 const useToggle = (defaultVal)=>{
 
     const [value, setValue] = useState(defaultVal);
 
     function toggleValue(val){
-        if (typeof val != "boolean"){
+        if(typeof val != "boolean"){
             setValue(!value);
         }
         else{
@@ -16,7 +17,8 @@ const useToggle = (defaultVal)=>{
     return [value, toggleValue];
 }
 
-export default useToggle;
+export default useToggle
+
 
 
 

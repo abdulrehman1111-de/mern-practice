@@ -3,17 +3,17 @@ import Accountnav from '../../components/account/Accountnav'
 import { UserCircle2, Mail, Zap, Wand2, Wand } from 'lucide-react'
 import Agentspic from '../../assets/Agentspic.png'
 
-const Agents = () => {
+const Agents = ({dark}) => {
   return (
-    <div className='bg-[#061B09] graySelect text-white w-full h-full overflow-y-auto'>
+    <div className={`graySelect text-white w-full h-full overflow-y-auto ${dark ? "bg-[#061B09]" : "bg-white"}`}>
       <Accountnav icon={Wand2} heading="Agents" />
 
       <div className='w-full h-[85vh] flex flex-col gap-2 justify-center items-center'>
 
         <div className='bg-contain bg-no-repeat bg-center w-64 h-40' style={{ backgroundImage: `url(${Agentspic})` }}></div>
         <div className='flex flex-col justify-center items-center gap-2'>
-          <p className='text-2xl'>No agents created</p>
-          <p className='text-white/80 w-120 text-center'>Stop manually doing stuff. Instruct an agent instead and save yourself lots of time. <span className='text-blue-600'>Learn more.</span></p>
+          <p className={`text-2xl ${dark ? "" : "text-gray-500"}`}>No agents created</p>
+          <p className={`w-120 text-center ${dark ? "text-white/80" : "text-gray-900"}`}>Stop manually doing stuff. Instruct an agent instead and save yourself lots of time. <span className='text-blue-600'>Learn more.</span></p>
         </div>
         <div className='w-[12%] h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-3'>
           <p className='text-sm'>New Rule</p>

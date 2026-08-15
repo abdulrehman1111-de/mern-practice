@@ -13,7 +13,7 @@ import PronounsDiv from '../../components/profile/PronounsDiv'
 import TimezoneDiv from '../../components/profile/TimezoneDiv'
 
 
-const Profile = () => {
+const Profile = ({dark}) => {
 
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -242,77 +242,77 @@ const Profile = () => {
 
   return (
     <>
-      <div className='bg-[#061B09] graySelect text-white w-full h-auto overflow-y-auto'>
-        <Accountnav icon={UserCircle2} heading="Profile" />
+      <div className={`graySelect text-white w-full h-auto overflow-y-auto ${dark ? "bg-[#061B09]" : "bg-white"}`}>
+        <Accountnav dark={dark} icon={UserCircle2} heading="Profile" />
 
-        <div className='bg-[#072419] w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9'>
+        <div className={`w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9 ${dark ? "bg-[#072419]" : "bg-gray-50 border border-gray-200"}`}>
 
-          <p className='text-2xl'>Public</p>
-          <p className='text-md text-white/80'>These details are displayed on your public profile. Anyone can see them.</p>
+          <p className={`text-2xl ${dark ? "" : "text-gray-900"}`}>Public</p>
+          <p className={`text-md ${dark ? "text-white/80" : "text-gray-500"}`}>These details are displayed on your public profile. Anyone can see them.</p>
 
           <div>
             <CircleUserRound size={100} className="text-green-500" />
           </div>
 
           <div className='flex flex-col gap-5'>
-            <div onClick={() => setOpen(true)} id='nameDiv' className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Display Name</p>
-              <div className='flex gap-1'>
+            <div onClick={() => setOpen(true)} id='nameDiv' className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Display Name</p>
+              <div className={`flex gap-1 ${dark ? "" : "text-gray-900"}`}>
                 <p id='firstNamePara'>Abdul</p> <p id='lastNamePara'>Rehman</p>
               </div>
             </div>
 
-            <div onClick={() => setOpen2(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Contact methods</p>
-              <p className='text-sm '>abdulrehmanpro6@gmail.com</p>
+            <div onClick={() => setOpen2(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Contact methods</p>
+              <p className={`text-sm ${dark ? "" : "text-gray-900"}`}>abdulrehmanpro6@gmail.com</p>
             </div>
 
-            <div onClick={() => setOpen4(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Status</p>
+            <div onClick={() => setOpen4(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Status</p>
               <div className='flex gap-1'>
                 <p id='emojiPara'></p>
                 <p id='statusPara'></p>
               </div>
             </div>
 
-            <div onClick={() => setOpen6(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Pronouns</p>
-              <p id='selectPronouns' className='text-sm '>Select your pronouns</p>
+            <div onClick={() => setOpen6(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Pronouns</p>
+              <p id='selectPronouns' className={`text-sm ${dark ? "" : "text-gray-900"}`}>Select your pronouns</p>
             </div>
 
-            <div onClick={() => setOpen7(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Timezone</p>
-              <p id='selectTimezones' className='text-sm '>Asia/Karachi</p>
+            <div onClick={() => setOpen7(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Timezone</p>
+              <p id='selectTimezones' className={`text-sm ${dark ? "" : "text-gray-900"}`}>Asia/Karachi</p>
             </div>
 
           </div>
 
-          <div className='w-[12%] h-10 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex justify-center items-center text-center font-semibold m-3'>
+          <div className={`w-[12%] h-10 rounded-4xl flex justify-center items-center text-center font-semibold m-3 ${dark ? "bg-[#1A3D32] hover:bg-green-400" : "bg-gray-500 hover:bg-gray-400"}`}>
             <p className='text-sm'>Share</p>
           </div>
 
         </div>
 
-        <div className='bg-[#072419] w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9'>
+        <div className={`w-[75%] h-auto rounded-xl m-5 p-7 flex flex-col gap-9 ${dark ? "bg-[#072419]" : "bg-white"}`}>
 
-          <p className='text-2xl'>Private</p>
-          <p className='text-md text-white/80'>These details are used for travel and payments. They're never shown on your public profile.</p>
+          <p className={`text-lg ${dark ? "text-2xl" : "text-gray-500"}`}>Private</p>
+          <p className={`text-md ${dark ? "text-white/80" : "text-gray-900"}`}>These details are used for travel and payments. They're never shown on your public profile.</p>
 
           <div onClick={() => setOpen9(true)} className='flex flex-col gap-5'>
-            <div className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Legal Name</p>
+            <div className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-2xl" : "text-gray-500"}`}>Legal Name</p>
             </div>
 
-            <div onClick={() => setOpen9(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Date of birth</p>
+            <div onClick={() => setOpen9(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-2xl" : "text-gray-500"}`}>Date of birth</p>
             </div>
 
-            <div onClick={() => setOpen9(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Phone number</p>
+            <div onClick={() => setOpen9(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-2xl" : "text-gray-500"}`}>Phone number</p>
             </div>
 
-            <div onClick={() => setOpen9(true)} className='hover:bg-[#0A2E25] p-3'>
-              <p className='text-lg text-white/80'>Address</p>
+            <div onClick={() => setOpen9(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
+              <p className={`text-lg ${dark ? "text-2xl" : "text-gray-500"}`}>Address</p>
             </div>
 
           </div>
@@ -322,24 +322,24 @@ const Profile = () => {
       </div>
 
 
-      <div className={`absolute overflow-hidden bg-[#061B09] h-screen w-90 z-11 top-0 transition-all duration-500 ease-out text-white p-2 ${open ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute overflow-hidden h-screen w-90 z-11 top-0 transition-all duration-500 ease-out text-white p-2 ${open ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='flex justify-between items-center pr-8'>
-          <p className='text-xl inter font-semibold m-8'>Display name</p>
+          <p className={`text-xl inter font-semibold m-8 ${dark ? "" : "text-gray-900"}`}>Display name</p>
           <div id='cross' onClick={() => setOpen(!open)}>
-            <X size={20} className='text-white' />
+            <X size={20} className={dark ? "text-white" : "text-gray-500"} />
           </div>
         </div>
 
-        <p className='inter text-sm text-white/90 pl-5 pb-3 font-semibold'>Your display name is shown on your profile</p>
+        <p className={`inter text-sm pl-5 pb-3 font-semibold ${dark ? "text-white/90" : "text-gray-700"}`}>Your display name is shown on your profile</p>
 
         <div className='flex flex-col gap-5 m-3'>
 
-          <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("saveBtn").click() }} className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="firstName" placeholder='First name' />
+          <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("saveBtn").click() }} className={`border-1 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="firstName" placeholder='First name' />
 
 
 
-          <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("saveBtn").click() }} className='border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="lastName" placeholder='Last name' />
+          <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("saveBtn").click() }} className={`border-1 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="lastName" placeholder='Last name' />
 
         </div>
 
@@ -349,27 +349,27 @@ const Profile = () => {
       </div>
 
 
-      <div className={`absolute inter z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white p-2 ${open2 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute overflow-hidden h-screen w-90 z-11 top-0 transition-all duration-500 ease-out text-white p-2 ${open2 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='flex justify-between items-center pr-8'>
-          <p className='text-xl inter font-semibold m-8'>Contact methods</p>
+          <p className={`text-xl inter font-semibold m-8 ${dark ? "" : "text-gray-900"}`}>Contact methods</p>
           <div onClick={() => setOpen2(!open2)}>
-            <X size={20} className='text-white' />
+            <X size={20} className={dark ? "text-white" : "text-gray-500"} />
           </div>
         </div>
 
-        <div className='flex flex-col gap-5 p-3 text-sm'>
+        <div className={`inter text-sm pl-5 pb-3 font-semibold ${dark ? "text-white/90" : "text-gray-700"}`}>
           <p>Add more ways to log in and send receipts to Expensify.</p>
           <p>Add an email address to forward receipts to <span className='text-blue-400'>receipts@expensify.com</span> or add a phone number to text receipts to 47777 (US numbers only).</p>
         </div>
 
-        <div onClick={() => setOpen3(true)} className='hover:bg-[#0A2E1F]'>
+        <div onClick={() => setOpen3(true)} className={`${dark ? "hover:bg-[#0A2E1F]" : ""}`}>
           <div className='p-4 text-sm flex justify-between items-center '>
-            <div className='flex flex-col gap-1'>
+            <div className={`flex flex-col gap-1 ${dark ? "" : "text-gray-900"}`}>
               <p>abdulrehmanpro6@gmail.com</p>
-              <p className='text-white/80'>We'll use this method to contact you</p>
+              <p className={dark ? "text-white/80" : ""}>We'll use this method to contact you</p>
             </div>
-            <ChevronRight size={20} className='text-white/80' />
+            <ChevronRight size={20} className={dark ? "text-white/80" : "text-gray-500"} />
           </div>
         </div>
 
@@ -379,16 +379,16 @@ const Profile = () => {
       </div>
 
 
-      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open3 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute z-50 overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open3 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen3(false)} size={25} className='text-white/80' />
-          <p className='text-lg'>abdulrehmanpro6@gmail.com</p>
+          <ChevronLeft onClick={() => setOpen3(false)} size={25} className={dark ? "text-white/80" : "text-gray-500"} />
+          <p className={`text-lg ${dark ? "" : "text-gray-900"}`}>abdulrehmanpro6@gmail.com</p>
 
         </div>
 
-        <p className='p-4 text-white/80 text-sm'>This is your current default contact method. Before you can delete it, you'll need to choose another contact method and click “Set as default”.</p>
+        <p className={`p-4 text-sm ${dark ? "text-white/80" : "text-gray-600"}`}>This is your current default contact method. Before you can delete it, you'll need to choose another contact method and click “Set as default”.</p>
 
       </div>
 

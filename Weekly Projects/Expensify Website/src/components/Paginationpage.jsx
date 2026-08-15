@@ -8,7 +8,7 @@ import badgeLeader from '../assets/badge-leader.png'
 import badgeTopRated from '../assets/badge-top-rated.png'
 import badgeShortlist from '../assets/badge-shortlist.png'
 
-const Paginationpage = () => {
+const Paginationpage = ({dark}) => {
 
     const data = [
         {
@@ -69,20 +69,20 @@ const Paginationpage = () => {
 
 
     return (
-        <div className='homeDiv w-full h-[113vh] bg-[#07271F] text-white pl-15 pr-15 flex flex-col justify-center items-center'>
+        <div className={`homeDiv w-full h-[113vh] pl-15 pr-15 flex flex-col justify-center items-center ${dark ? "bg-[#07271F] text-white" : "bg-white text-gray-900"}`}>
             <div className='w-full h-[25vh] flex justify-center items-center'>
                 <p className='text-4xl fraunces font-semibold'>Try Expensify free for 30 days</p>
             </div>
             <div className='w-full h-[15vh] flex justify-center items-center gap-5 pr-8 pl-8'>
-                <button onClick={()=> setPage(1)}><Transparentbtn text="Employees" /></button>
-                <button onClick={()=> setPage(2)}><Transparentbtn text="Business Owners" /></button>
-                <button onClick={()=> setPage(3)}><Transparentbtn text="Finance/Accounting" /></button>
+                <button onClick={()=> setPage(1)}><Transparentbtn dark={dark} text="Employees" /></button>
+                <button onClick={()=> setPage(2)}><Transparentbtn dark={dark} text="Business Owners" /></button>
+                <button onClick={()=> setPage(3)}><Transparentbtn dark={dark} text="Finance/Accounting" /></button>
             </div>
             <div className='w-full h-[50vh] flex justify-center items-center gap-7'>
                 
                 {
                     currentPage.map((item)=>{
-                        return <div className='text-white w-full h-58 p-7 rounded-lg flex flex-col gap-3 bg-[#061B09]'>
+                        return <div className={`w-full h-58 p-7 rounded-lg flex flex-col gap-3 ${dark ? "text-white bg-[#061B09]" : "bg-gray-100 border-1 border-gray-200"}`}>
 
                             <div><img src={item.icon} alt={item.heading} className='w-9 h-9' /></div>
                             <div><p className='text-lg font-semibold'>{item.heading}</p></div>
