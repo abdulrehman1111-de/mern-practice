@@ -392,20 +392,20 @@ const Profile = ({dark}) => {
 
       </div>
 
-      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white inter p-2 ${open4 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute z-50 overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white inter p-2 ${open4 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen4(false)} size={25} className='text-white/80' />
-          <p className='text-lg font-semibold'>Status</p>
+          <ChevronLeft onClick={() => setOpen4(false)} size={25} className={dark ? 'text-white/80' : "text-gray-600"} />
+          <p className={`text-lg font-semibold ${dark ? "" : "text-gray-900"}`}>Status</p>
 
         </div>
 
-        <p className='p-4 text-white/80 text-sm font-semibold'>Set your status with an emoji and optional message.</p>
+        <p className={`p-4 text-sm font-semibold ${dark ? "text-white/80" : "text-gray-600"}`}>Set your status with an emoji and optional message.</p>
 
-        <div className='w-[30%] h-12 rounded-4xl bg-[#1A3D32] hover:bg-green-400 flex gap-2 justify-center items-center text-center font-semibold m-3'>
-          <div id='emojiDiv'><Smile size={25} className='text-white' /></div>
-          <ChevronDown onClick={() => setEmojiPicker(true)} size={25} className='text-white' />
+        <div className={`w-[30%] h-12 rounded-4xl flex gap-2 justify-center items-center text-center font-semibold m-3 ${dark ? "bg-[#1A3D32] hover:bg-green-400" : "bg-gray-100 hover:bg-gray-200" }`}>
+          <div id='emojiDiv'><Smile size={25} className={dark ? 'text-white' : "text-gray-700"} /></div>
+          <ChevronDown onClick={() => setEmojiPicker(true)} size={25} className={dark ? 'text-white' : "text-gray-700"} />
 
           {
             emojiPicker && (
@@ -417,27 +417,27 @@ const Profile = ({dark}) => {
           }
         </div>
 
-        <input onChange={(e) => setChangeMessage(e.target.value)} className='border-1 border-gray-700 p-3 w-[95%] m-2 rounded-md' type="text" name="" id="statusInput" placeholder='Message' />
+        <input onChange={(e) => setChangeMessage(e.target.value)} className={`border-1 p-3 w-[95%] m-2 rounded-md ${dark ? "border-gray-700" : "border-gray-300 text-gray-700 placeholder:text-gray-400"}`} type="text" name="" id="statusInput" placeholder='Message' />
 
-        <div onClick={() => setOpen5(true)} className='hover:bg-[#0A2E1F]'>
+        <div onClick={() => setOpen5(true)} className={dark ? 'hover:bg-[#0A2E1F]' : "hover:bg-gray-200"}>
           <div className='p-4 text-sm flex justify-between items-center '>
             <div className='flex flex-col gap-1'>
-              <p className='text-white/80'>Clear after</p>
-              <p>Today</p>
+              <p className={dark ? 'text-white/80' : "text-gray-500" }>Clear after</p>
+              <p className={dark ? 'text-white/80' : "text-gray-500" }>Today</p>
             </div>
-            <ChevronRight size={20} className='text-white/80' />
+            <ChevronRight size={20} className={dark ? 'text-white/80' : "text-gray-400" } />
           </div>
         </div>
 
         <div className='flex flex-col gap-2 p-3 text-sm font-semibold'>
-          <p>Vacation delegate</p>
-          <p className='text-white/80'>Set a vacation delegate to approve reports on your behalf while you're out of office.</p>
+          <p className={dark ? '' : "text-gray-900" }>Vacation delegate</p>
+          <p className={dark ? 'text-white/80' : "text-gray-400" }>Set a vacation delegate to approve reports on your behalf while you're out of office.</p>
         </div>
 
-        <div className='hover:bg-[#0A2E1F]'>
+        <div className={dark ? 'hover:bg-[#0A2E1F]' : "hover:bg-gray-200"}>
           <div className='p-4 text-sm flex justify-between items-center '>
-            <p className='text-white/80'>Vacation delegate</p>
-            <ChevronRight size={20} className='text-white/80' />
+            <p className={dark ? 'text-white/80' : "text-gray-400" }>Vacation delegate</p>
+            <ChevronRight size={20} className={dark ? 'text-white/80' : "text-gray-500" } />
           </div>
         </div>
 
@@ -457,28 +457,28 @@ const Profile = ({dark}) => {
       </div>
 
 
-      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white inter p-2 ${open5 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute z-50 overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white inter p-2 ${open5 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen5(false)} size={25} className='text-white/80' />
-          <p className='text-lg font-semibold'>Clear after</p>
+          <ChevronLeft onClick={() => setOpen5(false)} size={25} className= {dark ? 'text-white/80' : "text-gray-500"} />
+          <p className={`text-lg font-semibold ${dark ? 'text-white/80' : "text-gray-500"}`}>Clear after</p>
 
         </div>
 
-        <p className='text-sm p-4'>When should we clear your status?</p>
+        <p className={`text-sm p-4 ${dark ? "" : "text-gray-600"}`}>When should we clear your status?</p>
 
         <div className='m-3 h-auto w-[90%] flex flex-col justify-center gap-10 font-semibold pt-5'>
           {
             options.map((item, index) => {
               return <>
-                <div className='flex justify-between'>
+                <div className={`flex justify-between ${dark ? "" : "text-gray-900"}`}>
                   <label htmlFor={index}>{item.radio}</label>
                   <input value={item.radio} onChange={(e) => {
                     setSelectedOption(e.target.value)
                     setIndex(index);
-                  }} checked={selectedOption === item.radio} type="radio" name="selection" id={index} className='w-5 h-5 appearance-none rounded-full border-1 border-white checked:bg-green-400' />
+                    }} checked={selectedOption === item.radio} type="radio" name="selection" id={index} className={`w-5 h-5 appearance-none checked:bg-green-400 rounded-full border-1 ${dark ? "border-white" : "text-gray-900 border-gray-400"}`} />
                 </div>
               </>
             })
@@ -510,16 +510,16 @@ const Profile = ({dark}) => {
       </div>
 
 
-      <div className={`absolute inter z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white p-2 ${open6 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute inter z-50 overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white p-2 ${open6 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen6(false)} size={25} className='text-white/80' />
-          <p className='text-lg font-semibold'>Status</p>
+          <ChevronLeft onClick={() => setOpen6(false)} size={25} className= {dark ? 'text-white/80' : "text-gray-500"} />
+          <p className={`text-lg font-semibold ${dark ? 'text-white/80' : "text-gray-500"}`}>Status</p>
 
         </div>
 
-        <PronounsDiv getter={selectedPronoun} setter={setSelectedPronoun} />
+        <PronounsDiv dark={dark} getter={selectedPronoun} setter={setSelectedPronoun} />
 
         <div onClick={() => {
           const selectPronouns = document.getElementById("selectPronouns");
@@ -530,19 +530,19 @@ const Profile = ({dark}) => {
         </div>
       </div>
 
-      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open7 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute z-50 overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open7 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen7(false)} size={25} className='text-white/80' />
-          <p className='text-lg'>Timezone</p>
+          <ChevronLeft onClick={() => setOpen7(false)} size={25} className={`text-lg ${dark ? "text-white/80" : "text-gray-400"}`} />
+          <p className={`text-lg ${dark ? "" : "text-gray-900"}`}>Timezone</p>
 
         </div>
 
-        <p className='p-4 text-white/90 text-sm'>Your timezone is shown on your profile.</p>
+        <p className={`p-4 text-sm ${dark ? "text-white/90" : "text-gray-600"}`}>Your timezone is shown on your profile.</p>
 
         <div className='flex items-center'>
-          <p className='p-4 text-white/90 text-sm'>Automatically determine your location</p>
+          <p className={`p-4 text-sm ${dark ? "text-white/90" : "text-gray-900"}`}>Automatically determine your location</p>
           <label className='relative bottom-4' htmlFor="ball">
             <input className='hidden peer' type="checkbox" name="ball" id="ball" />
             <div className='absolute peer-checked:bg-green-400 duration-150 ease-out w-15 h-8 bg-[#8A9A82] rounded-4xl'>
@@ -553,25 +553,25 @@ const Profile = ({dark}) => {
 
         <div onClick={() => setOpen8(true)} className='p-4 text-sm flex justify-between items-center'>
           <div className='flex flex-col gap-1'>
-            <p className='text-white'>Timezone</p>
+            <p className={dark ? 'text-white' : "text-gray-900"}>Timezone</p>
             <p></p>
           </div>
-          <ChevronRight size={20} className='text-white/80' />
+          <ChevronRight size={20} className={` ${dark ? "text-white/80" : "text-gray-400"}`} />
         </div>
       </div>
 
-      <div className={`absolute z-50 overflow-hidden bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open8 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute z-50 overflow-hidden h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open8 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen8(false)} size={25} className='text-white/80' />
-          <p className='text-lg'>Timezone</p>
+          <ChevronLeft onClick={() => setOpen8(false)} size={25} className={`${dark ? "text-white/80" : "text-gray-900"}`} />
+          <p className={`text-lg ${dark ? "" : "text-gray-900"}`}>Timezone</p>
 
         </div>
 
-        <p className='p-4 text-white/90 text-sm'>Your timezone is shown on your profile.</p>
+        <p className={`p-4 text-sm ${dark ? "text-white/90" : "text-gray-600"}`}>Your timezone is shown on your profile.</p>
 
-        <TimezoneDiv getter={selectedTimezone} setter={setSelectedTimezone} />
+        <TimezoneDiv dark = {dark} getter={selectedTimezone} setter={setSelectedTimezone} />
 
         <div onClick={() => {
           const selectTimezones = document.getElementById("selectTimezones");
@@ -582,40 +582,40 @@ const Profile = ({dark}) => {
         </div>
       </div>
 
-      <div className={`absolute z-50 overflow-auto bg-[#061B09] h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open9 ? "left-[72%]" : "left-full"}`}>
+      <div className={`absolute z-50 overflow-auto h-screen w-90 top-0 transition-all duration-500 ease-out text-white font-semibold inter p-2 ${open9 ? "left-[72%]" : "left-full"} ${dark ? "bg-[#061B09]" : "bg-white"}`}>
 
         <div className='h-screen overflow-auto'>
 
           <div className='p-4 flex flex-start items-center gap-2'>
 
-            <ChevronLeft onClick={() => setOpen9(false)} size={25} className='text-white/80' />
-            <p className='text-lg'>Personal details</p>
+            <ChevronLeft onClick={() => setOpen9(false)} size={25} className={`${dark ? "text-white/80" : "text-gray-900"}`} />
+            <p className={`text-lg ${dark ? "" : "text-gray-900"}`}>Personal details</p>
 
           </div>
 
-          <p className='inter text-sm text-white/90 pl-5 pt-2 font-semibold'>Basic details</p>
+          <p className={`inter text-sm pl-5 pt-2 font-semibold ${dark ? "text-white/90" : "text-gray-900"}`}>Basic details</p>
 
           <div className='flex flex-col gap-3 m-3 font-medium text-sm'>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="f" placeholder='Legal first name' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="f" placeholder='Legal first name' />
             <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='Legal last name' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="" placeholder='Legal last name' />
             <div className='flex gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 [&::-webkit-calendar-picker-indicator]:invert border-gray-700 p-3 filter:invert(1) w-full rounded-md' type='date' name="" id="" placeholder='Legal last name' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type='date' name="" id="" placeholder='Legal last name' />
             <div className='flex gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="number" name="" id="" placeholder='Phone number' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="number" name="" id="" placeholder='Phone number' />
             <div className='flex gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
@@ -623,35 +623,35 @@ const Profile = ({dark}) => {
 
           </div>
 
-          <p className='inter text-sm text-white/90 pl-5 pb-3 font-semibold'>Address</p>
+          <p className={`inter text-sm pl-5 pt-2 font-semibold ${dark ? "text-white/90" : "text-gray-900"}`}>Address</p>
 
           <div className='flex flex-col gap-3 m-3 font-medium text-sm'>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='Address line 1' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="" placeholder='Address line 1' />
             <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input className='clearable peer border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='Address line 2' />
+            <input className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="" placeholder='Address line 2' />
             <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input className='clearable peer border-1 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='City' />
+            <input className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="" placeholder='City' />
             <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="text" name="" id="" placeholder='State/Province' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="text" name="" id="" placeholder='State/Province' />
             <div className='gap-2 items-center hidden peer-[&:user-invalid]flexk'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>
             </div>
 
-            <input required className='clearable peer border-1 [&:user-invalid]:border-red-500 border-gray-700 p-3 w-full rounded-md' type="number" name="" id="" placeholder='Zipcode' />
+            <input required className={`clearable peer border-1 [&:user-invalid]:border-red-500 p-3 w-full rounded-md ${dark ? "border-gray-700" : "border-gray-300 placeholder:text-gray-400 text-gray-900"}`} type="number" name="" id="" placeholder='Zipcode' />
             <div className='gap-2 items-center hidden peer-[&:user-invalid]:flex'>
               <span className='w-2 h-2 bg-red-500 rounded-full'></span>
               <p className='text-red-500'>This input field is required!</p>

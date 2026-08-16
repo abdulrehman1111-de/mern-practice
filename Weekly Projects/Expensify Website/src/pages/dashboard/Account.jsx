@@ -3,8 +3,9 @@ import { UserCircle2, Mail, Zap, Wand2, Wand } from 'lucide-react'
 import { Link, Outlet } from 'react-router-dom'
 import { NavLink } from 'react-router-dom'
 import { LogOut } from 'lucide-react'
+import { Sun, Moon } from 'lucide-react'
 
-const Account = ({ dark }) => {
+const Account = ({ dark, useToggle }) => {
   return (
     <div className={`graySelect w-full h-[100vh] flex ${dark ? "bg-[#061B09] text-white" : "bg-white text-gray-900"}`}>
       <div className='w-[35%] h-full border-1 border-gray-700 p-5 flex flex-col items-center'>
@@ -67,6 +68,23 @@ const Account = ({ dark }) => {
             </div>
           </NavLink>
 
+          <button onClick={useToggle}>
+            {dark ?
+              <>
+                <div className='flex gap-3 items-center pl-3'>
+                  <Sun size={22} className="text-green-500" />
+                  <span>Enable Light mode</span>
+                </div>
+              </>
+              : <>
+                <div className='flex gap-3 items-center pl-3'>
+                  <Moon size={22} className="text-green-500" />
+                  <span className={dark ? "" : "text-gray-900"}>Enable Dark mode</span>
+                </div>
+              </>
+            }
+          </button>
+
           <NavLink to="/" className={({ isActive }) =>
             `pl-3 pt-2 pb-2 rounded-xl ${isActive ? (dark ? 'bg-green-950 hover:bg-green-950' : "bg-gray-100") : ""}`
           }>
@@ -79,7 +97,7 @@ const Account = ({ dark }) => {
         </div>
       </div>
 
-      <Outlet context={{dark}}/>
+      <Outlet context={{ dark }} />
     </div>
   )
 }

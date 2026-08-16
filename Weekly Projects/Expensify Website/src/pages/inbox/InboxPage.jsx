@@ -152,7 +152,7 @@ const InboxPage = ({dark}) => {
             <div className='flex-1 min-h-0 overflow-y-auto flex flex-col-reverse mt-8'>
 
                 {[...messages].reverse().map((item) => {
-                    return <Todo text={item.text} time={item.time} />
+                    return <Todo dark={dark} text={item.text} time={item.time} />
                 })}
             </div>
 
@@ -165,7 +165,7 @@ const InboxPage = ({dark}) => {
                         <input className='hidden' id="fileInput" type="file" name="" />
                     </div>
                     <div className='w-[86%]'>
-                        <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("chatInputBtn").click() }} className='w-full h-full border-none outline-none' type="text" name="" id="chatInput" placeholder='Write something...' />
+                        <input onKeyDown={(e) => { if (e.key === "Enter") document.getElementById("chatInputBtn").click() }} className={`w-full h-full border-none outline-none ${dark ? "" : "text-gray-700"}`} type="text" name="" id="chatInput" placeholder='Write something...' />
                     </div>
                     <div className='w-[7%] flex justify-center items-center'>
                         <button id='chatInputBtn'><Send size={22} className={dark ? "text-white/70" : "text-gray-600"} /></button>

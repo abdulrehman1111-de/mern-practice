@@ -9,12 +9,12 @@ import Transparentbtn from '../../components/Transparentbtn'
 const Spend = ({dark}) => {
   return (
     <div className={`graySelect text-white w-full h-full overflow-y-auto ${dark ? "bg-[#061B09]" : "bg-white"}`}>
-      <Accountnav heading="Spend" />
+      <Accountnav dark={dark} heading="Spend" />
 
       <div className='w-[25%] h-15 flex gap-0'>
-        <Graybtn text="Filters" />
-        <Graybtn text="Display" />
-        <Graybtn text="Save" />
+        <Graybtn dark ={dark} text="Filters" />
+        <Graybtn dark ={dark} text="Display" />
+        <Graybtn dark ={dark} text="Save" />
       </div>
       <div className='flex'>
 

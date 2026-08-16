@@ -9,7 +9,7 @@ import Account from '../pages/dashboard/Account'
 import { NavLink } from 'react-router-dom'
 import Sidepage from '../pages/sidepage/Sidepage'
 
-const Dashboardlayout = ({ dark, useToggle }) => {
+const Dashboardlayout = ({dark}) => {
 
   useEffect(() => {
     const sideBtn = document.getElementById("sideBarBtn");
@@ -89,20 +89,18 @@ const Dashboardlayout = ({ dark, useToggle }) => {
           <span className={`text-xs ${dark ? "text-white" : "text-gray-700"}`}>Account</span>
         </NavLink>
 
-        <button onClick={useToggle}>{dark ? "Light mode" : "Dark mode"}</button>
-
-        <div id='sideBarBtn' className='w-10 p-3 h-10 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center rounded-full mt-20'>
+        <div id='sideBarBtn' className='w-10 p-3 h-10 bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center rounded-full mt-20'>
           <Building2 size={20} className='text-white' />
         </div>
-        <div className='w-10 p-3 h-10 rounded-4xl bg-[#1A3D32] hover:bg-[#243f36] flex justify-center items-center rounded-full'>
-          <Plus size={20} className='text-white' />
+        <div className={`w-10 p-3 h-10 flex justify-center items-center rounded-full ${dark ? "bg-[#1A3D32] hover:bg-[#243f36]" : "bg-gray-300 hover:bg-gray-200 border-gray-900"}`}>
+          <Plus size={20} className={dark ? 'text-white' : "text-gray-900"} />
         </div>
 
       </div>
 
       <Sidepage dark={dark} />
 
-      <Outlet context={{ dark }} />
+      <Outlet />
     </div>
 
 

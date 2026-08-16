@@ -33,14 +33,14 @@ function App() {
 
         <Route path="/sample" element={<Sample dark = {dark}/>} />
 
-        <Route path="/dashboard" element={<Dashboardlayout useToggle={toggleDark} dark = {dark}/>}>
+        <Route path="/dashboard" element={<Dashboardlayout dark = {dark}/>}>
           <Route index element={<Dashboardhome dark = {dark}/>} />
           <Route path="inbox" element={<Inbox dark = {dark}/>}>
             <Route index element={<InboxPage dark = {dark}/>}/>
           </Route>
           <Route path="spend" element={<Spend dark = {dark}/>} />
           <Route path="workspaces" element={<Workspaces dark = {dark}/>} />
-          <Route path="account" element={<Account dark = {dark}/>}>
+          <Route path="account" element={<Account useToggle = {toggleDark} dark = {dark}/>}>
               <Route index element={<Profile dark = {dark}/>}/>
               <Route path="wallet" element={<Wallet dark = {dark}/>}/>
               <Route path="expense" element={<Expense dark = {dark}/>}/>

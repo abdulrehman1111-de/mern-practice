@@ -11,7 +11,7 @@ import Workspacespic from '../../assets/Workspacespic.png'
 const Workspaces = ({dark}) => {
   return (
     <div className={`graySelect text-white w-full h-full overflow-y-auto ${dark ? "bg-[#061B09]" : "bg-white"}`}>
-      <Accountnav heading="Workspaces" />
+      <Accountnav dark={dark} heading="Workspaces" />
 
       <div className='w-[25%] h-15 flex gap-0'>
         <Graybtn dark={dark} text="Wokrspaces" />
