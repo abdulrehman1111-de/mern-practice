@@ -8,6 +8,10 @@ import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { addDoc, collection } from 'firebase/firestore'
 import { auth } from './firebase'
 import { db } from './firebase'
+import { GoogleAuthProvider } from 'firebase/auth'
+import { getAuth } from 'firebase/auth'
+import { signInWithPopup } from 'firebase/auth'
+
 
 const Signin = ({ dark }) => {
 
@@ -26,7 +30,7 @@ const Signin = ({ dark }) => {
     }
 
     submitBtn.addEventListener("click", handleClick);
-    return ()=> submitBtn.removeEventListener("click", handleClick);
+    return () => submitBtn.removeEventListener("click", handleClick);
 
   }, [])
 
@@ -38,9 +42,9 @@ const Signin = ({ dark }) => {
     e.preventDefault();
 
     if ((email.trim() === "") || (password.trim() === "")) {
-        alert("Please fill the credentials first!");
-        return;
-      }
+      alert("Please fill the credentials first!");
+      return;
+    }
 
     try {
 
@@ -70,6 +74,21 @@ const Signin = ({ dark }) => {
     }
   }
 
+  const provider = new GoogleAuthProvider();
+  const auth = getAuth();
+
+  const signInWithGoogle = async() => {
+
+    try {
+      const result = await signInWithPopup(auth, provider);
+      console.log(result.user);
+    }
+    catch(error){
+      console.log("Error sign-in with Google!", error);
+    }
+  }
+
+
   return (
     <div id='signInDiv' className={`none absolute translate-x-70 p-5 z-100 w-[45%] h-[80vh] rounded-3xl flex flex-col gap-7 items-center ${dark ? "bg-[#07271F]" : "bg-white"}`}>
 
@@ -97,9 +116,9 @@ const Signin = ({ dark }) => {
       </div>
 
       <div className='flex gap-3'>
-        <Link to="/dashboard"><div><Googlebtn /></div></Link>
+        <div onClick={signInWithGoogle}><Googlebtn /></div>
         <div className='w-8 h-8 bg-white rounded-full flex justify-center items-center'>
-          <FaApple size={28} className='text-black' />
+          <Link to="/dashboard"><div><FaApple size={28} className='text-black' /></div></Link>
         </div>
       </div>
 
