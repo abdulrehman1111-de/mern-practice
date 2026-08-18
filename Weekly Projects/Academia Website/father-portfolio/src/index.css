@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.thread-line {
+  background: linear-gradient(180deg, transparent 0%, #B8863B 15%, #B8863B 85%, transparent 100%);
+}
+.seal { border: 1.5px solid #B8863B; }
+.hero-bg { background: radial-gradient(circle at 15% 20%, #EFE6D4 0%, #F7F3EA 45%), #F7F3EA; }
+.arch-photo { border-radius: 220px 220px 12px 12px; }
+.blob { border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%; }
+.nav-active { position: relative; }
+.nav-active::after {
+  content: ''; position: absolute; left: 0; right: 0; bottom: -6px;
+  height: 1px; background: #B8863B;
+}
+.fade-up { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards; }
+.fade-up-1 { animation-delay: .05s; }
+.fade-up-2 { animation-delay: .2s; }
+.fade-up-3 { animation-delay: .35s; }
+.fade-up-4 { animation-delay: .5s; }
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity .9s cubic-bezier(0.16,1,0.3,1), transform .9s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal.in-view { opacity: 1; transform: translateY(0); }
