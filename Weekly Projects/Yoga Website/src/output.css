@@ -516,9 +516,6 @@
   .bg-\[url\(https\:\/\/images\.unsplash\.com\/photo-1571902943202-507ec2618e8f\?auto\=format\&fit\=crop\&w\=500\&q\=80\)\] {
     background-image: url(https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=500&q=80);
   }
-  .bg-\[url\(https\:\/\/scontent\.fbhv1-1\.fna\.fbcdn\.net\/v\/t39\.30808-6\/519626497_122098103762954145_8047727741167110605_n\.jpg\?stp\=dst-jpg_tt6\&cstp\=mx1024x1024\&ctp\=s1024x1024\&_nc_cat\=101\&ccb\=1-7\&_nc_sid\=6ee11a\&_nc_eui2\=AeGTWSL7vP9Hzf9_qCXdcL7jdQNLKlPcGRJ1A0sqU9wZEijrFACgNUBTRdoxzpl3Sr9C66QF6cUMM2FbA45v1p10\&_nc_ohc\=_iDZmpj0J8AQ7kNvwHYRgHK\&_nc_oc\=Adoi2JJk_qT-aCcYs61q-1xQlEONY5xAohnsgTF-yNcf-VHPgjzOv25bndv1hlp_dkE\&_nc_zt\=23\&_nc_ht\=scontent\.fbhv1-1\.fna\&_nc_gid\=k92u3U8jt6Iykpo3jOqTAw\&_nc_ss\=7b2a8\&oh\=00_AQGXU8x8QQIF_9Bct22hgC0X5UsHcHrINNA3NNYIrGWorg\&oe\=6A89DCD8\)\] {
-    background-image: url(https://scontent.fbhv1-1.fna.fbcdn.net/v/t39.30808-6/519626497_122098103762954145_8047727741167110605_n.jpg?stp=dst-jpg_tt6&cstp=mx1024x1024&ctp=s1024x1024&_nc_cat=101&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeGTWSL7vP9Hzf9_qCXdcL7jdQNLKlPcGRJ1A0sqU9wZEijrFACgNUBTRdoxzpl3Sr9C66QF6cUMM2FbA45v1p10&_nc_ohc=_iDZmpj0J8AQ7kNvwHYRgHK&_nc_oc=Adoi2JJk_qT-aCcYs61q-1xQlEONY5xAohnsgTF-yNcf-VHPgjzOv25bndv1hlp_dkE&_nc_zt=23&_nc_ht=scontent.fbhv1-1.fna&_nc_gid=k92u3U8jt6Iykpo3jOqTAw&_nc_ss=7b2a8&oh=00_AQGXU8x8QQIF_9Bct22hgC0X5UsHcHrINNA3NNYIrGWorg&oe=6A89DCD8);
-  }
   .from-\[\#C9873B\] {
     --tw-gradient-from: #C9873B;
     --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
