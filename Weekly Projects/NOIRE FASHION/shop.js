@@ -1,105 +1,148 @@
 const products = [
-            {
-                image: "https://i.pinimg.com/vwebp/1200x/1b/78/a8/1b78a8ea2a5e33540cf4538c37736839.webp",
-                badge: "New",
-                number: "01",
-                category: 'FOOTWEAR',
-                name: "Field Runner",
-                price: "Rs. 12,900"
-            },
-            {
-                image: "https://i.pinimg.com/1200x/f6/39/7c/f6397c23bc6e8356f001491fa26b9ffa.jpg",
-                badge: "New",
-                number: "02",
-                category: 'OUTWEAR',
-                name: "Coated Overshirt",
-                price: "Rs. 18,500"
-            },
-            {
-                image: "https://i.pinimg.com/1200x/8c/e1/d6/8ce1d6c3ccbc409f5868cde6f4537043.jpg",
-                badge: "New",
-                number: "03",
-                category: 'FOOTWEAR',
-                name: "Bound Lofer",
-                price: "Rs. 14,200"
-            },
-            {
-                image: "https://images.unsplash.com/photo-1639006570490-79c0c53f1080?q=80&w=800&auto=format&fit=crop",
-                badge: "New",
-                number: "04",
-                category: 'ACCESSORY',
-                name: "Ledger Watch",
-                price: "Rs. 9,800"
-            },
-            {
-                image: "https://i.pinimg.com/originals/63/8c/4f/638c4fd4a96f61a289ff9d68f7c3688e.png",
-                badge: "New",
-                number: "05",
-                category: 'APPAREL',
-                name: "Raw Selvedge Denim",
-                price: "Rs. 11,400"
-            },
-            {
-                image: "https://i.pinimg.com/736x/79/a2/38/79a2384e340bc0da116d7e1392d67241.jpg",
-                badge: "New",
-                number: "06",
-                category: 'APPAREL',
-                name: "Column Dress",
-                price: "Rs. 15,600"
-            },
-            {
-                image: "https://i.pinimg.com/736x/e4/76/13/e476131112afcd3d20940d7465f2d775.jpg",
-                badge: "New",
-                number: "07",
-                category: 'APPAREL',
-                name: "Linen Shirt",
-                price: "Rs. 7,200"
-            },
-            {
-                image: "https://i.pinimg.com/736x/ed/de/71/edde714fcffaa25d9f738584d6814494.jpg",
-                badge: "New",
-                number: "08",
-                category: 'OUTWEAR',
-                name: "Structured Blazer",
-                price: "Rs. 21,300"
-            },
-            {
-                image: "https://i.pinimg.com/1200x/ce/ed/ad/ceedad7d2948837d4c26cede1b918f4d.jpg",
-                badge: "New",
-                number: "09",
-                category: 'ACCESSORY',
-                name: "Grain Belt",
-                price: "Rs. 5,600"
-            },
-            {
-                image: "https://i.pinimg.com/736x/04/77/a1/0477a138d8281dd04486c1b493f1c6a6.jpg",
-                badge: "New",
-                number: "10",
-                category: 'FOOTWEAR',
-                name: "Court Sneaker",
-                price: "Rs. 13,750"
-            },
-            {
-                image: "https://i.pinimg.com/1200x/f3/33/63/f33363e2d89f25e18f5336b6fd947b3c.jpg",
-                badge: "New",
-                number: "11",
-                category: 'APPAREL',
-                name: "Tapered Trouser",
-                price: "Rs. 9,400"
-            },
-            {
-                image: "https://d9h5s6u2c7pvc.cloudfront.net/sites/files/merlingoldsmith/closeup-many-elegant-gold-chains-with-heart-shape-pendant-model-white-shirt-metal-necklace.jpg",
-                badge: "New",
-                number: "12",
-                category: 'ACCESSORY',
-                name: "Chain Bracelet Set",
-                price: "Rs. 4,300"
-            }
-        ];
+    {
+        image: "https://i.pinimg.com/vwebp/1200x/1b/78/a8/1b78a8ea2a5e33540cf4538c37736839.webp",
+        badge: "New",
+        number: "01",
+        category: 'FOOTWEAR',
+        name: "Field Runner",
+        price: "Rs. 12,900"
+    },
+    {
+        image: "https://i.pinimg.com/1200x/f6/39/7c/f6397c23bc6e8356f001491fa26b9ffa.jpg",
+        badge: "New",
+        number: "02",
+        category: 'OUTWEAR',
+        name: "Coated Overshirt",
+        price: "Rs. 18,500"
+    },
+    {
+        image: "https://i.pinimg.com/1200x/8c/e1/d6/8ce1d6c3ccbc409f5868cde6f4537043.jpg",
+        badge: "New",
+        number: "03",
+        category: 'FOOTWEAR',
+        name: "Bound Lofer",
+        price: "Rs. 14,200"
+    },
+    {
+        image: "https://images.unsplash.com/photo-1639006570490-79c0c53f1080?q=80&w=800&auto=format&fit=crop",
+        badge: "New",
+        number: "04",
+        category: 'ACCESSORY',
+        name: "Ledger Watch",
+        price: "Rs. 9,800"
+    },
+    {
+        image: "https://i.pinimg.com/originals/63/8c/4f/638c4fd4a96f61a289ff9d68f7c3688e.png",
+        badge: "New",
+        number: "05",
+        category: 'APPAREL',
+        name: "Raw Selvedge Denim",
+        price: "Rs. 11,400"
+    },
+    {
+        image: "https://i.pinimg.com/736x/79/a2/38/79a2384e340bc0da116d7e1392d67241.jpg",
+        badge: "New",
+        number: "06",
+        category: 'APPAREL',
+        name: "Column Dress",
+        price: "Rs. 15,600"
+    },
+    {
+        image: "https://i.pinimg.com/736x/e4/76/13/e476131112afcd3d20940d7465f2d775.jpg",
+        badge: "New",
+        number: "07",
+        category: 'APPAREL',
+        name: "Linen Shirt",
+        price: "Rs. 7,200"
+    },
+    {
+        image: "https://i.pinimg.com/736x/ed/de/71/edde714fcffaa25d9f738584d6814494.jpg",
+        badge: "New",
+        number: "08",
+        category: 'OUTWEAR',
+        name: "Structured Blazer",
+        price: "Rs. 21,300"
+    },
+    {
+        image: "https://i.pinimg.com/1200x/ce/ed/ad/ceedad7d2948837d4c26cede1b918f4d.jpg",
+        badge: "New",
+        number: "09",
+        category: 'ACCESSORY',
+        name: "Grain Belt",
+        price: "Rs. 5,600"
+    },
+    {
+        image: "https://i.pinimg.com/736x/04/77/a1/0477a138d8281dd04486c1b493f1c6a6.jpg",
+        badge: "New",
+        number: "10",
+        category: 'FOOTWEAR',
+        name: "Court Sneaker",
+        price: "Rs. 13,750"
+    },
+    {
+        image: "https://i.pinimg.com/1200x/f3/33/63/f33363e2d89f25e18f5336b6fd947b3c.jpg",
+        badge: "New",
+        number: "11",
+        category: 'APPAREL',
+        name: "Tapered Trouser",
+        price: "Rs. 9,400"
+    },
+    {
+        image: "https://d9h5s6u2c7pvc.cloudfront.net/sites/files/merlingoldsmith/closeup-many-elegant-gold-chains-with-heart-shape-pendant-model-white-shirt-metal-necklace.jpg",
+        badge: "New",
+        number: "12",
+        category: 'ACCESSORY',
+        name: "Chain Bracelet Set",
+        price: "Rs. 4,300"
+    }
+];
 
-        function initCarousel() {
+const searchBar = document.getElementById("searchBar");
+searchBar.addEventListener("input", (e) => {
+
+    debouncedSearch(e.target.value);
+
+    let queryValue = (e.target.value);
+    let query = queryValue.trim().toLowerCase();
+    let filteredProducts = products.filter((item) => {
+        return item.category.toLowerCase().includes(query);
+    });
+
+    let cardContainer = document.getElementById("cardContainer");
+    if (filteredProducts.length === 0) {
+        cardContainer.innerHTML = "<p class='text-white text-6xl text-nowrap'>No results found!</p>";
+    }
+    else {
+        cardContainer.innerHTML = filteredProducts.map((item) => {
+            return createProductCard(item);
+        }).join("");
+    }
+
+});
+
+// Debouncing:
+
+function debounce(fn, delay) {
+
+    let timer;
+
+    return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            fn(...args);
+        }, delay);
+    }
+}
+
+function handleSearch(query){
+    cardContainer.innerHTML = "<p class='text-white text-6xl text-nowrap'>Searching results...</p>";
+}
+
+const debouncedSearch = debounce(handleSearch, 400);
+
+function initCarousel() {
     const container = document.getElementById('cardContainer');
-    
+
     container.style.display = 'flex';
     container.style.overflowX = 'auto';
     container.style.scrollSnapType = 'x mandatory';
@@ -111,13 +154,13 @@ const products = [
     });
 }
 
-        function initCarousel2() {
-            
+function initCarousel2() {
+
     const container = document.querySelector(".thirdImg");
-    if(!container){
+    if (!container) {
         return;
     }
-    
+
     container.style.display = 'flex';
     container.style.overflowX = 'auto';
     container.style.scrollSnapType = 'x mandatory';
@@ -129,8 +172,8 @@ const products = [
     });
 }
 
-        function createProductCard(product){
-            return `
+function createProductCard(product) {
+    return `
                 <div class="mainCards pb-10">
                     <div class="h-90 sm:h-110 md:h-103 bg-cover bg-center flex flex-row gap-60 sm:gap-110 md:gap-53 lg:gap-47 pt-4 pl-4 sm:pl-7 lg:pl-2" style = "background-image: url('${product.image}')">
                         <div class="bg-[#C1121F] text-[#FFFFFF] jetBrains h-8 w-12 z-1 flex justify-center items-center text-sm">${product.badge}</div>
@@ -145,32 +188,32 @@ const products = [
                     <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div></a>
                 </div>
             `
-        };
+};
 
-        initCarousel2();
+initCarousel2();
 
-        let cardContainer = document.getElementById("cardContainer");
-        cardContainer.innerHTML = products.map((item)=>{
-            return createProductCard(item);
-        }).join("");
+let cardContainer = document.getElementById("cardContainer");
+cardContainer.innerHTML = products.map((item) => {
+    return createProductCard(item);
+}).join("");
 
-        const darkActivator = document.getElementById("darkActivator");
-        const html = document.getElementById("dark");
-        
-        darkActivator.addEventListener("click", ()=>{
-        html.classList.toggle("dark");
+const darkActivator = document.getElementById("darkActivator");
+const html = document.getElementById("dark");
+
+darkActivator.addEventListener("click", () => {
+    html.classList.toggle("dark");
 })
 
-        let menu = document.getElementById("ham");
-        menu.addEventListener("click", ()=>{
+let menu = document.getElementById("ham");
+menu.addEventListener("click", () => {
 
-            let existingMenu = document.querySelector(".menu");
-            if (existingMenu){
-                existingMenu.classList.add("closing");
-            }
-            else{
-                document.body.insertAdjacentHTML("beforeend", 
-                `
+    let existingMenu = document.querySelector(".menu");
+    if (existingMenu) {
+        existingMenu.classList.add("closing");
+    }
+    else {
+        document.body.insertAdjacentHTML("beforeend",
+            `
             <div class="menu hide fixed w-full h-200 z-400 top-0 bg-black absolute flex flex-col gap-3">
                 <div id="closeMenu" class="ham flex flex-col gap-2 relative top-5 left-5 lg:hidden">
                         <div class="w-8 bg-black h-0.5 darkInvert"></div>
@@ -185,113 +228,113 @@ const products = [
                 </ul>
             </div>
             `
-            )
-            document.body.style.overflow = "hidden";
-            setTimeout(()=>{
-                document.querySelector(".menu")?.classList.remove("hide");
-            }, 300);
-            }
+        )
+        document.body.style.overflow = "hidden";
+        setTimeout(() => {
+            document.querySelector(".menu")?.classList.remove("hide");
+        }, 300);
+    }
 
 
-        });
+});
 
-        document.addEventListener("click", (e) => {
-            if (e.target.closest("#closeMenu")) {
+document.addEventListener("click", (e) => {
+    if (e.target.closest("#closeMenu")) {
 
-                const menu = document.querySelector(".menu");
-                menu.classList.add("hide");
+        const menu = document.querySelector(".menu");
+        menu.classList.add("hide");
 
-                setTimeout(()=>{
-                    document.querySelector(".menu")?.remove();
-                    document.body.style.overflow = "";
-                }, 300);
-            }
-        });
+        setTimeout(() => {
+            document.querySelector(".menu")?.remove();
+            document.body.style.overflow = "";
+        }, 300);
+    }
+});
 
-        let radio = document.querySelectorAll(".radio");
-        radio.forEach((item)=>{
-            item.addEventListener("click", ()=>{
-                radio.forEach((r)=>{
-                    r.style.backgroundColor = "";
-                    r.style.color = "";
-                })
-                item.style.backgroundColor = "#F1EDE7";
-                item.style.color = "#0B0B0D";
-            })
+let radio = document.querySelectorAll(".radio");
+radio.forEach((item) => {
+    item.addEventListener("click", () => {
+        radio.forEach((r) => {
+            r.style.backgroundColor = "";
+            r.style.color = "";
         })
+        item.style.backgroundColor = "#F1EDE7";
+        item.style.color = "#0B0B0D";
+    })
+})
 
-        let add = document.getElementById("all");
-        let outwear = document.getElementById("outwear");
-        let footwear = document.getElementById("footwear");
-        let apparel = document.getElementById("apparel");
-        let accessory = document.getElementById("accessory");
+let add = document.getElementById("all");
+let outwear = document.getElementById("outwear");
+let footwear = document.getElementById("footwear");
+let apparel = document.getElementById("apparel");
+let accessory = document.getElementById("accessory");
 
-        add.addEventListener("click", ()=>{
+add.addEventListener("click", () => {
 
-            cardContainer.innerHTML = products.map((item)=>{
-            return createProductCard(item);
+    cardContainer.innerHTML = products.map((item) => {
+        return createProductCard(item);
+    }).join("");
+})
+
+outwear.addEventListener("click", () => {
+    const category = "OUTWEAR";
+    const updatedProducts = [];
+
+    products.forEach((item) => {
+        if (item.category === category) {
+            updatedProducts.push(item);
+
+            cardContainer.innerHTML = updatedProducts.map((item) => {
+                return createProductCard(item);
             }).join("");
-        })
+        }
+    })
+})
 
-        outwear.addEventListener("click", ()=>{
-            const category = "OUTWEAR";
-            const updatedProducts = [];
+footwear.addEventListener("click", () => {
+    const category = "FOOTWEAR";
+    const updatedProducts = [];
 
-            products.forEach((item)=>{
-                if(item.category === category){
-                    updatedProducts.push(item);
+    products.forEach((item) => {
+        if (item.category === category) {
+            updatedProducts.push(item);
 
-                    cardContainer.innerHTML = updatedProducts.map((item)=>{
-                    return createProductCard(item);
-                    }).join("");
-                }
-            })
-        })
+            cardContainer.innerHTML = updatedProducts.map((item) => {
+                return createProductCard(item);
+            }).join("");
+        }
+    })
+})
 
-        footwear.addEventListener("click", ()=>{
-            const category = "FOOTWEAR";
-            const updatedProducts = [];
+apparel.addEventListener("click", () => {
+    const category = "APPAREL";
+    const updatedProducts = [];
 
-            products.forEach((item)=>{
-                if(item.category === category){
-                    updatedProducts.push(item);
+    products.forEach((item) => {
+        if (item.category === category) {
+            updatedProducts.push(item);
 
-                    cardContainer.innerHTML = updatedProducts.map((item)=>{
-                    return createProductCard(item);
-                    }).join("");
-                }
-            })
-        })
+            cardContainer.innerHTML = updatedProducts.map((item) => {
+                return createProductCard(item);
+            }).join("");
+        }
+    })
+})
 
-        apparel.addEventListener("click", ()=>{
-            const category = "APPAREL";
-            const updatedProducts = [];
+accessory.addEventListener("click", () => {
+    const category = "ACCESSORY";
+    const updatedProducts = [];
 
-            products.forEach((item)=>{
-                if(item.category === category){
-                    updatedProducts.push(item);
+    products.forEach((item) => {
+        if (item.category === category) {
+            updatedProducts.push(item);
 
-                    cardContainer.innerHTML = updatedProducts.map((item)=>{
-                    return createProductCard(item);
-                    }).join("");
-                }
-            })
-        })
-
-        accessory.addEventListener("click", ()=>{
-            const category = "ACCESSORY";
-            const updatedProducts = [];
-
-            products.forEach((item)=>{
-                if(item.category === category){
-                    updatedProducts.push(item);
-
-                    cardContainer.innerHTML = updatedProducts.map((item)=>{
-                        return createProductCard(item);
-                    }).join("");
-                }
-            })
-        })
+            cardContainer.innerHTML = updatedProducts.map((item) => {
+                return createProductCard(item);
+            }).join("");
+        }
+    })
+})
 
 
 
