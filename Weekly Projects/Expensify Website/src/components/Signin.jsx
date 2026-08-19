@@ -11,6 +11,7 @@ import { db } from './firebase'
 import { GoogleAuthProvider } from 'firebase/auth'
 import { getAuth } from 'firebase/auth'
 import { signInWithPopup } from 'firebase/auth'
+import { doc, setDoc } from 'firebase/firestore'
 
 
 const Signin = ({ dark }) => {
@@ -36,12 +37,13 @@ const Signin = ({ dark }) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
 
   const handleRegister = async (e) => {
 
     e.preventDefault();
 
-    if ((email.trim() === "") || (password.trim() === "")) {
+    if ((email.trim() === "") || (password.trim() === "") || (name.trim() === "")) {
       alert("Please fill the credentials first!");
       return;
     }
@@ -58,15 +60,17 @@ const Signin = ({ dark }) => {
       // Save user data to Firestore
       const user = userCredential.user;
 
-      await addDoc(collection(db, "users"), {
+      await setDoc(doc(db, "users", user.uid), {
 
         email: user.email,
-        createdAt: new Date()
+        createdAt: new Date(),
+        name: name
       });
 
       console.log("User registered successfully!", user.email);
       setEmail("");
       setPassword("");
+      setName("");
 
     }
     catch (error) {
@@ -75,7 +79,6 @@ const Signin = ({ dark }) => {
   }
 
   const provider = new GoogleAuthProvider();
-  const auth = getAuth();
 
   const signInWithGoogle = async() => {
 
@@ -90,7 +93,7 @@ const Signin = ({ dark }) => {
 
 
   return (
-    <div id='signInDiv' className={`none absolute translate-x-70 p-5 z-100 w-[45%] h-[80vh] rounded-3xl flex flex-col gap-7 items-center ${dark ? "bg-[#07271F]" : "bg-white"}`}>
+    <div id='signInDiv' className={`none absolute bottom-70 translate-x-70 p-5 z-100 w-[45%] h-auto rounded-3xl flex flex-col gap-7 items-center ${dark ? "bg-[#07271F]" : "bg-white"}`}>
 
       <div className='flex justify-around items-center pt-5 w-[85%]'>
         <p className='mr-auto text-3xl font-bold inter text-[#03D47C]'>Expensify</p>
@@ -107,6 +110,8 @@ const Signin = ({ dark }) => {
           <input value={email} onChange={(e) => setEmail(e.target.value)} type='email' placeholder='Enter your email...' className={`w-[85%] h-10 rounded-4xl flex justify-around items-center font-semibold pl-5 pr-5 ${dark ? "bg-[#1A3D32] hover:bg-[#2C6755]" : "bg-gray-100 hover:bg-gray-200"}`} />
 
           <input value={password} onChange={(e) => setPassword(e.target.value)} type='password' placeholder='Enter your password...' className={`w-[85%] h-10 rounded-4xl flex justify-around items-center font-semibold pl-5 pr-5 ${dark ? "bg-[#1A3D32] hover:bg-[#2C6755]" : "bg-gray-100 hover:bg-gray-200"}`} />
+
+          <input value={name} onChange={(e)=> setName(e.target.value)} type="text" name="" id="" placeholder='Enter your name...' className={`w-[85%] h-10 rounded-4xl flex justify-around items-center font-semibold pl-5 pr-5 ${dark ? "bg-[#1A3D32] hover:bg-[#2C6755]" : "bg-gray-100 hover:bg-gray-200"}`}/>
 
           <button id='submitBtn' type='submit' className={`h-10 w-[85%] rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold ml-auto mr-10`}>
             Sign in

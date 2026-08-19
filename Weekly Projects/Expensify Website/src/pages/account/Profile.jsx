@@ -11,9 +11,15 @@ import EmojiPicker from 'emoji-picker-react'
 import { renderToString } from 'react-dom/server'
 import PronounsDiv from '../../components/profile/PronounsDiv'
 import TimezoneDiv from '../../components/profile/TimezoneDiv'
+import { auth } from '../../components/firebase'
+import { db } from '../../components/firebase'
+import { doc } from 'firebase/firestore'
+import { getDoc } from 'firebase/firestore'
+import { onAuthStateChanged } from 'firebase/auth'
 
 
-const Profile = ({dark}) => {
+
+const Profile = ({ dark }) => {
 
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -26,6 +32,29 @@ const Profile = ({dark}) => {
   const [open9, setOpen9] = useState(false);
 
   const [changeMessage, setChangeMessage] = useState("");
+
+  const [userData, setUserData] = useState(null);
+
+  useEffect(() => {
+
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+
+      if (currentUser) {
+        const userDocRef = doc(db, "users", currentUser.uid);
+        const userSnap = await getDoc(userDocRef);
+
+        if (userSnap.exists()) {
+          setUserData(userSnap.data());
+        }
+        else{
+          console.log("No user document found");
+        }
+      }
+    });
+
+    return ()=> unsubscribe();
+
+  }, []);
 
   useEffect(() => {
 
@@ -258,13 +287,13 @@ const Profile = ({dark}) => {
             <div onClick={() => setOpen(true)} id='nameDiv' className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
               <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Display Name</p>
               <div className={`flex gap-1 ${dark ? "" : "text-gray-900"}`}>
-                <p id='firstNamePara'>Abdul</p> <p id='lastNamePara'>Rehman</p>
+                <p id='firstNamePara'>{userData?.name}</p> 
               </div>
             </div>
 
             <div onClick={() => setOpen2(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
               <p className={`text-lg ${dark ? "text-white/80" : "text-gray-500"}`}>Contact methods</p>
-              <p className={`text-sm ${dark ? "" : "text-gray-900"}`}>abdulrehmanpro6@gmail.com</p>
+              <p className={`text-sm ${dark ? "" : "text-gray-900"}`}>{userData?.email}</p>
             </div>
 
             <div onClick={() => setOpen4(true)} className={`p-3 ${dark ? "hover:bg-[#0A2E25]" : "hover:bg-gray-200"}`}>
@@ -403,7 +432,7 @@ const Profile = ({dark}) => {
 
         <p className={`p-4 text-sm font-semibold ${dark ? "text-white/80" : "text-gray-600"}`}>Set your status with an emoji and optional message.</p>
 
-        <div className={`w-[30%] h-12 rounded-4xl flex gap-2 justify-center items-center text-center font-semibold m-3 ${dark ? "bg-[#1A3D32] hover:bg-green-400" : "bg-gray-100 hover:bg-gray-200" }`}>
+        <div className={`w-[30%] h-12 rounded-4xl flex gap-2 justify-center items-center text-center font-semibold m-3 ${dark ? "bg-[#1A3D32] hover:bg-green-400" : "bg-gray-100 hover:bg-gray-200"}`}>
           <div id='emojiDiv'><Smile size={25} className={dark ? 'text-white' : "text-gray-700"} /></div>
           <ChevronDown onClick={() => setEmojiPicker(true)} size={25} className={dark ? 'text-white' : "text-gray-700"} />
 
@@ -422,22 +451,22 @@ const Profile = ({dark}) => {
         <div onClick={() => setOpen5(true)} className={dark ? 'hover:bg-[#0A2E1F]' : "hover:bg-gray-200"}>
           <div className='p-4 text-sm flex justify-between items-center '>
             <div className='flex flex-col gap-1'>
-              <p className={dark ? 'text-white/80' : "text-gray-500" }>Clear after</p>
-              <p className={dark ? 'text-white/80' : "text-gray-500" }>Today</p>
+              <p className={dark ? 'text-white/80' : "text-gray-500"}>Clear after</p>
+              <p className={dark ? 'text-white/80' : "text-gray-500"}>Today</p>
             </div>
-            <ChevronRight size={20} className={dark ? 'text-white/80' : "text-gray-400" } />
+            <ChevronRight size={20} className={dark ? 'text-white/80' : "text-gray-400"} />
           </div>
         </div>
 
         <div className='flex flex-col gap-2 p-3 text-sm font-semibold'>
-          <p className={dark ? '' : "text-gray-900" }>Vacation delegate</p>
-          <p className={dark ? 'text-white/80' : "text-gray-400" }>Set a vacation delegate to approve reports on your behalf while you're out of office.</p>
+          <p className={dark ? '' : "text-gray-900"}>Vacation delegate</p>
+          <p className={dark ? 'text-white/80' : "text-gray-400"}>Set a vacation delegate to approve reports on your behalf while you're out of office.</p>
         </div>
 
         <div className={dark ? 'hover:bg-[#0A2E1F]' : "hover:bg-gray-200"}>
           <div className='p-4 text-sm flex justify-between items-center '>
-            <p className={dark ? 'text-white/80' : "text-gray-400" }>Vacation delegate</p>
-            <ChevronRight size={20} className={dark ? 'text-white/80' : "text-gray-500" } />
+            <p className={dark ? 'text-white/80' : "text-gray-400"}>Vacation delegate</p>
+            <ChevronRight size={20} className={dark ? 'text-white/80' : "text-gray-500"} />
           </div>
         </div>
 
@@ -462,7 +491,7 @@ const Profile = ({dark}) => {
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen5(false)} size={25} className= {dark ? 'text-white/80' : "text-gray-500"} />
+          <ChevronLeft onClick={() => setOpen5(false)} size={25} className={dark ? 'text-white/80' : "text-gray-500"} />
           <p className={`text-lg font-semibold ${dark ? 'text-white/80' : "text-gray-500"}`}>Clear after</p>
 
         </div>
@@ -478,7 +507,7 @@ const Profile = ({dark}) => {
                   <input value={item.radio} onChange={(e) => {
                     setSelectedOption(e.target.value)
                     setIndex(index);
-                    }} checked={selectedOption === item.radio} type="radio" name="selection" id={index} className={`w-5 h-5 appearance-none checked:bg-green-400 rounded-full border-1 ${dark ? "border-white" : "text-gray-900 border-gray-400"}`} />
+                  }} checked={selectedOption === item.radio} type="radio" name="selection" id={index} className={`w-5 h-5 appearance-none checked:bg-green-400 rounded-full border-1 ${dark ? "border-white" : "text-gray-900 border-gray-400"}`} />
                 </div>
               </>
             })
@@ -514,7 +543,7 @@ const Profile = ({dark}) => {
 
         <div className='p-4 flex flex-start items-center gap-2'>
 
-          <ChevronLeft onClick={() => setOpen6(false)} size={25} className= {dark ? 'text-white/80' : "text-gray-500"} />
+          <ChevronLeft onClick={() => setOpen6(false)} size={25} className={dark ? 'text-white/80' : "text-gray-500"} />
           <p className={`text-lg font-semibold ${dark ? 'text-white/80' : "text-gray-500"}`}>Status</p>
 
         </div>
@@ -571,7 +600,7 @@ const Profile = ({dark}) => {
 
         <p className={`p-4 text-sm ${dark ? "text-white/90" : "text-gray-600"}`}>Your timezone is shown on your profile.</p>
 
-        <TimezoneDiv dark = {dark} getter={selectedTimezone} setter={setSelectedTimezone} />
+        <TimezoneDiv dark={dark} getter={selectedTimezone} setter={setSelectedTimezone} />
 
         <div onClick={() => {
           const selectTimezones = document.getElementById("selectTimezones");
@@ -662,7 +691,7 @@ const Profile = ({dark}) => {
         </div>
 
         <div onClick={() => {
-          
+
           const inputForms = document.querySelectorAll(".clearable");
           inputForms.forEach((input) => {
             input.value = "";
