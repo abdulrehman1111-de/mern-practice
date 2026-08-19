@@ -4,6 +4,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --color-navy: 27 42 65;
+  --color-gold: 184 134 59;
+  --color-cream: 247 243 234;
+  --color-charcoal: 42 42 42;
+  --color-maroon: 107 44 44;
+  --color-sage: 138 154 140;
+  --color-clay: 201 127 91;
+}
+
 .thread-line {
   background: linear-gradient(180deg, transparent 0%, #B8863B 15%, #B8863B 85%, transparent 100%);
 }
@@ -26,3 +36,15 @@
   transition: opacity .9s cubic-bezier(0.16,1,0.3,1), transform .9s cubic-bezier(0.16,1,0.3,1);
 }
 .reveal.in-view { opacity: 1; transform: translateY(0); }
+
+.fraunces{
+  font-family: "Fraunces", serif;
+}
+
+.archPic{
+  border-radius: 220px 220px 12px 12px
+}
+
+.blob {
+  border-radius: 42% 58% 65% 35% / 45% 40% 60% 55%;
+}

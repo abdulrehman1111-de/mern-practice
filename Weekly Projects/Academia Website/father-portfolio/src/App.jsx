@@ -8,6 +8,7 @@ import Presentations from './pages/Presentations'
 import Publications from './pages/Publications'
 import Research from './pages/Research'
 import Teaching from './pages/Teaching'
+import Education from './pages/Education'
 
 function App() {
 
@@ -15,14 +16,14 @@ function App() {
     <>
       <Routes>
 
-        <Route path='/' element={Home} />
-        <Route path='/about' element={About} />
-        <Route path='/contact' element={Contact}/>
-        <Route path='/education' element={Education}/>
-        <Route path='/presentations' element={Presentations}/>
-        <Route path='/publications' element={Publications}/>
-        <Route path='/research' element={Research}/>
-        <Route path='/teaching' element={Teaching}/>
+        <Route path='/' element={<Home/>} />
+        <Route path='/about' element={<About/>} />
+        <Route path='/contact' element={<Contact/>}/>
+        <Route path='/education' element={<Education/>}/>
+        <Route path='/presentations' element={<Presentations/>}/>
+        <Route path='/publications' element={<Publications/>}/>
+        <Route path='/research' element={<Research/>}/>
+        <Route path='/teaching' element={<Teaching/>}/>
 
       </Routes>
     </>
