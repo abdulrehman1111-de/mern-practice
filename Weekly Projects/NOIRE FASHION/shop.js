@@ -102,22 +102,6 @@ searchBar.addEventListener("input", (e) => {
 
     debouncedSearch(e.target.value);
 
-    let queryValue = (e.target.value);
-    let query = queryValue.trim().toLowerCase();
-    let filteredProducts = products.filter((item) => {
-        return item.category.toLowerCase().includes(query);
-    });
-
-    let cardContainer = document.getElementById("cardContainer");
-    if (filteredProducts.length === 0) {
-        cardContainer.innerHTML = "<p class='text-white text-6xl text-nowrap'>No results found!</p>";
-    }
-    else {
-        cardContainer.innerHTML = filteredProducts.map((item) => {
-            return createProductCard(item);
-        }).join("");
-    }
-
 });
 
 // Debouncing:
@@ -134,11 +118,48 @@ function debounce(fn, delay) {
     }
 }
 
-function handleSearch(query){
-    cardContainer.innerHTML = "<p class='text-white text-6xl text-nowrap'>Searching results...</p>";
+function handleSearch(queryValue) {
+
+    let query = queryValue.trim().toLowerCase();
+    let filteredProducts = products.filter((item) => {
+        return item.category.toLowerCase().includes(query);
+    });
+
+    let cardContainer = document.getElementById("cardContainer");
+    if (filteredProducts.length === 0) {
+        cardContainer.innerHTML = "<p class='text-white text-6xl text-nowrap'>No results found!</p>";
+    }
+    else {
+        cardContainer.innerHTML = filteredProducts.map((item) => {
+            return createProductCard(item);
+        }).join("");
+    }
 }
 
 const debouncedSearch = debounce(handleSearch, 400);
+
+function handleView(number) {
+
+    console.log(number);
+    const foundProduct = products.find(u => u.number === number);
+    let cardContainer = document.getElementById("cardContainer");
+    cardContainer.innerHTML = createProductInfo(foundProduct);
+
+
+}
+
+function createProductInfo(product) {
+    return `
+        <div class="flex flex-col lg:flex-row items-center gap-6 lg:gap-0">
+            ${createProductCard(product)}
+            <div class="flex-1 flex flex-col items-center text-center gap-3 px-4 text-white">
+                <p class="fraunces text-2xl sm:text-3xl md:text-4xl lg:text-5xl lg:text-nowrap">Product: ${product.name}</p>
+                <p class="jetBrains text-lg sm:text-xl md:text-2xl lg:text-nowrap">Price: ${product.price}</p>
+                <button onclick="window.location.reload()" class="border-1 h-auto p-3 w-40 mt-4 hover:bg-black hover:text-white transition-colors duration-150">Back to Shop</button>
+            </div>
+        </div>
+    `;
+}
 
 function initCarousel() {
     const container = document.getElementById('cardContainer');
@@ -184,8 +205,9 @@ function createProductCard(product) {
                         <p class="text-[#131114] fraunces text-xl lightText">${product.name}</p>
                         <p class="text-[#131114] jetBrains lightText">${product.price}</p>
                     </div>
-                    <a href = "./shop.html" class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm shadow-lg"><div class="cardSurface w-[50%] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
-                    <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div></a>
+                    <div class="border-1 border-[rgba(19,17,20,0.14)] h-12 flex flex-row jetBrains text-sm shadow-lg"><div onclick = "handleView('${product.number}')" class="cardSurface w-[50%] flex justify-center items-center darkSurface lightText view"><button>View</button></div>
+                    <div class="addBtn w-[50%] text-[#FFFFFF] bg-[#131114] flex justify-center items-center darkInvert darkInvertText"><button>Add</button></div>
+                </div>
                 </div>
             `
 };
