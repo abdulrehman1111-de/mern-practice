@@ -127,7 +127,7 @@ function handleSearch(queryValue) {
 
     let cardContainer = document.getElementById("cardContainer");
     if (filteredProducts.length === 0) {
-        cardContainer.innerHTML = "<p class='text-white text-6xl text-nowrap'>No results found!</p>";
+        cardContainer.innerHTML = "<p class='lightText text-3xl sm:text-4xl lg:text-6xl text-center w-full col-span-full flex justify-center items-center'>No results found!</p>";
     }
     else {
         cardContainer.innerHTML = filteredProducts.map((item) => {
