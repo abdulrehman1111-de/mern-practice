@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Nav from '../components/Nav'
 import User from '../components/User'
 import { useState } from 'react';
@@ -6,15 +6,22 @@ import { useState } from 'react';
 const Home = () => {
 
     const [users, setUsers] = useState([]);
-    
-    fetch("https://jsonplaceholder.typicode.com/users")
-    .then(res => res.json())
-    .then(data => setUsers(data));
+    let showUserCount;
+
+    useEffect(() => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then(res => res.json())
+            .then(data => setUsers(data));
+    }, [])
+
+    if (users.length === 0) {
+        return <p className='text-5xl sora font-semibold text-center pt-20'>Loading...</p>
+    }
 
     return (
         <>
-            <div className='bg-[#F7F8FA] w-full min-h-screen flex items-center flex-col'>
-                <Nav />
+            <div className='bg-[#F7F8FA] text-[#1B1F24] w-full min-h-screen flex items-center flex-col'>
+                <Nav users={users} showUserCount={true} />
 
                 <div className='w-[80%] h-screen pt-10'>
                     <p className='font-semibold text-3xl sora'>All Users</p>
@@ -23,11 +30,11 @@ const Home = () => {
                     <div className='w-full grid grid-cols-4 pt-5 gap-5 pb-10'>
 
                         {
-                            users.map((item)=>{
+                            users.map((item) => {
                                 return <User id={item.id} name={item.name} email={item.email} street={item.address.street} city={item.address.city} />
                             })
                         }
-                        
+
                     </div>
                 </div>
 

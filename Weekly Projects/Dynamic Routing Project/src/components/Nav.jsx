@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Nav = () => {
+const Nav = ({users, showUserCount}) => {
   return (
     <div className='border-1 border-gray-200 h-auto p-3 pl-11 pr-11 w-full flex items-center justify-between'>
 
@@ -9,7 +9,10 @@ const Nav = () => {
         <span className='inter text-xl sora font-bold'>User Directory</span>
       </div>
 
-      <div className='bg-[#EEF1FF] text-[#3D5AFE] h-auto p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-2xl text-nowrap text-sm font-semibold'>10 users</div>
+      {
+        users && showUserCount && 
+        <div className='bg-[#EEF1FF] text-[#3D5AFE] h-auto p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-2xl text-nowrap text-sm font-semibold'>{users.length} users</div>
+      }
 
     </div>
   )
