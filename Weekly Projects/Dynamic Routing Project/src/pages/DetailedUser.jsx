@@ -30,9 +30,11 @@ const DetailedUser = () => {
       .then(res => res.json())
       .then(data => setComments(data))
 
+    // For fetching the pics we need to use albums as bridge from the users to get the pics
     fetch(`https://jsonplaceholder.typicode.com/albums?userId=${id}`)
       .then(res => res.json())
       .then(albums => {
+        // In each group of albums fetch for the very first album
         if (albums.length > 0) {
           return fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albums[0].id}`)
             .then(res => res.json())
@@ -66,7 +68,7 @@ const DetailedUser = () => {
 
               {
                 users && users.map((item) => {
-                  return <div className='text-[#3D5AFE] bg-[#EEF1FF] h-15 w-15 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-sm font-semibold text-xl'>{item.id}</div>
+                  return <div className='text-[#3D5AFE] bg-[#EEF1FF] h-15 w-15 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap font-semibold text-xl'>{item.id}</div>
                 })
               }
 

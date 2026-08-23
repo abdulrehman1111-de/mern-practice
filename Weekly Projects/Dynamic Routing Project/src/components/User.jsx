@@ -3,6 +3,8 @@ import { Link } from 'react-router'
 
 const User = ({ id, name, email, street, city }) => {
 
+    // User card component for the Home page
+
     return (
         <>
             <Link to={"/home/"+id}>
