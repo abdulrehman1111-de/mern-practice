@@ -7,9 +7,13 @@ function App() {
   return (
     <>
 
-    <Routes>
+    <Routes>  
       
+      // Both routes redirecting to the same component
+      <Route path="/" element={<Home/>}/>
       <Route path="/home" element={<Home/>}/>
+
+      // Way of doing dynamic Routing
       <Route path="/home/:id" element={<DetailedUser/>}/>
 
     </Routes>

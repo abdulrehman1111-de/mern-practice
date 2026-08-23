@@ -6,6 +6,7 @@ import Comments from '../components/Comments';
 
 const DetailedUser = () => {
 
+  // useParams is giving here id as a string
   const { id } = useParams();
 
   const [users, setUsers] = useState(null);
@@ -14,6 +15,7 @@ const DetailedUser = () => {
   const [photos, setPhotos] = useState(null);
   const [todos, setTodos] = useState(null);
 
+  // Everytime the id changes, fetches data for that particular id
   useEffect(() => {
 
     fetch(`https://jsonplaceholder.typicode.com/users?id=${id}`)

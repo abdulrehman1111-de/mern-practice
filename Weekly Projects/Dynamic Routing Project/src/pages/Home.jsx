@@ -6,8 +6,8 @@ import { useState } from 'react';
 const Home = () => {
 
     const [users, setUsers] = useState([]);
-    let showUserCount;
 
+    // Fetches the users data single time only 
     useEffect(() => {
         fetch("https://jsonplaceholder.typicode.com/users")
             .then(res => res.json())
@@ -20,14 +20,16 @@ const Home = () => {
 
     return (
         <>
-            <div className='bg-[#F7F8FA] text-[#1B1F24] w-full min-h-screen flex items-center flex-col'>
+            <div className='bg-[#F7F8FA] text-[#1B1F24] w-full h-auto flex items-center flex-col'>
+
+                {/* Nav component for the home shows user count */}
                 <Nav users={users} showUserCount={true} />
 
                 <div className='w-[80%] h-screen pt-10'>
                     <p className='font-semibold text-3xl sora'>All Users</p>
                     <p className='inter text-[#6B7280]'>Click a card to view full profile, posts and comments</p>
 
-                    <div className='w-full grid grid-cols-4 pt-5 gap-5 pb-10'>
+                    <div className='w-full grid grid-cols-4 pt-5 gap-5 pb-10  bg-[#F7F8FA]'>
 
                         {
                             users.map((item) => {
