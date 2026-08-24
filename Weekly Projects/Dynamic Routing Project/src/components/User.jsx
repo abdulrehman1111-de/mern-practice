@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router'
 
-const User = ({ id, name, email, street, city }) => {
+const User = ({ id, name, email, street, city}) => {
 
     // User card component for the Home page
 

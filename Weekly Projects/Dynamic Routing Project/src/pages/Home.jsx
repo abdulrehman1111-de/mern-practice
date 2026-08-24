@@ -33,7 +33,7 @@ const Home = () => {
 
                         {
                             users.map((item) => {
-                                return <User id={item.id} name={item.name} email={item.email} street={item.address.street} city={item.address.city} />
+                                return <User key={item.id} id={item.id} name={item.name} email={item.email} street={item.address.street} city={item.address.city} />
                             })
                         }
 
