@@ -3,52 +3,26 @@ import Nav from '../components/Nav'
 import { Link, useParams } from 'react-router'
 import Posts from '../components/Posts';
 import Comments from '../components/Comments';
+import {
+  useGetUsersByIdQuery,
+  useGetPostsByUserIdQuery,
+  useGetTodosByUserIdQuery,
+  useGetCommentsByPostIdQuery
+} from '../components/JsonPlaceholderApi';
 
 const DetailedUser = () => {
 
   // useParams is giving here id as a string
   const { id } = useParams();
 
-  const [users, setUsers] = useState(null);
-  const [posts, setPosts] = useState(null);
-  const [comments, setComments] = useState(null);
-  const [photos, setPhotos] = useState(null);
-  const [todos, setTodos] = useState(null);
+  const { data: users, isLoading: isUsersLoading } = useGetUsersByIdQuery(id);
+  const { data: posts, isLoading: isPostsLoading } = useGetPostsByUserIdQuery(id);
+  const { data: comments, isLoading: isCommentLoading } = useGetCommentsByPostIdQuery(id);
+  const { data: todos, isLoading: isTodosLoading } = useGetTodosByUserIdQuery(id);
 
-  // Everytime the id changes, fetches data for that particular id
-  useEffect(() => {
+  const isLoading = isUsersLoading || isPostsLoading || isCommentLoading || isTodosLoading;
 
-    fetch(`https://jsonplaceholder.typicode.com/users?id=${id}`)
-      .then(res => res.json())
-      .then(data => setUsers(data));
-
-    fetch(`https://jsonplaceholder.typicode.com/posts?userId=${id}`)
-      .then(res => res.json())
-      .then(data => setPosts(data))
-
-    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
-      .then(res => res.json())
-      .then(data => setComments(data))
-
-    // For fetching the pics we need to use albums as bridge from the users to get the pics
-    fetch(`https://jsonplaceholder.typicode.com/albums?userId=${id}`)
-      .then(res => res.json())
-      .then(albums => {
-        // In each group of albums fetch for the very first album
-        if (albums.length > 0) {
-          return fetch(`https://jsonplaceholder.typicode.com/photos?albumId=${albums[0].id}`)
-            .then(res => res.json())
-            .then(data => setPhotos(data))
-        }
-      })
-
-    fetch(`https://jsonplaceholder.typicode.com/todos?userId=${id}`)
-      .then(res => res.json())
-      .then(data => setTodos(data))  
-
-  }, [id]);
-
-  if ((!posts) || (!comments) || (!users) || (!photos) || (!todos)) {
+  if ((!posts) || (!comments) || (!users) || (!todos)) {
     return <p className='text-5xl sora font-semibold text-center pt-20'>Loading...</p>
   }
 
@@ -135,7 +109,7 @@ const DetailedUser = () => {
               <div className='flex w-full items-center p-2 gap-3 pt-3 pb-3'>
                 <p className='text-xl font-semibold'>Posts</p>
                 <div className='text-[#3D5AFE] bg-[#EEF1FF] h-7 w-7 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-xs font-semibold'>5</div>
-                
+
               </div>
 
               <div className='flex flex-col gap-3 pb-10'>
@@ -153,9 +127,9 @@ const DetailedUser = () => {
 
               <div className='flex w-full items-center p-2 gap-3 pt-3 pb-3'>
                 <p className='text-xl font-semibold'>Comments</p>
-                
+
                 <div className='text-[#3D5AFE] bg-[#EEF1FF] h-7 w-7 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-xs font-semibold'>4</div>
-                
+
               </div>
 
               {
@@ -176,49 +150,49 @@ const DetailedUser = () => {
 
             <div className='flex flex-col gap-3 pt-3 pb-10 w-[48%] shrink-0'>
 
-            <div className='flex gap-2 items-center'>
-              <div className='text-md sora font-semibold'>Posts</div>
-              <div className='text-[#3D5AFE] bg-[#EEF1FF] h-7 w-7 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-xs font-semibold'>8</div>
+              <div className='flex gap-2 items-center'>
+                <div className='text-md sora font-semibold'>Posts</div>
+                <div className='text-[#3D5AFE] bg-[#EEF1FF] h-7 w-7 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-xs font-semibold'>8</div>
+
+              </div>
+
+              <div className='h-auto w-full grid grid-cols-4 gap-3'>
+
+                {
+                  posts && posts.slice(0, 8).map((item) => {
+                    return <div className={`h-30 w-full bg-center bg-cover rounded-lg hover:scale-105 duration-150 transition-all ease-out hover:shadow-xl`} style={{ backgroundImage: `url(https://picsum.photos/seed/${item.id}/300/300)` }}></div>
+                  })
+                }
+
+              </div>
 
             </div>
 
-            <div className='h-auto w-full grid grid-cols-4 gap-3'>
 
-              {
-                photos && photos.slice(0, 8).map((item) => {
-                  return <div className={`h-30 w-full bg-center bg-cover rounded-lg hover:scale-105 duration-150 transition-all ease-out hover:shadow-xl`} style={{ backgroundImage: `url(https://picsum.photos/seed/${item.id}/300/300)` }}></div>
-                })
-              }
+            <div className='flex flex-col gap-3 pt-3 pb-10 w-[48%] shrink-0'>
 
-            </div>
+              <div className='flex gap-2 items-center'>
+                <div className='text-md sora font-semibold'>Todos</div>
+                <div className='text-[#3D5AFE] bg-[#EEF1FF] h-7 w-7 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-xs font-semibold'>5</div>
 
-          </div>
+              </div>
 
-         
-          <div className='flex flex-col gap-3 pt-3 pb-10 w-[48%] shrink-0'>
+              <div className='h-auto w-full flex flex-col gap-3'>
 
-            <div className='flex gap-2 items-center'>
-              <div className='text-md sora font-semibold'>Todos</div>
-              <div className='text-[#3D5AFE] bg-[#EEF1FF] h-7 w-7 p-1 pr-2 pl-2 flex justify-center items-center text-center rounded-full  text-nowrap text-xs font-semibold'>5</div>
+                {
+                  todos && todos.slice(0, 5).map((item) => {
+                    return <div className='flex flex-col pb-2'>
+                      <p className='text-[#6B7280]'>{item.title}</p>
+                      <p className='text-sm font-medium text-[#3D5AFE]'>
+                        {item.completed ? "Completed" : "Incomplete"}
+                      </p>
+                    </div>
+                  })
+                }
 
-            </div>
-
-            <div className='h-auto w-full flex flex-col gap-3'>
-
-              {
-                todos && todos.slice(0, 5).map((item) => {
-                  return  <div className='flex flex-col pb-2'>
-                          <p className='text-[#6B7280]'>{item.title}</p>
-                          <p className='text-sm font-medium text-[#3D5AFE]'>
-                            {item.completed ? "Completed" : "Incomplete"}
-                          </p>
-                        </div>
-                })
-              }
+              </div>
 
             </div>
-
-          </div>
 
           </div>
 

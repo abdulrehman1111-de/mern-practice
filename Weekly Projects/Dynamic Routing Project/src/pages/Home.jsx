@@ -1,20 +1,16 @@
 import React, { useEffect } from 'react'
 import Nav from '../components/Nav'
 import User from '../components/User'
-import { useState } from 'react';
+import{
+    useGetAllUsersQuery
+} from '../components/JsonPlaceholderApi';
+
 
 const Home = () => {
 
-    const [users, setUsers] = useState([]);
+    const {data: users, isLoading} = useGetAllUsersQuery();
 
-    // Fetches the users data single time only 
-    useEffect(() => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then(res => res.json())
-            .then(data => setUsers(data));
-    }, [])
-
-    if (users.length === 0) {
+    if (isLoading) {
         return <p className='text-5xl sora font-semibold text-center pt-20'>Loading...</p>
     }
 
