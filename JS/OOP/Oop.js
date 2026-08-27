@@ -44,27 +44,55 @@
 // console.log(withdrawnAmount);
 
 
-class Car{
-    constructor(brand, speed = 0){
-        this.brand = brand;
-        this.speed = speed;
-    }
+// class Car{
+//     constructor(brand, speed = 0){
+//         this.brand = brand;
+//         this.speed = speed;
+//     }
 
-    accelrate(amount){
-        if(amount > 0){
-            this.speed += amount;
-        }
-    }
+//     accelrate(amount){
+//         if(amount > 0){
+//             this.speed += amount;
+//         }
+//     }
 
-    printSpeeds(){
-        console.log(this.brand);
-        console.log(this.speed);
-    }
-}
+//     printSpeeds(){
+//         console.log(this.brand);
+//         console.log(this.speed);
+//     }
+// }
 
-let car1 = new Car("Mehran");
-car1.accelrate(100);
-car1.printSpeeds();
+// let car1 = new Car("Mehran");
+// car1.accelrate(100);
+// car1.printSpeeds();
+
+// class MathHelper{
+//     static square(n){
+//         return n * n;
+//     }
+// }
+
+// console.log(MathHelper.square(2));
+
+// class Circle{
+
+//     radius = 0;
+
+//     setRadius(radius){
+//         if(radius > 0){
+//             this.radius = radius;
+//         }
+//     }
+
+//     getArea(){
+//         return Math.PI * this.radius * this.radius;
+//     }
+// }
+
+// let circle = new Circle();
+// circle.setRadius(5);
+// console.log(circle.getArea());
+
 
 
 
