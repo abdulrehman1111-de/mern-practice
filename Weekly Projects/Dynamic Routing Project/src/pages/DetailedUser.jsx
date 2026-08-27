@@ -6,26 +6,25 @@ import Comments from '../components/Comments';
 import {
   useGetUsersByIdQuery,
   useGetPostsByUserIdQuery,
-  useGetTodosByUserIdQuery,
-  useGetCommentsByPostIdQuery
-} from '../components/JsonPlaceholderApi';
+  useGetCommentsByPostIdQuery,
+  useGetTodosByUserIdQuery
+} from '../components/JsonPlaceholderApi'
 
 const DetailedUser = () => {
 
   // useParams is giving here id as a string
   const { id } = useParams();
 
-  const { data: users, isLoading: isUsersLoading } = useGetUsersByIdQuery(id);
-  const { data: posts, isLoading: isPostsLoading } = useGetPostsByUserIdQuery(id);
-  const { data: comments, isLoading: isCommentLoading } = useGetCommentsByPostIdQuery(id);
-  const { data: todos, isLoading: isTodosLoading } = useGetTodosByUserIdQuery(id);
+  const {data: users, isLoading: isUsersLoading} = useGetUsersByIdQuery(id);
+  const {data: posts, isLoading: isPostsLoading} = useGetPostsByUserIdQuery(id);
+  const {data: comments, isLoading: isCommentsLoading} = useGetCommentsByPostIdQuery(id);
+  const {data: todos, isLoading: isTodosLoading} = useGetTodosByUserIdQuery(id);
 
-  const isLoading = isUsersLoading || isPostsLoading || isCommentLoading || isTodosLoading;
+  const loading = isUsersLoading || isPostsLoading || isCommentsLoading || isTodosLoading;
 
-  if ((!posts) || (!comments) || (!users) || (!todos)) {
+  if (loading) {
     return <p className='text-5xl sora font-semibold text-center pt-20'>Loading...</p>
   }
-
 
   return (
     <>

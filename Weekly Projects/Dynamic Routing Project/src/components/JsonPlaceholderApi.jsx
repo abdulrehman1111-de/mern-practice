@@ -4,7 +4,7 @@ export const JsonPlaceholderApi = createApi({
   reducerPath: 'JsonPlaceholderApi',
   baseQuery: fetchBaseQuery({ baseUrl: 'https://jsonplaceholder.typicode.com/' }),
   endpoints: (builder) => ({
-    getAllUsers: builder.query({
+    getUsers: builder.query({
       query: () => `users`,
     }),
     getUsersById: builder.query({
@@ -22,11 +22,12 @@ export const JsonPlaceholderApi = createApi({
   }),
 })
 
-
 export const { 
-    useGetAllUsersQuery,
-    useGetUsersByIdQuery,
-    useGetPostsByUserIdQuery,
-    useGetTodosByUserIdQuery,
-    useGetCommentsByPostIdQuery
- } = JsonPlaceholderApi;
+
+  useGetUsersQuery,
+  useGetUsersByIdQuery,
+  useGetPostsByUserIdQuery,
+  useGetCommentsByPostIdQuery,
+  useGetTodosByUserIdQuery
+
+ } = JsonPlaceholderApi
