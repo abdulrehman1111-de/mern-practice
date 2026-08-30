@@ -120,11 +120,12 @@ const Signin = ({ dark }) => {
         </form>
       </div>
 
-      <div className='flex gap-3'>
+      <div className='flex gap-3 items-center justify-center'>
         <div onClick={signInWithGoogle}><Googlebtn /></div>
-        <div className='w-8 h-8 bg-white rounded-full flex justify-center items-center'>
-          <Link to="/dashboard"><div><FaApple size={28} className='text-black' /></div></Link>
-        </div>
+          <Link to="/dashboard"><div className={`h-auto p-3 rounded-4xl bg-[#2FE38A] hover:bg-green-400 flex justify-center items-center text-center font-semibold`}>
+      <p className='text-sm'>Go to Dashboard</p>
+    </div>
+  </Link>
       </div>
 
       <p className={`text-2xl fraunces ${dark ? "text-white" : "text-gray-900"}`}>Want to talk to our sales team instead?</p>
