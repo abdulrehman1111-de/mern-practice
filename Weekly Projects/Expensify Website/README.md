@@ -1,16 +1,65 @@
-# React + Vite
+# Expensify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React clone of the Expensify website and dashboard, built as part of the MERN stack practice series. Recreates the marketing landing page along with a multi-page dashboard experience.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Landing Page
+- Hero section with animated background and email signup
+- Feature grid showcasing expense management, travel, receipt scanning, virtual cards, and more, with a "See All Features" toggle
+- Auto-scrolling logo reel of trusted brands
+- Testimonials section with customer reviews
+- Ratings and award badges (G2 leader, top rated, shortlist)
+- FAQ section
+- Bottom CTA section for signup
+- Google sign-in modal with grayscale background effect on open
 
-## React Compiler
+### Dashboard
+- Inbox, Spend, and Workspaces pages
+- Account section with sub-pages: Agents, Expense, Profile, and Wallet
+- Profile page syncs live with Firebase Firestore, so user detail changes reflect in real time
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Theming
+- Full dark and light mode support across the entire app, powered by a custom `useToggle` hook
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- **React** — component structure and page routing
+- **React Router** — navigation between landing page and dashboard pages
+- **Tailwind CSS** — styling and responsive layout
+- **Firebase / Firestore** — authentication and live data sync for user profile
+- **React Icons** — icon set for logos, ratings, and UI elements
+
+## Project Structure
+
+```
+src/
+├── assets/          # icons, badges, images
+├── components/       # reusable UI components (Card, Greenbtn, Googlebtn, Firstcard, Testcards, Faq, etc.)
+├── pages/
+│   ├── Home.jsx
+│   ├── Firstcards.jsx
+│   ├── Footer.jsx
+│   └── dashboard/
+│       ├── Dashboardhome.jsx
+│       ├── Inbox.jsx
+│       ├── Spend.jsx
+│       ├── Workspaces.jsx
+│       └── account/
+│           ├── Agents.jsx
+│           ├── Expense.jsx
+│           ├── Profile.jsx
+│           └── Wallet.jsx
+```
+
+## What This Project Practices
+
+- Building multi-page apps with nested routing
+- Creating and using a custom React hook for shared state (theme toggling)
+- Integrating Firebase Authentication and Firestore into a React app
+- Structuring reusable, prop-driven components across a large page set
+- Replicating a real-world SaaS landing page layout and interaction patterns
+
+## Status
+
+Actively being built out. Firebase live sync is currently implemented on the Profile page, with plans to extend it further across the dashboard.
