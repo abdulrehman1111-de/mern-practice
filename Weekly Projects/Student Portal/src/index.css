@@ -27,6 +27,25 @@
   font-family: "Inter", sans-serif;
 }
 
+.signup.aos-animate{
+    animation: Fade1 1.2s ease-out;
+    animation-fill-mode: forwards;
+}
+.login.aos-animate{
+    animation: Fade1 1.2s ease-out;
+    animation-fill-mode: forwards;
+}
+@keyframes Fade1 {
+    0%{
+        transform: translateY(2.5rem);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0rem);
+        opacity: 1;
+    }
+}
+
 
 
 
