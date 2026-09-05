@@ -1,9 +1,10 @@
 import React from 'react'
+import Form from '../components/Form'
 
 const Signup = () => {
   return (
-    <div>
-      <h1>Oye hoye bechari</h1>
+    <div className='bg-bg h-screen flex justify-center items-center'>
+      <Form/>
     </div>
   )
 }
