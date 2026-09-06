@@ -4,13 +4,28 @@ import Signup from './pages/Signup'
 import './App.css'
 import Login from './pages/Login'
 import Dashboardlayout from './pages/Dashboardlayout'
+import Overview from './pages/DashboardPages/Overview'
+import Courses from './pages/DashboardPages/Courses'
+import Grades from './pages/DashboardPages/Grades'
+import Profile from './pages/DashboardPages/Profile'
+import Settings from './pages/DashboardPages/Settings'
+import Timetable from './pages/DashboardPages/Timetable'
 
 const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Signup />} />
       <Route path='/login' element={<Login/>}/>
-      <Route path='/dashboard' element={<Dashboardlayout/>}/>
+      <Route path='/dashboard' element={<Dashboardlayout/>}>
+
+        <Route index element={<Overview/>}/>
+        <Route path='courses' element={<Courses/>}/>
+        <Route path='grades' element={<Grades/>}/>
+        <Route path='profile' element={<Profile/>}/>
+        <Route path='settings' element={<Settings/>}/>
+        <Route path='timetable' element={<Timetable/>}/>
+      
+      </Route>
     </Routes>
   )
 }

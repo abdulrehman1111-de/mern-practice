@@ -13,38 +13,91 @@ const Sidebar = () => {
                 <p className='space font-semibold text-text'>Student Portal</p>
             </div>
 
-            <div className='flex flex-col gap-3 mt-10'>
+            <div className='flex flex-col gap-1 mt-10'>
 
-                <NavLink className={({isActive})=>{
-                    `flex gap-3 justify-center items-center mr-auto` ${isActive ? 'bg-accent' : ""}
-                }}>
-                    <LayoutGrid className="w-4 h-4 text-text/60" />
-                    <p className='text-text/60'>Overview</p>
+            {/* Placing end* here makes the default option go un-selected when some other option in the sidepanel is selected */}
+                <NavLink end to="/dashboard"
+                    className={({ isActive }) =>
+                        `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                    }
+                >
+                    {({ isActive }) => (
+                        <>
+                            <LayoutGrid className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                            <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Overview</p>
+                        </>
+                    )}
+
                 </NavLink>
 
-                <NavLink className='flex gap-3 justify-center items-center mr-auto'>
-                    <Book className="w-4 h-4 text-text/60" />
-                    <p className='text-text/60'>Courses</p>
+                <NavLink to="/dashboard/courses"
+                    className={({ isActive }) =>
+                        `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                    }
+                >
+                    {({ isActive }) => (
+                        <>
+                            <Book className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                            <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Courses</p>
+                        </>
+                    )}
+
                 </NavLink>
 
-                <NavLink className='flex gap-3 justify-center items-center mr-auto'>
-                    <Calendar className="w-4 h-4 text-text/60" />
-                    <p className='text-text/60'>Timetable</p>
+                <NavLink to="/dashboard/timetable"
+                    className={({ isActive }) =>
+                        `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                    }
+                >
+                    {({ isActive }) => (
+                        <>
+                            <Calendar className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                            <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Timetable</p>
+                        </>
+                    )}
+
                 </NavLink>
 
-                <NavLink className='flex gap-3 justify-center items-center mr-auto'>
-                    <CheckSquare className="w-4 h-4 text-text/60" />
-                    <p className='text-text/60'>Grades</p>
+                <NavLink to="/dashboard/grades"
+                    className={({ isActive }) =>
+                        `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                    }
+                >
+                    {({ isActive }) => (
+                        <>
+                            <CheckSquare className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                            <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Grades</p>
+                        </>
+                    )}
+
                 </NavLink>
 
-                <NavLink className='flex gap-3 justify-center items-center mr-auto'>
-                    <User className="w-4 h-4 text-text/60" />
-                    <p className='text-text/60'>Profile</p>
+                <NavLink to="/dashboard/profile"
+                    className={({ isActive }) =>
+                        `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                    }
+                >
+                    {({ isActive }) => (
+                        <>
+                            <User className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                            <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Profile</p>
+                        </>
+                    )}
+
                 </NavLink>
 
-                <NavLink className='flex gap-3 justify-center items-center mr-auto'>
-                    <Settings className="w-4 h-4 text-text/60" />
-                    <p className='text-text/60'>Settings</p>
+                <NavLink to="/dashboard/settings"
+                    className={({ isActive }) =>
+                        `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                    }
+                >
+                    {({ isActive }) => (
+                        <>
+                            <Settings className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                            <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Settings</p>
+                        </>
+                    )}
+
                 </NavLink>
 
             </div>
