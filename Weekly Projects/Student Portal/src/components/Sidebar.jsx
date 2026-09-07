@@ -6,14 +6,14 @@ import { NavLink } from 'react-router';
 
 const Sidebar = () => {
     return (
-        <div className='border border-border h-screen fixed w-[17%] bg-panel p-5'>
+        <div className='border border-border min-h-screen w-[20%] bg-panel p-5'>
 
             <div className='flex items-center gap-3'>
                 <div className='w-7 h-7 rounded-md bg-linear-to-r from-accent2 to-accent'></div>
                 <p className='space font-semibold text-text'>Student Portal</p>
             </div>
 
-            <div className='flex flex-col gap-1 mt-10'>
+            <div className='flex flex-col mt-10'>
 
             {/* Placing end* here makes the default option go un-selected when some other option in the sidepanel is selected */}
                 <NavLink end to="/dashboard"
