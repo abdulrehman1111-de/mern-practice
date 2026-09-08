@@ -13,7 +13,7 @@ const Sidebar = () => {
                 <p className='space font-semibold text-text'>Student Portal</p>
             </div>
 
-            <div className='flex flex-col mt-10'>
+            <div className='flex flex-col mt-10 gap-1'>
 
             {/* Placing end* here makes the default option go un-selected when some other option in the sidepanel is selected */}
                 <NavLink end to="/dashboard"
