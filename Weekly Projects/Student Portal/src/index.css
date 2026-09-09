@@ -36,7 +36,7 @@
     animation: Fade1 1.2s ease-out;
     animation-fill-mode: forwards;
 }
-.overview, .courses, .timetable, .grades, .profile {
+.overview, .courses, .timetable, .grades, .profile, .settings {
   animation: Fade1 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
