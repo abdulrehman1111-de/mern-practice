@@ -1,7 +1,10 @@
 import React, { useEffect } from 'react'
 import { ChevronDown } from 'lucide-react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 import AOS from 'aos';
+import { useState } from 'react';
+import { saveUser } from '../Backend/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
 
@@ -10,6 +13,33 @@ const Form = () => {
         mirror:true,
     });
   }, [])
+
+  const [name, setName] = useState("");
+  const [id, setId] = useState("");
+  const [department, setDepartment] = useState("Computer Science");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("");
+
+  const navigate = useNavigate();
+
+  const userProperties = {
+    name: name,
+    id: id,
+    department: department,
+    email: email,
+    password: password,
+    confirmPassword: confirmPassword,
+    role: role
+  }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    alert("user saved!")
+    saveUser(userProperties);
+    navigate("/dashboard")
+  }
 
   return (
     <div data-aos-offset="100px" data-aos="custom" className='signup bg-panel h-[95%] w-[45%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-5'>
@@ -24,19 +54,27 @@ const Form = () => {
         <p className='inter text-text/60 text-sm'>Register with your student ID to access your dashboard, courses, and grades.</p>
       </div>
 
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <div className='flex flex-col gap-3'>
 
-          <div className='flex flex-col gap-1'>
+          <div className='flex justify-between items-center'>
+            <div className='flex flex-col gap-1'>
             <label htmlFor="name" className='text-text/60'>Full name</label>
-            <input required title='Only alphabets are allowed' pattern="[A-Za-z\s]+" type="text" name="" id="name" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
+            <input onChange={(e)=> setName(e.target.value)} required title='Only alphabets are allowed' pattern="[A-Za-z\s]+" type="text" name="" id="name" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
+          </div>
+
+            <div className='flex gap-3 relative top-3'>
+              <button onClick={()=> setRole("student")} type='button' className={`p-2 border border-border rounded-xl ${role === 'student' ? "bg-accent text-panel font-semibold" : "bg-transparent"}`}>I am a Student</button>
+              <button onClick={()=> setRole("teacher")} type='button' className={`p-2 border border-border rounded-xl ${role === 'teacher' ? "bg-warn text-panel font-semibold" : "bg-transparent"}`}>I am a teacher</button>
+            </div>
+
           </div>
 
           <div className='flex gap-5 flex-1 min-w-0'>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="studentId" className='text-text/60'>Student ID</label>
-              <input required title='Only numeric values are allowed' pattern="[0-9]+" type="text" name="" id="studentId" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
+              <input onChange={(e)=> setId(e.target.value)} required title='Only numeric values are allowed' pattern="[0-9]+" type="text" name="" id="studentId" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
             </div>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
@@ -44,10 +82,10 @@ const Form = () => {
 
               {/* Wrapped the select in a label to use the custom arrow down since the default arrow down doesnt get padding  */}
               <div className='relative'>
-                <select className='border border-border p-2 text-text bg-panel flex justify-center appearance-none rounded-lg w-full' name="" id="">
-                  <option value="">Computer Science</option>
-                  <option value="">IT</option>
-                  <option value="">Software Engineering</option>
+                <select onChange={(e)=> setDepartment(e.target.value)} className='border border-border p-2 text-text bg-panel flex justify-center appearance-none rounded-lg w-full' name="" id="">
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="IT">IT</option>
+                  <option value="Software Engineering">Software Engineering</option>
                 </select>
                 <ChevronDown className="pointer-events-none absolute right-2 top-[50%] -translate-y-1/2 w-4 h-4 text-dim" />
               </div>
@@ -56,26 +94,26 @@ const Form = () => {
 
           <div className='flex flex-col gap-1 flex-1 min-w-0'>
             <label htmlFor="email" className='text-text/60'>University Email</label>
-            <input type="email" name="" id="email" placeholder='university@example.com' className='p-2 border border-border rounded-lg' />
+            <input onChange={(e)=> setEmail(e.target.value)} type="email" name="" id="email" placeholder='university@example.com' className='p-2 border border-border rounded-lg' />
           </div>
 
           <div className='flex gap-5 flex-1 min-w-0'>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="password" className='text-text/60'>Password</label>
-              <input pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="password" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
+              <input onChange={(e)=> setPassword(e.target.value)} pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="password" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
             </div>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="confirmPassword" className='text-text/60'>Confirm Password</label>
-              <input pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="confirmPassword" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
+              <input onChange={(e)=> setConfirmPassword(e.target.value)} pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="confirmPassword" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
             </div>
           </div>
           <p className='text-text/70 text-sm'>Atleast 8 characters</p>
 
-          <Link to="/dashboard"><button type="submit" className='bg-linear-to-r from-accent2 to-accent hover:bg-linear-to-r hover:from-accent hover:to-accent2 transition-colors duration-300 ease-in-out text-[#0a0f16] w-full p-2 rounded-2xl font-semibold'>
+          <button type="submit" className='bg-linear-to-r from-accent2 to-accent hover:bg-linear-to-r hover:from-accent hover:to-accent2 transition-colors duration-300 ease-in-out text-[#0a0f16] w-full p-2 rounded-2xl font-semibold'>
             Create your account
-          </button></Link>
+          </button>
 
           <Link to="/login"><p className='text-blue-400 text-sm text-center'>Login instead</p></Link>
 

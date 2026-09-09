@@ -3,8 +3,13 @@ import OverviewSmCards from '../../components/Overview/OverviewSmCards'
 import OverviewProgress from '../../components/Overview/OverviewProgress'
 import OverviewTimetable from '../../components/Overview/OverviewTimetable'
 import Assignments from '../../components/Overview/Assignments'
+import { getUser } from '../../Backend/auth'
 
 const Overview = () => {
+
+  const user = getUser();
+  const isTeacher = user?.role === "teacher"
+  const firstName = user?.name ? user.name.split(" ")[0] : "User"
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
 
@@ -14,7 +19,7 @@ const Overview = () => {
         </span>
 
         <div className='flex flex-col mt-4'>
-          <p className='text-2xl text-text font-semibold space'>Good morning, Abdul</p>
+          <p className='text-2xl text-text font-semibold space'>Good morning, {firstName}</p>
           <p className='text-sm space text-text/70 inter'>You have 2 assignments due this week and a quiz tomorrow.</p>
         </div>
 

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Routes } from 'react-router'
+import { Route, Routes } from 'react-router-dom'
 import Signup from './pages/Signup'
 import './App.css'
 import Login from './pages/Login'
@@ -10,13 +10,18 @@ import Grades from './pages/DashboardPages/Grades'
 import Profile from './pages/DashboardPages/Profile'
 import Settings from './pages/DashboardPages/Settings'
 import Timetable from './pages/DashboardPages/Timetable'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => {
   return (
     <Routes>
       <Route path='/' element={<Signup />} />
       <Route path='/login' element={<Login/>}/>
-      <Route path='/dashboard' element={<Dashboardlayout/>}>
+      <Route path='/dashboard' element={
+        <ProtectedRoute>
+          <Dashboardlayout/>
+        </ProtectedRoute>
+      }>
 
         <Route index element={<Overview/>}/>
         <Route path='courses' element={<Courses/>}/>
