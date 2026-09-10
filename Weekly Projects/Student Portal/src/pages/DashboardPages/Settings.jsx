@@ -1,6 +1,11 @@
 import React from 'react'
+import { getUser } from '../../Backend/auth'
 
 const Settings = () => {
+
+  const user = getUser();
+  const isTeacher = user?.role === "teacher"
+
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
 
@@ -30,10 +35,10 @@ const Settings = () => {
                 <div className='w-5 h-5 bg-[#061B09] rounded-full absolute top-0.5 left-1 peer-checked:left-7 transition-all duration-250 ease-out'></div>
               </label>
 
-              
+
             </div>
 
-            <hr className='border-t border-border'/>
+            <hr className='border-t border-border' />
 
             <div className='flex justify-between items-center'>
               <div className='flex flex-col'>
@@ -50,12 +55,16 @@ const Settings = () => {
 
             </div>
 
-              <hr className='border-t border-border'/>
+            <hr className='border-t border-border' />
 
             <div className='flex justify-between items-center'>
               <div className='flex flex-col'>
-                <p className='text-text text-sm font-semibold'>Fee reminders</p>
-                <p className='text-text/70 text-xs'>Reminders before payment deadlines</p>
+                <p className='text-text text-sm font-semibold'>
+                  {isTeacher ? "Submission alerts" : "Fee reminders"}
+                </p>
+                <p className='text-text/70 text-xs'>
+                  {isTeacher ? "Get notified when a student submits an assignment" : "Reminders before payment deadlines"}
+                </p>
               </div>
 
               <label className='relative w-15 h-8 block' htmlFor="ball3">
@@ -65,11 +74,11 @@ const Settings = () => {
                 <div className='w-5 h-5 bg-[#061B09] rounded-full absolute top-0.5 left-1 peer-checked:left-7 transition-all duration-250 ease-out'></div>
               </label>
 
-            </div>  
-            
+            </div>
+
 
           </div>
-          
+
 
         </div>
 
@@ -89,10 +98,10 @@ const Settings = () => {
                 <p className='text-text text-sm'>Change</p>
               </button>
 
-              
+
             </div>
 
-            <hr className='border-t border-border'/>
+            <hr className='border-t border-border' />
 
             <div className='flex justify-between items-center'>
               <div className='flex flex-col'>
@@ -106,7 +115,7 @@ const Settings = () => {
 
             </div>
 
-              <hr className='border-t border-border'/>
+            <hr className='border-t border-border' />
 
             <div className='flex justify-between items-center'>
               <div className='flex flex-col'>
@@ -118,11 +127,11 @@ const Settings = () => {
                 <p className='text-danger text-sm'>Logout</p>
               </button>
 
-            </div>  
-            
+            </div>
+
 
           </div>
-          
+
 
         </div>
 

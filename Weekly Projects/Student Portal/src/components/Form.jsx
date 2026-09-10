@@ -8,12 +8,6 @@ import { useNavigate } from 'react-router-dom';
 
 const Form = () => {
 
-  useEffect(()=>{
-    AOS.init({
-        mirror:true,
-    });
-  }, [])
-
   const [name, setName] = useState("");
   const [id, setId] = useState("");
   const [department, setDepartment] = useState("Computer Science");
@@ -21,6 +15,8 @@ const Form = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
+
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -36,13 +32,22 @@ const Form = () => {
 
   function handleSubmit(e){
     e.preventDefault()
-    alert("user saved!")
+    
+    if(password !== confirmPassword){
+      setError("Passwords don't match!")
+      setTimeout(() => {
+        setError("")
+      }, 4000);
+      return
+    }
     saveUser(userProperties);
-    navigate("/dashboard")
+    navigate("/dashboard")  
   }
 
   return (
-    <div data-aos-offset="100px" data-aos="custom" className='signup bg-panel h-[95%] w-[45%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-5'>
+    <div className='signup bg-panel h-[95%] w-[45%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-5'>
+
+      {error && <p className="text-danger text-sm">{error}</p>}
 
       <div className='flex items-center gap-3'>
         <div className='w-7 h-7 rounded-md bg-linear-to-r from-accent2 to-accent'></div>

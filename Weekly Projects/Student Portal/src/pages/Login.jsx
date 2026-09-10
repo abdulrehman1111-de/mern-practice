@@ -5,15 +5,9 @@ import AOS from 'aos';
 
 const Login = () => {
 
-    useEffect(()=>{
-        AOS.init({
-            mirror:true,
-        });
-      }, [])
-
     return (
         <div className='bg-bg h-screen flex justify-center items-center'>
-            <div data-aos-offset="100px" data-aos="custom" className='bg-panel login h-[80%] w-[35%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-8'>
+            <div className='login bg-panel login h-[80%] w-[35%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-8'>
 
                 <div className='flex items-center gap-3'>
                     <div className='w-7 h-7 rounded-md bg-linear-to-r from-accent2 to-accent'></div>

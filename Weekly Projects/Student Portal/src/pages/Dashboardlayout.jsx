@@ -1,13 +1,15 @@
 import Sidebar from '../components/Sidebar'
 import React from 'react'
-import { Outlet } from 'react-router'
-import { useEffect } from 'react'
+import { Outlet } from 'react-router-dom'
+import { getUser } from '../Backend/auth'
 
 const Dashboardlayout = () => {
 
+  const user = getUser();
+  const isTeacher = user?.role === "teacher";
+
   return (
-    // Dashboard layout is the main Container, it contains side panel and the outlet for dynamically selecting options This system will persist across every option selection
-    <div className='flex'>
+    <div className={`flex ${isTeacher ? 'theme-teacher' : ''}`}>
       <Sidebar/>
 
       <Outlet/>

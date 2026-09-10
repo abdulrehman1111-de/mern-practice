@@ -2,16 +2,36 @@ import React from 'react'
 import { LayoutGrid } from 'lucide-react';
 import { Book } from 'lucide-react';
 import { Calendar, CheckSquare, User, Settings } from 'lucide-react';
-import { NavLink } from 'react-router';
+import { NavLink } from 'react-router-dom';
+import { getUser } from '../Backend/auth';
+import { LogOut } from 'lucide-react';
 
 const Sidebar = () => {
+
+    const user = getUser();
+    const isTeacher = user?.role === "teacher"
+
+    const name = user?.name ? user?.name : "User";
+    let nameAbbreviation = "";
+    if (name === "User") {
+        nameAbbreviation = "U";
+    }
+    else {
+        let nameArr = name.split(" ");
+        let joinedNameArr = "";
+        for (let i = 0; i < nameArr.length; i++) {
+            joinedNameArr += nameArr[i].slice(0, 1).toUpperCase();
+        }
+        nameAbbreviation = joinedNameArr;
+    }
+
     return (
         <div className='border border-border min-h-screen w-[20%] bg-panel p-5 flex flex-col justify-between'>
 
             <div>
                 <div className='flex items-center gap-3'>
                     <div className='w-7 h-7 rounded-md bg-linear-to-r from-accent2 to-accent'></div>
-                    <p className='space font-semibold text-text'>Student Portal</p>
+                    <p className='space font-semibold text-text'>{isTeacher ? "Teacher Portal" : "Student Portal"}</p>
                 </div>
 
                 <div className='flex flex-col mt-10 gap-1'>
@@ -101,6 +121,20 @@ const Sidebar = () => {
 
                     </NavLink>
 
+                    <NavLink to="/login"
+                        className={({ isActive }) =>
+                            `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
+                        }
+                    >
+                        {({ isActive }) => (
+                            <>
+                                <LogOut className={`w-4 h-4 ${isActive ? 'text-accent' : 'text-text/60 group-hover:text-text'}`} />
+                                <p className={isActive ? 'text-text' : 'text-text/60 group-hover:text-text'}>Logout</p>
+                            </>
+                        )}
+
+                    </NavLink>
+
                 </div>
             </div>
 
@@ -109,21 +143,21 @@ const Sidebar = () => {
                 <div className='flex gap-3'>
                     <div className='flex justify-center items-center'>
 
-                    <div className='w-8 h-8 rounded-full bg-linear-to-br from-accent2 to-accent flex justify-center items-center'>
-                        <p className='text-panel text-sm font-semibold'>AR</p>
+                        <div className='w-8 h-8 rounded-full bg-linear-to-br from-accent2 to-accent flex justify-center items-center'>
+                            <p className='text-panel text-sm font-semibold'>{nameAbbreviation}</p>
+                        </div>
+
                     </div>
 
+                    <div className='flex flex-col justify-center'>
+                        <p className='text-md text-text font-semibold'>
+                            {name}
+                        </p>
+                        <p className='text-text/60 text-xs'>
+                            {user?.department} · {isTeacher ? "Faculty" : "Student"}</p>
+                    </div>
                 </div>
-
-                <div className='flex flex-col justify-center'>
-                    <p className='text-md text-text font-semibold'>
-                        Abdul Rehman
-                    </p>
-                    <p className='text-text/60 text-xs'>
-                        BSCS · Sem 4</p>
-                </div>
-                </div>
-        </div>
+            </div>
 
         </div >
     )

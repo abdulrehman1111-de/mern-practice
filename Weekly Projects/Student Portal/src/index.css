@@ -21,6 +21,11 @@
   --radius-field: 9px;
 }
 
+.theme-teacher {
+  --color-accent: #EF9F27;
+  --color-accent2: #185FA5;
+}
+
 .space{
   font-family: "Space Grotesk", sans-serif;
 }
@@ -36,7 +41,7 @@
     animation: Fade1 1.2s ease-out;
     animation-fill-mode: forwards;
 }
-.overview, .courses, .timetable, .grades, .profile, .settings {
+.overview, .courses, .timetable, .grades, .profile, .settings, .signup, .login {
   animation: Fade1 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
