@@ -1,11 +1,17 @@
 import React from 'react'
 import OverviewSmCards from '../../components/Overview/OverviewSmCards'
 import { getUser } from '../../Backend/auth';
+import { getStudentRecords } from '../../Backend/auth';
+import TeacherForm from '../../components/Grades/TeacherForm';
 
 const Grades = () => {
 
   const user = getUser();
   const isTeacher = user?.role === "teacher"
+
+  const student = getStudentRecords()
+  const studentGrades = student[user?.id]?.grades;
+  
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -89,15 +95,17 @@ const Grades = () => {
                 <div className='flex items-start'>
                   <div className='text-warn w-8 h-8 bg-warn/10 rounded-full flex justify-center items-center'>C</div>
                 </div>
+
+                <TeacherForm/>
               </>
             ) : (
               <>
                 <div>Data Structures & Algorithms</div>
                 <div>Dr. Farah Naz</div>
                 <div>3</div>
-                <div>88%</div>
+                <div>{studentGrades?.DataStructures?.score}</div>
                 <div className='flex items-start'>
-                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>A-</div>
+                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>{studentGrades?.DataStructures?.grade}</div>
                 </div>
 
                 <hr className='border-t border-border w-full col-span-5' />
@@ -105,9 +113,9 @@ const Grades = () => {
                 <div>Database Systems</div>
                 <div>Dr. Bilal Ahmed</div>
                 <div>3</div>
-                <div>79%</div>
+                <div>{studentGrades?.DatabaseSystems?.score}</div>
                 <div className='flex items-start'>
-                  <div className='text-blue-400 w-8 h-8 bg-blue-400/10 rounded-full flex justify-center items-center'>B+</div>
+                  <div className='text-blue-400 w-8 h-8 bg-blue-400/10 rounded-full flex justify-center items-center'>{studentGrades?.DatabaseSystems?.grade}</div>
                 </div>
 
                 <hr className='border-t border-border w-full col-span-5' />
@@ -115,9 +123,9 @@ const Grades = () => {
                 <div>Web Engineering (MERN)</div>
                 <div>Code Lab Bahawalpur</div>
                 <div>—</div>
-                <div>91%</div>
+                <div>{studentGrades?.WebEngineering?.score}</div>
                 <div className='flex items-start'>
-                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>A</div>
+                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>{studentGrades?.WebEngineering?.grade}</div>
                 </div>
 
                 <hr className='border-t border-border w-full col-span-5' />
@@ -125,9 +133,9 @@ const Grades = () => {
                 <div>Discrete Mathematics</div>
                 <div>Dr. Sana Malik</div>
                 <div>3</div>
-                <div>68%</div>
+                <div>{studentGrades?.DiscreteMathematics?.score}</div>
                 <div className='flex items-start'>
-                  <div className='text-warn w-8 h-8 bg-warn/10 rounded-full flex justify-center items-center'>C+</div>
+                  <div className='text-warn w-8 h-8 bg-warn/10 rounded-full flex justify-center items-center'>{studentGrades?.DiscreteMathematics?.grade}</div>
                 </div>
               </>
             )}
