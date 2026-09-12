@@ -1,9 +1,9 @@
 import React from 'react'
-import { getUser } from '../../Backend/auth';
+import { getCurrentUser } from '../../Backend/users';
 
 const Profile = () => {
 
-  const user = getUser();
+  const user = getCurrentUser()
   const name = user?.name ? user?.name : "User";
   let nameAbbreviation = "";
   if (name === "User") {

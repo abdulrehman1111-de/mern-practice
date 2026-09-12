@@ -1,9 +1,9 @@
 import React from 'react'
-import { getUser } from '../../Backend/auth'
+import { getCurrentUser } from '../../Backend/users'
 
 const Settings = () => {
 
-  const user = getUser();
+  const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
 
   return (

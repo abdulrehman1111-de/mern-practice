@@ -1,9 +1,9 @@
 import { Navigate } from "react-router-dom";
-import { getUser } from "../Backend/auth";
+import { getCurrentUser } from "../Backend/users";
 
 export default function ProtectedRoute({children}){
 
-    const user = getUser();
+    const user = getCurrentUser;
     
     if(user === null){
         return <Navigate replace to={"/login"}/>

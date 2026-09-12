@@ -3,12 +3,12 @@ import { LayoutGrid } from 'lucide-react';
 import { Book } from 'lucide-react';
 import { Calendar, CheckSquare, User, Settings } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
-import { getUser } from '../Backend/auth';
 import { LogOut } from 'lucide-react';
+import { getCurrentUser } from '../Backend/users';
 
 const Sidebar = () => {
 
-    const user = getUser();
+    const user = getCurrentUser();
     const isTeacher = user?.role === "teacher"
 
     const name = user?.name ? user?.name : "User";
@@ -121,7 +121,11 @@ const Sidebar = () => {
 
                     </NavLink>
 
-                    <NavLink to="/login"
+                    <NavLink to="/login" onClick={() => {
+
+                        localStorage.removeItem("currentUser")
+
+                    }}
                         className={({ isActive }) =>
                             `w-full flex gap-3 items-center mr-auto p-1.5 rounded-lg group hover:bg-[#182735] hover:text-text hover:transition-all hover:duration-100 ${isActive ? 'bg-active text-text' : 'text-dim'}`
                         }

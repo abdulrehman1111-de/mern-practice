@@ -3,11 +3,11 @@ import OverviewSmCards from '../../components/Overview/OverviewSmCards'
 import OverviewProgress from '../../components/Overview/OverviewProgress'
 import OverviewTimetable from '../../components/Overview/OverviewTimetable'
 import Assignments from '../../components/Overview/Assignments'
-import { getUser } from '../../Backend/auth'
+import { getCurrentUser } from '../../Backend/users'
 
 const Overview = () => {
 
-  const user = getUser();
+  const user = getCurrentUser();
   const isTeacher = user?.role === "teacher"
   const attendancePercentage = isTeacher ? 85 : 91;
   const firstName = user?.name ? user.name.split(" ")[0] : "User"

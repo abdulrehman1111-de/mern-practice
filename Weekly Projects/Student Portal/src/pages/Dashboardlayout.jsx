@@ -1,11 +1,11 @@
 import Sidebar from '../components/Sidebar'
 import React from 'react'
 import { Outlet } from 'react-router-dom'
-import { getUser } from '../Backend/auth'
+import { getCurrentUser } from '../Backend/users'
 
 const Dashboardlayout = () => {
 
-  const user = getUser();
+  const user = getCurrentUser();
   const isTeacher = user?.role === "teacher";
 
   return (

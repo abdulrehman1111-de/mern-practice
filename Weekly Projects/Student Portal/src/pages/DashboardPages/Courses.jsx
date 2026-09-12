@@ -1,12 +1,12 @@
 import React from 'react'
 import CoursesComp from '../../components/Courses/CoursesComp'
-import { getUser } from '../../Backend/auth';
+import { getCurrentUser } from '../../Backend/users';
 import { getStudentRecords } from '../../Backend/auth';
 import TeacherProgressForm from '../../components/Progress/TeacherProgressForm';
 
 const Courses = () => {
 
-  const user = getUser();
+  const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
 
   const student = getStudentRecords()

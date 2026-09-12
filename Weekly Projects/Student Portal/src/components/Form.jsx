@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react'
 import { ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import AOS from 'aos';
 import { useState } from 'react';
-import { saveUser } from '../Backend/auth';
 import { useNavigate } from 'react-router-dom';
+import { checkDuplicateEmail, getRegisteredUsers } from '../Backend/users';
+import { saveUsers } from '../Backend/users';
+import { setCurrentUser } from '../Backend/users';
+import { checkDuplicateId } from '../Backend/users';
+import { getCurrentUser } from '../Backend/users';
 
 const Form = () => {
 
@@ -19,29 +22,47 @@ const Form = () => {
   const [error, setError] = useState("");
 
   const navigate = useNavigate();
+  const user = getCurrentUser();
+  const isTeacher = user?.role === "teacher"
 
-  const userProperties = {
-    name: name,
-    id: id,
-    department: department,
-    email: email,
-    password: password,
-    confirmPassword: confirmPassword,
-    role: role
-  }
-
-  function handleSubmit(e){
+  function handleSubmit(e) {
     e.preventDefault()
-    
-    if(password !== confirmPassword){
+
+    if (password !== confirmPassword) {
       setError("Passwords don't match!")
       setTimeout(() => {
         setError("")
       }, 4000);
       return
     }
-    saveUser(userProperties);
-    navigate("/dashboard")  
+
+    const emailResult = checkDuplicateEmail(email);
+    if (emailResult) {
+      setError("Email already taken")
+      setTimeout(() => {
+        setError("")
+      }, 4000);
+      return
+    }
+
+    const idResult = checkDuplicateId(id);
+    if (idResult) {
+      setError("Id already taken")
+      setTimeout(() => {
+        setError("")
+      }, 4000);
+      return
+    }
+
+    const allUsers = getRegisteredUsers();
+    const newUser = { name, id, department, email, password, role };
+
+    allUsers.push(newUser)
+    saveUsers(allUsers)
+    setCurrentUser(newUser)
+
+
+    navigate("/dashboard")
   }
 
   return (
@@ -51,7 +72,7 @@ const Form = () => {
 
       <div className='flex items-center gap-3'>
         <div className='w-7 h-7 rounded-md bg-linear-to-r from-accent2 to-accent'></div>
-        <p className='space font-semibold'>Student Portal</p>
+        <p className='space font-semibold'>Portal</p>
       </div>
 
       <div className='flex flex-col gap-2 h-25 w-full justify-center'>
@@ -62,15 +83,29 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <div className='flex flex-col gap-3'>
 
-          <div className='flex justify-between items-center'>
+          <div className='flex justify-between items-center gap-5'>
             <div className='flex flex-col gap-1'>
-            <label htmlFor="name" className='text-text/60'>Full name</label>
-            <input onChange={(e)=> setName(e.target.value)} required title='Only alphabets are allowed' pattern="[A-Za-z\s]+" type="text" name="" id="name" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
-          </div>
+              <label htmlFor="name" className='text-text/60'>Full name</label>
+              <input onChange={(e) => setName(e.target.value)} required title='Only alphabets are allowed' pattern="[A-Za-z\s]+" type="text" name="" id="name" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
+            </div>
 
-            <div className='flex gap-3 relative top-3'>
-              <button onClick={()=> setRole("student")} type='button' className={`p-2 border border-border rounded-xl ${role === 'student' ? "bg-accent text-panel font-semibold" : "bg-transparent"}`}>I am a Student</button>
-              <button onClick={()=> setRole("teacher")} type='button' className={`p-2 border border-border rounded-xl ${role === 'teacher' ? "bg-warn text-panel font-semibold" : "bg-transparent"}`}>I am a teacher</button>
+            <div className='flex flex-col gap-1 flex-1 min-w-0'>
+              <label htmlFor="" className='text-text/60'>Role</label>
+
+              <div className='relative'>
+                <select
+                  onChange={(e) => setRole(e.target.value)}
+                  value={role}
+                  className='border border-border p-2 text-text bg-panel flex justify-center appearance-none rounded-lg w-full'
+                  name=""
+                  id=""
+                >
+                  <option value="">Choose role</option>
+                  <option value="teacher">Teacher</option>
+                  <option value="student">Student</option>
+                </select>
+                <ChevronDown className="pointer-events-none absolute right-2 top-[50%] -translate-y-1/2 w-4 h-4 text-dim" />
+              </div>
             </div>
 
           </div>
@@ -78,8 +113,8 @@ const Form = () => {
           <div className='flex gap-5 flex-1 min-w-0'>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
-              <label htmlFor="studentId" className='text-text/60'>Student ID</label>
-              <input onChange={(e)=> setId(e.target.value)} required title='Only numeric values are allowed' pattern="[0-9]+" type="text" name="" id="studentId" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
+              <label htmlFor="ID" className='text-text/60'>ID</label>
+              <input onChange={(e) => setId(e.target.value)} required title='Only numeric values are allowed' pattern="[0-9]+" type="text" name="" id="ID" placeholder='Enter your id' className='p-2 border border-border rounded-lg' />
             </div>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
@@ -87,7 +122,7 @@ const Form = () => {
 
               {/* Wrapped the select in a label to use the custom arrow down since the default arrow down doesnt get padding  */}
               <div className='relative'>
-                <select onChange={(e)=> setDepartment(e.target.value)} className='border border-border p-2 text-text bg-panel flex justify-center appearance-none rounded-lg w-full' name="" id="">
+                <select onChange={(e) => setDepartment(e.target.value)} className='border border-border p-2 text-text bg-panel flex justify-center appearance-none rounded-lg w-full' name="" id="">
                   <option value="Computer Science">Computer Science</option>
                   <option value="IT">IT</option>
                   <option value="Software Engineering">Software Engineering</option>
@@ -99,19 +134,19 @@ const Form = () => {
 
           <div className='flex flex-col gap-1 flex-1 min-w-0'>
             <label htmlFor="email" className='text-text/60'>University Email</label>
-            <input onChange={(e)=> setEmail(e.target.value)} type="email" name="" id="email" placeholder='university@example.com' className='p-2 border border-border rounded-lg' />
+            <input onChange={(e) => setEmail(e.target.value)} type="email" name="" id="email" placeholder='university@example.com' className='p-2 border border-border rounded-lg' />
           </div>
 
           <div className='flex gap-5 flex-1 min-w-0'>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="password" className='text-text/60'>Password</label>
-              <input onChange={(e)=> setPassword(e.target.value)} pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="password" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
+              <input onChange={(e) => setPassword(e.target.value)} pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="password" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
             </div>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="confirmPassword" className='text-text/60'>Confirm Password</label>
-              <input onChange={(e)=> setConfirmPassword(e.target.value)} pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="confirmPassword" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
+              <input onChange={(e) => setConfirmPassword(e.target.value)} pattern=".{8,}" type="password" title='Password must be atleast 8 characters' name="" id="confirmPassword" placeholder='Enter your password' className='p-2 border border-border rounded-lg' />
             </div>
           </div>
           <p className='text-text/70 text-sm'>Atleast 8 characters</p>

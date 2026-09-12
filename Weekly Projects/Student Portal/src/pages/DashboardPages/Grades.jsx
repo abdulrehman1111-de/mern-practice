@@ -1,12 +1,12 @@
 import React from 'react'
 import OverviewSmCards from '../../components/Overview/OverviewSmCards'
-import { getUser } from '../../Backend/auth';
+import { getCurrentUser } from '../../Backend/users';
 import { getStudentRecords } from '../../Backend/auth';
 import TeacherForm from '../../components/Grades/TeacherForm';
 
 const Grades = () => {
 
-  const user = getUser();
+  const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
 
   const student = getStudentRecords()
