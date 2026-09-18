@@ -15,7 +15,7 @@ function saveCourses(courses){
     localStorage.setItem("courses", stringCourses)
 }
 
-function createCourse(courseData, teacherId){
+export function createCourse(courseData, teacherId){
 
     const course = {
         id: Date.now(),
@@ -33,7 +33,7 @@ function createCourse(courseData, teacherId){
     saveCourses(existingCourses)
 }
 
-function getCoursesByTeacher(teacherId){
+export function getCoursesByTeacher(teacherId){
 
     let courses = getCourses();
     let specificTeacherCourses = courses.filter((course)=>{
@@ -43,7 +43,7 @@ function getCoursesByTeacher(teacherId){
 
 }
 
-function getCoursesByStudent(studentId){
+export function getCoursesByStudent(studentId){
 
     let courses = getCourses()
     let specificStudentCourses = courses.filter((course)=>{

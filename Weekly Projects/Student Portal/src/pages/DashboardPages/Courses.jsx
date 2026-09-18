@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import CoursesComp from '../../components/Courses/CoursesComp'
 import { getCurrentUser } from '../../Backend/users';
 import { getStudentRecords } from '../../Backend/auth';
 import TeacherProgressForm from '../../components/Progress/TeacherProgressForm';
+import { getCoursesByStudent } from '../../Backend/courses';
+import { getCoursesByTeacher } from '../../Backend/courses';
 
 const Courses = () => {
 
@@ -11,6 +13,27 @@ const Courses = () => {
 
   const student = getStudentRecords()
   const studentCourseProgress = student[user?.id]?.courseProgress;
+
+  const [courses, setCourses] = useState(courses)
+
+  if (isTeacher) {
+    setCourses(getCoursesByTeacher(user.id))
+  }
+  else {
+    setCourses(getCoursesByStudent(user.id))
+  }
+
+  function refreshCourses() {
+    const user = getCurrentUser()
+    const isTeacher = user?.role === "teacher"
+
+    if (isTeacher) {
+      setCourses(getCoursesByTeacher(user.id))
+    }
+    else {
+      setCourses(getCoursesByStudent(user.id))
+    }
+  }
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -28,7 +51,7 @@ const Courses = () => {
               <CoursesComp subject={"Database Systems"} teacher={"Sec B · 41 students"} percentage={58} details={"3 credits · Tue/Thu 11:00"} />
               <CoursesComp subject={"Web Engineering (MERN)"} teacher={"Elective · 25 students"} percentage={85} details={"Elective · Sat 11:30"} />
               <CoursesComp subject={"Discrete Mathematics"} teacher={"Sec A · 36 students"} percentage={40} details={"3 credits · Wed 14:00"} />
-              <TeacherProgressForm/>
+              <TeacherProgressForm />
             </>
           ) : (
             <>
