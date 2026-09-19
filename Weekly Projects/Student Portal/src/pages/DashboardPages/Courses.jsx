@@ -1,27 +1,29 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CoursesComp from '../../components/Courses/CoursesComp'
 import { getCurrentUser } from '../../Backend/users';
 import { getStudentRecords } from '../../Backend/auth';
 import TeacherProgressForm from '../../components/Progress/TeacherProgressForm';
 import { getCoursesByStudent } from '../../Backend/courses';
 import { getCoursesByTeacher } from '../../Backend/courses';
+import CreateCourseForm from '../../components/Courses/CreateCourseForm'
 
 const Courses = () => {
 
   const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
 
+  const [courses, setCourses] = useState([])
   const student = getStudentRecords()
   const studentCourseProgress = student[user?.id]?.courseProgress;
 
-  const [courses, setCourses] = useState(courses)
-
-  if (isTeacher) {
-    setCourses(getCoursesByTeacher(user.id))
-  }
-  else {
-    setCourses(getCoursesByStudent(user.id))
-  }
+  useEffect(() => {
+    if (isTeacher) {
+      setCourses(getCoursesByTeacher(user.id))
+    }
+    else {
+      setCourses(getCoursesByStudent(user.id))
+    }
+  }, [])
 
   function refreshCourses() {
     const user = getCurrentUser()
@@ -47,11 +49,13 @@ const Courses = () => {
         <div className='grid grid-cols-2 gap-5 mt-8'>
           {isTeacher ? (
             <>
-              <CoursesComp subject={"Data Structures & Algorithms"} teacher={"Sec A · 38 students"} percentage={72} details={"3 credits · Mon/Wed 9:00"} />
-              <CoursesComp subject={"Database Systems"} teacher={"Sec B · 41 students"} percentage={58} details={"3 credits · Tue/Thu 11:00"} />
-              <CoursesComp subject={"Web Engineering (MERN)"} teacher={"Elective · 25 students"} percentage={85} details={"Elective · Sat 11:30"} />
-              <CoursesComp subject={"Discrete Mathematics"} teacher={"Sec A · 36 students"} percentage={40} details={"3 credits · Wed 14:00"} />
+              {
+                courses.map((course)=>{
+                  return <CoursesComp key={course.id} subject={course.name} teacher={`${course.section} . ${course.enrolledStudents.length} students`} details={`${course.credits} credits . ${course.schedule}`}/>
+                })
+              }
               <TeacherProgressForm />
+              <CreateCourseForm onCourseCreated={refreshCourses}/>
             </>
           ) : (
             <>
