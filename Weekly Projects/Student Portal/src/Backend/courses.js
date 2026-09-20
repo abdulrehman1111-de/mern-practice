@@ -1,4 +1,4 @@
-function getCourses(){
+export function getCourses(){
 
     const courses = localStorage.getItem("courses")
 

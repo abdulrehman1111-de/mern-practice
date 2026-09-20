@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import CoursesComp from '../../components/Courses/CoursesComp'
 import { getCurrentUser } from '../../Backend/users';
-import { getStudentRecords } from '../../Backend/auth';
 import TeacherProgressForm from '../../components/Progress/TeacherProgressForm';
 import { getCoursesByStudent } from '../../Backend/courses';
 import { getCoursesByTeacher } from '../../Backend/courses';
 import CreateCourseForm from '../../components/Courses/CreateCourseForm'
+import { getCourses } from '../../Backend/courses';
 
 const Courses = () => {
 
@@ -13,8 +13,7 @@ const Courses = () => {
   const isTeacher = user?.role === "teacher"
 
   const [courses, setCourses] = useState([])
-  const student = getStudentRecords()
-  const studentCourseProgress = student[user?.id]?.courseProgress;
+  const [avaliableCourses, setAvaliableCourses] = useState([])
 
   useEffect(() => {
     if (isTeacher) {
@@ -22,6 +21,16 @@ const Courses = () => {
     }
     else {
       setCourses(getCoursesByStudent(user.id))
+    }
+  }, [])
+
+  useEffect(()=>{
+    if(!isTeacher){
+      const allCourses = getCourses()
+      const coursesNotTaken = allCourses.filter((course)=>{
+        return !course.enrolledStudents.some((entry)=> entry.studentId === user.id)
+      })
+      setAvaliableCourses(coursesNotTaken)
     }
   }, [])
 
@@ -51,7 +60,7 @@ const Courses = () => {
             <>
               {
                 courses.map((course)=>{
-                  return <CoursesComp key={course.id} subject={course.name} teacher={`${course.section} . ${course.enrolledStudents.length} students`} details={`${course.credits} credits . ${course.schedule}`}/>
+                  return <CoursesComp key={course.id} subject={course.name} teacher={`${course.section} · ${course.enrolledStudents.length} students`} details={`${course.credits} credits · ${course.schedule}`}/>
                 })
               }
               <TeacherProgressForm />
@@ -59,10 +68,12 @@ const Courses = () => {
             </>
           ) : (
             <>
-              <CoursesComp subject={"Data Structures & Algorithms"} teacher={"Dr. Farah Naz · Sec A"} percentage={studentCourseProgress?.DataStructures} details={"3 credits · Mon/Wed 9:00"} />
-              <CoursesComp subject={"Database Systems"} teacher={"Dr. Bilal Ahmed · Sec B"} percentage={studentCourseProgress?.DatabaseSystems} details={"3 credits · Tue/Thu 11:00"} />
-              <CoursesComp subject={"Web Engineering (MERN)"} teacher={"Code Lab Bahawalpur"} percentage={studentCourseProgress?.WebEngineering} details={"Elective · Sat 11:30"} />
-              <CoursesComp subject={"Discrete Mathematics"} teacher={"Dr. Sana Malik · Sec A"} percentage={studentCourseProgress?.DiscreteMathematics} details={"3 credits · Wed 14:00"} />
+              {
+                courses.map((course)=>{
+                  const studentEntry = course.enrolledStudents.find((entry)=> entry.studentId === user.id)
+                  return <CoursesComp key={course.id} subject={course.name} teacher={course.section} percentage={studentEntry?.progress} details={`${course.credits} credits · ${course.schedule}`} />
+                })
+              }
             </>
           )}
         </div>
