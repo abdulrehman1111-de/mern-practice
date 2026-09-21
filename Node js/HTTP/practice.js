@@ -4,8 +4,10 @@ const http = require('http')
 // Importing the events module
 const EventEmitter = require('events')
 
+// Create an instance of EventEmitter
 const event = new EventEmitter()
 
+// Make functions
 event.on("success", (username)=>{
     console.log(`Login success for ${username}`)
 })
@@ -14,6 +16,7 @@ event.on("fail", (username)=>{
     console.log(`Login failed ${username}`)
 })
 
+// Hardcoded username and password
 const hardCodedUsername = "abdul"
 const hardCodedPassword = "1234"
 
