@@ -15,7 +15,9 @@ const CoursesComp = ({subject, teacher, percentage, details}) => {
                 <ShiningDiv status={"In Progress"}/>
             </div>
 
-            <ProgressBar width={percentage} value={percentage}/>
+            {
+                percentage !== undefined && <ProgressBar width={percentage} value={percentage}/>
+            }
 
             <div className='flex justify-between items-center'>
                 <p className='text-text/60 text-xs'>{details}</p>

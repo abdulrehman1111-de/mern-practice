@@ -1,23 +1,37 @@
-import React, { useState } from 'react'
-import { updateCourseProgress } from '../../Backend/auth';
+import React, { useEffect, useState } from 'react'
+import { getCoursesByTeacher, updateStudentProgress } from '../../Backend/courses';
+import { getCurrentUser } from '../../Backend/users';
+import { toast } from 'react-toastify';
 
-const TeacherProgressForm = () => {
+const TeacherProgressForm = ({Refresher}) => {
 
     const [student, setStudent] = useState("");
-    const [course, setCourse] = useState("");
+    const [teacherCourses, setTeacherCourses] = useState([])
+    const [selectedCourseId, setSelectedCourseId] = useState("")
     const [progress, setProgress] = useState("");
+
+    const user = getCurrentUser()
+    const teacherId = user?.id
+
+    const selectedCourse = teacherCourses.find((c)=> String(c.id) === selectedCourseId)
 
     function handleSubmit(e) {
 
         e.preventDefault();
 
-        if (!student || !course || !progress) {
-            alert("Please fill out the form properly")
+        if (!student || !selectedCourseId || !progress) {
+            toast.error("Please fill out the form properly")
             return
         }
-        updateCourseProgress(student, course, progress);
-        alert("updated!")
+        updateStudentProgress(selectedCourseId, student, progress)
+        toast.success("updated!")
+        Refresher()
     }
+
+    useEffect(()=>{
+        let courses = getCoursesByTeacher(teacherId)
+        setTeacherCourses(courses)
+    }, [])
 
     return (
         <div className='bg-panel rounded-lg border border-border p-5 mt-5'>
@@ -31,19 +45,26 @@ const TeacherProgressForm = () => {
                         <span className='text-text/70 text-xs'>Select a student</span>
                         <select onChange={(e) => setStudent(e.target.value)} className='p-2 border border-border rounded-lg bg-panel2 text-text' name="" id="students">
                             <option value="">Choose student</option>
-                            <option value="123">Abdul Rehman</option>
-                            <option value="456">Ali Ahmad</option>
+                            {
+                                selectedCourse?.enrolledStudents.map((entry)=>{
+                                    return (<option key={entry.studentId} value={entry.studentId}>{entry.studentId}</option>)
+                                })
+                            }
+                            
                         </select>
                     </label>
 
                     <label htmlFor="courses" className='flex flex-col gap-1 flex-1'>
                         <span className='text-text/70 text-xs'>Select a course</span>
-                        <select onChange={(e) => setCourse(e.target.value)} className='p-2 border border-border rounded-lg bg-panel2 text-text' name="" id="courses">
+                        <select onChange={(e) => setSelectedCourseId(e.target.value)} className='p-2 border border-border rounded-lg bg-panel2 text-text' name="" id="courses">
                             <option value="">Choose course</option>
-                            <option value="DataStructures">Data Structures</option>
-                            <option value="WebEngineering">Web Engineering</option>
-                            <option value="DiscreteMathematics">Discrete Mathematics</option>
-                            <option value="DatabaseSystems">Database Systems</option>
+                            {
+                                teacherCourses.map((course)=>{
+                                    return (
+                                        <option key={course.id} value={course.id}>{course.name}</option>
+                                    )
+                                })
+                            }
                         </select>
                     </label>
                 </div>

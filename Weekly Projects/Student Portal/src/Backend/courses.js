@@ -56,21 +56,21 @@ export function getCoursesByStudent(studentId){
     return specificStudentCourses
 }
 
-function updateStudentProgress(courseId, studentId, progress){
+export function updateStudentProgress(courseId, studentId, progress){
 
     let courses = getCourses()
     let matchingCourse = courses.find((course)=>{
-        return course.id === courseId
+        return String(course.id) === courseId
     })
     let studentArr = matchingCourse.enrolledStudents
     let specificStudent = studentArr.find((item)=>{
-        return item.studentId === studentId
+        return String(item.studentId) === studentId
     })
     specificStudent.progress = progress
     saveCourses(courses)
 }
 
-function enrollStudent(courseId, studentId){
+export function enrollStudent(courseId, studentId){
 
     let courses = getCourses()
     let matchingCourse = courses.find((course)=>{

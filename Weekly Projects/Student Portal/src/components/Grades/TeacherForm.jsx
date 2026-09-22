@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { updateStudentGrade } from '../../Backend/auth';
+import { toast } from 'react-toastify';
 
 const TeacherForm = () => {
 
@@ -12,11 +13,11 @@ const TeacherForm = () => {
         e.preventDefault()
         
         if(!student || !course || !score || !grade){
-            alert("Please fill out the form properly")
+            toast.error("Please fill out the form properly")
             return
         }
         updateStudentGrade(student, course, score, grade)
-        alert("updated!")
+        toast.success("updated!")
 
     }
 

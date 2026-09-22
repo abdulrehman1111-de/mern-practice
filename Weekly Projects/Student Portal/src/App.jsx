@@ -11,27 +11,32 @@ import Profile from './pages/DashboardPages/Profile'
 import Settings from './pages/DashboardPages/Settings'
 import Timetable from './pages/DashboardPages/Timetable'
 import ProtectedRoute from './components/ProtectedRoute'
+import { ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
-    <Routes>
-      <Route path='/' element={<Signup />} />
-      <Route path='/login' element={<Login/>}/>
-      <Route path='/dashboard' element={
-        <ProtectedRoute>
-          <Dashboardlayout/>
-        </ProtectedRoute>
-      }>
+    <>
+      <ToastContainer />
+      <Routes>
+        <Route path='/' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/dashboard' element={
+          <ProtectedRoute>
+            <Dashboardlayout />
+          </ProtectedRoute>
+        }>
 
-        <Route index element={<Overview/>}/>
-        <Route path='courses' element={<Courses/>}/>
-        <Route path='grades' element={<Grades/>}/>
-        <Route path='profile' element={<Profile/>}/>
-        <Route path='settings' element={<Settings/>}/>
-        <Route path='timetable' element={<Timetable/>}/>
-      
-      </Route>
-    </Routes>
+          <Route index element={<Overview />} />
+          <Route path='courses' element={<Courses />} />
+          <Route path='grades' element={<Grades />} />
+          <Route path='profile' element={<Profile />} />
+          <Route path='settings' element={<Settings />} />
+          <Route path='timetable' element={<Timetable />} />
+
+        </Route>
+      </Routes>
+    </>
   )
 }
 
