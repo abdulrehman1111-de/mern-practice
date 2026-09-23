@@ -1,21 +1,21 @@
-export function getCourses(){
+export function getCourses() {
 
     const courses = localStorage.getItem("courses")
 
-    if(!courses){
+    if (!courses) {
         return []
     }
 
     return JSON.parse(courses)
 }
 
-function saveCourses(courses){
+function saveCourses(courses) {
 
     let stringCourses = JSON.stringify(courses)
     localStorage.setItem("courses", stringCourses)
 }
 
-export function createCourse(courseData, teacherId){
+export function createCourse(courseData, teacherId) {
 
     const course = {
         id: Date.now(),
@@ -33,22 +33,22 @@ export function createCourse(courseData, teacherId){
     saveCourses(existingCourses)
 }
 
-export function getCoursesByTeacher(teacherId){
+export function getCoursesByTeacher(teacherId) {
 
     let courses = getCourses();
-    let specificTeacherCourses = courses.filter((course)=>{
+    let specificTeacherCourses = courses.filter((course) => {
         return course.teacherId === teacherId
     })
     return specificTeacherCourses
 
 }
 
-export function getCoursesByStudent(studentId){
+export function getCoursesByStudent(studentId) {
 
     let courses = getCourses()
-    let specificStudentCourses = courses.filter((course)=>{
+    let specificStudentCourses = courses.filter((course) => {
         let enrolledStudents = course.enrolledStudents
-        return enrolledStudents.some((student)=>{
+        return enrolledStudents.some((student) => {
             return student.studentId === studentId
         })
     })
@@ -56,39 +56,53 @@ export function getCoursesByStudent(studentId){
     return specificStudentCourses
 }
 
-export function updateStudentProgress(courseId, studentId, progress){
+export function updateStudentProgress(courseId, studentId, progress) {
 
     let courses = getCourses()
-    let matchingCourse = courses.find((course)=>{
+    let matchingCourse = courses.find((course) => {
         return String(course.id) === courseId
     })
     let studentArr = matchingCourse.enrolledStudents
-    let specificStudent = studentArr.find((item)=>{
+    let specificStudent = studentArr.find((item) => {
         return String(item.studentId) === studentId
     })
     specificStudent.progress = progress
     saveCourses(courses)
 }
 
-export function enrollStudent(courseId, studentId){
+export function updateStudentGrade(courseId, studentId, score, grade) {
+    let courses = getCourses()
+    let matchingCourse = courses.find((course) => {
+        return String(course.id) === courseId
+    })
+    let studentArr = matchingCourse.enrolledStudents
+    let specificStudent = studentArr.find((item) => {
+        return String(item.studentId) === studentId
+    })
+    specificStudent.score = score
+    specificStudent.grade = grade
+    saveCourses(courses)
+}
+
+export function enrollStudent(courseId, studentId) {
 
     let courses = getCourses()
-    let matchingCourse = courses.find((course)=>{
+    let matchingCourse = courses.find((course) => {
         return course.id === courseId
     })
     let studentArr = matchingCourse.enrolledStudents
-    let newStudentObj = {studentId, progress: 0}
-    
-    let duplicateCheck = studentArr.some((student)=>{
+    let newStudentObj = { studentId, progress: 0, score: null, grade: null }
+
+    let duplicateCheck = studentArr.some((student) => {
         return student.studentId === studentId
     })
-    if(duplicateCheck){
+    if (duplicateCheck) {
         return
     }
 
     studentArr.push(newStudentObj)
     saveCourses(courses)
-    
+
 }
 
 

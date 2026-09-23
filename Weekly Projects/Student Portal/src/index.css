@@ -26,6 +26,34 @@
   --color-accent2: #185FA5;
 }
 
+.Toastify__toast {
+  background: var(--color-panel) !important;
+  color: var(--color-text) !important;
+  font-family: "Inter", sans-serif !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: 12px !important;
+}
+
+.Toastify__toast--success {
+  border-left: 4px solid var(--color-accent) !important;
+}
+
+.Toastify__toast--error {
+  border-left: 4px solid var(--color-danger) !important;
+}
+
+.Toastify__progress-bar--success {
+  background: var(--color-accent) !important;
+}
+
+.Toastify__progress-bar--error {
+  background: var(--color-danger) !important;
+}
+
+.Toastify__close-button {
+  color: var(--color-dim) !important;
+}
+
 .space{
   font-family: "Space Grotesk", sans-serif;
 }
