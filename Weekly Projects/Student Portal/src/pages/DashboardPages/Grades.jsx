@@ -1,17 +1,28 @@
 import React from 'react'
 import OverviewSmCards from '../../components/Overview/OverviewSmCards'
 import { getCurrentUser } from '../../Backend/users';
-import { getStudentRecords } from '../../Backend/auth';
 import TeacherForm from '../../components/Grades/TeacherForm';
+import { getCoursesByStudent } from '../../Backend/courses';
+import { getCoursesByTeacher } from '../../Backend/courses';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { getCourses } from '../../Backend/courses';
 
 const Grades = () => {
 
   const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
 
-  const student = getStudentRecords()
-  const studentGrades = student[user?.id]?.grades;
-  
+  const [courses, setCourses] = useState([])
+
+  useEffect(() => {
+    if (isTeacher) {
+      setCourses(getCoursesByTeacher(user.id))
+    }
+    else {
+      setCourses(getCoursesByStudent(user.id))
+    }
+  }, [])
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -46,97 +57,80 @@ const Grades = () => {
             {isTeacher ? "My Classes — Fall 2026" : "Current Semester — Fall 2026"}
           </p>
 
-          <div className='grid items-center grid-cols-[2fr_1.5fr_0.6fr_0.6fr_0.6fr] gap-y-3 text-text text-sm mt-3'>
-
-            <div className='text-text/70 text-xs'>Course</div>
-            <div className='text-text/70 text-xs'>{isTeacher ? "Section" : "Instructor"}</div>
-            <div className='text-text/70 text-xs'>Credits</div>
-            <div className='text-text/70 text-xs'>{isTeacher ? "Class Average" : "Score"}</div>
-            <div className='text-text/70 text-xs'>Grade</div>
-
-            <hr className='border-t border-border w-full col-span-5' />
+          <div className={`grid items-center ${isTeacher
+              ? 'grid-cols-[2fr_1.5fr_0.6fr_0.6fr]'
+              : 'grid-cols-[2fr_1.5fr_0.6fr_0.6fr_0.6fr]'
+            } gap-y-3 text-text text-sm mt-3`}>
 
             {isTeacher ? (
               <>
-                <div>Data Structures & Algorithms</div>
-                <div>Sec A</div>
-                <div>3</div>
-                <div>76%</div>
-                <div className='flex items-start'>
-                  <div className='text-blue-400 w-8 h-8 bg-blue-400/10 rounded-full flex justify-center items-center'>B</div>
-                </div>
-
-                <hr className='border-t border-border w-full col-span-5' />
-
-                <div>Database Systems</div>
-                <div>Sec B</div>
-                <div>3</div>
-                <div>71%</div>
-                <div className='flex items-start'>
-                  <div className='text-blue-400 w-8 h-8 bg-blue-400/10 rounded-full flex justify-center items-center'>B-</div>
-                </div>
-
-                <hr className='border-t border-border w-full col-span-5' />
-
-                <div>Web Engineering (MERN)</div>
-                <div>Elective</div>
-                <div>—</div>
-                <div>82%</div>
-                <div className='flex items-start'>
-                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>A-</div>
-                </div>
-
-                <hr className='border-t border-border w-full col-span-5' />
-
-                <div>Discrete Mathematics</div>
-                <div>Sec A</div>
-                <div>3</div>
-                <div>64%</div>
-                <div className='flex items-start'>
-                  <div className='text-warn w-8 h-8 bg-warn/10 rounded-full flex justify-center items-center'>C</div>
-                </div>
-
-                <TeacherForm/>
+                <div className='text-text/70 text-xs'>Course</div>
+                <div className='text-text/70 text-xs'>Section</div>
+                <div className='text-text/70 text-xs'>Credits</div>
+                <div className='text-text/70 text-xs'>Class Average</div>
+                <hr className='border-t border-border w-full col-span-4' />
               </>
             ) : (
               <>
-                <div>Data Structures & Algorithms</div>
-                <div>Dr. Farah Naz</div>
-                <div>3</div>
-                <div>{studentGrades?.DataStructures?.score}</div>
-                <div className='flex items-start'>
-                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>{studentGrades?.DataStructures?.grade}</div>
-                </div>
-
+                <div className='text-text/70 text-xs'>Course</div>
+                <div className='text-text/70 text-xs'>Instructor</div>
+                <div className='text-text/70 text-xs'>Credits</div>
+                <div className='text-text/70 text-xs'>Score</div>
+                <div className='text-text/70 text-xs'>Grade</div>
                 <hr className='border-t border-border w-full col-span-5' />
+              </>
+            )}
 
-                <div>Database Systems</div>
-                <div>Dr. Bilal Ahmed</div>
-                <div>3</div>
-                <div>{studentGrades?.DatabaseSystems?.score}</div>
-                <div className='flex items-start'>
-                  <div className='text-blue-400 w-8 h-8 bg-blue-400/10 rounded-full flex justify-center items-center'>{studentGrades?.DatabaseSystems?.grade}</div>
-                </div>
+            {isTeacher ? (
+              <>
+                {
+                  courses.map((course) => {
+                    let averageScore = 0
+                    let sum = 0
+                    let gradedCount = 0
+                    let totalEnrolledStudents = course.enrolledStudents
 
-                <hr className='border-t border-border w-full col-span-5' />
+                    for (let i = 0; i < totalEnrolledStudents.length; i++) {
+                      const s = totalEnrolledStudents[i]
+                      if (s.score) {
+                        let integerScore = Number(s.score.split("%").join(""))
+                        sum += integerScore
+                        gradedCount += 1
+                      }
+                    }
+                    averageScore = gradedCount > 0 ? sum / gradedCount : 0
 
-                <div>Web Engineering (MERN)</div>
-                <div>Code Lab Bahawalpur</div>
-                <div>—</div>
-                <div>{studentGrades?.WebEngineering?.score}</div>
-                <div className='flex items-start'>
-                  <div className='text-accent w-8 h-8 bg-accent/10 rounded-full flex justify-center items-center'>{studentGrades?.WebEngineering?.grade}</div>
-                </div>
+                    return (
+                      <>
+                        <div>Course: {course.name}</div>
+                        <div>Section: {course.section}</div>
+                        <div>Credits: {course.credits}</div>
+                        <div>Average Score: {averageScore}</div>
+                        <hr className='border-t border-border w-full col-span-4' />
+                      </>
+                    )
+                  })
+                }
+                <TeacherForm />
+              </>
+            ) : (
+              <>
+                {
+                  courses.map((course) => {
+                    const studentEntry = course.enrolledStudents.find((entry) => entry.studentId === user.id)
+                    return (
+                      <>
+                        <div>Course: {course.name}</div>
+                        <div>Instructor: {course.section}</div>
+                        <div>Credits: {course.credits}</div>
+                        <div>Score: {studentEntry?.score}</div>
+                        <div>Grade: {studentEntry?.grade}</div>
+                        <hr className='border-t border-border w-full col-span-5' />
+                      </>
 
-                <hr className='border-t border-border w-full col-span-5' />
-
-                <div>Discrete Mathematics</div>
-                <div>Dr. Sana Malik</div>
-                <div>3</div>
-                <div>{studentGrades?.DiscreteMathematics?.score}</div>
-                <div className='flex items-start'>
-                  <div className='text-warn w-8 h-8 bg-warn/10 rounded-full flex justify-center items-center'>{studentGrades?.DiscreteMathematics?.grade}</div>
-                </div>
+                    )
+                  })
+                }
               </>
             )}
 
@@ -145,7 +139,7 @@ const Grades = () => {
 
       </div>
 
-    </div>
+    </div >
   )
 }
 
