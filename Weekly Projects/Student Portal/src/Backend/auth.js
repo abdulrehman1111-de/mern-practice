@@ -1,3 +1,5 @@
+import { getRegisteredUsers, saveUsers, setCurrentUser } from "./users";
+
 // Seed data (hardcoded)
 const studentRecords = {
 
@@ -74,6 +76,17 @@ export function updateStudentGrade(studentId, course, score, grade) {
 export function updateCourseProgress(studentId, course, progress) {
     let records = getStudentRecords();
     records[studentId].courseProgress[course] = progress;
+}
+
+export function updateUserPreferences(userId, newPreferences){
+
+    const users = getRegisteredUsers()
+    const currentUser = users.find((user)=>{
+        return String(user.id) === String(userId)
+    })
+    currentUser.preferences = newPreferences
+    saveUsers(users)
+    setCurrentUser(currentUser)
 }
 
 

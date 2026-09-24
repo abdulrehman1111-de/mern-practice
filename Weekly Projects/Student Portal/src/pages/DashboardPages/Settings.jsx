@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { getCurrentUser } from '../../Backend/users'
+import { updateUserPreferences } from '../../Backend/auth'
 
 const Settings = () => {
 
   const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
+
+  const [preferences, setPreferences] = useState(user?.preferences)
+
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -29,7 +33,11 @@ const Settings = () => {
               </div>
 
               <label className='relative w-15 h-8 block' htmlFor="ball">
-                <input className='hidden peer' type="checkbox" name="ball" id="ball" />
+                <input checked={preferences?.assignmentReminders} onChange={() => {
+                  const updated = { ...preferences, assignmentReminders: !preferences?.assignmentReminders }
+                  setPreferences(updated)
+                  updateUserPreferences(user.id, updated)
+                }} className='hidden peer' type="checkbox" name="ball" id="ball" />
                 <div className='absolute peer-checked:bg-green-400 duration-150 ease-out w-13 h-6 bg-[#8A9A82] rounded-4xl'>
                 </div>
                 <div className='w-5 h-5 bg-[#061B09] rounded-full absolute top-0.5 left-1 peer-checked:left-7 transition-all duration-250 ease-out'></div>
@@ -47,7 +55,11 @@ const Settings = () => {
               </div>
 
               <label className='relative w-15 h-8 block' htmlFor="ball2">
-                <input className='hidden peer' type="checkbox" name="ball" id="ball2" />
+                <input checked={preferences?.gradeUpdates} onChange={() => {
+                  const updated = { ...preferences, gradeUpdates: !preferences?.gradeUpdates }
+                  setPreferences(updated)
+                  updateUserPreferences(user.id, updated)
+                }} className='hidden peer' type="checkbox" name="ball" id="ball2" />
                 <div className='absolute peer-checked:bg-green-400 duration-150 ease-out w-13 h-6 bg-[#8A9A82] rounded-4xl'>
                 </div>
                 <div className='w-5 h-5 bg-[#061B09] rounded-full absolute top-0.5 left-1 peer-checked:left-7 transition-all duration-250 ease-out'></div>
@@ -68,7 +80,11 @@ const Settings = () => {
               </div>
 
               <label className='relative w-15 h-8 block' htmlFor="ball3">
-                <input className='hidden peer' type="checkbox" name="ball" id="ball3" />
+                <input checked={preferences?.thirdToggle} onChange={() => {
+                  const updated = { ...preferences, thirdToggle: !preferences?.thirdToggle }
+                  setPreferences(updated)
+                  updateUserPreferences(user.id, updated)
+                }} className='hidden peer' type="checkbox" name="ball" id="ball3" />
                 <div className='absolute peer-checked:bg-green-400 duration-150 ease-out w-13 h-6 bg-[#8A9A82] rounded-4xl'>
                 </div>
                 <div className='w-5 h-5 bg-[#061B09] rounded-full absolute top-0.5 left-1 peer-checked:left-7 transition-all duration-250 ease-out'></div>

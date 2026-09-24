@@ -1,12 +1,11 @@
 import React from 'react'
 import OverviewSmCards from '../../components/Overview/OverviewSmCards'
 import { getCurrentUser } from '../../Backend/users';
-import TeacherForm from '../../components/Grades/TeacherForm';
+import TeacherProgressForm from '../../components/Progress/TeacherProgressForm';
 import { getCoursesByStudent } from '../../Backend/courses';
 import { getCoursesByTeacher } from '../../Backend/courses';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { getCourses } from '../../Backend/courses';
 
 const Grades = () => {
 
@@ -23,6 +22,18 @@ const Grades = () => {
       setCourses(getCoursesByStudent(user.id))
     }
   }, [])
+
+  function refreshCourses() {
+    const user = getCurrentUser()
+    const isTeacher = user?.role === "teacher"
+
+    if (isTeacher) {
+      setCourses(getCoursesByTeacher(user.id))
+    }
+    else {
+      setCourses(getCoursesByStudent(user.id))
+    }
+  }
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -58,8 +69,8 @@ const Grades = () => {
           </p>
 
           <div className={`grid items-center ${isTeacher
-              ? 'grid-cols-[2fr_1.5fr_0.6fr_0.6fr]'
-              : 'grid-cols-[2fr_1.5fr_0.6fr_0.6fr_0.6fr]'
+            ? 'grid-cols-[2fr_1.5fr_0.6fr_0.6fr]'
+            : 'grid-cols-[2fr_1.5fr_0.6fr_0.6fr_0.6fr]'
             } gap-y-3 text-text text-sm mt-3`}>
 
             {isTeacher ? (
@@ -105,13 +116,13 @@ const Grades = () => {
                         <div>Course: {course.name}</div>
                         <div>Section: {course.section}</div>
                         <div>Credits: {course.credits}</div>
-                        <div>Average Score: {averageScore}</div>
+                        <div>{averageScore}</div>
                         <hr className='border-t border-border w-full col-span-4' />
                       </>
                     )
                   })
                 }
-                <TeacherForm />
+                <TeacherProgressForm Refresher={refreshCourses} />
               </>
             ) : (
               <>

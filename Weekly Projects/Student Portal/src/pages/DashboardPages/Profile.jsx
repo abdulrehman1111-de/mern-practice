@@ -1,5 +1,7 @@
 import React from 'react'
 import { getCurrentUser } from '../../Backend/users';
+import { getCoursesByTeacher } from '../../Backend/courses';
+import { getCoursesByStudent } from '../../Backend/courses';
 
 const Profile = () => {
 
@@ -74,8 +76,8 @@ const Profile = () => {
                 <p className='text-text text-sm'>{user?.department}</p>
               </div>
               <div className='flex flex-col'>
-                <p className='text-text/70 text-xs '>Phone</p>
-                <p className='text-text text-sm'>+92 300 1234567</p>
+                <p className='text-text/70 text-xs '>{isTeacher ? "Classes Taught" : "Enrollment Year"}</p>
+                <p className='text-text text-sm'>{isTeacher ? getCoursesByTeacher(user?.id).length : getCoursesByStudent(user?.id).length}</p>
               </div>
               <div className='flex flex-col'>
                 <p className='text-text/70 text-xs '>Status</p>

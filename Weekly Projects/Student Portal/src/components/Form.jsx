@@ -55,7 +55,11 @@ const Form = () => {
     }
 
     const allUsers = getRegisteredUsers();
-    const newUser = { name, id, department, email, password, role };
+    const newUser = { name, id, department, email, password, role, preferences: {
+      assignmentReminders: true,
+      gradeUpdates: true,
+      thirdToggle: false
+    } };
 
     allUsers.push(newUser)
     saveUsers(allUsers)
