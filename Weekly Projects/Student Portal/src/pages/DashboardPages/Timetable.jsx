@@ -1,10 +1,25 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { getCurrentUser } from '../../Backend/users';
+import { getCoursesByStudent } from '../../Backend/courses';
+import { getCoursesByTeacher } from '../../Backend/courses';
 
 const Timetable = () => {
 
   const user = getCurrentUser()
   const isTeacher = user?.role === "teacher"
+
+  const [courses, setCourses] = useState([])
+
+  useEffect(()=>{
+    if(isTeacher){
+      const fetchedCourses = getCoursesByTeacher(user.id)
+      setCourses(fetchedCourses)
+    }
+    else{
+      const fetchedCourses = getCoursesByStudent(user.id)
+      setCourses(fetchedCourses)
+    }
+  }, [])
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>

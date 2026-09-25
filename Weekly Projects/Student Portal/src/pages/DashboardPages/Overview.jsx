@@ -4,6 +4,7 @@ import OverviewProgress from '../../components/Overview/OverviewProgress'
 import OverviewTimetable from '../../components/Overview/OverviewTimetable'
 import Assignments from '../../components/Overview/Assignments'
 import { getCurrentUser } from '../../Backend/users'
+import { getCoursesByStudent, getCoursesByTeacher } from '../../Backend/courses'
 
 const Overview = () => {
 
@@ -54,10 +55,83 @@ const Overview = () => {
   }, [])
 
   const [animatedAttendance, setAnimatedAttendance] = useState(0);
+  const [courses, setCourses] = useState([])
+  const [totalStudents, setTotalStudents] = useState("")
+  const [pendingGrading, setPendingGrading] = useState(0)
+  const [averageProgress, setAverageProgress] = useState("")
+  const [averageScore, setAverageScore] = useState("")
 
   useEffect(() => {
     setAnimatedAttendance(attendancePercentage);
   });
+
+  useEffect(() => {
+    if (isTeacher) {
+      const fetchedCourses = getCoursesByTeacher(user.id)
+      setCourses(fetchedCourses)
+
+      const uniqueStudentIds = new Set()
+      for (let i = 0; i < fetchedCourses.length; i++) {
+        for (let j = 0; j < fetchedCourses[i].enrolledStudents.length; j++) {
+          uniqueStudentIds.add(fetchedCourses[i].enrolledStudents[j].studentId)
+        }
+      }
+
+      let pendingCount = 0
+      for (let i = 0; i < fetchedCourses.length; i++) {
+        for (let j = 0; j < fetchedCourses[i].enrolledStudents.length; j++) {
+          if (!fetchedCourses[i].enrolledStudents[j].score) {
+            pendingCount++;
+          }
+        }
+      }
+
+      setTotalStudents(uniqueStudentIds.size)
+      setPendingGrading(pendingCount)
+
+    }
+    else {
+
+      const fetchedCourses = getCoursesByStudent(user.id)
+      let students = []
+
+      fetchedCourses.forEach((course) => {
+        let studentEntry = course.enrolledStudents.find((entry) => {
+          return entry.studentId === user.id
+        })
+        students.push(studentEntry)
+      })
+      let sum = 0
+      for (let i = 0; i < students.length; i++) {
+        sum += students[i].progress
+      }
+      let average;
+      if (fetchedCourses.length === 0) {
+        average = 0
+      }
+      else {
+        average = sum / fetchedCourses.length
+      }
+
+      let sumScore = 0
+      for (let i = 0; i < students.length; i++) {
+        if (students[i].score) {
+          sumScore += Number(students[i].score.split("%").join(""))
+        }
+      }
+      let tempAverageScore;
+      if (fetchedCourses.length === 0) {
+        tempAverageScore = 0
+      }
+      else {
+        tempAverageScore = sumScore / fetchedCourses.length
+      }
+
+      setAverageProgress(average)
+      setAverageScore(tempAverageScore)
+      setCourses(fetchedCourses)
+    }
+  }, [])
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -74,10 +148,10 @@ const Overview = () => {
 
         <div className='grid grid-cols-4 gap-5 items-start'>
 
-          <OverviewSmCards upper={isTeacher ? "Total students" : "Current GPA"} middle={isTeacher ? 142 : 3.72} lower={isTeacher ? "Alpha Batch" : "0.08 vs last sem"} />
-          <OverviewSmCards upper={isTeacher ? "Classes taught" : "Attendance"} middle={isTeacher ? "4 Sections" : "91%"} lower={"↑ 3% this month"} />
-          <OverviewSmCards upper={isTeacher ? "Pending Grading" : "Credits Earned"} middle={"78 / 130"} lower={isTeacher ? '12 Submissions' : '78 / 130'} />
-          <OverviewSmCards upper={isTeacher ? 'Department' : 'Pending Fees'} middle={isTeacher ? user?.department : 'Rs 0'} lower={"Cleared"} />
+          <OverviewSmCards upper={isTeacher ? "Total students" : "Enrolled Courses"} middle={isTeacher ? totalStudents : courses.length} lower={isTeacher ? "Alpha Batch" : user?.department} />
+          <OverviewSmCards upper={isTeacher ? "Classes taught" : "Average Progress"} middle={isTeacher ? courses.length : `${averageProgress}%`} lower={"↑ 3% this month"} />
+          <OverviewSmCards upper={isTeacher ? "Pending Grading" : "Average Score"} middle={isTeacher ? pendingGrading : `${averageScore}%`} lower={isTeacher ? '12 Submissions' : '78 / 130'} />
+          <OverviewSmCards upper={isTeacher ? 'Department' : 'Department'} middle={isTeacher ? user?.department : user?.department} lower={"Cleared"} />
 
         </div>
 
@@ -94,23 +168,40 @@ const Overview = () => {
               <div className='flex flex-col gap-1.5 mt-5'>
                 {isTeacher ? (
                   <>
-                    <OverviewProgress subject={"Data Structures & Algorithms"} teacher={"Sec A · 72% avg"} progress={72} />
-                    <hr className='border border-border' />
-                    <OverviewProgress subject={"Data Structures & Algorithms"} teacher={"Sec A · 72% avg"} progress={68} />
-                    <hr className='border border-border' />
-                    <OverviewProgress subject={"Data Structures & Algorithms"} teacher={"Sec A · 72% avg"} progress={85} />
-                    <hr className='border border-border' />
-                    <OverviewProgress subject={"Data Structures & Algorithms"} teacher={"Sec A · 72% avg"} progress={55} />
+                    {
+                      courses.map((course) => {
+                        let averageProgress = 0
+                        let sum = 0
+                        let count = 0
+                        let totalEnrolledStudents = course.enrolledStudents
+
+                        for (let i = 0; i < totalEnrolledStudents.length; i++) {
+                          if (totalEnrolledStudents[i].progress) {
+                            sum += totalEnrolledStudents[i].progress
+                            count++
+                          }
+                        }
+                        averageProgress = count > 0 ? sum / count : 0
+                        return <>
+                          <OverviewProgress subject={course.name} teacher={`${course.section} · ${course.enrolledStudents.length} students`} progress={averageProgress} />
+                          <hr className='border border-border' />
+                        </>
+                      })
+                    }
                   </>
                 ) : (
                   <>
-                    <OverviewProgress subject={"Data Structures & Algorithms"} teacher={"Dr. Farah Naz · Sec A"} progress={72} />
-                    <hr className='border border-border' />
-                    <OverviewProgress subject={"Database Systems"} teacher={"Dr. Bilal Ahmed · Sec B"} progress={68} />
-                    <hr className='border border-border' />
-                    <OverviewProgress subject={"Web Engineering (MERN)"} teacher={"Code Lab Bahawalpur"} progress={85} />
-                    <hr className='border border-border' />
-                    <OverviewProgress subject={"Discrete Mathematics"} teacher={"Dr. Sana Malik · Sec A"} progress={55} />
+                    {
+                      courses.map((course) => {
+                        const studentEntry = course.enrolledStudents.find((entry) => entry.studentId === user.id)
+                        return <>
+                          <OverviewProgress subject={course.name} teacher={course.section} progress={studentEntry?.progress} />
+                          <hr className='border border-border' />
+                        </>
+                      })
+                    }
+
+
                   </>
                 )}
               </div>
