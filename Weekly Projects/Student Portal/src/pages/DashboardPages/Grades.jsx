@@ -172,13 +172,13 @@ const Grades = () => {
           {isTeacher ? (
             <>
               <OverviewSmCards upper={"Classes Graded"} middle={`${fullyGraded} / ${courses.length}`} lower={"On track"} />
-              <OverviewSmCards upper={"Avg Class Score"} middle={`${averageScore}`} lower={"Across sections"} />
+              <OverviewSmCards upper={"Avg Class Score"} middle={`${averageScore.toFixed(2)}`} lower={"Across sections"} />
               <OverviewSmCards upper={"Pending Submissions"} middle={`${pendingCount} / ${totalCount}`} lower={"pending ones across courses"} />
             </>
           ) : (
             <>
               <OverviewSmCards upper={"Current GPA"} middle={3.72} lower={"↑ 0.08 vs last sem"} />
-              <OverviewSmCards upper={"Average Score"} middle={`${averageScore}`} lower={"Across enrolled courses"} />
+              <OverviewSmCards upper={"Average Score"} middle={`${averageScore.toFixed(2)}`} lower={"Across enrolled courses"} />
               <OverviewSmCards upper={"Credits Completed"} middle={"78 / 130"} lower={"On track"} />
             </>
           )}
@@ -239,7 +239,7 @@ const Grades = () => {
                           <div>{course.name}</div>
                           <div>{course.section}</div>
                           <div>{course.credits}</div>
-                          <div>{averageScore}</div>
+                          <div>{averageScore.toFixed(2)}</div>
                           <hr className='border-t border-border w-full col-span-4' />
                         </>
                       )

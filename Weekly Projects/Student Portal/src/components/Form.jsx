@@ -70,7 +70,7 @@ const Form = () => {
   }
 
   return (
-    <div className='signup bg-panel h-full lg:h-[95%] w-full lg:w-[45%] rounded-3xl border-border border p-5 sm:p-10 text-text flex flex-col justify-center gap-5'>
+    <div className='signup bg-panel h-auto lg:h-[95%] w-full lg:w-[45%] rounded-3xl border-border border p-5 sm:p-10 text-text flex flex-col justify-center gap-5 my-8 lg:my-0'>
 
       {error && <p className="text-danger text-sm">{error}</p>}
 
@@ -85,7 +85,7 @@ const Form = () => {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className='flex flex-col gap-3'>
+        <div className='flex flex-col gap-4 sm:gap-3'>
 
           <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-5'>
             <div className='flex flex-col gap-1'>
