@@ -10,7 +10,6 @@ const Overview = () => {
 
   const user = getCurrentUser();
   const isTeacher = user?.role === "teacher"
-  const attendancePercentage = isTeacher ? 85 : 91;
   const firstName = user?.name ? user.name.split(" ")[0] : "User"
 
   const currDay = new Date();
@@ -60,9 +59,26 @@ const Overview = () => {
   const [pendingGrading, setPendingGrading] = useState(0)
   const [averageProgress, setAverageProgress] = useState("")
   const [averageScore, setAverageScore] = useState("")
+  const [pendingItems, setPendingItems] = useState([])
+
+  let parsedCourses = courses.map((course) => {
+    let dayPortion = course.schedule.split(" ")[0]
+    let timePortion = course.schedule.split(" ")[1]
+    let indiviualDays = dayPortion.split("/")
+    return {
+      name: course.name,
+      section: course.section,
+      days: indiviualDays,
+      time: timePortion
+    }
+  })
+
+  let todaysCourses = parsedCourses.filter((course) => {
+    return course.days.includes(day.slice(0, 3))
+  })
 
   useEffect(() => {
-    setAnimatedAttendance(attendancePercentage);
+    setAnimatedAttendance(averageProgress);
   });
 
   useEffect(() => {
@@ -78,16 +94,26 @@ const Overview = () => {
       }
 
       let pendingCount = 0
+      let totalCount = 0;
+      let pendingItems = []
       for (let i = 0; i < fetchedCourses.length; i++) {
         for (let j = 0; j < fetchedCourses[i].enrolledStudents.length; j++) {
+          totalCount++
           if (!fetchedCourses[i].enrolledStudents[j].score) {
             pendingCount++;
+            pendingItems.push({
+              course: fetchedCourses[i].name,
+              studentId: fetchedCourses[i].enrolledStudents[j].studentId
+            })
           }
         }
       }
 
+      const gradingCompletion = totalCount > 0 ? ((totalCount - pendingCount) / totalCount) * 100 : 0
+
       setTotalStudents(uniqueStudentIds.size)
       setPendingGrading(pendingCount)
+      setAverageProgress(gradingCompletion)
 
     }
     else {
@@ -231,8 +257,8 @@ const Overview = () => {
             <div className='p-5 w-full h-[37vh] bg-panel border border-border rounded-xl'>
 
               <div className='flex justify-between'>
-                <p className='text-text font-semibold space'>Attendance</p>
-                <p className='text-text/60 text-xs'>Details</p>
+                <p className='text-text font-semibold space'>{isTeacher ? "Grading Progress" : "Course Progress"}</p>
+                <p className='text-text/60 text-xs'>{isTeacher ? "grading completion" : "average progress"}</p>
               </div>
 
               <div className='flex justify-center items-center relative'>
@@ -266,23 +292,18 @@ const Overview = () => {
               </div>
 
               <div className='flex flex-col gap-3 mt-5'>
-                {isTeacher ? (
-                  <>
-                    <OverviewTimetable time={"9:00"} dotColor={'bg-blue-400'} subject={"Data Structures"} room={"Room 214"} />
-                    <hr className='border border-border' />
-                    <OverviewTimetable time={"9:00"} dotColor={'bg-accent'} subject={"Web Engineering Lab"} room={"Lab 3"} />
-                    <hr className='border border-border' />
-                    <OverviewTimetable time={"9:00"} dotColor={'bg-yellow-400'} subject={"Discrete Math Quiz"} room={"Room 108"} />
-                  </>
-                ) : (
-                  <>
-                    <OverviewTimetable time={"9:00"} dotColor={'bg-blue-400'} subject={"Data Structures"} room={"Room 214"} />
-                    <hr className='border border-border' />
-                    <OverviewTimetable time={"11:30"} dotColor={'bg-accent'} subject={"Web Engineering Lab"} room={"Lab 3"} />
-                    <hr className='border border-border' />
-                    <OverviewTimetable time={"2:00"} dotColor={'bg-yellow-400'} subject={"Discrete Math Quiz"} room={"Room 108"} />
-                  </>
-                )}
+                {
+                  todaysCourses.length > 0 ? (
+                    todaysCourses.map((course) => (
+                      <>
+                        <OverviewTimetable time={course.time} dotColor={'bg-accent'} subject={course.name} />
+                        <hr className='border border-border' />
+                      </>
+                    ))
+                  ) : (
+                    <p className='text-text/60 text-sm'>No classes today</p>
+                  )
+              }
               </div>
 
             </div>
@@ -296,13 +317,17 @@ const Overview = () => {
               <div className='flex flex-col'>
                 <div className='flex flex-col gap-2.5 mt-6'>
                   {isTeacher ? (
-                    <>
-                      <Assignments subject={"DBMS — ER Diagram"} dueStatus={"Due tomorrow"} />
-                      <hr className='border border-border' />
-                      <Assignments subject={"DSA — Binary Tree Lab"} dueStatus={"Submitted"} />
-                      <hr className='border border-border' />
-                      <Assignments subject={"MERN — Auth Module"} dueStatus={"Due in 4 days"} />
-                    </>
+                    
+                  pendingItems.length > 0 ? (
+                    pendingItems.map((item) => (
+                      <>
+                        <Assignments subject={item.course} dueStatus={item.studentId}/>
+                        <hr className='border border-border' />
+                      </>
+                    ))
+                  ) : (
+                    <p className='text-text/60 text-sm'>No submissions to grade</p>
+                  )
                   ) : (
                     <>
                       <Assignments subject={"DBMS — ER Diagram"} dueStatus={"Due tomorrow"} />

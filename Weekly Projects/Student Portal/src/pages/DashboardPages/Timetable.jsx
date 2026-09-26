@@ -10,16 +10,54 @@ const Timetable = () => {
 
   const [courses, setCourses] = useState([])
 
-  useEffect(()=>{
-    if(isTeacher){
+  useEffect(() => {
+    if (isTeacher) {
       const fetchedCourses = getCoursesByTeacher(user.id)
       setCourses(fetchedCourses)
     }
-    else{
+    else {
       const fetchedCourses = getCoursesByStudent(user.id)
       setCourses(fetchedCourses)
     }
   }, [])
+
+
+  let parsedCourses = courses.map((course) => {
+
+    let dayPortion = course.schedule.split(" ")[0]
+    let timePortion = course.schedule.split(" ")[1]
+
+    let indiviualDays = dayPortion.split("/")
+
+    return {
+      name: course.name,
+      section: course.section,
+      days: indiviualDays,
+      time: timePortion
+    }
+  })
+
+  const timeSet = new Set()
+  parsedCourses.forEach((course) => {
+    timeSet.add(course.time)
+  })
+
+  const timesArray = Array.from(timeSet)
+  timesArray.sort((a, b) => {
+    const hourA = Number(a.split(":")[0])
+    const hourB = Number(b.split(":")[0])
+    return hourA - hourB
+  })
+
+  const scheduleMap = {}
+  for (let i = 0; i < parsedCourses.length; i++) {
+    for (let j = 0; j < parsedCourses[i].days.length; j++) {
+      let key = `${parsedCourses[i].days[j]}-${parsedCourses[i].time}`
+      scheduleMap[key] = parsedCourses[i].name
+    }
+  }
+
+  const days = ["Mon", "Tue", "Wed", "Thu", "Fri"]
 
   return (
     <div className='bg-bg w-full min-h-screen p-8 inter'>
@@ -41,113 +79,25 @@ const Timetable = () => {
           <div className='bg-panel2 p-5 text-xs font-semibold border border-border'>Thu</div>
           <div className='bg-panel2 p-5 text-xs font-semibold border border-border rounded-tr-xl'>Fri</div>
 
-          {isTeacher ? (
-            <>
-              <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center'>9:00</div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Data Structures & Algorithms</p>
-                  <p className='text-xs text-text/70'>Room 214</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Data Structures & Algorithms</p>
-                  <p className='text-xs text-text/70'>Room 214</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel2 p-5 text-xs font-semibold border border-border'></div>
-
-              <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center'>11:00</div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Database Systems</p>
-                  <p className='text-xs text-text/70'>Room 108</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Database Systems</p>
-                  <p className='text-xs text-text/70'>Room 108</p>
-                </div>
-              </div>
-              <div className='bg-panel2 p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent/25 bg-accent/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Web Engineering Lab</p>
-                  <p className='text-xs text-text/70'>Lab 3</p>
-                </div>
-              </div>
-
-              <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center rounded-bl-lg'>14:00</div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-warn/25 bg-warn/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Discrete Mathematics</p>
-                  <p className='text-xs text-text/70'>Room 108</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border rounded-br-xl'></div>
-            </>
-          ) : (
-            <>
-              <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center'>9:00</div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Data Structures</p>
-                  <p className='text-xs text-text/70'>Room 214</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Data Structures</p>
-                  <p className='text-xs text-text/70'>Room 214</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel2 p-5 text-xs font-semibold border border-border'></div>
-
-              <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center'>11:00</div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Database Systems</p>
-                  <p className='text-xs text-text/70'>Room 108</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Database Systems</p>
-                  <p className='text-xs text-text/70'>Room 108</p>
-                </div>
-              </div>
-              <div className='bg-panel2 p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-accent/25 bg-accent/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Web Eng. Lab</p>
-                  <p className='text-xs text-text/70'>Lab 3</p>
-                </div>
-              </div>
-
-              <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center rounded-bl-lg'>14:00</div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'>
-                <div className='rounded-lg border border-warn/25 bg-warn/10 p-2 flex flex-col justify-center'>
-                  <p className='text-xs text-text'>Discrete Math Quiz</p>
-                  <p className='text-xs text-text/70'>Room 108</p>
-                </div>
-              </div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border'></div>
-              <div className='bg-panel p-5 text-xs font-semibold border border-border rounded-br-xl'></div>
-            </>
-          )}
+          {timesArray.map((time) => {
+            return (
+              <React.Fragment key={time}>
+                <div className='bg-panel2 p-5 border border-border text-text/70 text-xs text-center'>{time}</div>
+                {days.map((day) => {
+                  const courseName = scheduleMap[`${day}-${time}`]
+                  return (
+                    <div key={day} className='bg-panel p-5 text-xs font-semibold border border-border'>
+                      {courseName && (
+                        <div className='rounded-lg border border-accent2/25 bg-accent2/10 p-2 flex flex-col justify-center'>
+                          <p className='text-xs text-text'>{courseName}</p>
+                        </div>
+                      )}
+                    </div>
+                  )
+                })}
+              </React.Fragment>
+            )
+          })}
 
         </div>
 
