@@ -60,6 +60,7 @@ const Overview = () => {
   const [averageProgress, setAverageProgress] = useState("")
   const [averageScore, setAverageScore] = useState("")
   const [pendingItems, setPendingItems] = useState([])
+  const [coursesHavingNoScores, setCoursesHavingNoScores] = useState([])
 
   let parsedCourses = courses.map((course) => {
     let dayPortion = course.schedule.split(" ")[0]
@@ -120,6 +121,7 @@ const Overview = () => {
 
       const fetchedCourses = getCoursesByStudent(user.id)
       let students = []
+      let coursesHavingNoScoreList = []
 
       fetchedCourses.forEach((course) => {
         let studentEntry = course.enrolledStudents.find((entry) => {
@@ -129,7 +131,7 @@ const Overview = () => {
       })
       let sum = 0
       for (let i = 0; i < students.length; i++) {
-        sum += students[i].progress
+        sum += Number(students[i].progress)
       }
       let average;
       if (fetchedCourses.length === 0) {
@@ -144,6 +146,9 @@ const Overview = () => {
         if (students[i].score) {
           sumScore += Number(students[i].score.split("%").join(""))
         }
+        else {
+          coursesHavingNoScoreList.push(fetchedCourses[i].name)
+        }
       }
       let tempAverageScore;
       if (fetchedCourses.length === 0) {
@@ -156,11 +161,12 @@ const Overview = () => {
       setAverageProgress(average)
       setAverageScore(tempAverageScore)
       setCourses(fetchedCourses)
+      setCoursesHavingNoScores(coursesHavingNoScoreList)
     }
   }, [])
 
   return (
-    <div className='bg-bg w-full min-h-screen p-8 inter'>
+    <div className='bg-bg w-full min-h-screen p-4 lg:p-8 inter'>
 
       <div className='overview' data-aos-offset="0px" data-aos="custom">
         <span className='p-1 border text-accent border-accent rounded-2xl text-nowrap text-xs font-semibold bg-accent/10 inter'>
@@ -168,22 +174,22 @@ const Overview = () => {
         </span>
 
         <div className='flex flex-col mt-4'>
-          <p className='text-2xl text-text font-semibold space'><span>Good {day}!</span>, {firstName}</p>
+          <p className='text-xl lg:text-2xl text-text font-semibold space'><span>Good {day}!</span>, {firstName}</p>
           <p className='text-sm space text-text/70 inter'>{isTeacher ? "You have 3 classes to teach today and 12 assignments pending grading." : "You have 2 assignments due this week and a quiz tomorrow."}</p>
         </div>
 
-        <div className='grid grid-cols-4 gap-5 items-start'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 items-start'>
 
           <OverviewSmCards upper={isTeacher ? "Total students" : "Enrolled Courses"} middle={isTeacher ? totalStudents : courses.length} lower={isTeacher ? "Alpha Batch" : user?.department} />
-          <OverviewSmCards upper={isTeacher ? "Classes taught" : "Average Progress"} middle={isTeacher ? courses.length : `${averageProgress}%`} lower={"↑ 3% this month"} />
-          <OverviewSmCards upper={isTeacher ? "Pending Grading" : "Average Score"} middle={isTeacher ? pendingGrading : `${averageScore}%`} lower={isTeacher ? '12 Submissions' : '78 / 130'} />
+          <OverviewSmCards upper={isTeacher ? "Classes taught" : "Average Progress"} middle={isTeacher ? courses.length : `${averageProgress}%`} lower={"Progress throughout the month"} />
+          <OverviewSmCards upper={isTeacher ? "Pending Grading" : "Average Score"} middle={isTeacher ? pendingGrading : `${averageScore}%`} lower={isTeacher ? 'Grades come here' : 'Score throughout the month'} />
           <OverviewSmCards upper={isTeacher ? 'Department' : 'Department'} middle={isTeacher ? user?.department : user?.department} lower={"Cleared"} />
 
         </div>
 
-        <div className='flex gap-5'>
+        <div className='flex flex-col lg:flex-row gap-5'>
 
-          <div className='w-[60%] h-auto mt-5'>
+          <div className='w-full lg:w-[60%] h-auto mt-5'>
 
             <div className='border border-border rounded-xl bg-panel w-full h-auto p-4'>
               <div className='flex justify-between'>
@@ -203,7 +209,7 @@ const Overview = () => {
 
                         for (let i = 0; i < totalEnrolledStudents.length; i++) {
                           if (totalEnrolledStudents[i].progress) {
-                            sum += totalEnrolledStudents[i].progress
+                            sum += Number(totalEnrolledStudents[i].progress)
                             count++
                           }
                         }
@@ -241,7 +247,7 @@ const Overview = () => {
               </div>
 
 
-              <div className='text-text/60 flex justify-between text-xs pl-13 pr-13'>
+              <div className='text-text/60 flex justify-between text-xs px-2 lg:pl-13 lg:pr-13'>
                 <p>Sem 1</p>
                 <p>Sem 2</p>
                 <p>Sem 3</p>
@@ -252,18 +258,18 @@ const Overview = () => {
 
           </div>
 
-          <div className='w-[40%] h-auto mt-5 flex flex-col gap-5'>
+          <div className='w-full lg:w-[40%] h-auto mt-5 flex flex-col gap-5'>
 
-            <div className='p-5 w-full h-[37vh] bg-panel border border-border rounded-xl'>
+            <div className='p-5 w-full h-auto lg:h-[37vh] bg-panel border border-border rounded-xl'>
 
               <div className='flex justify-between'>
                 <p className='text-text font-semibold space'>{isTeacher ? "Grading Progress" : "Course Progress"}</p>
                 <p className='text-text/60 text-xs'>{isTeacher ? "grading completion" : "average progress"}</p>
               </div>
 
-              <div className='flex justify-center items-center relative'>
+              <div className='flex justify-center items-center relative py-6 lg:py-0'>
                 {/* Circular Progress Bar */}
-                <svg viewBox="0 0 100 100" className="w-35 h-35 -rotate-90 absolute top-5">
+                <svg viewBox="0 0 100 100" className="w-28 h-28 lg:w-35 lg:h-35 -rotate-90 lg:absolute lg:top-5">
                   <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" className="text-panel2" strokeWidth="10" />
                   <circle
                     cx="50" cy="50" r="45" fill="none"
@@ -275,8 +281,8 @@ const Overview = () => {
                   />
                 </svg>
 
-                <div className='flex flex-col justify-center items-center z-10 absolute top-17'>
-                  <p className='text-text font-semibold space text-2xl'>{animatedAttendance}%</p>
+                <div className='flex flex-col justify-center items-center z-10 lg:absolute lg:top-17 absolute'>
+                  <p className='text-text font-semibold space text-xl lg:text-2xl'>{animatedAttendance}%</p>
                   <p className='text-text/60 text-xs'>this semester</p>
                 </div>
 
@@ -303,7 +309,7 @@ const Overview = () => {
                   ) : (
                     <p className='text-text/60 text-sm'>No classes today</p>
                   )
-              }
+                }
               </div>
 
             </div>
@@ -317,25 +323,30 @@ const Overview = () => {
               <div className='flex flex-col'>
                 <div className='flex flex-col gap-2.5 mt-6'>
                   {isTeacher ? (
-                    
-                  pendingItems.length > 0 ? (
-                    pendingItems.map((item) => (
-                      <>
-                        <Assignments subject={item.course} dueStatus={item.studentId}/>
-                        <hr className='border border-border' />
-                      </>
-                    ))
+
+                    pendingItems.length > 0 ? (
+                      pendingItems.map((item) => (
+                        <>
+                          <Assignments subject={item.course} dueStatus={item.studentId} />
+                          <hr className='border border-border' />
+                        </>
+                      ))
+                    ) : (
+                      <p className='text-text/60 text-sm'>No submissions to grade</p>
+                    )
                   ) : (
-                    <p className='text-text/60 text-sm'>No submissions to grade</p>
-                  )
-                  ) : (
-                    <>
-                      <Assignments subject={"DBMS — ER Diagram"} dueStatus={"Due tomorrow"} />
-                      <hr className='border border-border' />
-                      <Assignments subject={"DSA — Binary Tree Lab"} dueStatus={"Submitted"} />
-                      <hr className='border border-border' />
-                      <Assignments subject={"MERN — Auth Module"} dueStatus={"Due in 4 days"} />
-                    </>
+                    coursesHavingNoScores.length > 0 ? (
+                      coursesHavingNoScores.map((course) => {
+                        return (
+                          <>
+                            <Assignments subject={course} />
+                            <hr className='border border-border' />
+                          </>
+                        )
+                      })
+                    ) : (
+                      <p className='text-text/60 text-sm'>No pending assignments</p>
+                    )
                   )}
                 </div>
               </div>

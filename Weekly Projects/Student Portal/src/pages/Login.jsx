@@ -39,8 +39,8 @@ const Login = () => {
     }
 
     return (
-        <div className='bg-bg h-screen flex justify-center items-center'>
-            <div className='login bg-panel login h-[80%] w-[35%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-8'>
+        <div className='bg-bg h-screen flex justify-center items-center p-5 sm:p-0'>
+            <div className='login bg-panel login h-full sm:h-[80%] w-full sm:w-[35%] rounded-3xl border-border border p-5 sm:p-10 text-text flex flex-col justify-center gap-8'>
 
                 {error && <p className="text-danger text-sm">{error}</p>}
 

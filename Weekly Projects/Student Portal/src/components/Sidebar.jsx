@@ -26,12 +26,12 @@ const Sidebar = () => {
     }
 
     return (
-        <div className='border border-border min-h-screen w-[20%] bg-panel p-5 flex flex-col justify-between'>
+        <div className='border border-border w-full lg:w-[20%] lg:min-h-screen bg-panel p-5 flex flex-col justify-between'>
 
             <div>
                 <div className='flex items-center gap-3'>
                     <div className='w-7 h-7 rounded-md bg-linear-to-r from-accent2 to-accent'></div>
-                    <p className='space font-semibold text-text'>{isTeacher ? "Teacher Portal" : "Student Portal"}</p>
+                    <p className='space font-semibold text-text text-base lg:text-lg'>Cursus</p>
                 </div>
 
                 <div className='flex flex-col mt-10 gap-1'>

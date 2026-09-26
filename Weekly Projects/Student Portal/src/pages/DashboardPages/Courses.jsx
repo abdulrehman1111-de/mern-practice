@@ -53,15 +53,15 @@ const Courses = () => {
   }
 
   return (
-    <div className='bg-bg w-full min-h-screen p-8 inter'>
+    <div className='bg-bg w-full min-h-screen p-4 lg:p-8 inter'>
 
       <div className='courses'>
         <div className='flex flex-col mt-4'>
-          <p className='text-2xl text-text font-semibold space'>Courses</p>
+          <p className='text-xl lg:text-2xl text-text font-semibold space'>Courses</p>
           <p className='text-sm space text-text/60 inter'>{isTeacher ? "Classes you're teaching this semester." : "All courses you're enrolled in this semester."}</p>
         </div>
 
-        <div className='grid grid-cols-2 gap-5 mt-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-2 gap-5 mt-8'>
           {isTeacher ? (
             <>
               {
@@ -74,7 +74,7 @@ const Courses = () => {
                     let sum = 0
                     let totalEnrolledStudents = course.enrolledStudents
                     for(let i = 0; i < totalEnrolledStudents.length; i++){
-                      sum += totalEnrolledStudents[i].progress
+                      sum += Number(totalEnrolledStudents[i].progress)
                     }
                     average = sum / course.enrolledStudents.length
                   }

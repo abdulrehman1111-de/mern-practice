@@ -9,7 +9,7 @@ const Dashboardlayout = () => {
   const isTeacher = user?.role === "teacher";
 
   return (
-    <div className={`flex ${isTeacher ? 'theme-teacher' : ''}`}>
+    <div className={`flex flex-col lg:flex-row ${isTeacher ? 'theme-teacher' : ''}`}>
       <Sidebar/>
 
       <Outlet/>

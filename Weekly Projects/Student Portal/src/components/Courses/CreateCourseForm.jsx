@@ -62,7 +62,7 @@ const CreateCourseForm = ({ onCourseCreated }) => {
 
 
     return (
-        <div className='bg-panel border border-border rounded-xl p-5 mt-5'>
+        <div className='bg-panel border border-border rounded-xl p-4 lg:p-5 mt-5'>
 
             <p className='text-text text-md font-semibold'>Create a Course</p>
 
@@ -79,7 +79,7 @@ const CreateCourseForm = ({ onCourseCreated }) => {
                     />
                 </div>
 
-                <div className='flex gap-5'>
+                <div className='flex flex-col lg:flex-row gap-3 lg:gap-5'>
                     <div className='flex flex-col gap-1 flex-1 min-w-0'>
                         <label htmlFor="section" className='text-text/60 text-sm'>Section</label>
                         <input
