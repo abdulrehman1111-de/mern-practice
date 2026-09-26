@@ -70,7 +70,7 @@ const Form = () => {
   }
 
   return (
-    <div className='signup bg-panel h-[95%] w-[45%] rounded-3xl border-border border p-10 text-text flex flex-col justify-center gap-5'>
+    <div className='signup bg-panel h-full lg:h-[95%] w-full lg:w-[45%] rounded-3xl border-border border p-5 sm:p-10 text-text flex flex-col justify-center gap-5'>
 
       {error && <p className="text-danger text-sm">{error}</p>}
 
@@ -87,7 +87,7 @@ const Form = () => {
       <form onSubmit={handleSubmit}>
         <div className='flex flex-col gap-3'>
 
-          <div className='flex justify-between items-center gap-5'>
+          <div className='flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-3 sm:gap-5'>
             <div className='flex flex-col gap-1'>
               <label htmlFor="name" className='text-text/60'>Full name</label>
               <input onChange={(e) => setName(e.target.value)} required title='Only alphabets are allowed' pattern="[A-Za-z\s]+" type="text" name="" id="name" placeholder='Enter your full name' className='p-2 border border-border rounded-lg' />
@@ -114,7 +114,7 @@ const Form = () => {
 
           </div>
 
-          <div className='flex gap-5 flex-1 min-w-0'>
+          <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 flex-1 min-w-0'>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="ID" className='text-text/60'>ID</label>
@@ -141,7 +141,7 @@ const Form = () => {
             <input onChange={(e) => setEmail(e.target.value)} type="email" name="" id="email" placeholder='university@example.com' className='p-2 border border-border rounded-lg' />
           </div>
 
-          <div className='flex gap-5 flex-1 min-w-0'>
+          <div className='flex flex-col sm:flex-row gap-3 sm:gap-5 flex-1 min-w-0'>
 
             <div className='flex flex-col gap-1 flex-1 min-w-0'>
               <label htmlFor="password" className='text-text/60'>Password</label>
