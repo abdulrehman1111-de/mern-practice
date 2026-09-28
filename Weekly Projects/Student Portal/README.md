@@ -1,4 +1,4 @@
-# Meridian — Student Portal
+# Cursur — Student Teacher Portal
 
 A role-based student/teacher portal built with React. Students and teachers sign up, log in, and land on their own dashboard, with courses, grades, timetable, profile and settings all driven by real data created inside the app — nothing on the dashboard is hardcoded.
 
