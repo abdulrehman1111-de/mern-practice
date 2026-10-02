@@ -31,7 +31,6 @@ function Motor({ progress, color, idx }) {
                 <circle cx="100" cy="100" r="22" fill="#05070d" strokeWidth="2.5" />
                 <text x="100" y="106" textAnchor="middle" fill="currentColor" stroke="none" fontSize="17" fontWeight="700" className="font-display">{pad(idx + 1)}</text>
             </svg>
-            <p className="mt-1 text-center font-mono text-[10px] tracking-[.3em]">SCROLL TO DRIVE</p>
         </div></motion.div>)
 }
 
