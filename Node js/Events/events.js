@@ -1,5 +1,4 @@
 // Import the Event Emitter class
-const { emit } = require("cluster")
 const EventEmitter = require("events")
 
 // Create an instance of Event Emitter class
