@@ -36,7 +36,7 @@ className="group/p relative block shrink-0 rounded-full p-[1.5px] transition-[sc
 export default function TechStack(){
 return(<section id="stack" className="relative py-24">
 <style>{`@property --ts{syntax:'<angle>';inherits:false;initial-value:0deg}@keyframes tsspin{to{--ts:360deg}}@keyframes tsmarq{to{transform:translateX(-50%)}}
-.ts-run{animation:tsspin 5s linear infinite}.ts-track{display:flex;width:max-content;animation:tsmarq 48s linear infinite}.ts-row:hover .ts-track{animation-play-state:paused}
+.ts-run{animation:tsspin 5s linear infinite}.ts-track{display:flex;width:max-content;animation:tsmarq 32s linear infinite}.ts-row:hover .ts-track{animation-play-state:paused}
 @media(prefers-reduced-motion:reduce){.ts-run{animation:none}.ts-track{animation:none;width:auto;flex-wrap:wrap;justify-content:center}.ts-dup{display:none}}`}</style>
 <div className="mx-auto w-full max-w-6xl px-6 md:px-16">
 <p className="font-mono text-xs tracking-[.22em] text-accent">THE STACK</p>

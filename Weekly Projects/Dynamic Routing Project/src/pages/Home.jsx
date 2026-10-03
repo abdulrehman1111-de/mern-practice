@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import Nav from '../components/Nav'
 import User from '../components/User'
 import {
-    useGetUsersQuery
+    useGetDataQuery
 } from '../components/JsonPlaceholderApi'
+import { usersUrl } from '../components/services'
 
 const Home = () => {
 
-    const {data: users, isLoading} = useGetUsersQuery();
+    const {data: users, isLoading} = useGetDataQuery({url: usersUrl});
 
     if (isLoading) {
         return <p className='text-5xl sora font-semibold text-center pt-20'>Loading...</p>

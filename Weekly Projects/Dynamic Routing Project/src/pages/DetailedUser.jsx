@@ -4,21 +4,30 @@ import { Link, useParams } from 'react-router'
 import Posts from '../components/Posts';
 import Comments from '../components/Comments';
 import {
-  useGetUsersByIdQuery,
-  useGetPostsByUserIdQuery,
-  useGetCommentsByPostIdQuery,
-  useGetTodosByUserIdQuery
+  useGetDataQuery,
+  useCreatePostMutation
 } from '../components/JsonPlaceholderApi'
+import { usersUrl } from '../components/services';
+import { postsUrl } from '../components/services';
+import { commentsUrl } from '../components/services';
+import { todosUrl } from '../components/services';
+
 
 const DetailedUser = () => {
 
   // useParams is giving here id as a string
   const { id } = useParams();
 
-  const {data: users, isLoading: isUsersLoading} = useGetUsersByIdQuery(id);
-  const {data: posts, isLoading: isPostsLoading} = useGetPostsByUserIdQuery(id);
-  const {data: comments, isLoading: isCommentsLoading} = useGetCommentsByPostIdQuery(id);
-  const {data: todos, isLoading: isTodosLoading} = useGetTodosByUserIdQuery(id);
+  const [title, setTitle] = useState("")
+  const [body, setBody] = useState("")
+
+  let array = useCreatePostMutation()
+  let createPost = array[0]
+
+  const { data: users, isLoading: isUsersLoading } = useGetDataQuery({ url: usersUrl, params: { id: id } });
+  const { data: posts, isLoading: isPostsLoading } = useGetDataQuery({ url: postsUrl, params: { userId: id } });
+  const { data: comments, isLoading: isCommentsLoading } = useGetDataQuery({ url: commentsUrl, params: { postId: id } });
+  const { data: todos, isLoading: isTodosLoading } = useGetDataQuery({ url: todosUrl, params: { userId: id } });
 
   const loading = isUsersLoading || isPostsLoading || isCommentsLoading || isTodosLoading;
 
@@ -36,6 +45,23 @@ const DetailedUser = () => {
           <Link to={"/home"}><button className='text-[#6B7280] font-semibold pb-3'>← Back to all users</button></Link>
 
           <div className='w-full bg-[#FFFFFF] h-48 border-1 border-gray-300 rounded-xl flex items-center pb-2'>
+
+
+            <div>
+              <label htmlFor="title">
+                <input onChange={(e)=> setTitle(e.target.value)} type="text" name="" id="title" placeholder='Enter the title' />
+              </label>
+
+              <label htmlFor="body">
+                <input onChange={(e)=> setBody(e.target.value)} type="text" name="" id="body" placeholder='Enter the body' />
+              </label>
+
+              <button onClick={()=> createPost({body: {
+                title: title,
+                body: body,
+                userId: id
+              }})}>Create post</button>
+            </div>
 
             <div className='w-[12%] h-full flex items-center flex-col pt-7'>
 
@@ -114,7 +140,7 @@ const DetailedUser = () => {
               <div className='flex flex-col gap-3 pb-10'>
                 {
                   posts && posts.slice(0, 5).map((item) => {
-                    return <Posts title={item.title} body={item.body} />
+                    return <Posts key={item.id} title={item.title} body={item.body} id={item.id} userId={id} />
                   })
                 }
               </div>
