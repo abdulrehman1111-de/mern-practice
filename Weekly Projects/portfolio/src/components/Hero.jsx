@@ -102,7 +102,7 @@ function Portrait() {
 
 export default function Hero() {
     const md = useMd();
-    return (<section id="home" className="flex items-center overflow-x-clip px-5 pb-12 pt-28 sm:px-8 md:min-h-[90vh] md:px-16 md:py-10">
+    return (<section id="home" className="flex items-center overflow-x-clip px-5 pb-12 pt-4 sm:px-8 md:min-h-[90vh] md:px-16 md:py-10">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 md:grid-cols-2 min-[1024px]:gap-16">
             <Portrait />
             <div>
