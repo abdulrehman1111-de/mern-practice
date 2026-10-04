@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #10151b;
+  color: #e8edf2;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.section-post {
+  padding: 40px 140px 60px;
+}
+
+/* Add form */
+.add-post {
+  width: fit-content;
+  margin: 0 auto 40px;
+  padding: 14px 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #18232e;
+  border-radius: 4px;
+}
+
+.add-post input {
+  width: 250px;
+  padding: 11px 12px;
+  border: none;
+  border-radius: 2px;
+  background: #ffffff;
+  color: #1b1b1b;
+  font-family: inherit;
+  font-size: 15px;
+  outline: none;
+}
+
+.add-post input::placeholder {
+  color: #9aa0a6;
+}
+
+.btn-add {
+  padding: 11px 28px;
+  margin-left: 10px;
+  border: none;
+  border-radius: 2px;
+  background: #19d89a;
+  color: #12342b;
+  font-family: inherit;
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* Cards grid */
+.post-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.post-card {
+  padding: 18px 15px 14px;
+  background: #1b2a38;
+  border-left: 2px solid #e6e6e6;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.post-number {
+  font-size: 15px;
+}
+
+.post-actions {
+  display: flex;
+  gap: 12px;
+  margin-left: 12px;
+  margin-top: 4px;
+}
+
+.btn-edit,
+.btn-delete {
+  padding: 11px 30px;
+  border: none;
+  border-radius: 2px;
+  font-family: inherit;
+  font-size: 14px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: filter 0.15s;
+}
+
+.btn-edit {
+  background: #19d89a;
+  color: #12342b;
+}
+
+.btn-delete {
+  background: #e8483b;
+  color: #5a0f0a;
+}
+
+.btn-add:hover,
+.btn-edit:hover,
+.btn-delete:hover {
+  filter: brightness(1.1);
+}
