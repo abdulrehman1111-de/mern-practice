@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { postData, updateData } from '../api/PostApi'
+import { toast } from 'react-toastify'
 
 const Form = ({ data, setData, updateDataApi, setUpdateDataApi }) => {
 
@@ -31,10 +32,15 @@ const Form = ({ data, setData, updateDataApi, setUpdateDataApi }) => {
                 // Old post plus new post data
                 setData([...data, res.data])
                 setAddData({ title: "", body: "" })
+                toast.success("Post added successfully!")
+            }
+            else{
+                toast.error("Failed to add the post")
             }
         }
         catch (error) {
             console.log(error)
+            toast.error(error)
         }
     }
 
@@ -49,10 +55,15 @@ const Form = ({ data, setData, updateDataApi, setUpdateDataApi }) => {
                 setAddData({ title: "", body: "" })
                 // Leave edit mode button goes back to add
                 setUpdateDataApi({})
+                toast.success("Post updaed successfully!")
+            }
+            else{
+                toast.error("Post updation failed!")
             }
         }
         catch (error) {
             console.log(error)
+            toast.error(error)
         }
     }
 
