@@ -74,7 +74,7 @@ const server = http.createServer((req, res)=>{
 })
 
 
-const PORT = 3000
+const PORT = 4000
 server.listen(PORT, ()=>{
     console.log(`Server listening at port ${PORT}`)
 })
