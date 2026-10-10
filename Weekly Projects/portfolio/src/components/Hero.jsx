@@ -12,46 +12,34 @@ const BASE = .29, FAST = 1.05;   // radians per second: calm orbit (~22s per lap
 const TILT = -10 * Math.PI / 180;
 const ORBIT = { cy: .44, rx: .62, ry: .17 };   // as fractions of the portrait box
 const rxOf = w => w >= 380 ? ORBIT.rx : .54;    // slightly tighter orbit on narrow boxes so chips don't spill off the screen
+// Critically damped spring (no bounce): settles smoothly and can be interrupted mid-flight without a jump.
+const SPRING = { type: 'spring', bounce: 0, duration: .4 };
 
-// true on tablets and up (matches Tailwind's md breakpoint)
-function useMd() {
-    const q = '(min-width: 768px)';
-    const [m, setM] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches);
-    useEffect(() => { const mq = window.matchMedia(q), f = () => setM(mq.matches); mq.addEventListener('change', f); return () => mq.removeEventListener('change', f) }, []);
-    return m
-}
-
-function Chip({ c, reg, md }) {
+function Chip({ c, reg }) {
     const I = c.i;
+    // No backdrop blur, glow shadows or shine sweep: these chips move every frame, so each of those would be repainted every frame.
     return (<div ref={reg} className="absolute left-0 top-0 will-change-transform" style={{ opacity: 0 }}>
-        <div style={{ '--c': c.c, ...(md ? null : { boxShadow: `0 0 12px color-mix(in srgb,${c.c} 40%,transparent)` }) }} className="group relative flex cursor-pointer items-center gap-2 overflow-hidden rounded-xl border border-white/15 bg-[#0a1226]/85 px-2.5 py-1.5 shadow-xl shadow-black/40 transition-[scale,box-shadow,border-color] duration-300 hover:scale-110 hover:border-transparent hover:shadow-[0_0_14px_var(--c),0_0_42px_var(--c)] sm:px-3 sm:py-2 md:bg-white/[.06] md:backdrop-blur-md">
-            <span className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100" style={{ background: `linear-gradient(135deg,color-mix(in srgb,${c.c} 55%,white),${c.c} 55%,color-mix(in srgb,${c.c} 70%,black))` }} />
-            <span className="absolute inset-y-0 -left-full w-1/2 skew-x-12 bg-white/50 blur-sm transition-transform duration-700 group-hover:translate-x-[320%]" />
-            <I size={22} className="relative text-[color:var(--c)] transition-colors duration-300 group-hover:text-bg" />
-            <span className="relative text-xs font-medium transition-colors duration-300 group-hover:font-semibold group-hover:text-bg">{c.n}</span>
+        <div style={{ '--c': c.c }} className="group relative flex items-center gap-2 overflow-hidden rounded-xl border border-white/15 bg-[#0a1226]/90 px-2.5 py-1.5 transition-[scale,border-color] duration-150 hover:scale-110 hover:border-transparent sm:px-3 sm:py-2">
+            <span className="absolute inset-0 opacity-0 transition-opacity duration-150 group-hover:opacity-100" style={{ background: `linear-gradient(135deg,color-mix(in srgb,${c.c} 55%,white),${c.c} 55%,color-mix(in srgb,${c.c} 70%,black))` }} />
+            <I size={22} className="relative text-[color:var(--c)] transition-colors duration-150 group-hover:text-bg" />
+            <span className="relative text-xs font-medium transition-colors duration-150 group-hover:text-bg">{c.n}</span>
         </div></div>)
 }
 
 function Portrait() {
-    const box = useRef(null), els = useRef([]), dims = useRef({ w: 0, h: 0 }), hotRef = useRef(false), mdRef = useRef(true);
-    const md = useMd(); mdRef.current = md;
+    const box = useRef(null), els = useRef([]), dims = useRef({ w: 0, h: 0 }), hotRef = useRef(false);
     const [hot, setHot] = useState(false), [size, setSize] = useState({ w: 0, h: 0 });
     const set = v => { hotRef.current = v; setHot(v) };
     const mouse = e => e.pointerType === 'mouse';   // touch taps shouldn't trigger the hover state
 
     useEffect(() => {
-        const ro = new ResizeObserver(([e]) => { const w = e.contentRect.width, h = e.contentRect.height; dims.current = { w, h }; setSize({ w, h }) });
-        ro.observe(box.current);
         const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
         let raf = 0, running = false, inView = true, last = performance.now(), ang = 0, speed = BASE; const t0 = last + 900;
         const ct = Math.cos(TILT), st = Math.sin(TILT);
-        const tick = now => {
-            const dt = Math.max(0, Math.min((now - last) / 1000, .05)); last = now;
-            speed += ((hotRef.current ? FAST : BASE) - speed) * Math.min(1, dt * 2.5);   // eased speed change
-            if (!reduce) ang += speed * dt;
-            const { w, h } = dims.current, k = (speed - BASE) / (FAST - BASE), sizeK = Math.min(1, Math.max(.62, w / 460)), rxf = rxOf(w), full = mdRef.current;
-            const intro = Math.min(1, Math.max(0, (now - t0) / 1200));
-            const al = Math.round((.22 + .5 * k) * 255).toString(16).padStart(2, '0');
+
+        // Puts every chip on the orbit for the current angle. Only transform, opacity and z-index are written: no filters.
+        const place = intro => {
+            const { w, h } = dims.current, sizeK = Math.min(1, Math.max(.62, w / 460)), rxf = rxOf(w);
             for (let i = 0; i < chips.length; i++) {
                 const el = els.current[i]; if (!el) continue;
                 const th = ang + i * 2 * Math.PI / chips.length, s = Math.sin(th), co = Math.cos(th);
@@ -63,16 +51,27 @@ function Portrait() {
                 el.style.transform = `translate3d(${x}px,${y}px,0) translate(-50%,-50%) scale(${(.78 + .42 * (s + 1) / 2) * sizeK})`;
                 el.style.opacity = (op * intro).toFixed(3);
                 el.style.zIndex = s >= 0 ? 30 : 5;
-                // per-frame blur + glow filters are expensive, so phones skip them
-                if (full) el.style.filter = `blur(${(1.6 * overlap * front).toFixed(2)}px) drop-shadow(0 0 ${(6 + 18 * k).toFixed(1)}px ${chips[i].c}${al})`;
-                else if (el.style.filter) el.style.filter = '';
             }
+        };
+
+        const tick = now => {
+            const dt = Math.max(0, Math.min((now - last) / 1000, .05)); last = now;
+            speed += ((hotRef.current ? FAST : BASE) - speed) * Math.min(1, dt * 2.5);   // eased speed change, so hover never jerks the orbit
+            ang += speed * dt;
+            place(Math.min(1, Math.max(0, (now - t0) / 1200)));
             raf = requestAnimationFrame(tick)
         };
-        // run the loop only while the hero is on screen and the tab is visible
+
+        const ro = new ResizeObserver(([e]) => {
+            const w = e.contentRect.width, h = e.contentRect.height; dims.current = { w, h }; setSize({ w, h });
+            if (reduce) place(1);   // reduced motion: no animation loop at all, just place the chips once (and again on resize)
+        });
+        ro.observe(box.current);
+
+        // run the loop only while the hero is on screen and the tab is visible (never under reduced motion)
         const start = () => { if (running) return; running = true; last = performance.now(); raf = requestAnimationFrame(tick) };
         const stop = () => { running = false; cancelAnimationFrame(raf) };
-        const sync = () => inView && !document.hidden ? start() : stop();
+        const sync = () => !reduce && inView && !document.hidden ? start() : stop();
         const io = new IntersectionObserver(([e]) => { inView = e.isIntersecting; sync() });
         io.observe(box.current);
         document.addEventListener('visibilitychange', sync);
@@ -85,30 +84,30 @@ function Portrait() {
         {front && <defs><clipPath id="nearHalf"><rect x={-w} y={cy} width={3 * w} height={h} /></clipPath></defs>}
         <g transform={`rotate(-10 ${cx} ${cy})`} clipPath={front ? 'url(#nearHalf)' : undefined}>
             <ellipse cx={cx} cy={cy} rx={rx} ry={ry} fill="none" stroke="#4f8cff" strokeWidth="1.2" strokeDasharray="2 9" strokeLinecap="round"
-                style={{ strokeOpacity: front ? (hot ? .45 : .15) : (hot ? .7 : .3), transition: 'stroke-opacity .6s' }} /></g></svg>;
+                style={{ strokeOpacity: front ? (hot ? .45 : .15) : (hot ? .7 : .3), transition: 'stroke-opacity .3s' }} /></g></svg>;
 
     return (<div ref={box} onPointerEnter={e => mouse(e) && set(true)} onPointerLeave={e => mouse(e) && set(false)} className="relative mx-auto w-fit max-w-full">
-        <div className={`absolute inset-x-[10%] bottom-0 z-0 h-3/4 rounded-full blur-2xl transition-all duration-700 md:blur-3xl ${hot ? 'scale-110 bg-accent/50' : 'bg-accent/25'}`} />
+        {/* soft light behind the portrait: a plain radial gradient (no big blur), brightened with opacity and scale only */}
+        <div className={`absolute inset-x-[10%] bottom-0 z-0 h-3/4 bg-[radial-gradient(closest-side,rgba(79,140,255,.5),transparent)] transition-[opacity,scale] duration-300 ${hot ? 'scale-110 opacity-100' : 'opacity-50'}`} />
         {w > 0 && ring('z-[4]', false)}
         {hot && <motion.span className="pointer-events-none absolute left-1/2 z-[3] aspect-square w-[70%] -translate-x-1/2 rounded-full border border-accent/60" style={{ top: `${ORBIT.cy * 100 - 35}%` }} initial={{ scale: .6, opacity: .7 }} animate={{ scale: 1.45, opacity: 0 }} transition={{ duration: 1.6, repeat: Infinity, ease: 'easeOut' }} />}
         <motion.img src="/portrait.webp" alt="Abdul Rehman" width={848} height={1321} decoding="async" className="relative z-10 block h-auto max-h-[46svh] sm:max-h-[58svh] md:max-h-[82vh]" style={{ maxWidth: '100%', width: 'auto', transformOrigin: '50% 100%' }}
-            animate={{ scale: hot ? 1.03 : 1 }} transition={{ type: 'spring', stiffness: 140, damping: 18 }} />
+            animate={{ scale: hot ? 1.03 : 1 }} transition={SPRING} />
         {w > 0 && ring('z-20', true)}
-        {chips.map((c, i) => <Chip key={c.n} c={c} md={md} reg={el => (els.current[i] = el)} />)}
+        {chips.map((c, i) => <Chip key={c.n} c={c} reg={el => (els.current[i] = el)} />)}
         <motion.p className="pointer-events-none absolute -top-7 left-1/2 z-40 -translate-x-1/2 whitespace-nowrap font-mono text-[11px] uppercase tracking-[.25em] text-accent"
-            initial={false} animate={{ opacity: hot ? 1 : 0, y: hot ? 0 : 8 }} transition={{ duration: .4 }}>My stack · {chips.length} technologies</motion.p>
+            initial={false} animate={{ opacity: hot ? 1 : 0, y: hot ? 0 : 8 }} transition={SPRING}>My stack · {chips.length} technologies</motion.p>
     </div>)
 }
 
 export default function Hero() {
-    const md = useMd();
     return (<section id="home" className="flex items-center overflow-x-clip px-5 pb-12 pt-4 sm:px-8 md:min-h-[90vh] md:px-16 md:py-10">
         <div className="mx-auto grid w-full max-w-6xl items-center gap-10 md:grid-cols-2 min-[1024px]:gap-16">
             <Portrait />
             <div>
                 <p className="flex items-center gap-3 font-mono text-xs uppercase tracking-[.22em] text-mute"><span className="h-px w-10 bg-accent" />Hi, I'm</p>
                 <SplitText as="h1" inView={false} delay={.7} stagger={.045} className="hover-chars mt-4 block font-display text-5xl font-extrabold leading-[.95] tracking-[-.035em] sm:text-7xl md:mt-5 min-[1024px]:text-8xl" parts={[['Abdul', ''], ['Rehman', 'font-serif font-normal italic tracking-normal text-accent']]} />
-                <SplitText as="h2" by="word" inView={false} delay={1.4} className="mt-5 block font-display text-xl font-medium tracking-tight sm:text-2xl md:mt-6 min-[1024px]:text-3xl" parts={[['Full-Stack', ''], ['MERN', 'font-serif font-normal italic text-[1.15em] text-accent'], ['Developer', '']]} />
-                <SplitText as="p" by="word" variant={md ? 'blur' : 'mask'} inView={false} delay={1.8} stagger={.025} className="mt-6 block max-w-md leading-relaxed text-mute md:mt-8" parts={[["I'm a computer science student at the Islamia University of Bahawalpur who builds full-stack web apps with MongoDB, Express, React and Node. I have deployed several projects, and I care about clean code and interfaces that stay out of the user's way.", '']]} />
+                <SplitText as="h2" by="word" inView={false} delay={1.4} className="mt-5 block font-display text-xl font-medium tracking-[-.015em] sm:text-2xl md:mt-6 min-[1024px]:text-3xl" parts={[['Full-Stack', ''], ['MERN', 'font-serif font-normal italic text-[1.15em] text-accent'], ['Developer', '']]} />
+                <SplitText as="p" by="word" variant="mask" inView={false} delay={1.8} stagger={.025} className="mt-6 block max-w-md leading-relaxed text-mute md:mt-8" parts={[["I'm a computer science student at the Islamia University of Bahawalpur who builds full-stack web apps with MongoDB, Express, React and Node. I have deployed several projects, and I care about clean code and interfaces that stay out of the user's way.", '']]} />
             </div></div></section>)
 }

@@ -10,7 +10,6 @@ const ACC = '#4f8cff';
 const SOFT = '#a9c9ff';
 
 const LV = ['rgba(255,255,255,.055)', '#15305f', '#1f56b8', '#4f8cff', '#a9c9ff'];
-const GLOW = ['none', 'none', '0 0 6px #1f56b866', '0 0 9px #4f8cff99', '0 0 13px #a9c9ffcc'];
 
 // GitHub language colors
 const LANG = ['#4f8cff', '#6fa0ff', '#8fb8ff', '#b3d0ff', '#d6e6ff'];
@@ -19,17 +18,11 @@ const col = (name, i) => BRAND[name] || LANG[i];
 
 const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 const ease = [.22, 1, .36, 1];
+// Critically damped spring (no bounce): settles smoothly and can be interrupted mid-flight without a jump.
+const SPRING = { type: 'spring', bounce: 0, duration: .5 };
 
 const P = s => { const [y, m, d] = s.split('-').map(Number); return new Date(y, m - 1, d) };
 const fmt = s => P(s).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-
-// true on tablets and up (matches Tailwind's md breakpoint)
-function useMd() {
-    const q = '(min-width: 768px)';
-    const [m, setM] = useState(() => typeof window !== 'undefined' && window.matchMedia(q).matches);
-    useEffect(() => { const mq = window.matchMedia(q), f = () => setM(mq.matches); mq.addEventListener('change', f); return () => mq.removeEventListener('change', f) }, []);
-    return m;
-}
 
 
 /* -------------------------------------------------------
@@ -47,11 +40,13 @@ const readCache = () => {
     return null;
 };
 
-function useGithub() {
+// `enabled` stays false until the section is close to the screen, so the many API requests
+// don't compete with the page's first load.
+function useGithub(enabled) {
     const [s, set] = useState(() => readCache() || { status: 'load' });
 
     useEffect(() => {
-        if (s.status === 'ok') return; // fresh cache already loaded
+        if (!enabled || s.status === 'ok') return; // wait until near the screen, or fresh cache already loaded
         let dead = false;
 
         const j = async url => {
@@ -111,7 +106,7 @@ function useGithub() {
 
         load();
         return () => { dead = true };
-    }, []);
+    }, [enabled]);
 
     return s;
 }
@@ -169,13 +164,14 @@ const monthLabels = weeks => {
    ------------------------------------------------------- */
 
 function Count({ to, go }) {
-    const [v, setV] = useState(0);
+    const [v, setV] = useState(0), reduce = useReducedMotion();
 
     useEffect(() => {
         if (!go || to == null) return;
+        if (reduce) { setV(to); return }   // reduced motion: show the final number straight away
         const a = animate(0, to, { duration: 1.6, ease, onUpdate: x => setV(Math.round(x)) });
         return () => a.stop();
-    }, [go, to]);
+    }, [go, to, reduce]);
 
     return <span className="tabular-nums">{to == null ? '—' : v.toLocaleString()}</span>;
 }
@@ -186,27 +182,20 @@ function Count({ to, go }) {
    the tooltip instead of re-rendering all ~370 cells)
    ------------------------------------------------------- */
 
-const Cells = memo(function Cells({ grid, weeks, go, status, md, onShow, onHide }) {
+const Cells = memo(function Cells({ grid, weeks, go, status, onShow, onHide }) {
     const sq = { width: 'var(--s)', height: 'var(--s)' };
-    // phones: no per-cell animation. The whole grid fades in (or pulses while loading) as one piece.
-    const pulseAll = !weeks && !md && status === 'load';
-    return (<div className={`flex transition-opacity duration-700 ${pulseAll ? 'animate-pulse' : ''}`} style={{ gap: 'var(--g)', opacity: md || go || !weeks ? 1 : 0 }}>
+    // The whole grid fades in (or pulses while loading) as one piece. No per-cell animation or glow:
+    // ~370 cells animating or shadowed at once is a lot of work for a phone.
+    return (<div className={`flex transition-opacity duration-300 ${!weeks && status === 'load' ? 'animate-pulse' : ''}`} style={{ gap: 'var(--g)', opacity: go || !weeks ? 1 : 0 }}>
         {grid.map((w, i) => (
             <div key={i} className="flex flex-col" style={{ gap: 'var(--g)' }}>
                 {w.map((d, j) => (
                     !weeks ? (
-                        <span key={j} className={`rounded-[3px] bg-white/[.06] ${status === 'load' && md ? 'animate-pulse' : ''}`}
-                            style={md ? { ...sq, animationDelay: `${i * 30}ms` } : sq} />
+                        <span key={j} className="rounded-[3px] bg-white/[.06]" style={sq} />
                     ) : d ? (
                         <span key={j} onMouseEnter={e => onShow(e, d)} onMouseLeave={onHide}
-                            className={`${md ? `gh-cell ${go ? 'gh-in' : ''}` : ''} relative block rounded-[3px] transition-[scale] duration-150 hover:z-10 hover:scale-150`}
-                            style={{
-                                ...sq,
-                                background: LV[d.level],
-                                boxShadow: md ? GLOW[d.level] : 'none',
-                                border: d.level ? 'none' : '1px solid rgba(255,255,255,.09)',
-                                ...(md ? { animationDelay: `${i * 14 + j * 20}ms` } : null)
-                            }} />
+                            className="relative block rounded-[3px] transition-[scale] duration-150 hover:z-10 hover:scale-150"
+                            style={{ ...sq, background: LV[d.level], border: d.level ? 'none' : '1px solid rgba(255,255,255,.09)' }} />
                     ) : (
                         <span key={j} style={sq} />
                     )
@@ -221,7 +210,7 @@ const Cells = memo(function Cells({ grid, weeks, go, status, md, onShow, onHide 
    HEATMAP COMPONENT
    ------------------------------------------------------- */
 
-function Heat({ weeks, go, status, md }) {
+function Heat({ weeks, go, status }) {
     const wrap = useRef(null);
     const [tip, setTip] = useState(null);
 
@@ -256,11 +245,11 @@ function Heat({ weeks, go, status, md }) {
                                 <span key={i} className="absolute whitespace-nowrap" style={{ left: `calc(${i} * (var(--s) + var(--g)))` }}>{m}</span>
                             ))}
                         </div>
-                        <Cells grid={grid} weeks={weeks} go={go} status={status} md={md} onShow={show} onHide={hide} />
+                        <Cells grid={grid} weeks={weeks} go={go} status={status} onShow={show} onHide={hide} />
                     </div>
 
                     {tip && (
-                        <div className="pointer-events-none absolute z-30 -mt-2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg border border-accent/40 bg-[#0a1226] px-3 py-1.5 font-mono text-[11px] shadow-[0_0_24px_rgba(79,140,255,.35)]"
+                        <div className="pointer-events-none absolute z-30 -mt-2 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-lg border border-accent/40 bg-[#0a1226] px-3 py-1.5 font-mono text-[11px]"
                             style={{ left: tip.x, top: tip.y }}>
                             <b className="text-ink">{tip.d.count} contribution{tip.d.count === 1 ? '' : 's'}</b>
                             <span className="text-mute">{' · '}{fmt(tip.d.date)}</span>
@@ -276,19 +265,20 @@ function Heat({ weeks, go, status, md }) {
 
 /* -------------------------------------------------------
    STAT CARD
+   (display only, so no hover effects: it shouldn't look clickable)
    ------------------------------------------------------- */
 
 function Stat({ label, value, sub, go, k }) {
+    const reduce = useReducedMotion();
     return (
         <motion.div
-            initial={{ opacity: 0, y: 28 }}
+            initial={{ opacity: 0, y: reduce ? 0 : 24 }}
             animate={go ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: .8, ease, delay: .15 + k * .1 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 p-4 transition-[border-color,box-shadow,translate] duration-500 hover:-translate-y-1.5 hover:border-accent/70 hover:shadow-[0_0_0_1px_rgba(79,140,255,.25),0_0_44px_rgba(79,140,255,.28)] sm:p-6"
+            transition={{ ...SPRING, delay: k * .06 }}
+            className="relative overflow-hidden rounded-2xl border border-white/10 p-4 sm:p-6"
             style={{ background: 'linear-gradient(135deg,rgba(79,140,255,.13),rgba(10,18,38,.55) 55%,rgba(5,7,13,.8))' }}
         >
-            <span className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/3 skew-x-12 bg-white/[.07] blur-md transition-transform duration-1000 group-hover:translate-x-[520%] max-md:hidden" />
-            <span className="pointer-events-none absolute -right-6 -top-6 h-20 w-20 rounded-full bg-accent/20 opacity-40 blur-xl transition-opacity duration-500 group-hover:opacity-100 md:-right-8 md:-top-8 md:h-28 md:w-28 md:blur-2xl" />
+            <span className="pointer-events-none absolute -right-6 -top-6 h-20 w-20 bg-[radial-gradient(closest-side,rgba(79,140,255,.18),transparent)] md:-right-8 md:-top-8 md:h-28 md:w-28" />
 
             <p className="relative font-mono text-[11px] tracking-[.14em] text-mute sm:tracking-[.22em]">{label}</p>
 
@@ -308,10 +298,10 @@ function Stat({ label, value, sub, go, k }) {
    ------------------------------------------------------- */
 
 export default function GithubActivity() {
-    const ref = useRef(null), md = useMd(), reduce = useReducedMotion();
+    const ref = useRef(null);
     const go = useInView(ref, { once: true, amount: .2 });
-    const live = useInView(ref, { amount: 0 }); // true only while the section is on screen (pauses animations otherwise)
-    const g = useGithub();
+    const near = useInView(ref, { once: true, margin: '600px 0px 600px 0px' }); // start loading just before the section arrives
+    const g = useGithub(near);
     const ok = g.status === 'ok';
 
     const st = useMemo(() => (ok ? calc(g.days) : null), [g, ok]);
@@ -320,24 +310,10 @@ export default function GithubActivity() {
     // Total language bytes, so each language % = its bytes / total * 100
     const totalLanguageBytes = ok && g.langs?.length ? g.langs.reduce((total, [, bytes]) => total + bytes, 0) : 0;
 
-    const sweep = `conic-gradient(from var(--gh),transparent 0 55%,${ACC} 78%,#fff 90%,${SOFT} 96%,transparent)`;
-    const fancy = md && !reduce; // spinning border + floating blob only on tablets/desktop
-
     return (
         <section id="github" ref={ref} className="relative px-5 py-16 sm:px-8 md:px-16 md:py-24">
 
-            <style>{`
-                @property --gh { syntax:'<angle>'; inherits:false; initial-value:0deg }
-                @keyframes ghspin { to { --gh:360deg } }
-                @keyframes ghcell { from { opacity:0; transform:scale(.2) } to { opacity:1; transform:none } }
-                .gh-cell { opacity:0 }
-                .gh-in { animation: ghcell .55s cubic-bezier(.22,1,.36,1) both }
-                .gh-scroll { scrollbar-width:thin; scrollbar-color: rgba(79,140,255,.45) transparent }
-                @media(prefers-reduced-motion:reduce) {
-                    .gh-cell { opacity:1 }
-                    .gh-in { animation:none }
-                }
-            `}</style>
+            <style>{`.gh-scroll { scrollbar-width:thin; scrollbar-color: rgba(79,140,255,.45) transparent }`}</style>
 
             <div className="mx-auto max-w-6xl">
 
@@ -350,22 +326,17 @@ export default function GithubActivity() {
                 />
 
                 <motion.div
-                    initial={{ opacity: 0, y: 36 }}
+                    initial={{ opacity: 0, y: 24 }}
                     animate={go ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: .9, ease }}
-                    className="group relative mt-10 rounded-[28px] p-[1.5px] md:mt-12"
+                    transition={SPRING}
+                    className="relative mt-10 rounded-[28px] p-[1.5px] md:mt-12"
                 >
 
-                    <div className="pointer-events-none absolute -inset-2 rounded-[36px] opacity-25 blur-2xl transition-opacity duration-700 group-hover:opacity-90 group-hover:[animation:ghspin_6s_linear_infinite] max-md:hidden"
-                        style={{ background: sweep }} />
-
+                    {/* static border: no spinning gradient or blurred halo, which repainted every frame */}
                     <div className="absolute inset-0 rounded-[28px] bg-white/10" />
 
-                    <div className="absolute inset-0 rounded-[28px] opacity-25 transition-opacity duration-700 group-hover:opacity-100"
+                    <div className="absolute inset-0 rounded-[28px] opacity-50"
                         style={{ background: `linear-gradient(135deg,${ACC},${SOFT} 50%,${ACC})` }} />
-
-                    <div className="absolute inset-0 rounded-[28px]"
-                        style={{ background: sweep, animation: fancy ? 'ghspin 6s linear infinite' : 'none', animationPlayState: live ? 'running' : 'paused' }} />
 
                     <div className="relative overflow-hidden rounded-[27px] p-4 sm:p-6 md:p-10"
                         style={{ background: 'linear-gradient(135deg,#0b1530,#04060b)' }}>
@@ -378,11 +349,8 @@ export default function GithubActivity() {
                                 maskImage: 'radial-gradient(ellipse at 85% 10%,#000,transparent 65%)'
                             }} />
 
-                        <motion.div
-                            className="absolute -right-16 -top-20 h-52 w-52 rounded-full bg-accent opacity-25 blur-2xl md:-right-24 md:-top-28 md:h-80 md:w-80 md:blur-3xl"
-                            animate={fancy && live ? { x: [0, -50, 0], y: [0, 40, 0] } : { x: 0, y: 0 }}
-                            transition={fancy && live ? { duration: 10, repeat: Infinity, ease: 'easeInOut' } : { duration: .3 }}
-                        />
+                        {/* static soft light: a plain gradient instead of a big blurred, endlessly moving blob */}
+                        <div className="pointer-events-none absolute -right-16 -top-20 h-52 w-52 bg-[radial-gradient(closest-side,rgba(79,140,255,.25),transparent)] md:-right-24 md:-top-28 md:h-80 md:w-80" />
 
                         <div className="relative flex flex-wrap items-end justify-between gap-5 md:gap-6">
 
@@ -395,12 +363,11 @@ export default function GithubActivity() {
                             </div>
 
                             <a href={PROFILE} target="_blank" rel="noopener noreferrer"
-                                className="group/b relative inline-flex items-center gap-3 overflow-hidden rounded-full py-3 pl-5 pr-6 font-semibold text-bg transition hover:scale-105 max-sm:w-full max-sm:justify-center"
-                                style={{ background: `linear-gradient(135deg,${SOFT},${ACC})`, boxShadow: '0 0 28px rgba(79,140,255,.5)' }}>
-                                <span className="absolute inset-y-0 -left-full w-1/2 skew-x-12 bg-white/50 blur-sm transition-transform duration-700 group-hover/b:translate-x-[320%]" />
-                                <SiGithub size={20} className="relative" />
-                                <span className="relative">@{USER}</span>
-                                <span className="relative transition-transform duration-300 group-hover/b:translate-x-1">↗</span>
+                                className="group/b inline-flex items-center gap-3 rounded-full py-3 pl-5 pr-6 font-semibold text-bg transition-[scale] duration-150 hover:scale-[1.03] active:scale-[.97] max-sm:w-full max-sm:justify-center"
+                                style={{ background: `linear-gradient(135deg,${SOFT},${ACC})` }}>
+                                <SiGithub size={20} />
+                                <span>@{USER}</span>
+                                <span className="transition-transform duration-200 group-hover/b:translate-x-1">↗</span>
                             </a>
 
                         </div>
@@ -417,7 +384,7 @@ export default function GithubActivity() {
                             )}
 
                             <div className={g.status === 'err' ? 'opacity-30' : ''}>
-                                <Heat weeks={weeks} go={go} status={g.status} md={md} />
+                                <Heat weeks={weeks} go={go} status={g.status} />
                             </div>
 
                         </div>
@@ -430,7 +397,7 @@ export default function GithubActivity() {
                                 LESS
                                 {LV.map((c, i) => (
                                     <i key={i} className="block h-3 w-3 rounded-[3px]"
-                                        style={{ background: c, boxShadow: GLOW[i], border: i ? 'none' : '1px solid rgba(255,255,255,.09)' }} />
+                                        style={{ background: c, border: i ? 'none' : '1px solid rgba(255,255,255,.09)' }} />
                                 ))}
                                 MORE
                             </span>
@@ -455,30 +422,27 @@ export default function GithubActivity() {
                 {ok && g.langs?.length > 0 && totalLanguageBytes > 0 && (
 
                     <motion.div
-                        initial={{ opacity: 0, y: 28 }}
+                        initial={{ opacity: 0, y: 24 }}
                         animate={go ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: .8, ease, delay: .55 }}
+                        transition={{ ...SPRING, delay: .25 }}
                         className="mt-4 rounded-2xl border border-white/10 p-4 sm:p-6"
                         style={{ background: 'linear-gradient(135deg,rgba(79,140,255,.1),rgba(5,7,13,.8))' }}
                     >
 
                         <p className="font-mono text-[11px] tracking-[.14em] text-mute sm:tracking-[.22em]">MOST USED LANGUAGES · BY CODE SIZE</p>
 
-                        {/* LANGUAGE BAR */}
-                        <div className="mt-4 flex h-3 overflow-hidden rounded-full">
-                            {g.langs.map(([name, bytes], i) => {
-                                const percentage = (bytes / totalLanguageBytes) * 100;
-                                return (
-                                    <motion.span
-                                        key={name}
-                                        className="block h-full first:rounded-l-full last:rounded-r-full"
-                                        style={{ background: col(name, i), boxShadow: md ? `0 0 12px ${col(name, i)},0 0 28px ${col(name, i)}88` : 'none' }}
-                                        initial={{ width: 0 }}
-                                        animate={go ? { width: `${percentage}%` } : {}}
-                                        transition={{ duration: 1.2, ease, delay: .7 + i * .1 }}
-                                    />
-                                );
-                            })}
+                        {/* LANGUAGE BAR: widths are fixed; the whole bar grows in with a transform instead of animating widths (which re-lays-out every frame) */}
+                        <div className="mt-4 h-3 overflow-hidden rounded-full">
+                            <motion.div
+                                className="flex h-full w-full origin-left"
+                                initial={{ scaleX: 0 }}
+                                animate={go ? { scaleX: 1 } : {}}
+                                transition={{ duration: .9, ease, delay: .35 }}
+                            >
+                                {g.langs.map(([name, bytes], i) => (
+                                    <span key={name} className="block h-full" style={{ width: `${(bytes / totalLanguageBytes) * 100}%`, background: col(name, i) }} />
+                                ))}
+                            </motion.div>
                         </div>
 
                         {/* LANGUAGE PERCENTAGES */}
@@ -487,7 +451,7 @@ export default function GithubActivity() {
                                 const percentage = (bytes / totalLanguageBytes) * 100;
                                 return (
                                     <span key={name} className="flex items-center gap-2">
-                                        <i className="block h-2.5 w-2.5 rounded-full" style={{ background: col(name, i), boxShadow: md ? `0 0 8px ${col(name, i)}` : 'none' }} />
+                                        <i className="block h-2.5 w-2.5 rounded-full" style={{ background: col(name, i) }} />
                                         {name}
                                         <span className="font-mono text-xs text-mute">{percentage.toFixed(2)}%</span>
                                     </span>
