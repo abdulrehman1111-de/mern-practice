@@ -10,7 +10,19 @@ const [ScrollText, Education, TechStack, Projects, GithubActivity, Contact, Foot
 
 export default function App() {
     const [loading, setLoading] = useState(true), [ready, setReady] = useState(false);
-    useEffect(() => { chunks.forEach(c => c()); const t = setTimeout(() => setLoading(false), 2800); return () => clearTimeout(t) }, []);
+    useEffect(() => {
+        chunks.forEach(c => c());
+        // The intro ends as soon as the page is actually ready, not after a fixed wait: a short minimum so the intro can play,
+        // the hero portrait decoded and the fonts loaded. It never waits longer than 3s, and skips the portrait when Data Saver is on.
+        let dead = false;
+        const done = () => { if (!dead) setLoading(false) };
+        const quick = matchMedia('(prefers-reduced-motion: reduce)').matches, save = navigator.connection?.saveData;
+        const img = save ? null : new Image(); if (img) img.src = '/portrait.webp';
+        const safe = p => Promise.resolve(p).catch(() => { });
+        Promise.all([new Promise(r => setTimeout(r, quick ? 300 : 1100)), img ? safe(img.decode?.()) : 0, safe(document.fonts?.ready)]).then(done);
+        const cap = setTimeout(done, 3000);
+        return () => { dead = true; clearTimeout(cap) }
+    }, []);
     // safety net in case the exit animation never reports back
     useEffect(() => { if (loading) return; const t = setTimeout(() => setReady(true), 2000); return () => clearTimeout(t) }, [loading]);
     // the rest of the page mounts once the curtain has finished, when the browser is idle
@@ -20,7 +32,8 @@ export default function App() {
         {!loading && <>
             <ScrollProgress />
             {ready ? <Navbar /> : <div className="h-20" />}
-            {ready && <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 1.2 }}><Particles /></motion.div>}
+            {/* the starfield is a single still drawing now, so it no longer needs to wait for the browser to be idle */}
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: .6 }}><Particles /></motion.div>
             <main className="relative z-10"><Hero />
                 {ready && <Suspense fallback={null}><ScrollText /><Education /><TechStack /><Projects /><GithubActivity /><Contact /></Suspense>}</main>
             {ready && <Suspense fallback={null}><Footer /></Suspense>}
