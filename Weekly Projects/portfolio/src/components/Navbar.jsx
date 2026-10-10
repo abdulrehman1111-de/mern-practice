@@ -47,13 +47,12 @@ const k=e=>e.key==='Escape'&&setOpen(false);addEventListener('keydown',k);
 return()=>{document.body.style.overflow='';removeEventListener('keydown',k)}},[open]);
 // rotating a phone or resizing to desktop width: close the mobile menu so the page doesn't stay locked
 useEffect(()=>{const mq=matchMedia('(min-width: 768px)'),f=()=>mq.matches&&setOpen(false);mq.addEventListener('change',f);return()=>mq.removeEventListener('change',f)},[]);
-const rt='[@media(prefers-reduced-transparency:reduce)]';
 return(<>
 <div className="h-20"/>
 <motion.header initial={{y:-100,opacity:0}} animate={{y:hidden&&!open?-110:0,opacity:1}} transition={reduce?{duration:0}:SPRING}
 className="pointer-events-none fixed inset-x-0 top-[max(1rem,env(safe-area-inset-top))] z-40 flex justify-center px-4">
 <nav className="pointer-events-auto w-full max-w-4xl rounded-full p-px" style={{background:'linear-gradient(120deg,rgba(79,140,255,.55),rgba(255,255,255,.08) 40%,rgba(34,211,238,.4))',boxShadow:'0 10px 30px -14px rgba(0,0,0,.6)'}}>
-<div className={`flex items-center justify-between gap-4 rounded-full bg-[#060912]/90 py-2 pl-5 pr-2 md:bg-[#060912]/70 md:pr-3 md:backdrop-blur-lg ${rt}:bg-[#060912] ${rt}:backdrop-blur-none`}>
+<div className="flex items-center justify-between gap-4 rounded-full bg-[#060912]/90 py-2 pl-5 pr-2 md:bg-[#060912]/70 md:pr-3 md:backdrop-blur-lg [@media(prefers-reduced-transparency:reduce)]:bg-[#060912] [@media(prefers-reduced-transparency:reduce)]:backdrop-blur-none">
 <a href="#home" onClick={()=>setOpen(false)} className="group flex items-center gap-2.5">
 <span className="h-2.5 w-2.5 rounded-full bg-accent transition-transform duration-150 group-hover:scale-150"/>
 <span className="font-display text-lg font-bold tracking-[-.02em]">Abdul <span className="font-serif text-[1.15em] font-normal italic tracking-normal text-accent">Rehman</span></span></a>
