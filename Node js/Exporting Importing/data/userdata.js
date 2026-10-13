@@ -1,7 +1,7 @@
 const realUsername = "abdul"
 const realPassword = 123
 
-export default {realUsername, realPassword}
+module.exports =  {realUsername, realPassword}
 
 
 

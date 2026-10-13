@@ -1,6 +1,6 @@
 const http = require("http")
-const { formHandler } = require("./handlers/formhandler")
-const { formSubmit } = require("./handlers/formsubmit")
+const formHandler = require("./handlers/formhandler")
+const formSubmit = require("./handlers/formsubmit")
 
 const server = http.createServer((req, res)=>{
     

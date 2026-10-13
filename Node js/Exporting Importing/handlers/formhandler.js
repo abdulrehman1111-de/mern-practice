@@ -7,6 +7,7 @@ function formHandler(req, res){
             res.setHeader("Content-Type", "text/plain")
             res.write("Internal Server error")
             res.end()
+            return
         }
 
         res.statusCode = 200
