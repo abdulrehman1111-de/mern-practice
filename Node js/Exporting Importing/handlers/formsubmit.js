@@ -16,6 +16,7 @@ function formSubmit(req, res){
 
         if(readableData.username === realUsername && parseInt(readableData.password) === realPassword){
             res.write("<h1>Login Successfull</h1>")
+            res.write(`<h1>Your username is: ${readableData.username} and your password is ${readableData.password}</h1>`)
             res.end()
         }
 
