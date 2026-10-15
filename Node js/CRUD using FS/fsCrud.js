@@ -15,8 +15,7 @@ else if (operation === "read") {
 }
 
 else if (operation === "append") {
-    const newContent = process.argv[4]
-    fs.appendFileSync(fullName, newContent)
+    fs.appendFileSync(fullName, content)
 }
 
 else if (operation === "delete") {
