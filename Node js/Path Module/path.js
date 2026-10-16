@@ -1,5 +1,6 @@
 const path = require('path')
 
+// Global constant __dirname and __filename
 // Getting directory
 console.log(__dirname)
 
@@ -30,6 +31,7 @@ console.log(path.sep)
 
 // Checking extension name
 console.log(path.extname(filepath))
+
 
 
 

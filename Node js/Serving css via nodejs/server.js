@@ -2,11 +2,16 @@ const http = require("http")
 const fs = require("fs")
 
 const server = http.createServer((req, res) => {
+
+    // Full file paths of the reusable components in every page
     let header = fs.readFileSync("Project/Project/files/header.html", "utf-8")
     let nav = fs.readFileSync("Project/Project/files/nav.html", "utf-8")
     let footer = fs.readFileSync("Project/Project/files/footer.html", "utf-8")
 
+    // Initial file path will be the default homepage
     let file = "/index"
+
+    // if file is other than the homepage
     if (req.url !== "/") {
         file = req.url
     }
