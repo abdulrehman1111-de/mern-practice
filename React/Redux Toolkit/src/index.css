@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+
+#bottom{
+    background: linear-gradient(transparent, black);
+}
+*{
+    font-family: Arial, Helvetica, sans-serif;
+}

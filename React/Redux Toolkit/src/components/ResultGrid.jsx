@@ -20,7 +20,8 @@ const ResultGrid = () => {
                     type: "photo",
                     title: item.alt_description,
                     thumbnail: item.urls.small,
-                    src: item.urls.full
+                    src: item.urls.full,
+                    url: item.links.html
                 }))
 
                 dispatch(setResults(data))
@@ -30,7 +31,7 @@ const ResultGrid = () => {
         }
     }
         getData()
-    }, [query])
+    }, [query, dispatch])
 
     if(error){
         return <h1>Error</h1>
@@ -41,7 +42,7 @@ const ResultGrid = () => {
     }
 
     return (
-        <div className='flex h-[80%] flex-wrap justify-between gap-6 overflow-auto px-10'>
+        <div className='grid h-[80%] grid-cols-5 grid-rows-auto justify-between gap-5 overflow-auto px-10'>
             {
                 results.map((item, idx)=>{
                     return <ResultCard key={item.id} item={item} />

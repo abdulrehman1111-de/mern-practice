@@ -11,7 +11,7 @@ const SearchBar = () => {
     const submitHandler = (e)=>{
         e.preventDefault()
         console.log(text)
-        setText("")
+        // setText("")
         dispatch(setQuery(text))
     }
 
