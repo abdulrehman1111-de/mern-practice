@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Page not found | PixelCraft Studio</title>
+<style>
+  :root {
+    --bg: #f7f6fb;
+    --ink: #1c1b29;
+    --muted: #6a6880;
+    --accent: #4f46e5;
+    --accent-ink: #ffffff;
+    --line: #dcdaee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #12111c;
+      --ink: #f1f0fa;
+      --muted: #a09db8;
+      --accent: #8b83ff;
+      --accent-ink: #12111c;
+      --line: #34324a;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    line-height: 1.6;
+  }
+  main { width: 100%; max-width: 560px; text-align: center; }
+
+  .code {
+    display: flex;
+    justify-content: center;
+    gap: clamp(14px, 4vw, 28px);
+    margin-bottom: 40px;
+    --s: clamp(9px, 2.6vw, 16px);
+  }
+  .digit {
+    display: grid;
+    grid-template-columns: repeat(5, var(--s));
+    grid-auto-rows: var(--s);
+    gap: 3px;
+  }
+  .digit i { display: block; }
+  .digit i.px { background: var(--accent); border-radius: 2px; }
+  .digit i.gone {
+    background: transparent;
+    outline: 2px dashed var(--accent);
+    outline-offset: -2px;
+    opacity: .7;
+  }
+
+  h1 { font-size: clamp(1.7rem, 5vw, 2.3rem); font-weight: 750; letter-spacing: -0.02em; margin-bottom: 12px; }
+  p { color: var(--muted); max-width: 440px; margin: 0 auto 32px; }
+
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: .95rem;
+    text-decoration: none;
+    border: 1.5px solid var(--accent);
+    transition: transform .15s ease, background .15s ease;
+  }
+  .btn.primary { background: var(--accent); color: var(--accent-ink); }
+  .btn.ghost { color: var(--accent); background: transparent; }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+
+  .links { margin-top: 36px; padding-top: 20px; border-top: 1px solid var(--line); font-size: .9rem; color: var(--muted); }
+  .links a { color: var(--ink); text-decoration: none; margin: 0 10px; }
+  .links a:hover { color: var(--accent); text-decoration: underline; }
+
+  @media (prefers-reduced-motion: reduce) { .btn { transition: none; } }
+</style>
+</head>
+<body>
+  <main>
+    <div class="code" role="img" aria-label="Error 404">
+      <div class="digit"><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i class="px"></i><i class="px"></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i></i><i class="px"></i><i></i><i></i><i></i><i></i><i class="px"></i><i></i><i></i><i></i><i></i><i class="px"></i></div>
+      <div class="digit"><i></i><i class="px"></i><i class="px"></i><i class="px"></i><i></i><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i></i><i></i><i class="px"></i><i class="px"></i><i class="px"></i><i></i><i class="px gone"></i><i></i><i class="px"></i><i class="px"></i><i class="px"></i><i></i><i></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i></i><i class="px"></i><i class="px"></i><i class="px"></i><i></i></div>
+      <div class="digit"><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i class="px"></i><i class="px"></i><i class="px"></i><i class="px"></i><i class="px"></i><i class="px"></i><i></i><i></i><i></i><i></i><i class="px"></i><i></i><i></i><i></i><i></i><i class="px"></i><i></i><i></i><i></i><i></i><i class="px"></i></div>
+    </div>
+
+    <h1>This page doesn't exist</h1>
+    <p>The link may be broken, or the page may have moved. Head back home or get in touch and we'll point you the right way.</p>
+
+    <div class="actions">
+      <a href="/" class="btn primary">Back to home</a>
+      <a href="/contact" class="btn ghost">Contact us</a>
+    </div>
+
+    <nav class="links" aria-label="Site pages">
+      <a href="/about">About</a>
+      <a href="/services">Services</a>
+      <a href="/portfolio">Portfolio</a>
+      <a href="/pricing">Pricing</a>
+    </nav>
+  </main>
+</body>
+</html>

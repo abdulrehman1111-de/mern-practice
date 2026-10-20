@@ -1,0 +1,251 @@
+<footer class="site-footer">
+  <div class="container">
+    <div class="newsletter reveal">
+      <div>
+        <h3>Get design &amp; dev tips in your inbox</h3>
+        <p>One short email a month. No spam, ever.</p>
+      </div>
+      <form class="news-form" onsubmit="event.preventDefault(); this.querySelector('input').value=''; this.querySelector('button').textContent='Subscribed \u2713';">
+        <input type="email" placeholder="you@example.com" required />
+        <button type="submit" class="btn">Subscribe</button>
+      </form>
+    </div>
+
+    <div class="footer-grid">
+      <div>
+        <a href="/" class="logo footer-logo">
+          <span class="logo-mark">P</span>
+          <span class="logo-text">Pixel<span>Craft</span></span>
+        </a>
+        <p class="footer-about">We design and build fast, clean and memorable websites for small businesses and startups.</p>
+        <div class="socials">
+          <a href="#" aria-label="Twitter">&#120143;</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="GitHub">&lt;/&gt;</a>
+          <a href="#" aria-label="Instagram">&#9711;</a>
+        </div>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/portfolio">Portfolio</a>
+        <a href="/pricing">Pricing</a>
+      </div>
+      <div>
+        <h4>Services</h4>
+        <a href="/services">Web Development</a>
+        <a href="/services">UI / UX Design</a>
+        <a href="/services">E-commerce</a>
+        <a href="/services">SEO &amp; Marketing</a>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <a href="/contact">hello@pixelcraft.dev</a>
+        <a href="/contact">+92 300 0000000</a>
+        <a href="/contact">Bahawalpur, Pakistan</a>
+        <a href="/contact">Mon - Fri, 9am - 6pm</a>
+      </div>
+    </div>
+
+    <p class="copy">&copy; 2026 PixelCraft Studio. All rights reserved.</p>
+  </div>
+</footer>
+
+<button class="to-top" id="toTop" aria-label="Back to top">&#8593;</button>
+
+<script>
+(function () {
+  var $ = function (s, c) { return (c || document).querySelector(s); };
+  var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
+  var root = document.documentElement;
+
+  /* ---------- active nav link ---------- */
+  var path = window.location.pathname;
+  $$("#navLinks a").forEach(function (a) {
+    if (a.getAttribute("href") === path) a.classList.add("active");
+  });
+
+  /* ---------- mobile menu ---------- */
+  var menuBtn = $("#menuBtn"), navLinks = $("#navLinks");
+  if (menuBtn) {
+    menuBtn.addEventListener("click", function () {
+      var open = navLinks.classList.toggle("open");
+      menuBtn.innerHTML = open ? "&#10005;" : "&#9776;";
+    });
+    $$("#navLinks a").forEach(function (a) {
+      a.addEventListener("click", function () {
+        navLinks.classList.remove("open");
+        menuBtn.innerHTML = "&#9776;";
+      });
+    });
+  }
+
+  /* ---------- dark mode ---------- */
+  var themeBtn = $("#themeToggle");
+  function syncThemeIcon() {
+    var dark = root.getAttribute("data-theme") === "dark";
+    if (themeBtn) themeBtn.innerHTML = dark ? "&#9728;" : "&#9790;";
+  }
+  syncThemeIcon();
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      root.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+      syncThemeIcon();
+    });
+  }
+
+  /* ---------- scroll: header, progress bar, back to top ---------- */
+  var header = $("#siteHeader"), bar = $("#progressBar"), toTop = $("#toTop");
+  function onScroll() {
+    var y = window.scrollY || document.documentElement.scrollTop;
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    if (header) header.classList.toggle("scrolled", y > 40);
+    if (bar) bar.style.width = (h > 0 ? (y / h) * 100 : 0) + "%";
+    if (toTop) toTop.classList.toggle("show", y > 400);
+  }
+  window.addEventListener("scroll", onScroll);
+  onScroll();
+  if (toTop) toTop.addEventListener("click", function () {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+
+  /* ---------- reveal on scroll + counters ---------- */
+  function runCounter(el) {
+    if (el.dataset.done) return;
+    el.dataset.done = "1";
+    var target = parseInt(el.dataset.target, 10) || 0;
+    var suffix = el.dataset.suffix || "";
+    var start = null, dur = 1600;
+    function step(ts) {
+      if (!start) start = ts;
+      var p = Math.min((ts - start) / dur, 1);
+      el.textContent = Math.floor(p * target) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+      else el.textContent = target + suffix;
+    }
+    requestAnimationFrame(step);
+  }
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        e.target.classList.add("visible");
+        $$(".counter", e.target).forEach(runCounter);
+        if (e.target.classList.contains("counter")) runCounter(e.target);
+        io.unobserve(e.target);
+      });
+    }, { threshold: 0.15 });
+    $$(".reveal, .counter").forEach(function (el) { io.observe(el); });
+  } else {
+    $$(".reveal").forEach(function (el) { el.classList.add("visible"); });
+    $$(".counter").forEach(runCounter);
+  }
+
+  /* ---------- typed text in hero ---------- */
+  var typed = $("#typed");
+  if (typed) {
+    var words = (typed.dataset.words || "").split("|"), wi = 0, ci = 0, del = false;
+    (function tick() {
+      var w = words[wi];
+      typed.textContent = w.substring(0, ci);
+      if (!del && ci < w.length) { ci++; setTimeout(tick, 90); }
+      else if (!del) { del = true; setTimeout(tick, 1400); }
+      else if (ci > 0) { ci--; setTimeout(tick, 45); }
+      else { del = false; wi = (wi + 1) % words.length; setTimeout(tick, 300); }
+    })();
+  }
+
+  /* ---------- testimonial slider ---------- */
+  var slider = $(".slider");
+  if (slider) {
+    var slides = $$(".slide", slider), dotsBox = $(".dots", slider), cur = 0, timer;
+    slides.forEach(function (_, i) {
+      var d = document.createElement("button");
+      d.className = "dot";
+      d.setAttribute("aria-label", "Go to slide " + (i + 1));
+      d.addEventListener("click", function () { go(i); restart(); });
+      dotsBox.appendChild(d);
+    });
+    var dots = $$(".dot", slider);
+    function go(n) {
+      cur = (n + slides.length) % slides.length;
+      slides.forEach(function (s, i) { s.classList.toggle("active", i === cur); });
+      dots.forEach(function (d, i) { d.classList.toggle("active", i === cur); });
+    }
+    function restart() { clearInterval(timer); timer = setInterval(function () { go(cur + 1); }, 5000); }
+    $(".prev", slider).addEventListener("click", function () { go(cur - 1); restart(); });
+    $(".next", slider).addEventListener("click", function () { go(cur + 1); restart(); });
+    go(0); restart();
+  }
+
+  /* ---------- FAQ accordion ---------- */
+  $$(".faq-q").forEach(function (q) {
+    q.addEventListener("click", function () {
+      var item = q.parentElement;
+      var wasOpen = item.classList.contains("open");
+      $$(".faq-item", item.parentElement).forEach(function (i) { i.classList.remove("open"); });
+      if (!wasOpen) item.classList.add("open");
+    });
+  });
+
+  /* ---------- portfolio filter ---------- */
+  var filters = $$(".filter-btn");
+  filters.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      filters.forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      var cat = btn.dataset.filter;
+      $$(".work-item").forEach(function (it) {
+        var show = cat === "all" || it.dataset.cat === cat;
+        it.classList.toggle("hide", !show);
+      });
+    });
+  });
+
+  /* ---------- pricing toggle ---------- */
+  var billing = $("#billingToggle");
+  if (billing) {
+    billing.addEventListener("change", function () {
+      var yearly = billing.checked;
+      $$(".price").forEach(function (p) {
+        p.textContent = yearly ? p.dataset.yearly : p.dataset.monthly;
+      });
+      $$(".per").forEach(function (p) { p.textContent = yearly ? "/mo, billed yearly" : "/month"; });
+      $(".bill-label.monthly").classList.toggle("on", !yearly);
+      $(".bill-label.yearly").classList.toggle("on", yearly);
+    });
+  }
+
+  /* ---------- contact form validation ---------- */
+  var form = $("#contactForm");
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var ok = true;
+      function check(id, test, msg) {
+        var input = $("#" + id), err = $("#" + id + "Err");
+        var valid = test(input.value.trim());
+        err.textContent = valid ? "" : msg;
+        input.classList.toggle("invalid", !valid);
+        if (!valid) ok = false;
+      }
+      check("cName", function (v) { return v.length >= 2; }, "Please enter your name.");
+      check("cEmail", function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }, "Enter a valid email address.");
+      check("cMessage", function (v) { return v.length >= 10; }, "Message should be at least 10 characters.");
+      var success = $("#formSuccess");
+      if (ok) {
+        form.reset();
+        success.classList.add("show");
+        setTimeout(function () { success.classList.remove("show"); }, 5000);
+      } else {
+        success.classList.remove("show");
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>
