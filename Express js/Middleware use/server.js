@@ -1,41 +1,50 @@
 import express from "express"
-import path from "path"
 
 const app = express()
 
-const absoulutePath = path.resolve("Project")
+const checkRoute = (req, res, next)=>{
+    console.log("User is accessing " + req.url + " page");
+    next()
+}
 
-app.use((req, res, next)=>{
-    const ip = req.ip
+// const checkAge = (req, res, next)=>{
+//     if(!req.query.age || req.query.age < 18){
+//         res.send("You cannot access this page")
+//     }
+//     else{
+//         next()
+//     }
+// }
+
+const ipCheck = (req, res, next)=>{
+    const ip = req.socket.remoteAddress
     console.log(ip)
 
-    if(ip === "::ffff:192.168.1.75" || ip === "::1"){
-        res.send("You cannot access this website")
+    if(ip.includes("::ffff:192.168.1.2")){
+        res.send("You cannot access this page!")
     }
     else{
         next()
     }
+}
+
+app.use(checkRoute)
+// app.use(checkAge)
+app.use(ipCheck)
+
+app.get("/", (req, res)=>{
+    res.send("<h1>Home page</h1>")
 })
 
-app.get("", (req, res)=>{
-    res.sendFile(absoulutePath + "/index.html")
+app.get("/users", (req, res)=>{
+    res.send("<h1>Users page</h1>")
+})
+
+app.get("/products", (req, res)=>{
+    res.send("<h1>Products page</h1>")
 })
 
 app.listen(3000)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
