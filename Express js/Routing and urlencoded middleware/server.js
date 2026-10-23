@@ -1,8 +1,12 @@
 import express from "express"
+import path from "path"
 
 const app = express()
 
+const absolutePath = path.resolve("public")
+
 app.use(express.urlencoded({extended: false}))
+app.use(express.static(absolutePath))
 
 const checkUrl = (req, res, next) => {
     console.log(req.url)
@@ -10,7 +14,7 @@ const checkUrl = (req, res, next) => {
 }
 
 app.get("/", (req, res) => {
-    res.send("<h1>Home page</h1>")
+    res.sendFile(path.resolve(absolutePath, "/index.html"))
 })
 
 app.get("/about", checkUrl, (req, res) => {
