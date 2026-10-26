@@ -9,11 +9,11 @@ app.use(morgan("dev"))
 // Checking whether morgan('dev') measures correct time
 app.get("/wait", (req, res)=>{
     setTimeout(() => {
-        res.send("Result after one minute")
+        res.send("Result after one second")
     }, 1000);
 })
 
-app.get("/", (req, res, next)=>{
+app.get("/", (req, res)=>{
     res.send("Home page")
 })
 
