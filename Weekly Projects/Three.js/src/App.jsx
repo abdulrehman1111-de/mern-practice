@@ -103,7 +103,7 @@ body{margin:0;background:transparent;color:var(--cream);font:300 1rem/1.7 "DM Sa
     linear-gradient(#1b0f09,#0f0805)}
 #gl{position:fixed;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;opacity:0;transition:opacity 1.4s ease}
 .ready #gl{opacity:1}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.06;
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:40;opacity:.035;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
 
 /* Glassmorphism */
@@ -319,7 +319,7 @@ export default function App() {
       let lenis = null;
       let tick = null;
       if (!reduce && Lenis) {
-        lenis = new Lenis();
+        lenis = new Lenis({ lerp: 0.07 });
         lenisRef.current = lenis;
         lenis.on("scroll", ScrollTrigger.update);
         tick = (t) => lenis.raf(t * 1000);
@@ -366,23 +366,47 @@ export default function App() {
         m.lookAt(0, 0, 0);
         es.add(m);
       };
-      envPanel(9, 4, 0, 6, 0, 0xfff1dc, 4);
-      envPanel(2, 8, -6, 1, 3, 0xffe2b8, 4);
-      envPanel(2, 8, 6, 1, -2, 0xffd2a0, 2.5);
-      envPanel(10, 3, 0, 0, -7, 0xffc890, 2);
-      envPanel(4, 5, 3, 2, 6, 0xffffff, 2);
-      envPanel(1.2, 7, -3, 2, -5, 0xffffff, 3);
+      envPanel(9, 4, 0, 6, 0, 0xfff1dc, 2.6);
+      envPanel(2, 8, -6, 1, 3, 0xffe2b8, 2.6);
+      envPanel(2, 8, 6, 1, -2, 0xffd2a0, 1.6);
+      envPanel(10, 3, 0, 0, -7, 0xffc890, 1.4);
+      envPanel(4, 5, 3, 2, 6, 0xffffff, 1.4);
+      envPanel(1.2, 7, -3, 2, -5, 0xffffff, 1.8);
       const pm = new THREE.PMREMGenerator(renderer);
-      scene.environment = pm.fromScene(es, 0.02).texture;
+      scene.environment = pm.fromScene(es, 0.08).texture;
       pm.dispose();
 
-      const key = new THREE.DirectionalLight(0xffe2bd, 1.4);
+      /* separate high-contrast studio so the stainless steel reads as real polished metal */
+      const es2 = new THREE.Scene();
+      es2.background = new THREE.Color(0x8d7660);
+      const envPanel2 = (w, h, x, y, z, c, k) => {
+        const m = new THREE.Mesh(
+          new THREE.PlaneGeometry(w, h),
+          new THREE.MeshBasicMaterial({ color: new THREE.Color(c).multiplyScalar(k), side: THREE.DoubleSide })
+        );
+        m.position.set(x, y, z);
+        m.lookAt(0, 0, 0);
+        es2.add(m);
+      };
+      envPanel2(10, 5, 0, 6, 0, 0xffffff, 3.5);
+      envPanel2(1.6, 9, -6, 1, 3, 0xffffff, 3);
+      envPanel2(1.6, 9, 6, 1, -2, 0xfff0dc, 2.5);
+      envPanel2(12, 4, 0, 0, -7, 0xe8cfae, 1.6);
+      envPanel2(6, 6, 0, 1, 7, 0xd9c3a5, 1.2);
+      envPanel2(14, 14, 0, -5, 0, 0x6b5038, 0.9);
+      envPanel2(14, 1.4, 0, -0.8, -6.8, 0x050302, 1);
+      envPanel2(1, 8, 3.5, 0, 5.5, 0x050302, 1);
+      const pm2 = new THREE.PMREMGenerator(renderer);
+      const metalEnv = pm2.fromScene(es2, 0.03).texture;
+      pm2.dispose();
+
+      const key = new THREE.DirectionalLight(0xffe2bd, 1.0);
       key.position.set(3, 6, 4);
       scene.add(key);
-      const rim = new THREE.DirectionalLight(0xffa860, 1.0);
+      const rim = new THREE.DirectionalLight(0xffa860, 0.7);
       rim.position.set(-4, 3, -3);
       scene.add(rim);
-      scene.add(new THREE.AmbientLight(0xffffff, 0.14));
+      scene.add(new THREE.AmbientLight(0xffffff, 0.3));
 
       /* ---- helpers ---- */
       const texs = [];
@@ -424,48 +448,94 @@ export default function App() {
       const world = new THREE.Group();
       scene.add(world);
 
-      /* ---- wooden table that fades into the dark ---- */
+      /* ---- coffee table: walnut slab, rounded edge, pedestal, rug ---- */
+      const tableG = new THREE.Group();
+      world.add(tableG);
+      const TOP = -0.09, TR = 4.3;
+
       const woodTex = mkTex(1024, 1024, (c, w, h) => {
         const g = c.createLinearGradient(0, 0, w, h);
-        g.addColorStop(0, "#5a3419");
-        g.addColorStop(0.5, "#6d4223");
-        g.addColorStop(1, "#4a2a14");
+        g.addColorStop(0, "#4a2813");
+        g.addColorStop(0.5, "#5e3519");
+        g.addColorStop(1, "#3d210f");
         c.fillStyle = g;
         c.fillRect(0, 0, w, h);
-        for (let i = 0; i < 280; i++) {
-          const y = Math.random() * h;
-          c.strokeStyle = `rgba(${(20 + Math.random() * 30) | 0},${(10 + Math.random() * 15) | 0},5,${0.05 + Math.random() * 0.14})`;
-          c.lineWidth = 0.5 + Math.random() * 2.5;
+        for (let i = 0; i < 40; i++) {
+          const y = Math.random() * h, th = 20 + Math.random() * 80;
+          c.fillStyle = Math.random() < 0.5 ? "rgba(20,8,2,.10)" : "rgba(150,90,45,.07)";
           c.beginPath();
           c.moveTo(0, y);
-          for (let x = 0; x <= w; x += 64) c.lineTo(x, y + Math.sin(x * 0.01 + i) * 6 + Math.random() * 1.5);
+          for (let x = 0; x <= w; x += 32) c.lineTo(x, y + Math.sin(x * 0.006 + i) * 14);
+          for (let x = w; x >= 0; x -= 32) c.lineTo(x, y + th + Math.sin(x * 0.006 + i + 1) * 14);
+          c.closePath();
+          c.fill();
+        }
+        for (let i = 0; i < 420; i++) {
+          const y = Math.random() * h;
+          c.strokeStyle = `rgba(${(15 + Math.random() * 30) | 0},${(6 + Math.random() * 12) | 0},2,${0.04 + Math.random() * 0.1})`;
+          c.lineWidth = 0.6 + Math.random() * 1.8;
+          c.beginPath();
+          c.moveTo(0, y);
+          for (let x = 0; x <= w; x += 48) c.lineTo(x, y + Math.sin(x * 0.008 + i * 0.7) * 9 + Math.sin(x * 0.03 + i) * 1.5);
           c.stroke();
         }
-        c.strokeStyle = "rgba(10,5,2,.55)";
-        c.lineWidth = 3;
-        [h * 0.33, h * 0.66].forEach((y) => {
+        [[0.28, 0.3], [0.72, 0.7]].forEach(([kx, ky]) => {
+          for (let r = 7; r > 0; r--) {
+            c.strokeStyle = `rgba(25,10,3,${0.12 + (7 - r) * 0.03})`;
+            c.lineWidth = 1.5;
+            c.beginPath();
+            c.ellipse(kx * w, ky * h, r * 9, r * 4.5, 0, 0, 6.283);
+            c.stroke();
+          }
+          c.fillStyle = "rgba(20,8,2,.55)";
           c.beginPath();
-          c.moveTo(0, y);
-          c.lineTo(w, y);
-          c.stroke();
+          c.ellipse(kx * w, ky * h, 10, 5, 0, 0, 6.283);
+          c.fill();
         });
+        for (let i = 0; i < 2500; i++) {
+          c.fillStyle = "rgba(15,6,2,.25)";
+          c.fillRect(Math.random() * w, Math.random() * h, 2 + Math.random() * 5, 1);
+        }
       });
-      const fadeTex = mkTex(256, 256, (c, w, h) => {
+      const topMat = new THREE.MeshPhysicalMaterial({
+        map: woodTex, bumpMap: woodTex, bumpScale: 0.6, roughness: 0.42,
+        clearcoat: 0.55, clearcoatRoughness: 0.35, envMapIntensity: 0.9,
+      });
+      const edgeMat = new THREE.MeshPhysicalMaterial({
+        map: woodTex, color: 0xcaa07a, roughness: 0.4,
+        clearcoat: 0.4, clearcoatRoughness: 0.4, envMapIntensity: 0.8,
+      });
+      const slab = new THREE.Mesh(new THREE.CylinderGeometry(TR - 0.16, TR - 0.16, 0.32, 128), [edgeMat, topMat, edgeMat]);
+      slab.position.y = TOP - 0.16;
+      const bull = new THREE.Mesh(new THREE.TorusGeometry(TR - 0.16, 0.16, 24, 128), edgeMat);
+      bull.rotation.x = Math.PI / 2;
+      bull.position.y = TOP - 0.16;
+      const pedestal = new THREE.Mesh(
+        lathe([[0, -2.4], [1.5, -2.4], [1.5, -2.3], [0.8, -2.1], [0.7, -1.2], [0.9, -0.6], [1.2, -0.4], [0, -0.4]], 64),
+        new THREE.MeshPhysicalMaterial({ color: 0x2a1509, roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.4 })
+      );
+      const rugTex = mkTex(1024, 1024, (c, w, h) => {
+        c.fillStyle = "#6a5442";
+        c.fillRect(0, 0, w, h);
+        for (let i = 0; i < 14000; i++) {
+          c.fillStyle = `rgba(${Math.random() < 0.5 ? "30,20,10" : "200,170,140"},${0.05 + Math.random() * 0.08})`;
+          c.fillRect(Math.random() * w, Math.random() * h, 1 + Math.random() * 6, 1 + Math.random() * 2);
+        }
+      });
+      const rugFade = mkTex(256, 256, (c, w, h) => {
         const g = c.createRadialGradient(128, 128, 0, 128, 128, 128);
         g.addColorStop(0, "#fff");
-        g.addColorStop(0.42, "#fff");
+        g.addColorStop(0.5, "#fff");
         g.addColorStop(1, "#000");
         c.fillStyle = g;
         c.fillRect(0, 0, w, h);
       }, false);
-      const table = new THREE.Mesh(
-        flat(7, 64),
-        new THREE.MeshStandardMaterial({
-          map: woodTex, alphaMap: fadeTex, bumpMap: woodTex, bumpScale: 2, transparent: true, roughness: 0.55, envMapIntensity: 0.5,
-        })
+      const rug = new THREE.Mesh(
+        flat(9, 64),
+        new THREE.MeshStandardMaterial({ map: rugTex, alphaMap: rugFade, transparent: true, roughness: 1, envMapIntensity: 0.2 })
       );
-      table.position.y = -0.02;
-      world.add(table);
+      rug.position.y = -2.4;
+      tableG.add(slab, bull, pedestal, rug);
 
       const shTex = mkTex(256, 256, (c, w, h) => {
         const g = c.createRadialGradient(128, 128, 0, 128, 128, 128);
@@ -479,7 +549,7 @@ export default function App() {
         flat(2.4, 48),
         new THREE.MeshBasicMaterial({ map: shTex, transparent: true, depthWrite: false })
       );
-      shadow.position.y = -0.01;
+      shadow.position.y = -0.086;
       world.add(shadow);
 
       /* ---- the stoneware mug ---- */
@@ -557,12 +627,12 @@ export default function App() {
       mugTex.offset.x = 0.5;
 
       const mugMat = new THREE.MeshPhysicalMaterial({
-        map: mugTex, bumpMap: noiseTex(10, 3, 70), bumpScale: 0.6,
-        roughness: 0.38, clearcoat: 0.6, clearcoatRoughness: 0.18, envMapIntensity: 1, side: THREE.DoubleSide,
+        map: mugTex, bumpMap: noiseTex(10, 3, 40), bumpScale: 0.2,
+        roughness: 0.5, clearcoat: 0.4, clearcoatRoughness: 0.35, envMapIntensity: 1, side: THREE.DoubleSide,
       });
       const creamMat = new THREE.MeshPhysicalMaterial({
         color: 0xe6d9c2, bumpMap: noiseTex(6, 6, 50), bumpScale: 0.4,
-        roughness: 0.35, clearcoat: 0.6, clearcoatRoughness: 0.2, envMapIntensity: 1, side: THREE.DoubleSide,
+        roughness: 0.48, clearcoat: 0.4, clearcoatRoughness: 0.35, envMapIntensity: 1, side: THREE.DoubleSide,
       });
       const rimMat = new THREE.MeshPhysicalMaterial({ color: 0x5e3319, roughness: 0.3, clearcoat: 0.7, envMapIntensity: 1 });
 
@@ -607,6 +677,65 @@ export default function App() {
 
       const innerR = (y) => 0.78 + 0.075 * clamp01((y - 0.14) / 1.05);
 
+      /* ---- saucer, open book, brass spoon, cinnamon ---- */
+      const saucer = new THREE.Mesh(
+        lathe([[0, -0.088], [0.7, -0.088], [0.78, -0.06], [1.38, 0.01], [1.46, 0.05], [1.43, 0.058], [1.34, 0.03], [0.92, -0.004], [0.8, -0.012], [0, -0.012]], 96),
+        creamMat
+      );
+      cupG.add(saucer);
+
+      const brass = new THREE.MeshStandardMaterial({ color: 0xc9a25a, metalness: 1, roughness: 0.32, envMapIntensity: 1 });
+      const spoon = new THREE.Group();
+      const sb = new THREE.Mesh(new THREE.SphereGeometry(0.17, 24, 16), brass);
+      sb.scale.set(1, 0.25, 0.7);
+      const sh = new THREE.Mesh(new THREE.CylinderGeometry(0.02, 0.03, 1.0, 12), brass);
+      sh.rotation.z = Math.PI / 2;
+      sh.position.x = 0.62;
+      spoon.add(sb, sh);
+      spoon.position.set(1.9, TOP + 0.03, 1.5);
+      spoon.rotation.y = -0.6;
+      tableG.add(spoon);
+
+      const cinMat = new THREE.MeshStandardMaterial({ color: 0x8a4a22, roughness: 0.85, bumpMap: noiseTex(2, 4, 90), bumpScale: 0.3 });
+      [[2.3, -0.5, 0.4], [2.45, -0.3, -0.2], [2.2, -0.2, 0.9]].forEach(([x, z, r]) => {
+        const s = new THREE.Mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.7, 14), cinMat);
+        s.rotation.z = Math.PI / 2;
+        s.rotation.y = r;
+        s.position.set(x, TOP + 0.04, z);
+        tableG.add(s);
+      });
+
+      const pageTex = mkTex(512, 700, (c, w, h) => {
+        c.fillStyle = "#efe3cb";
+        c.fillRect(0, 0, w, h);
+        const g = c.createLinearGradient(0, 0, w, 0);
+        g.addColorStop(0, "rgba(0,0,0,.18)");
+        g.addColorStop(0.18, "rgba(0,0,0,0)");
+        c.fillStyle = g;
+        c.fillRect(0, 0, w, h);
+        c.fillStyle = "rgba(60,40,25,.55)";
+        for (let y = 70; y < h - 60; y += 17) c.fillRect(70, y, (0.6 + Math.random() * 0.4) * (w - 130), 3.5);
+      });
+      const leather = new THREE.MeshStandardMaterial({ color: 0x2b1a10, roughness: 0.6 });
+      const pageSide = new THREE.MeshStandardMaterial({ color: 0xe8dcc3, roughness: 0.9 });
+      const pageTop = new THREE.MeshStandardMaterial({ map: pageTex, roughness: 0.9 });
+      const half = new THREE.Group();
+      const cov = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.05, 1.1), leather);
+      cov.position.set(0.4, 0.025, 0);
+      const pg = new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.1, 1.0), [pageSide, pageSide, pageTop, pageSide, pageSide, pageSide]);
+      pg.position.set(0.39, 0.1, 0);
+      half.add(cov, pg);
+      half.rotation.z = -0.07;
+      const half2 = half.clone();
+      half2.rotation.set(0, Math.PI, -0.07);
+      const book = new THREE.Group();
+      const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(0.09, 0.025, 64, 8), brass);
+      knot.position.set(0.75, 0.2, -0.2);
+      book.add(half, half2, knot);
+      book.position.set(-2.3, TOP + 0.05, -1.0);
+      book.rotation.y = 0.5;
+      tableG.add(book);
+
       /* ---- liquid layers (rippling surfaces) ---- */
       const espTex = mkTex(512, 512, (c, w, h) => {
         const g = c.createRadialGradient(256, 256, 0, 256, 256, 256);
@@ -624,18 +753,31 @@ export default function App() {
       });
       const milkTex = mkTex(512, 512, (c, w, h) => {
         const g = c.createRadialGradient(256, 256, 0, 256, 256, 256);
-        g.addColorStop(0, "#f0d3a8");
-        g.addColorStop(0.45, "#e2b883");
-        g.addColorStop(0.78, "#c88c52");
-        g.addColorStop(0.92, "#9a5a28");
-        g.addColorStop(1, "#6e3a16");
+        g.addColorStop(0, "#e6ac6e");
+        g.addColorStop(0.4, "#da9a5a");
+        g.addColorStop(0.75, "#c4803f");
+        g.addColorStop(0.9, "#a8632a");
+        g.addColorStop(1, "#7a4219");
         c.fillStyle = g;
         c.fillRect(0, 0, w, h);
-        for (let i = 0; i < 1500; i++) {
-          const a = Math.random() * 6.283, r = 195 + Math.random() * 60;
-          c.fillStyle = `rgba(70,32,10,${0.15 + Math.random() * 0.25})`;
+        /* soft swirling crema bands */
+        c.save();
+        c.filter = "blur(5px)";
+        c.lineCap = "round";
+        for (let i = 0; i < 46; i++) {
+          const r = 40 + Math.random() * 190, a0 = Math.random() * 6.283, len = 0.6 + Math.random() * 1.6;
+          c.strokeStyle = i % 2 ? "rgba(255,226,186,.22)" : "rgba(110,54,18,.22)";
+          c.lineWidth = 6 + Math.random() * 18;
           c.beginPath();
-          c.arc(256 + Math.cos(a) * r, 256 + Math.sin(a) * r, 0.8 + Math.random() * 2, 0, 6.283);
+          c.arc(256 + (Math.random() - 0.5) * 20, 256 + (Math.random() - 0.5) * 20, r, a0, a0 + len);
+          c.stroke();
+        }
+        c.restore();
+        for (let i = 0; i < 1200; i++) {
+          const a = Math.random() * 6.283, r = 205 + Math.random() * 50;
+          c.fillStyle = `rgba(70,32,10,${0.1 + Math.random() * 0.2})`;
+          c.beginPath();
+          c.arc(256 + Math.cos(a) * r, 256 + Math.sin(a) * r, 0.8 + Math.random() * 1.8, 0, 6.283);
           c.fill();
         }
       });
@@ -649,40 +791,68 @@ export default function App() {
           c.bezierCurveTo(cx + w * 0.55, cy - h * 0.5, cx + w * 0.1, cy - h * 0.55, cx, cy - h * 0.25);
           c.closePath();
         };
-        c.filter = "blur(2px)";
-        const W = 720, H = 660, cx = 512, cy = 520;
-        for (let i = 0; i < 7; i++) {
-          const k = 1 - i * 0.135;
-          heart(cx, cy, W * k, H * k);
-          c.fillStyle = i % 2 === 0 ? "#fff6e8" : "rgba(176,104,50,.92)";
-          c.fill();
-        }
-        c.strokeStyle = "rgba(150,86,40,.92)";
-        c.lineWidth = 9;
+        c.filter = "blur(4px)";
         c.lineCap = "round";
+        c.lineJoin = "round";
+        const CX = 512;
+        /* feathered wings that sweep up around the heart */
+        c.strokeStyle = "#fff6e6";
+        c.lineWidth = 30;
+        for (let i = 0; i < 9; i++) {
+          const t = i / 8;
+          const y0 = 790 - i * 42;
+          const s = 40 + 250 * Math.sin(Math.PI * Math.pow(t, 1.3));
+          [-1, 1].forEach((d) => {
+            c.beginPath();
+            c.moveTo(CX, y0);
+            c.bezierCurveTo(CX + d * s * 0.55, y0 + 28, CX + d * s * 1.05, y0 - 30, CX + d * s, y0 - 130);
+            c.stroke();
+          });
+        }
+        /* tapered tail */
+        c.fillStyle = "#fff6e6";
         c.beginPath();
-        c.moveTo(cx, cy - H * 0.3);
-        c.lineTo(cx, cy + H * 0.5);
+        c.moveTo(CX - 22, 790);
+        c.quadraticCurveTo(CX, 880, CX + 22, 790);
+        c.closePath();
+        c.fill();
+        /* brown spine splitting the leaf */
+        c.strokeStyle = "rgba(176,104,50,.85)";
+        c.lineWidth = 7;
+        c.beginPath();
+        c.moveTo(CX, 380);
+        c.lineTo(CX, 810);
+        c.stroke();
+        /* the heart on top, ringed by a thin brown line */
+        heart(CX, 335, 175, 155);
+        c.strokeStyle = "rgba(176,104,50,.9)";
+        c.lineWidth = 16;
+        c.stroke();
+        c.fillStyle = "#fffaf0";
+        c.fill();
+        heart(CX, 335, 70, 62);
+        c.strokeStyle = "rgba(190,120,62,.8)";
+        c.lineWidth = 5;
         c.stroke();
         c.filter = "none";
       });
 
       const surfGeo = () => {
-        const g = new THREE.RingGeometry(0.001, 1, 56, 18);
+        const g = new THREE.RingGeometry(0.001, 1, 64, 24);
         g.rotateX(-Math.PI / 2);
         return g;
       };
       const espresso = new THREE.Mesh(
         surfGeo(),
-        new THREE.MeshStandardMaterial({ map: espTex, roughness: 0.14, envMapIntensity: 1.1 })
+        new THREE.MeshStandardMaterial({ map: espTex, roughness: 0.3, envMapIntensity: 0.9 })
       );
       const milk = new THREE.Mesh(
         surfGeo(),
-        new THREE.MeshStandardMaterial({ map: milkTex, roughness: 0.3, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 })
+        new THREE.MeshStandardMaterial({ map: milkTex, roughness: 0.45, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -1 })
       );
       const art = new THREE.Mesh(
         surfGeo(),
-        new THREE.MeshStandardMaterial({ map: artTex, roughness: 0.3, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 })
+        new THREE.MeshStandardMaterial({ map: artTex, roughness: 0.45, transparent: true, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2 })
       );
       milk.renderOrder = 2;
       art.renderOrder = 3;
@@ -695,7 +865,7 @@ export default function App() {
       const machine = new THREE.Group();
       world.add(machine);
       const steel = new THREE.MeshStandardMaterial({
-        color: 0xb9bcc2, metalness: 1, roughness: 0.22, envMapIntensity: 1.3, side: THREE.DoubleSide,
+        color: 0xe2e4e8, metalness: 1, roughness: 0.16, envMap: metalEnv, envMapIntensity: 1.35, side: THREE.DoubleSide,
       });
       const dark = new THREE.MeshPhysicalMaterial({ color: 0x1b1410, roughness: 0.4, clearcoat: 0.5, clearcoatRoughness: 0.3 });
       const bowl = new THREE.Mesh(
@@ -722,19 +892,44 @@ export default function App() {
       const collar = new THREE.Mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.1, 28), steel);
       collar.rotation.z = -Math.PI / 2;
       collar.position.set(1.55, 0.4, 0);
+const handleWood = mkTex(512, 512, (c, w, h) => {
+        const g = c.createLinearGradient(0, 0, w, 0);
+        g.addColorStop(0, "#7a4727");
+        g.addColorStop(0.5, "#8d5630");
+        g.addColorStop(1, "#6e3f21");
+        c.fillStyle = g;
+        c.fillRect(0, 0, w, h);
+        for (let i = 0; i < 260; i++) {
+          const x0 = Math.random() * w, dk = Math.random() < 0.6;
+          c.strokeStyle = dk ? `rgba(45,22,8,${0.08 + Math.random() * 0.22})` : `rgba(205,150,95,${0.06 + Math.random() * 0.14})`;
+          c.lineWidth = 0.6 + Math.random() * 2.4;
+          c.beginPath();
+          c.moveTo(x0, 0);
+          for (let y = 0; y <= h; y += 24) c.lineTo(x0 + Math.sin(y * 0.02 + i) * 4, y);
+          c.stroke();
+        }
+      });
+      const woodMat = new THREE.MeshPhysicalMaterial({
+        map: handleWood, roughness: 0.42, clearcoat: 0.6, clearcoatRoughness: 0.3, envMapIntensity: 0.8,
+      });
       const hdl = new THREE.Mesh(
-        lathe([[0, 0], [0.12, 0], [0.15, 0.06], [0.17, 0.4], [0.19, 0.9], [0.18, 1.4], [0.15, 1.75], [0.1, 1.9], [0, 1.93]], 40),
-        dark
+        lathe([[0, 0], [0.15, 0], [0.16, 0.05], [0.15, 0.3], [0.17, 0.8], [0.2, 1.3], [0.21, 1.65], [0.18, 1.88], [0.1, 1.97], [0, 2.0]], 48),
+        woodMat
       );
-      hdl.rotation.z = -Math.PI / 2;
+      hdl.rotation.z = -Math.PI / 2 + 0.1;
       hdl.position.set(1.6, 0.4, 0);
+      const ferrule = new THREE.Mesh(new THREE.CylinderGeometry(0.19, 0.19, 0.12, 36), steel);
+      ferrule.rotation.z = -Math.PI / 2;
+      ferrule.position.set(1.64, 0.4, 0);
       const puckTex = noiseTex(2, 2, 120);
+      const puckGeo = new THREE.SphereGeometry(0.8, 48, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+      puckGeo.scale(1, 0.2, 1);
       const puck = new THREE.Mesh(
-        flat(0.8, 48),
-        new THREE.MeshStandardMaterial({ color: 0x4a2a16, bumpMap: puckTex, bumpScale: 1.5, roughness: 0.95 })
+        puckGeo,
+        new THREE.MeshStandardMaterial({ color: 0x3d2112, bumpMap: puckTex, bumpScale: 2, roughness: 0.95 })
       );
-      puck.position.y = 0.62;
-      machine.add(bowl, bead, lugA, lugB, funnel, spout, neck, collar, hdl, puck);
+      puck.position.y = 0.6;
+      machine.add(bowl, bead, lugA, lugB, funnel, spout, neck, collar, ferrule, hdl, puck);
       machine.rotation.y = -0.5;
 
       const dotTex = mkTex(64, 64, (c, w, h) => {
@@ -768,7 +963,7 @@ export default function App() {
       const pitcherG = new THREE.Group();
       world.add(pitcherG);
       const pSteel = new THREE.MeshStandardMaterial({
-        color: 0xc4c7cd, metalness: 1, roughness: 0.2, envMapIntensity: 1.3, side: THREE.DoubleSide,
+        color: 0xe6e7ea, metalness: 1, roughness: 0.2, envMap: metalEnv, envMapIntensity: 1.3, side: THREE.DoubleSide,
       });
       const jugGeo = lathe([
         [0, 0], [0.48, 0], [0.56, 0.03], [0.6, 0.08], [0.68, 0.5], [0.74, 1.0], [0.75, 1.1], [0.74, 1.2], [0.72, 1.3],
@@ -791,13 +986,15 @@ export default function App() {
       baseRing.rotation.x = Math.PI / 2;
       baseRing.position.y = 0.05;
       const jhCurve = new THREE.CatmullRomCurve3([
-        new THREE.Vector3(-0.72, 1.12, 0),
-        new THREE.Vector3(-1.08, 1.16, 0),
-        new THREE.Vector3(-1.3, 0.78, 0),
-        new THREE.Vector3(-1.12, 0.36, 0),
-        new THREE.Vector3(-0.68, 0.3, 0),
-      ]);
-      const jugHandle = new THREE.Mesh(new THREE.TubeGeometry(jhCurve, 48, 0.048, 12, false), pSteel);
+        new THREE.Vector3(-0.72, 1.26, 0),
+        new THREE.Vector3(-0.84, 1.55, 0),
+        new THREE.Vector3(-1.08, 1.5, 0),
+        new THREE.Vector3(-1.3, 0.98, 0),
+        new THREE.Vector3(-1.22, 0.62, 0),
+        new THREE.Vector3(-0.68, 0.55, 0),
+      ], false, "catmullrom", 0.35);
+      const jugHandle = new THREE.Mesh(new THREE.TubeGeometry(jhCurve, 72, 0.04, 14, false), pSteel);
+      jugHandle.scale.z = 2.4;
       const jugG = new THREE.Group();
       jugG.add(jug, baseRing, jugHandle);
       jugG.position.set(-1.16, -1.44, 0); /* spout tip sits at the group origin */
@@ -806,19 +1003,19 @@ export default function App() {
       /* ---- physically shaped streams: thin as they fall, wobble, arc under gravity ---- */
       const GRAV = 6;
       const mkStream = (color, rough) => {
-        const geo = new THREE.CylinderGeometry(1, 1, 1, 16, 28, true);
+        const geo = new THREE.CylinderGeometry(1, 1, 1, 24, 28, true);
         const base = geo.attributes.position.array.slice();
         const m = new THREE.Mesh(
           geo,
-          new THREE.MeshStandardMaterial({ color, roughness: rough, envMapIntensity: 1.7, side: THREE.DoubleSide })
+          new THREE.MeshStandardMaterial({ color, roughness: rough, envMapIntensity: 1.1, side: THREE.DoubleSide })
         );
         m.visible = false;
         m.frustumCulled = false;
         world.add(m);
         return { m, geo, base };
       };
-      const espS = mkStream(0x3b1a08, 0.05);
-      const milkS = mkStream(0xf6e8d4, 0.12);
+      const espS = mkStream(0x3b1a08, 0.2);
+      const milkS = mkStream(0xf6e8d4, 0.25);
       const setStream = (S, x, top, bot, amt, r, vx, t) => {
         const m = S.m;
         if (amt < 0.02 || top - bot < 0.05) {
@@ -834,8 +1031,8 @@ export default function App() {
           const s = 0.5 - b[i * 3 + 1];
           const f = (r * amt) / Math.sqrt(1 + 2.4 * s);
           const off = vx * Math.sqrt((2 * s * h) / GRAV);
-          const sx = Math.sin(t * 7 + s * 9) * 0.012 * s * amt;
-          const sz = Math.cos(t * 6 + s * 7) * 0.01 * s * amt;
+          const sx = Math.sin(t * 7 + s * 9) * 0.005 * s * amt;
+          const sz = Math.cos(t * 6 + s * 7) * 0.004 * s * amt;
           p.setXYZ(i, x + off + b[i * 3] * f + sx, b[i * 3 + 1], b[i * 3 + 2] * f + sz);
         }
         p.needsUpdate = true;
@@ -883,8 +1080,8 @@ export default function App() {
         return g;
       })();
       const beanMat = new THREE.MeshPhysicalMaterial({
-        color: 0x5a3118, roughness: 0.36, clearcoat: 0.35, clearcoatRoughness: 0.35, vertexColors: true,
-        bumpMap: noiseTex(3, 2, 110), bumpScale: 0.8, envMapIntensity: 0.9,
+        color: 0x5a3118, roughness: 0.45, clearcoat: 0.2, clearcoatRoughness: 0.5, vertexColors: true,
+        bumpMap: noiseTex(3, 2, 110), bumpScale: 0.3, envMapIntensity: 0.9,
       });
       const tmpC = new THREE.Color();
       const dummy = new THREE.Object3D();
@@ -899,26 +1096,191 @@ export default function App() {
       const NB = 110;
       const beans = new THREE.InstancedMesh(beanGeo, beanMat, NB);
       beans.frustumCulled = false;
+      /* ---- bean physics: gravity, bouncing, and solid collisions with the mug, handle, saucer, table and each other ---- */
+      const BR = 0.095;
+      const GRAVB = 9;
+      const HR = 0.11;
+      const polyPts = outerPts
+        .map((p) => [p[0], p[1]])
+        .concat([[0.87, MH], [0.86, MH - 0.05], [0.83, 0.5], [0.78, 0.18], [0.7, 0.1], [0, 0.09], [0, 0]]);
+      const polyEdges = polyPts.map((a, i) => {
+        const b = polyPts[(i + 1) % polyPts.length];
+        return { a, b, axis: a[0] === 0 && b[0] === 0 };
+      });
+      const groundPts = [[0, -0.012], [0.8, -0.012], [0.92, -0.004], [1.34, 0.03], [1.43, 0.058], [1.465, 0.04], [1.52, TOP]];
+      const groundH = (rho) => {
+        if (rho >= 1.52) return TOP;
+        for (let i = 1; i < groundPts.length; i++) {
+          const a = groundPts[i - 1], b = groundPts[i];
+          if (rho <= b[0]) return a[1] + ((b[1] - a[1]) * (rho - a[0])) / (b[0] - a[0]);
+        }
+        return TOP;
+      };
+      const handlePts = handleCurve.getPoints(20);
+      const nrm = new THREE.Vector3();
+      const tv = new THREE.Vector3();
+      const tw = new THREE.Vector3();
+      const qa = new THREE.Quaternion();
+      const ax = new THREE.Vector3();
+      const rnd = (a, b) => a + Math.random() * (b - a);
+
+      const spawn = (b, stagger) => {
+        const a = Math.random() * 6.283, rr = Math.sqrt(Math.random()) * 1.05;
+        b.p.set(Math.cos(a) * rr, (stagger ? 1.8 : 4) + Math.random() * (stagger ? 4.5 : 2), Math.sin(a) * rr);
+        b.v.set(rnd(-0.3, 0.3), -Math.random() * 0.6, rnd(-0.3, 0.3));
+        b.w.set(rnd(-5, 5), rnd(-5, 5), rnd(-5, 5));
+        b.q.setFromEuler(new THREE.Euler(rnd(0, 6.283), rnd(0, 6.283), rnd(0, 6.283)));
+      };
+
       const B = [];
       for (let i = 0; i < NB; i++) {
-        const u = Math.random() * 2 - 1, th = Math.random() * 6.283, r = Math.cbrt(Math.random());
-        const q = Math.sqrt(1 - u * u);
-        B.push({
-          x: r * q * Math.cos(th), y: r * u, z: r * q * Math.sin(th),
-          rx: Math.random() * 6.283, ry: Math.random() * 6.283, rz: Math.random() * 6.283,
-          rr: (Math.random() - 0.5) * 0.7, sp: 0.3 + Math.random() * 0.6, ph: Math.random() * 6.283,
-          sz: 0.8 + Math.random() * 0.4,
-        });
+        const b = {
+          p: new THREE.Vector3(), v: new THREE.Vector3(), w: new THREE.Vector3(), q: new THREE.Quaternion(),
+          sz: 0.85 + Math.random() * 0.3, r: 0, touch: false,
+        };
+        b.r = BR * b.sz;
+        spawn(b, true);
+        B.push(b);
       }
+
+      /* resolve one contact: push out, bounce, friction, and roll */
+      const hit = (b, n, depth, e, mu) => {
+        b.p.addScaledVector(n, depth);
+        const vn = b.v.dot(n);
+        if (vn < 0) b.v.addScaledVector(n, -(1 + e) * vn);
+        tv.copy(b.v).addScaledVector(n, -b.v.dot(n));
+        b.v.addScaledVector(tv, -mu);
+        tw.crossVectors(n, tv).multiplyScalar(1 / b.r);
+        b.w.lerp(tw, 0.25);
+        b.touch = true;
+      };
+
+      /* mug wall: closest point on the cup cross-section, revolved around the axis */
+      const collideMug = (b) => {
+        const rho = Math.hypot(b.p.x, b.p.z), y = b.p.y, r = b.r;
+        if (rho > 1.1 + r || y > MH + r + 0.05) return;
+        let best = 1e9, cx = 0, cy = 0, inside = false;
+        for (let i = 0; i < polyEdges.length; i++) {
+          const e = polyEdges[i], a = e.a, c = e.b;
+          if ((a[1] > y) !== (c[1] > y) && rho < ((c[0] - a[0]) * (y - a[1])) / (c[1] - a[1]) + a[0]) inside = !inside;
+          if (e.axis) continue;
+          const dx = c[0] - a[0], dy = c[1] - a[1];
+          const t = clamp01(((rho - a[0]) * dx + (y - a[1]) * dy) / (dx * dx + dy * dy));
+          const px = a[0] + dx * t, py = a[1] + dy * t;
+          const d2 = (rho - px) * (rho - px) + (y - py) * (y - py);
+          if (d2 < best) { best = d2; cx = px; cy = py; }
+        }
+        const d = Math.sqrt(best);
+        let nr, ny, depth;
+        if (inside) {
+          nr = cx - rho; ny = cy - y;
+          const l = Math.hypot(nr, ny) || 1;
+          nr /= l; ny /= l;
+          depth = r + d;
+        } else {
+          if (d >= r) return;
+          nr = (rho - cx) / (d || 1e-4); ny = (y - cy) / (d || 1e-4);
+          depth = r - d;
+        }
+        const ux = rho > 1e-5 ? b.p.x / rho : 1, uz = rho > 1e-5 ? b.p.z / rho : 0;
+        nrm.set(nr * ux, ny, nr * uz);
+        hit(b, nrm, depth, 0.25, 0.05);
+      };
+
+      /* handle: a chain of spheres that turns with the mug */
+      const collideHandle = (b, cs, sn) => {
+        for (let i = 0; i < handlePts.length; i++) {
+          const hp = handlePts[i];
+          const dx = b.p.x - hp.x * cs, dy = b.p.y - hp.y, dz = b.p.z + hp.x * sn;
+          const rr = HR + b.r, d2 = dx * dx + dy * dy + dz * dz;
+          if (d2 < rr * rr) {
+            const d = Math.sqrt(d2) || 1e-4;
+            nrm.set(dx / d, dy / d, dz / d);
+            hit(b, nrm, rr - d, 0.25, 0.05);
+          }
+        }
+      };
+
+      /* saucer (with its raised rim) and the table top */
+      const collideGround = (b) => {
+        const x = b.p.x, z = b.p.z, rho = Math.hypot(x, z);
+        if (rho > TR - 0.1) return;
+        const h = groundH(rho);
+        const r0 = Math.max(0, rho - 0.02), r1 = rho + 0.02;
+        const slope = (groundH(r1) - groundH(r0)) / (r1 - r0);
+        const ux = rho > 1e-5 ? x / rho : 1, uz = rho > 1e-5 ? z / rho : 0;
+        nrm.set(-slope * ux, 1, -slope * uz).normalize();
+        const depth = b.r - (b.p.y - h) * nrm.y;
+        if (depth > 0 && b.p.y - h > -0.4) hit(b, nrm, depth, 0.3, 0.06);
+      };
+
+      const stepBeans = (dt) => {
+        const sub = 3, h = dt / sub;
+        const cs = Math.cos(cupG.rotation.y), sn = Math.sin(cupG.rotation.y);
+        for (let s = 0; s < sub; s++) {
+          for (let i = 0; i < NB; i++) {
+            const b = B[i];
+            b.v.y -= GRAVB * h;
+            b.p.addScaledVector(b.v, h);
+            b.touch = false;
+          }
+          /* bean against bean */
+          for (let i = 0; i < NB; i++) {
+            const a = B[i];
+            for (let j = i + 1; j < NB; j++) {
+              const c = B[j];
+              const rr = a.r + c.r;
+              const dx = c.p.x - a.p.x;
+              if (dx > rr || dx < -rr) continue;
+              const dy = c.p.y - a.p.y, dz = c.p.z - a.p.z;
+              const d2 = dx * dx + dy * dy + dz * dz;
+              if (d2 >= rr * rr || d2 === 0) continue;
+              const d = Math.sqrt(d2);
+              nrm.set(dx / d, dy / d, dz / d);
+              const pen = (rr - d) * 0.5;
+              a.p.addScaledVector(nrm, -pen);
+              c.p.addScaledVector(nrm, pen);
+              const vr = (c.v.x - a.v.x) * nrm.x + (c.v.y - a.v.y) * nrm.y + (c.v.z - a.v.z) * nrm.z;
+              if (vr < 0) {
+                const imp = -(1.2 * vr) * 0.5;
+                a.v.addScaledVector(nrm, -imp);
+                c.v.addScaledVector(nrm, imp);
+              }
+              a.v.multiplyScalar(0.999);
+              c.v.multiplyScalar(0.999);
+            }
+          }
+          /* bean against the world */
+          for (let i = 0; i < NB; i++) {
+            const b = B[i];
+            collideMug(b);
+            collideHandle(b, cs, sn);
+            collideGround(b);
+            if (b.touch) {
+              b.v.multiplyScalar(0.99);
+              b.w.multiplyScalar(0.97);
+              if (b.v.lengthSq() < 0.004) b.v.multiplyScalar(0.3);
+            } else b.w.multiplyScalar(0.999);
+            const wl = b.w.length();
+            if (wl > 1e-3) {
+              if (wl > 14) b.w.multiplyScalar(14 / wl);
+              qa.setFromAxisAngle(ax.copy(b.w).normalize(), Math.min(wl, 14) * h);
+              b.q.premultiply(qa).normalize();
+            }
+            if (b.p.y < -8) spawn(b, false);
+          }
+        }
+      };
       shade(beans, NB);
       world.add(beans);
 
-      const NT = 14;
+      const NT = 26;
       const tBeans = new THREE.InstancedMesh(beanGeo, beanMat, NT);
       tBeans.frustumCulled = false;
       for (let i = 0; i < NT; i++) {
         const k = 0.105 + Math.random() * 0.02;
-        dummy.position.set(-(1.3 + Math.random() * 1.2), 0.05, (Math.random() - 0.3) * 2.3);
+        const ta = 4.2 + Math.random() * 4.9, tr = 1.7 + Math.random() * 1.4;
+        dummy.position.set(Math.cos(ta) * tr, -0.05, Math.sin(ta) * tr);
         dummy.rotation.set(-Math.PI / 2, 0, Math.random() * 6.283);
         dummy.scale.set(k, k * 0.7, k * 0.5);
         dummy.updateMatrix();
@@ -999,8 +1361,8 @@ export default function App() {
         metrics.pos = pos;
         metrics.total = total;
         tl = gsap.timeline({
-          defaults: { ease: "power2.inOut" },
-          scrollTrigger: { trigger: "#journey", start: "top top", end: "bottom bottom", scrub: reduce ? true : 1.2 },
+          defaults: { ease: "sine.inOut" },
+          scrollTrigger: { trigger: "#journey", start: "top top", end: "bottom bottom", scrub: reduce ? true : 2 },
         });
         K.slice(1).forEach((k, i) => {
           tl.to(st, { ...k, duration: pos[i + 1] - pos[i] }, pos[i]);
@@ -1055,13 +1417,15 @@ export default function App() {
 
       const v3 = new THREE.Vector3();
       const tgt = new THREE.Vector3();
-      let firstFrame = true, pinsOff = false, lastStep = -2;
+      let firstFrame = true, pinsOff = false, lastStep = -2, beansOff = false, lastT = 0;
       const root = rootRef.current;
       const MILK_VX = 0.55;
 
       renderer.setAnimationLoop((ms) => {
         if (!vis) return;
         const t = ms / 1000;
+        const dtP = Math.min(0.033, Math.max(0, t - lastT));
+        lastT = t;
         const ex = exit.v;
         const gone = Math.pow(ex, 1.4);
         pmx += (pmtx - pmx) * 0.05;
@@ -1083,7 +1447,8 @@ export default function App() {
         cupG.position.y = ex * 1.3;
         cupG.scale.setScalar(Math.max(1 - gone, 0.0001));
         cupG.rotation.y = st.ry + (reduce ? 0 : Math.sin(t * 0.4) * 0.12) + pmx * 0.2 + intro.v * 1.2 + ex * 3;
-        table.material.opacity = 1 - ex;
+        tableG.visible = ex < 0.9;
+        tableG.scale.setScalar(Math.max(1 - ex * 1.1, 0.0001));
         shadow.material.opacity = 1 - ex;
         tBeans.scale.setScalar(Math.max(1 - ex * 1.6, 0.0001));
         tBeans.visible = ex < 0.62;
@@ -1111,8 +1476,8 @@ export default function App() {
           [espresso, milk, art].forEach((m) => m.scale.set(r, 1, r));
           milk.material.opacity = st.mk;
           art.material.opacity = st.art;
-          const tgtAmp = hasE ? 0.03 : hasM ? 0.04 : 0;
-          rip += (tgtAmp - rip) * 0.04;
+          const tgtAmp = hasE ? 0.012 : hasM ? 0.016 : 0;
+          rip += (tgtAmp - rip) * 0.025;
           if (rip > 0.002) {
             const ox = hasM ? Math.max(-0.35, Math.min(0.35, milkLand)) : 0;
             for (let s = 0; s < 3; s++) {
@@ -1120,7 +1485,7 @@ export default function App() {
               for (let i = 0; i < pa.count; i++) {
                 const x = bb[i * 3], z = bb[i * 3 + 2];
                 const d = Math.hypot(x - ox, z);
-                pa.setY(i, rip * Math.sin(20 * d * r - t * 8) * Math.exp(-1.8 * d) * (1 - 0.4 * d));
+                pa.setY(i, rip * Math.sin(9 * d * r - t * 3.5) * Math.exp(-2.4 * d) * (1 - 0.4 * d));
               }
               pa.needsUpdate = true;
               surfs[s].geometry.computeVertexNormals();
@@ -1181,27 +1546,29 @@ export default function App() {
           pgeo.attributes.position.needsUpdate = true;
         } else splash.visible = false;
 
-        /* beans */
+        /* beans: simulated physics, they fall, bounce, roll and pile up inside the mug */
         if (st.bsc > 0.02) {
+          if (beansOff) {
+            B.forEach((b) => spawn(b, true));
+            beansOff = false;
+          }
+          stepBeans(dtP);
           beans.visible = true;
-          const sp = st.bsp;
-          const zoff = -0.8 * Math.min(1, Math.max(0, (sp - 1.5) / 2.5));
+          const k0 = Math.min(1, st.bsc);
           for (let i = 0; i < NB; i++) {
             const b = B[i];
-            const a = t * b.sp + b.ph;
-            dummy.position.set(
-              st.bx + b.x * sp * 0.85 + Math.sin(a) * 0.12,
-              Math.max(0.15, st.by + b.y * sp * 0.6 + Math.cos(a * 1.3) * 0.1),
-              b.z * sp * 0.7 + zoff
-            );
-            dummy.rotation.set(b.rx + t * b.rr, b.ry + t * b.rr * 0.7, b.rz);
-            const k = st.bsc * b.sz;
+            dummy.position.copy(b.p);
+            dummy.quaternion.copy(b.q);
+            const k = k0 * b.sz;
             dummy.scale.set(0.115 * k, 0.08 * k, 0.058 * k);
             dummy.updateMatrix();
             beans.setMatrixAt(i, dummy.matrix);
           }
           beans.instanceMatrix.needsUpdate = true;
-        } else beans.visible = false;
+        } else {
+          beans.visible = false;
+          beansOff = true;
+        }
 
         /* steam: buoyant, turbulent, only from a filled mug; thins and drifts away on exit */
         const filled = clamp01((st.lv - 0.55) / 0.4);

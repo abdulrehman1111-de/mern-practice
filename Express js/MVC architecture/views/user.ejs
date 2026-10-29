@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <%user.map(item=>{%>
+            <%if(typeof item === "string"){%>
+                <li><b>Name:</b><%=item %></li>
+            <%}else if(typeof item === "object" && typeof item !== null){%>
+                <li><b>Name:</b><%=item.name %></li>
+                <li><b>Role:</b><%=item.role %></li>
+                <li><b>Age:</b><%=item.age %></li>
+            <%}%>
+            <%})%>
+    </ul>
+
+</body>
+</html>
