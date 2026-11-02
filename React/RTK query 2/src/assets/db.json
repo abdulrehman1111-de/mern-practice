@@ -19,5 +19,22 @@
       "id": "1JDwqiAvaFs"
     }
   ],
+  "users": [
+    {
+      "id": "JJd3HDNrSu4",
+      "name": "user 1",
+      "email": "user1@example.com"
+    },
+    {
+      "id": "R7axsrPd7Cg",
+      "name": "user 2",
+      "email": "user2@example.com"
+    },
+    {
+      "id": "1JDwqiAvaFs",
+      "name": "user 3",
+      "email": "user3@example.com"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }

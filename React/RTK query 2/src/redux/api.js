@@ -5,36 +5,36 @@ export const myApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:3000"
     }),
-    tagTypes: ["Posts"],
+    tagTypes: ["Items"],
     endpoints: (builder)=>({
-        getPosts: builder.query({query: ()=> "/posts", providesTags: ["Posts"]}),
-        newPosts: builder.mutation({
-            query: (data)=> ({
-                url: "posts",
+        getItems: builder.query({query: (resource)=> "/" + resource, providesTags: ["Items"]}),
+        newItems: builder.mutation({
+            query: ({resource, data})=> ({
+                url: resource,
                 method: "POST",
                 body: data
             }),
-            invalidatesTags: ["Posts"]
+            invalidatesTags: ["Items"]
         }),
-        deletePosts: builder.mutation({
-            query: (id)=>({
-                url: `/posts/${id}`,
+        deleteItems: builder.mutation({
+            query: ({resource, id})=>({
+                url: `/${resource}/${id}`,
                 method: "DELETE"
             }),
-            invalidatesTags: ["Posts"]
+            invalidatesTags: ["Items"]
         }),
-        updatePosts: builder.mutation({
-            query: ({id, ...data})=>({
-                url: `posts/${id}`,
+        updateItems: builder.mutation({
+            query: ({resource, id, ...data})=>({
+                url: `${resource}/${id}`,
                 method: "PATCH",
                 body: data
             }),
-            invalidatesTags: ["Posts"]
+            invalidatesTags: ["Items"]
         })
     })
 })
 
-export const {useGetPostsQuery, useNewPostsMutation, useDeletePostsMutation, useUpdatePostsMutation} = myApi
+export const {useGetItemsQuery, useNewItemsMutation, useDeleteItemsMutation, useUpdateItemsMutation} = myApi
 
 
 
