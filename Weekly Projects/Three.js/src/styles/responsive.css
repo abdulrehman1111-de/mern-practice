@@ -1,0 +1,22 @@
+@media (max-width:1000px){.mgrid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:760px){
+  nav ul{display:none}
+  nav{padding-left:1.1rem}
+  .rail{display:none}
+  .panel{align-items:flex-end;padding:6rem 5vw 5vh}
+  .copy{max-width:none;padding:1.4rem 1.4rem}
+  .copy.r{margin-left:0}
+  .no{font-size:2.6rem}
+  .hero .copy{max-width:none}
+  h1{font-size:clamp(2.2rem,10vw,3.2rem)}
+  h2{font-size:clamp(1.7rem,8vw,2.4rem)}
+  .copy p,.plist li{font-size:.92rem}
+  .hint{display:none}
+  .mgrid{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr;gap:1.6rem}
+  footer{padding:2rem 1.5rem 1.5rem}
+}
+@media (prefers-reduced-motion:reduce){
+  .reveal{transition:none;opacity:1;transform:none}
+  .hint i::after,.pin b{animation:none}
+}

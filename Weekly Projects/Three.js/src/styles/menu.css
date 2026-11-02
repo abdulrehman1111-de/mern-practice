@@ -1,0 +1,10 @@
+/* Menu + footer */
+#menu{position:relative;z-index:2;padding:16vh 6vw 10vh}
+.mhead{max-width:40rem;margin-bottom:2.6rem}
+.mgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem}
+.mcard{padding:1.6rem 1.5rem}
+.mcard h3{font:400 1.6rem/1.1 Fraunces,Georgia,serif;margin:0 0 .5rem}
+.mcard p{font-size:.9rem;margin:0 0 1.3rem;min-height:3.2em}
+.mrow{display:flex;justify-content:space-between;align-items:center}
+.price{font:600 1.35rem Fraunces,Georgia,serif;color:var(--copper)}
+.mrow .btn{padding:.6rem 1.1rem;font-size:.8rem}

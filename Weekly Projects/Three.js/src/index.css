@@ -1,0 +1,12 @@
+/* All styles live in src/styles/. Order matters (later files can override earlier ones). */
+@import "./styles/base.css";
+@import "./styles/glass.css";
+@import "./styles/nav.css";
+@import "./styles/sections.css";
+@import "./styles/pins.css";
+@import "./styles/designs.css";
+@import "./styles/menu.css";
+@import "./styles/footer.css";
+@import "./styles/effects.css";
+@import "./styles/polish.css";
+@import "./styles/responsive.css";

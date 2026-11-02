@@ -1,0 +1,6 @@
+/* Glassmorphism */
+.glass{position:relative;border-radius:28px;
+  background:linear-gradient(145deg,rgba(255,236,210,.17),rgba(255,236,210,.05));
+  -webkit-backdrop-filter:blur(20px) saturate(150%);backdrop-filter:blur(20px) saturate(150%);
+  border:1px solid rgba(255,226,190,.22);
+  box-shadow:0 24px 70px rgba(0,0,0,.45),inset 0 1px 0 rgba(255,255,255,.24),inset 0 -1px 0 rgba(255,255,255,.04)}

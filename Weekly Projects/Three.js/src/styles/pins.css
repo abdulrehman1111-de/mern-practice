@@ -1,0 +1,6 @@
+/* Latte-art pins */
+.pins{position:fixed;inset:0;pointer-events:none;z-index:20}
+.pin{position:absolute;left:0;top:0;opacity:0;will-change:transform}
+.pin b{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;font:500 .8rem "DM Sans",sans-serif;color:#1b0e06;
+  background:rgba(251,241,227,.9);box-shadow:0 0 0 5px rgba(251,241,227,.22),0 6px 20px rgba(0,0,0,.4);animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(251,241,227,.25),0 6px 20px rgba(0,0,0,.4)}50%{box-shadow:0 0 0 10px rgba(251,241,227,.08),0 6px 20px rgba(0,0,0,.4)}}

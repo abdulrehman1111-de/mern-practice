@@ -1,0 +1,20 @@
+/* Latte-art hold: tall #art panel + sticky copy + design caption */
+#art{min-height:calc(var(--art-hold,4) * 100svh);align-items:flex-start}
+#art .copy{position:sticky;top:18vh}
+
+.design-cap{position:fixed;left:6vw;bottom:6.5rem;z-index:25;width:min(21rem,80vw);padding:1.1rem 1.4rem;
+  opacity:var(--ao,0);pointer-events:none;transition:opacity .2s linear}
+.design-cap__no{font-size:.7rem;letter-spacing:.3em;color:var(--copper);margin-bottom:.4rem}
+.design-cap__txt{animation:capIn .55s ease both}
+.design-cap h3{margin:0 0 .3rem;font:italic 400 1.6rem/1.1 Fraunces,Georgia,serif}
+.design-cap p{margin:0 0 .8rem;font-size:.84rem;color:#e4d3bd}
+.design-cap__dots{display:flex;gap:.45rem}
+.design-cap__dots i{width:.5rem;height:.5rem;border-radius:50%;background:rgba(255,226,190,.28);transition:all .3s}
+.design-cap__dots i.on{background:var(--copper);width:1.4rem;border-radius:999px}
+@keyframes capIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  #art{align-items:flex-start}
+  #art .copy{top:52svh}
+  .design-cap{left:50%;transform:translateX(-50%);bottom:4.6rem;padding:.8rem 1.1rem}
+  .design-cap p{display:none}
+}

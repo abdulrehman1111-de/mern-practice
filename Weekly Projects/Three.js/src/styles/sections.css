@@ -1,0 +1,29 @@
+/* Sections */
+.panel{min-height:100vh;min-height:100svh;display:flex;align-items:center;padding:6rem 6vw 5rem;position:relative;z-index:2}
+.copy{max-width:30rem;padding:2.2rem 2.4rem}
+.copy.r{margin-left:auto}
+.eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--copper);margin:0 0 1rem}
+h1,h2{font-family:Fraunces,Georgia,serif;font-weight:400;margin:0 0 1.1rem;line-height:1.02;letter-spacing:-.01em}
+h1{font-size:clamp(2.6rem,5.4vw,5.4rem)}
+h2{font-size:clamp(2rem,3.6vw,3.4rem)}
+h1 em,h2 em{font-style:italic;color:var(--copper)}
+p{margin:0 0 1.2rem;color:#e4d3bd}
+.no{font:400 4.2rem/1 Fraunces,Georgia,serif;color:transparent;-webkit-text-stroke:1px rgba(232,201,160,.55);margin-bottom:.4rem}
+.chips{margin:.2rem 0 1.2rem}
+.chip{display:inline-block;padding:.35rem .85rem;margin:0 .4rem .45rem 0;border-radius:999px;font-size:.76rem;
+  background:rgba(255,236,210,.1);border:1px solid rgba(255,226,190,.22)}
+.plist{list-style:none;margin:0 0 1.2rem;padding:0;display:grid;gap:.7rem}
+.plist li{display:flex;gap:.8rem;align-items:flex-start;font-size:.92rem;color:#e4d3bd}
+.plist b{flex:none;width:1.7rem;height:1.7rem;border-radius:50%;display:grid;place-items:center;font-size:.78rem;font-weight:500;
+  background:linear-gradient(135deg,var(--copper),#b8641f);color:#1b0e06}
+.btn{display:inline-block;border:0;border-radius:999px;padding:.95rem 1.8rem;cursor:pointer;text-decoration:none;
+  background:linear-gradient(135deg,#e8a05c,#b8641f);color:#1b0e06;font:500 .9rem "DM Sans",sans-serif;
+  box-shadow:0 10px 30px rgba(217,137,74,.35),inset 0 1px 0 rgba(255,255,255,.4);transition:transform .25s,box-shadow .25s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(217,137,74,.45),inset 0 1px 0 rgba(255,255,255,.4)}
+.btn.ghost{background:rgba(255,236,210,.1);color:var(--cream);border:1px solid rgba(255,226,190,.3);box-shadow:none}
+.hero .copy{max-width:min(36rem,46vw)}
+.hero p{max-width:26rem}
+.hint{display:flex;align-items:center;gap:.8rem;margin-top:1.6rem;font-size:.78rem;color:var(--mute)}
+.hint i{width:22px;height:36px;border:1px solid rgba(255,226,190,.4);border-radius:12px;position:relative}
+.hint i::after{content:"";position:absolute;left:50%;top:7px;width:3px;height:7px;margin-left:-1.5px;border-radius:2px;background:var(--copper);animation:wheel 1.6s infinite}
+@keyframes wheel{0%{opacity:1;transform:translateY(0)}100%{opacity:0;transform:translateY(12px)}}

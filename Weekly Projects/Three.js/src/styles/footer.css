@@ -1,0 +1,9 @@
+footer{position:relative;z-index:2;margin:0 3vw 3vw;padding:3.2rem 3rem 2rem}
+.fgrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:3rem}
+footer h4{font:500 .72rem "DM Sans",sans-serif;letter-spacing:.25em;text-transform:uppercase;color:var(--copper);margin:0 0 1rem}
+footer a{display:block;color:var(--mute);text-decoration:none;margin-bottom:.45rem;font-size:.92rem}
+footer a:hover{color:var(--cream)}
+.nl{display:flex;gap:.6rem;flex-wrap:wrap}
+.nl input{flex:1;min-width:12rem;border-radius:999px;background:rgba(255,236,210,.08);border:1px solid rgba(255,226,190,.25);color:var(--cream);padding:.8rem 1.1rem;font:inherit}
+.nl input::placeholder{color:var(--mute)}
+.legal{margin:2.4rem 0 0;font-size:.78rem;color:var(--mute)}

@@ -1,0 +1,92 @@
+/* Polish layer: smoother scrolling, richer glass, loader, cursor light, tilt cards.
+   Loaded after effects.css and before responsive.css. */
+
+/* Lenis (smooth scroll) recommended rules */
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+
+::selection{background:rgba(227,154,85,.42);color:#fff}
+html{scrollbar-width:thin;scrollbar-color:rgba(227,154,85,.45) transparent}
+
+/* The nav is meant to float: .glass (position:relative) was beating the plain "nav" rule */
+nav.glass{position:fixed}
+
+/* Background: warm halo + a soft vignette that frames the scene */
+#halo{
+  background:
+    radial-gradient(ellipse at 50% 50%,transparent 55%,rgba(8,4,2,.55) 100%),
+    radial-gradient(circle at var(--hx,70%) var(--hy,45%),rgba(224,146,76,.36),rgba(140,80,34,.16) 26%,transparent 56%),
+    radial-gradient(circle at 15% 85%,rgba(90,48,22,.45),transparent 50%),
+    linear-gradient(#1b0f09,#0f0805)}
+
+/* Glass: a touch lighter to render (big blur over a live canvas is costly), with a soft top-left sheen */
+.glass{
+  -webkit-backdrop-filter:blur(16px) saturate(150%);backdrop-filter:blur(16px) saturate(150%);
+  background:
+    linear-gradient(120deg,rgba(255,255,255,.09),transparent 42%),
+    linear-gradient(145deg,rgba(255,236,210,.16),rgba(255,236,210,.05))}
+
+/* Reveal: gentler entrance */
+.reveal{transform:translateY(34px) scale(.985);
+  transition:opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1);
+  transition-delay:calc(var(--d,0)*.09s)}
+.reveal.in{transform:none}
+
+/* Headings, chips, buttons */
+h1 em,h2 em{background:linear-gradient(100deg,#f6c88f,#e39a55 55%,#ffdcae);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;padding-right:.04em}
+.chip{transition:transform .3s,background .3s,border-color .3s}
+.chip:hover{transform:translateY(-2px);background:rgba(255,236,210,.18);border-color:rgba(255,226,190,.4)}
+.btn{position:relative;overflow:hidden}
+.btn::after{content:"";position:absolute;top:0;left:-60%;width:40%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .7s ease}
+.btn:hover::after{left:130%}
+.btn:active{transform:translateY(0) scale(.98)}
+.pbar{box-shadow:0 0 14px rgba(227,154,85,.75)}
+.rail span{cursor:pointer}
+.rail span:hover{opacity:.9}
+nav .cart:active{transform:scale(.97)}
+
+/* Menu cards: 3D tilt (wrapper) + moving highlight (card) */
+.mtilt{height:100%;transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:transform .5s cubic-bezier(.2,.7,.2,1);will-change:transform}
+.mcard{height:100%;transition:border-color .35s,box-shadow .35s,opacity 1.1s cubic-bezier(.2,.7,.2,1),transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.mcard::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .4s;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(255,236,210,.2),transparent 55%)}
+.mtilt:hover .mcard::after{opacity:1}
+.mtilt:hover .mcard{border-color:rgba(255,226,190,.42);box-shadow:0 30px 80px rgba(0,0,0,.55),0 0 40px rgba(227,154,85,.14),inset 0 1px 0 rgba(255,255,255,.28)}
+
+/* Intro loader */
+.loader{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;
+  background:radial-gradient(circle at 50% 45%,#2a1810,#0f0805 70%);color:var(--copper);
+  transition:opacity .9s ease .15s,visibility 0s linear 1.1s;animation:loaderFailsafe 0s linear 9s forwards}
+.loader.done{opacity:0;visibility:hidden;pointer-events:none}
+.loader__brand{font:400 1.7rem/1 Fraunces,Georgia,serif;color:var(--cream);letter-spacing:.02em}
+.loader__brand i{color:var(--copper);font-style:italic;padding:0 .1em}
+.loader__bar{width:9rem;height:2px;border-radius:2px;background:rgba(255,226,190,.16);overflow:hidden}
+.loader__bar i{display:block;height:100%;width:40%;border-radius:2px;background:linear-gradient(90deg,transparent,var(--copper),transparent);animation:loaderBar 1.2s ease-in-out infinite}
+.loader__steam{stroke-dasharray:14;animation:loaderSteam 2s ease-in-out infinite}
+.loader__steam.s2{animation-delay:.25s}
+.loader__steam.s3{animation-delay:.5s}
+@keyframes loaderBar{0%{transform:translateX(-120%)}100%{transform:translateX(320%)}}
+@keyframes loaderSteam{0%{stroke-dashoffset:14;opacity:0}40%{opacity:1}100%{stroke-dashoffset:-14;opacity:0}}
+@keyframes loaderFailsafe{to{opacity:0;visibility:hidden;pointer-events:none}}
+
+/* Cursor light */
+.cursor-glow{position:fixed;left:0;top:0;z-index:35;width:240px;height:240px;border-radius:50%;pointer-events:none;opacity:0;
+  background:radial-gradient(circle,rgba(247,190,120,.2),rgba(227,154,85,.07) 45%,transparent 70%);mix-blend-mode:screen;
+  transition:opacity .4s,width .35s,height .35s;will-change:transform}
+.cursor-glow.hot{width:340px;height:340px}
+
+@media (max-width:760px){
+  .glass{-webkit-backdrop-filter:blur(11px) saturate(140%);backdrop-filter:blur(11px) saturate(140%)}
+  .mtilt{transform:none}
+}
+@media (hover:none){.cursor-glow{display:none}}
+@media (prefers-reduced-motion:reduce){
+  .loader__steam,.loader__bar i{animation:none}
+  .mtilt{transform:none;transition:none}
+  .reveal{transform:none}
+  .btn::after{display:none}
+}
