@@ -102,14 +102,26 @@ y = False
 # print("x or y =", logical_or)
 
 # Logical not
-logical_not1 = not x
-print("x logical not =", logical_not1)
+# logical_not1 = not x
+# print("x logical not =", logical_not1)
 
-logical_not2 = not y
-print("y logical not =", logical_not2)
+# logical_not2 = not y
+# print("y logical not =", logical_not2)
 
-
-
+# Operator Precendence in Python
+# Arithematic operators
+# Multiplication before addition
+print(3 + 2 * 5)
+# parantheses change the order
+print((3 + 2) * 5)
+# Exponentiation before multiplication
+print(2 ** 3 * 4)
+# Division and multiplication --> left to right
+print(15 / 3 * 2)
+# Floor division before addition
+print(11 // 4 + 2)
+# Modulo before Multiplication
+print(17 % 5 * 2)
 
 
 
