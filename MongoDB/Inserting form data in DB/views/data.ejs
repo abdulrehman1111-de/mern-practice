@@ -22,7 +22,16 @@
                     <td><%= user.name %></td>
                     <td><%= user.age %></td>
                     <td><%= user.role %></td>
-                    <td><img src="<%= user.image %>" alt="image" height="120" width="120"></td>
+                    <td>
+                        <% if(user.image){ %>
+                            <img src="<%= user.image %>" alt="image" height="120" width="120">
+                            <% } %>
+                    </td>
+                    <td>
+                        <% if(user.file){ %>
+                            <a href="<%= user.file %>">file</a>
+                            <% } %>
+                    </td>
                 </tr>
             <% }) %>    
         </tbody>

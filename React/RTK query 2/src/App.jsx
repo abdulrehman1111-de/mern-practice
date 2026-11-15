@@ -2,11 +2,15 @@ import React, { useState } from 'react'
 import { useGetItemsQuery, useDeleteItemsMutation, useNewItemsMutation, useUpdateItemsMutation } from './redux/api'
 import PostCard from './components/PostCard'
 import UserCard from './components/UserCard'
+import { useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import { setResource } from './redux/reducer'
 
 const App = () => {
 
   // State to select the source of the data
-  const [resource, setResource] = useState("posts")
+  const resource = useSelector((state)=> state.myreducer.resource)
+  const dispatch = useDispatch()
 
   const { isLoading, error, isError, isSuccess, data } = useGetItemsQuery(resource)
   console.log(data)
@@ -55,8 +59,8 @@ const App = () => {
       <h1 className="app-title">RTK Query</h1>
 
       <div className="switch">
-        <button className={`switch-btn ${resource === "posts" ? "active" : ""}`} onClick={() => setResource("posts")}>Posts</button>
-        <button className={`switch-btn ${resource === "users" ? "active" : ""}`} onClick={() => setResource("users")}>Users</button>
+        <button className={`switch-btn ${resource === "posts" ? "active" : ""}`} onClick={() => dispatch(setResource("posts"))}>Posts</button>
+        <button className={`switch-btn ${resource === "users" ? "active" : ""}`} onClick={() => dispatch(setResource("users"))}>Users</button>
       </div>
 
       <form className="post-form" onSubmit={submitHandler}>
