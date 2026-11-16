@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "ejs": "^7.0.2",
+    "expres": "^0.0.5",
     "express": "^5.3.0",
     "mongodb": "^7.9.0"
   }
