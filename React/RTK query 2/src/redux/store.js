@@ -2,7 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { myreducer } from "./reducer";
 import { myApi } from "./api";
 import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/es/storage'// defaults to localStorage for web
+import storage from 'redux-persist/es/storage'
 
 const persistConfig = {
   key: 'root',
