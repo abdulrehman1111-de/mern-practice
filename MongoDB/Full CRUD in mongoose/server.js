@@ -1,11 +1,13 @@
 import express from "express";
 import mongoose from "mongoose";
 import studentModel from "./model/studentModel.js";
+import cors from "cors"
 
 const app = express();
 app.set("view engine", "ejs");
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors())
 
 await mongoose.connect("mongodb://localhost:27017/school").then(() => {
   console.log("Database connected!");
